@@ -1,0 +1,14 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61.0"]
+[project]
+name = "paypalrestapis"
+description = "An order represents a payment between two or more parties. Use the Orders API to create, update, retrieve, authorize, and capture orders., Call the Payments API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. Use the Payments API in conjunction with the <a href=\"/docs/api/orders/v2/\">Orders API</a>. For more information, see the <a href=\"/docs/checkout/\">PayPal Checkout Overview</a>., The Payment Method Tokens API saves payment methods so payers don't have to enter details for future transactions. Payers can check out faster or pay without being present after they agree to save a payment method.<br><br>The API associates a payment method with a temporary setup token. Pass the setup token to the API to exchange the setup token for a permanent token.<br><br>The permanent token represents a payment method that's saved to the vault. This token can be used repeatedly for checkout or recurring transactions such as subscriptions.<br><br>The Payment Method Tokens API is available in the US only."
+version = "2.16.0"
+requires-python = ">=3.7"
+authors = [{name = "APIMatic Code Generator", email = "support@apimatic.io"}]
+dependencies = ["apimatic-core~=0.2.0, >= 0.2.15", "apimatic-core-interfaces~=0.1.0, >= 0.1.5", "apimatic-requests-client-adapter~=0.1.0, >= 0.1.6"]
+[project.optional-dependencies]
+testutils = ["pytest>=7.2.2"]
+[tool.setuptools.packages.find]
+exclude = ["tests", "tests.*"]

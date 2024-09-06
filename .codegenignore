@@ -1,0 +1,7 @@
+.gitignore
+.github/**
+tests/e2etests/**
+tests/unitTests/**
+tests/__init__.py
+tests/http_response_catcher.py
+e2e-requirements.txt

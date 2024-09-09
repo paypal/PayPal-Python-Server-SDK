@@ -20,11 +20,12 @@ The following parameters are configurable for the API Client:
 The API client can be initialized as follows:
 
 ```python
-client = PaypalrestapisClient(
+client = PaypalserversdkClient(
     client_credentials_auth_credentials=ClientCredentialsAuthCredentials(
         o_auth_client_id='OAuthClientId',
         o_auth_client_secret='OAuthClientSecret'
     ),
+    environment=Environment.SANDBOX,
     logging_configuration=LoggingConfiguration(
         log_level=logging.INFO,
         request_logging_config=RequestLoggingConfiguration(
@@ -49,7 +50,7 @@ API calls return an `ApiResponse` object that includes the following fields:
 | `errors` | Errors, if they exist |
 | `body` | The deserialized body of the HTTP response |
 
-## PayPal REST APIs Client
+## paypal server sdk Client
 
 The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
 

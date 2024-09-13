@@ -1,61 +1,61 @@
 import random
 
 import jsonpickle
-from paypalrestapis.exceptions.error_exception import ErrorException
-from paypalrestapis.models.address import Address
-from paypalrestapis.models.amount_breakdown import AmountBreakdown
-from paypalrestapis.models.amount_with_breakdown import AmountWithBreakdown
-from paypalrestapis.models.card_attributes import CardAttributes
-from paypalrestapis.models.card_experience_context import CardExperienceContext
-from paypalrestapis.models.card_request import CardRequest
-from paypalrestapis.models.card_verification import CardVerification
-from paypalrestapis.models.card_verification_method import CardVerificationMethod
-from paypalrestapis.models.checkout_payment_intent import CheckoutPaymentIntent
-from paypalrestapis.models.confirm_order_request import ConfirmOrderRequest
-from paypalrestapis.models.item import Item
-from paypalrestapis.models.money import Money
-from paypalrestapis.models.name import Name
-from paypalrestapis.models.order_capture_request import OrderCaptureRequest
-from paypalrestapis.models.order_capture_request_payment_source import (
+from paypalserversdk.exceptions.error_exception import ErrorException
+from paypalserversdk.models.address import Address
+from paypalserversdk.models.amount_breakdown import AmountBreakdown
+from paypalserversdk.models.amount_with_breakdown import AmountWithBreakdown
+from paypalserversdk.models.card_attributes import CardAttributes
+from paypalserversdk.models.card_experience_context import CardExperienceContext
+from paypalserversdk.models.card_request import CardRequest
+from paypalserversdk.models.card_verification import CardVerification
+from paypalserversdk.models.card_verification_method import CardVerificationMethod
+from paypalserversdk.models.checkout_payment_intent import CheckoutPaymentIntent
+from paypalserversdk.models.confirm_order_request import ConfirmOrderRequest
+from paypalserversdk.models.item import Item
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.order_capture_request import OrderCaptureRequest
+from paypalserversdk.models.order_capture_request_payment_source import (
     OrderCaptureRequestPaymentSource,
 )
-from paypalrestapis.models.order_request import OrderRequest
-from paypalrestapis.models.order_tracker_item import OrderTrackerItem
-from paypalrestapis.models.order_tracker_request import OrderTrackerRequest
-from paypalrestapis.models.patch import Patch
-from paypalrestapis.models.patch_op import PatchOp
-from paypalrestapis.models.pay_pal_experience_landing_page import (
+from paypalserversdk.models.order_request import OrderRequest
+from paypalserversdk.models.order_tracker_item import OrderTrackerItem
+from paypalserversdk.models.order_tracker_request import OrderTrackerRequest
+from paypalserversdk.models.patch import Patch
+from paypalserversdk.models.patch_op import PatchOp
+from paypalserversdk.models.pay_pal_experience_landing_page import (
     PayPalExperienceLandingPage,
 )
-from paypalrestapis.models.pay_pal_experience_user_action import (
+from paypalserversdk.models.pay_pal_experience_user_action import (
     PayPalExperienceUserAction,
 )
-from paypalrestapis.models.pay_pal_wallet import PayPalWallet
-from paypalrestapis.models.pay_pal_wallet_experience_context import (
+from paypalserversdk.models.pay_pal_wallet import PayPalWallet
+from paypalserversdk.models.pay_pal_wallet_experience_context import (
     PayPalWalletExperienceContext,
 )
-from paypalrestapis.models.payee_payment_method_preference import (
+from paypalserversdk.models.payee_payment_method_preference import (
     PayeePaymentMethodPreference,
 )
-from paypalrestapis.models.payment_source import PaymentSource
-from paypalrestapis.models.payment_token_request import PaymentTokenRequest
-from paypalrestapis.models.payment_token_request_payment_source import (
+from paypalserversdk.models.payment_source import PaymentSource
+from paypalserversdk.models.payment_token_request import PaymentTokenRequest
+from paypalserversdk.models.payment_token_request_payment_source import (
     PaymentTokenRequestPaymentSource,
 )
-from paypalrestapis.models.purchase_unit_request import PurchaseUnitRequest
-from paypalrestapis.models.setup_token_request import SetupTokenRequest
-from paypalrestapis.models.setup_token_request_payment_source import (
+from paypalserversdk.models.purchase_unit_request import PurchaseUnitRequest
+from paypalserversdk.models.setup_token_request import SetupTokenRequest
+from paypalserversdk.models.setup_token_request_payment_source import (
     SetupTokenRequestPaymentSource,
 )
-from paypalrestapis.models.shipment_carrier import ShipmentCarrier
-from paypalrestapis.models.shipping_details import ShippingDetails
-from paypalrestapis.models.shipping_preference import ShippingPreference
-from paypalrestapis.models.token_type import TokenType
-from paypalrestapis.models.universal_product_code import UniversalProductCode
-from paypalrestapis.models.upc_type import UPCType
-from paypalrestapis.models.vault_experience_context import VaultExperienceContext
-from paypalrestapis.models.vault_pay_pal_wallet_request import VaultPayPalWalletRequest
-from paypalrestapis.models.vault_token_request import VaultTokenRequest
+from paypalserversdk.models.shipment_carrier import ShipmentCarrier
+from paypalserversdk.models.shipping_details import ShippingDetails
+from paypalserversdk.models.shipping_preference import ShippingPreference
+from paypalserversdk.models.token_request_type import TokenRequestType
+from paypalserversdk.models.universal_product_code import UniversalProductCode
+from paypalserversdk.models.upc_type import UPCType
+from paypalserversdk.models.vault_experience_context import VaultExperienceContext
+from paypalserversdk.models.vault_pay_pal_wallet_request import VaultPayPalWalletRequest
+from paypalserversdk.models.vault_token_request import VaultTokenRequest
 from tests.e2etests.e2e_test_base import E2ETestBase
 from tests.e2etests.playwrightflows import PlaywrightFlows
 
@@ -609,7 +609,7 @@ class E2ETests(E2ETestBase):
             "body": PaymentTokenRequest(
                 payment_source=PaymentTokenRequestPaymentSource(
                     token=VaultTokenRequest(
-                        id=setup_token_id, mtype=TokenType.SETUP_TOKEN
+                        id=setup_token_id, mtype=TokenRequestType.SETUP_TOKEN
                     )
                 )
             ),

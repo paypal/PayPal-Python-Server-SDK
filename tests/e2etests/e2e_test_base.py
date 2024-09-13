@@ -2,9 +2,9 @@
 import os
 import unittest
 from dotenv import load_dotenv
-from paypalrestapis.configuration import Configuration
-from paypalrestapis.http.auth.o_auth_2 import ClientCredentialsAuthCredentials
-from paypalrestapis.paypalrestapis_client import PaypalrestapisClient
+from paypalserversdk.configuration import Configuration
+from paypalserversdk.http.auth.o_auth_2 import ClientCredentialsAuthCredentials
+from paypalserversdk.paypalserversdk_client import PaypalserversdkClient
 from tests.http_response_catcher import HttpResponseCatcher
 
 
@@ -22,7 +22,7 @@ class E2ETestBase(unittest.TestCase):
         cls.request_timeout = 30
         cls.assert_precision = 0.01
         cls.config = E2ETestBase.create_configuration()
-        cls.client = PaypalrestapisClient(config=cls.config)
+        cls.client = PaypalserversdkClient(config=cls.config)
 
     @staticmethod
     def create_configuration():

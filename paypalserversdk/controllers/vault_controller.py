@@ -42,7 +42,7 @@ class VaultController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    pay_pal_request_id -- str -- The server stores keys for 3
+                    paypal_request_id -- str -- The server stores keys for 3
                         hours.
                     body -- PaymentTokenRequest -- Payment Token creation with
                         a financial instrument and an optional customer_id.
@@ -67,7 +67,7 @@ class VaultController(BaseController):
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
-                          .value(options.get('pay_pal_request_id', None)))
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('Content-Type')
                           .value('application/json'))
@@ -258,7 +258,7 @@ class VaultController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    pay_pal_request_id -- str -- The server stores keys for 3
+                    paypal_request_id -- str -- The server stores keys for 3
                         hours.
                     body -- SetupTokenRequest -- Setup Token creation with a
                         instrument type optional financial instrument details
@@ -283,7 +283,7 @@ class VaultController(BaseController):
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
-                          .value(options.get('pay_pal_request_id', None)))
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('Content-Type')
                           .value('application/json'))

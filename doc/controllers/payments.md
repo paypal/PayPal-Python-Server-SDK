@@ -73,7 +73,7 @@ def authorizations_capture(self,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `authorization_id` | `str` | Template, Required | The PayPal-generated ID for the authorized payment to capture. |
-| `pay_pal_request_id` | `str` | Header, Optional | The server stores keys for 45 days. |
+| `paypal_request_id` | `str` | Header, Optional | The server stores keys for 45 days. |
 | `prefer` | `str` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'` |
 | `body` | [`CaptureRequest`](../../doc/models/capture-request.md) | Body, Optional | - |
 
@@ -122,7 +122,7 @@ def authorizations_reauthorize(self,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `authorization_id` | `str` | Template, Required | The PayPal-generated ID for the authorized payment to reauthorize. |
-| `pay_pal_request_id` | `str` | Header, Optional | The server stores keys for 45 days. |
+| `paypal_request_id` | `str` | Header, Optional | The server stores keys for 45 days. |
 | `prefer` | `str` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'` |
 | `body` | [`ReauthorizeRequest`](../../doc/models/reauthorize-request.md) | Body, Optional | - |
 
@@ -167,7 +167,7 @@ def authorizations_void(self,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `authorization_id` | `str` | Template, Required | The PayPal-generated ID for the authorized payment to void. |
-| `pay_pal_auth_assertion` | `str` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
+| `paypal_auth_assertion` | `str` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
 | `prefer` | `str` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'` |
 
 ## Response Type
@@ -250,9 +250,9 @@ def captures_refund(self,
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `capture_id` | `str` | Template, Required | The PayPal-generated ID for the captured payment to refund. |
-| `pay_pal_request_id` | `str` | Header, Optional | The server stores keys for 45 days. |
+| `paypal_request_id` | `str` | Header, Optional | The server stores keys for 45 days. |
 | `prefer` | `str` | Header, Optional | The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul><br>**Default**: `'return=minimal'` |
-| `pay_pal_auth_assertion` | `str` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
+| `paypal_auth_assertion` | `str` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion).<blockquote><strong>Note:</strong>For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject.</blockquote> |
 | `body` | [`RefundRequest`](../../doc/models/refund-request.md) | Body, Optional | - |
 
 ## Response Type

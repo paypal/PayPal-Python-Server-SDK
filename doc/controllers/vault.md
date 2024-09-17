@@ -33,7 +33,7 @@ def payment_tokens_create(self,
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `pay_pal_request_id` | `str` | Header, Required | The server stores keys for 3 hours. |
+| `paypal_request_id` | `str` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
 
 ## Response Type
@@ -44,7 +44,7 @@ This method returns a `ApiResponse` instance. The `body` property of this instan
 
 ```python
 collect = {
-    'pay_pal_request_id': 'PayPal-Request-Id6',
+    'paypal_request_id': 'PayPal-Request-Id6',
     'body': PaymentTokenRequest(
         payment_source=PaymentTokenRequestPaymentSource()
     )
@@ -192,7 +192,7 @@ def setup_tokens_create(self,
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `pay_pal_request_id` | `str` | Header, Required | The server stores keys for 3 hours. |
+| `paypal_request_id` | `str` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`SetupTokenRequest`](../../doc/models/setup-token-request.md) | Body, Required | Setup Token creation with a instrument type optional financial instrument details and customer_id. |
 
 ## Response Type
@@ -203,7 +203,7 @@ This method returns a `ApiResponse` instance. The `body` property of this instan
 
 ```python
 collect = {
-    'pay_pal_request_id': 'PayPal-Request-Id6',
+    'paypal_request_id': 'PayPal-Request-Id6',
     'body': SetupTokenRequest(
         payment_source=SetupTokenRequestPaymentSource()
     )

@@ -10,7 +10,7 @@ from paypalserversdk.api_helper import APIHelper
 from paypalserversdk.models.apple_pay_payment_object import ApplePayPaymentObject
 from paypalserversdk.models.card_response import CardResponse
 from paypalserversdk.models.google_pay_wallet_response import GooglePayWalletResponse
-from paypalserversdk.models.pay_pal_wallet_response import PayPalWalletResponse
+from paypalserversdk.models.paypal_wallet_response import PaypalWalletResponse
 from paypalserversdk.models.venmo_wallet_response import VenmoWalletResponse
 
 
@@ -23,7 +23,7 @@ class OrderAuthorizeResponsePaymentSource(object):
     Attributes:
         card (CardResponse): The payment card to use to fund a payment. Card
             can be a credit or debit card.
-        paypal (PayPalWalletResponse): The PayPal Wallet response.
+        paypal (PaypalWalletResponse): The PayPal Wallet response.
         apple_pay (ApplePayPaymentObject): Information needed to pay using
             ApplePay.
         google_pay (GooglePayWalletResponse): Google Pay Wallet payment data.
@@ -88,7 +88,7 @@ class OrderAuthorizeResponsePaymentSource(object):
 
         # Extract variables from the dictionary
         card = CardResponse.from_dictionary(dictionary.get('card')) if 'card' in dictionary.keys() else APIHelper.SKIP
-        paypal = PayPalWalletResponse.from_dictionary(dictionary.get('paypal')) if 'paypal' in dictionary.keys() else APIHelper.SKIP
+        paypal = PaypalWalletResponse.from_dictionary(dictionary.get('paypal')) if 'paypal' in dictionary.keys() else APIHelper.SKIP
         apple_pay = ApplePayPaymentObject.from_dictionary(dictionary.get('apple_pay')) if 'apple_pay' in dictionary.keys() else APIHelper.SKIP
         google_pay = GooglePayWalletResponse.from_dictionary(dictionary.get('google_pay')) if 'google_pay' in dictionary.keys() else APIHelper.SKIP
         venmo = VenmoWalletResponse.from_dictionary(dictionary.get('venmo')) if 'venmo' in dictionary.keys() else APIHelper.SKIP

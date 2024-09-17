@@ -14,10 +14,10 @@ from paypalserversdk.models.card_request import CardRequest
 from paypalserversdk.models.eps_payment_request import EPSPaymentRequest
 from paypalserversdk.models.giropay_payment_request import GiropayPaymentRequest
 from paypalserversdk.models.google_pay_request import GooglePayRequest
-from paypalserversdk.models.ideal_payment_request import IDEALPaymentRequest
-from paypalserversdk.models.my_bank_payment_request import MyBankPaymentRequest
+from paypalserversdk.models.ideal_payment_request import IdealPaymentRequest
+from paypalserversdk.models.mybank_payment_request import MybankPaymentRequest
 from paypalserversdk.models.p_24_payment_request import P24PaymentRequest
-from paypalserversdk.models.pay_pal_wallet import PayPalWallet
+from paypalserversdk.models.paypal_wallet import PaypalWallet
 from paypalserversdk.models.sofort_payment_request import SofortPaymentRequest
 from paypalserversdk.models.token import Token
 from paypalserversdk.models.trustly_payment_request import TrustlyPaymentRequest
@@ -41,7 +41,7 @@ class PaymentSource(object):
             href="https://developer.paypal.com/docs/checkout/advanced/integrate
             /">this Integration Guide</a>*.</blockquote>
         token (Token): The tokenized payment source to fund a payment.
-        paypal (PayPalWallet): A resource that identifies a PayPal Wallet is
+        paypal (PaypalWallet): A resource that identifies a PayPal Wallet is
             used for payment.
         bancontact (BancontactPaymentRequest): Information needed to pay using
             Bancontact.
@@ -49,8 +49,8 @@ class PaymentSource(object):
         eps (EPSPaymentRequest): Information needed to pay using eps.
         giropay (GiropayPaymentRequest): Information needed to pay using
             giropay.
-        ideal (IDEALPaymentRequest): Information needed to pay using iDEAL.
-        mybank (MyBankPaymentRequest): Information needed to pay using
+        ideal (IdealPaymentRequest): Information needed to pay using iDEAL.
+        mybank (MybankPaymentRequest): Information needed to pay using
             MyBank.
         p_24 (P24PaymentRequest): Information needed to pay using P24
             (Przelewy24).
@@ -174,13 +174,13 @@ class PaymentSource(object):
         # Extract variables from the dictionary
         card = CardRequest.from_dictionary(dictionary.get('card')) if 'card' in dictionary.keys() else APIHelper.SKIP
         token = Token.from_dictionary(dictionary.get('token')) if 'token' in dictionary.keys() else APIHelper.SKIP
-        paypal = PayPalWallet.from_dictionary(dictionary.get('paypal')) if 'paypal' in dictionary.keys() else APIHelper.SKIP
+        paypal = PaypalWallet.from_dictionary(dictionary.get('paypal')) if 'paypal' in dictionary.keys() else APIHelper.SKIP
         bancontact = BancontactPaymentRequest.from_dictionary(dictionary.get('bancontact')) if 'bancontact' in dictionary.keys() else APIHelper.SKIP
         blik = BLIKPaymentRequest.from_dictionary(dictionary.get('blik')) if 'blik' in dictionary.keys() else APIHelper.SKIP
         eps = EPSPaymentRequest.from_dictionary(dictionary.get('eps')) if 'eps' in dictionary.keys() else APIHelper.SKIP
         giropay = GiropayPaymentRequest.from_dictionary(dictionary.get('giropay')) if 'giropay' in dictionary.keys() else APIHelper.SKIP
-        ideal = IDEALPaymentRequest.from_dictionary(dictionary.get('ideal')) if 'ideal' in dictionary.keys() else APIHelper.SKIP
-        mybank = MyBankPaymentRequest.from_dictionary(dictionary.get('mybank')) if 'mybank' in dictionary.keys() else APIHelper.SKIP
+        ideal = IdealPaymentRequest.from_dictionary(dictionary.get('ideal')) if 'ideal' in dictionary.keys() else APIHelper.SKIP
+        mybank = MybankPaymentRequest.from_dictionary(dictionary.get('mybank')) if 'mybank' in dictionary.keys() else APIHelper.SKIP
         p_24 = P24PaymentRequest.from_dictionary(dictionary.get('p24')) if 'p24' in dictionary.keys() else APIHelper.SKIP
         sofort = SofortPaymentRequest.from_dictionary(dictionary.get('sofort')) if 'sofort' in dictionary.keys() else APIHelper.SKIP
         trustly = TrustlyPaymentRequest.from_dictionary(dictionary.get('trustly')) if 'trustly' in dictionary.keys() else APIHelper.SKIP

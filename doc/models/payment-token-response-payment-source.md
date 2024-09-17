@@ -12,7 +12,7 @@ The vaulted payment method details.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `card` | [`CardPaymentToken`](../../doc/models/card-payment-token.md) | Optional | Full representation of a Card Payment Token including network token. |
-| `paypal` | [`PayPalPaymentToken`](../../doc/models/pay-pal-payment-token.md) | Optional | - |
+| `paypal` | [`PaypalPaymentToken`](../../doc/models/paypal-payment-token.md) | Optional | - |
 | `venmo` | [`VenmoPaymentToken`](../../doc/models/venmo-payment-token.md) | Optional | - |
 | `apple_pay` | [`ApplePayPaymentToken`](../../doc/models/apple-pay-payment-token.md) | Optional | A resource representing a response for Apple Pay. |
 | `bank` | `dict` | Optional | Full representation of a Bank Payment Token. |

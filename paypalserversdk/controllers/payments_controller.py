@@ -93,7 +93,7 @@ class PaymentsController(BaseController):
 
                     authorization_id -- str -- The PayPal-generated ID for the
                         authorized payment to capture.
-                    pay_pal_request_id -- str -- The server stores keys for 45
+                    paypal_request_id -- str -- The server stores keys for 45
                         days.
                     prefer -- str -- The preferred server response upon
                         successful completion of the request. Value
@@ -136,7 +136,7 @@ class PaymentsController(BaseController):
                           .value('application/json'))
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
-                          .value(options.get('pay_pal_request_id', None)))
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
@@ -191,7 +191,7 @@ class PaymentsController(BaseController):
 
                     authorization_id -- str -- The PayPal-generated ID for the
                         authorized payment to reauthorize.
-                    pay_pal_request_id -- str -- The server stores keys for 45
+                    paypal_request_id -- str -- The server stores keys for 45
                         days.
                     prefer -- str -- The preferred server response upon
                         successful completion of the request. Value
@@ -235,7 +235,7 @@ class PaymentsController(BaseController):
                           .value('application/json'))
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
-                          .value(options.get('pay_pal_request_id', None)))
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
@@ -276,7 +276,7 @@ class PaymentsController(BaseController):
 
                     authorization_id -- str -- The PayPal-generated ID for the
                         authorized payment to void.
-                    pay_pal_auth_assertion -- str -- An API-caller-provided
+                    paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see
                         [PayPal-Auth-Assertion](/docs/api/reference/api-request
@@ -324,7 +324,7 @@ class PaymentsController(BaseController):
                             .should_encode(True))
             .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
-                          .value(options.get('pay_pal_auth_assertion', None)))
+                          .value(options.get('paypal_auth_assertion', None)))
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
@@ -413,7 +413,7 @@ class PaymentsController(BaseController):
 
                     capture_id -- str -- The PayPal-generated ID for the
                         captured payment to refund.
-                    pay_pal_request_id -- str -- The server stores keys for 45
+                    paypal_request_id -- str -- The server stores keys for 45
                         days.
                     prefer -- str -- The preferred server response upon
                         successful completion of the request. Value
@@ -426,7 +426,7 @@ class PaymentsController(BaseController):
                         server returns a complete resource representation,
                         including the current state of the
                         resource.</li></ul>
-                    pay_pal_auth_assertion -- str -- An API-caller-provided
+                    paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see
                         [PayPal-Auth-Assertion](/docs/api/reference/api-request
@@ -466,13 +466,13 @@ class PaymentsController(BaseController):
                           .value('application/json'))
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
-                          .value(options.get('pay_pal_request_id', None)))
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
             .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
-                          .value(options.get('pay_pal_auth_assertion', None)))
+                          .value(options.get('paypal_auth_assertion', None)))
             .body_param(Parameter()
                         .value(options.get('body', None)))
             .header_param(Parameter()

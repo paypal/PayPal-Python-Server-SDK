@@ -10,7 +10,7 @@ from paypalserversdk.api_helper import APIHelper
 from paypalserversdk.models.apple_pay_request import ApplePayRequest
 from paypalserversdk.models.card_request import CardRequest
 from paypalserversdk.models.google_pay_request import GooglePayRequest
-from paypalserversdk.models.pay_pal_wallet import PayPalWallet
+from paypalserversdk.models.paypal_wallet import PaypalWallet
 from paypalserversdk.models.token import Token
 from paypalserversdk.models.venmo_wallet_request import VenmoWalletRequest
 
@@ -32,7 +32,7 @@ class OrderAuthorizeRequestPaymentSource(object):
             href="https://developer.paypal.com/docs/checkout/advanced/integrate
             /">this Integration Guide</a>*.</blockquote>
         token (Token): The tokenized payment source to fund a payment.
-        paypal (PayPalWallet): A resource that identifies a PayPal Wallet is
+        paypal (PaypalWallet): A resource that identifies a PayPal Wallet is
             used for payment.
         apple_pay (ApplePayRequest): Information needed to pay using
             ApplePay.
@@ -105,7 +105,7 @@ class OrderAuthorizeRequestPaymentSource(object):
         # Extract variables from the dictionary
         card = CardRequest.from_dictionary(dictionary.get('card')) if 'card' in dictionary.keys() else APIHelper.SKIP
         token = Token.from_dictionary(dictionary.get('token')) if 'token' in dictionary.keys() else APIHelper.SKIP
-        paypal = PayPalWallet.from_dictionary(dictionary.get('paypal')) if 'paypal' in dictionary.keys() else APIHelper.SKIP
+        paypal = PaypalWallet.from_dictionary(dictionary.get('paypal')) if 'paypal' in dictionary.keys() else APIHelper.SKIP
         apple_pay = ApplePayRequest.from_dictionary(dictionary.get('apple_pay')) if 'apple_pay' in dictionary.keys() else APIHelper.SKIP
         google_pay = GooglePayRequest.from_dictionary(dictionary.get('google_pay')) if 'google_pay' in dictionary.keys() else APIHelper.SKIP
         venmo = VenmoWalletRequest.from_dictionary(dictionary.get('venmo')) if 'venmo' in dictionary.keys() else APIHelper.SKIP

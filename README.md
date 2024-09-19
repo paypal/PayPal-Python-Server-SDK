@@ -1,9 +1,24 @@
 
-# Getting Started with Paypal Server SDK
+# Getting Started with PayPal Server SDK
 
 ## Introduction
 
-An order represents a payment between two or more parties. Use the Orders API to create, update, retrieve, authorize, and capture orders., Call the Payments API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. Use the Payments API in conjunction with the <a href="/docs/api/orders/v2/">Orders API</a>. For more information, see the <a href="/docs/checkout/">PayPal Checkout Overview</a>., The Payment Method Tokens API saves payment methods so payers don't have to enter details for future transactions. Payers can check out faster or pay without being present after they agree to save a payment method.<br><br>The API associates a payment method with a temporary setup token. Pass the setup token to the API to exchange the setup token for a permanent token.<br><br>The permanent token represents a payment method that's saved to the vault. This token can be used repeatedly for checkout or recurring transactions such as subscriptions.<br><br>The Payment Method Tokens API is available in the US only.
+### ⚠️ Beta Release Notice
+
+This version is considered a **beta release**. While we have done our best to ensure stability and functionality, there may still be bugs, incomplete features, or breaking changes in future updates.
+
+#### Important Notes
+
+- **Available Features:** This SDK currently contains only 3 of PayPal's API endpoints. Additional endpoints and functionality will be added in the future.
+- **API Changes:** Expect potential changes in APIs and features as we finalize the product.
+
+### Information
+
+The PayPal Server SDK provides integration access to the PayPal REST APIs. The API endpoints are divided into distinct controllers:
+
+- Orders Controller: <a href="https://developer.paypal.com/docs/api/orders/v2/">Orders API v2</a>
+- Payments Controller: <a href="https://developer.paypal.com/docs/api/payments/v2/">Payments API v2</a>
+- Vault Controller: <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/">Payment Method Tokens API v3</a> *Available in the US only.*
 
 Find out more here: [https://developer.paypal.com/docs/api/orders/v2/](https://developer.paypal.com/docs/api/orders/v2/)
 
@@ -13,15 +28,15 @@ The package is compatible with Python versions `3 >=3.7, <= 3.11`.
 Install the package from PyPi using the following pip command:
 
 ```python
-pip install paypal-server-sdk==0.5.1
+pip install paypal-server-sdk==0.6.0
 ```
 
 You can also view the package at:
-https://pypi.python.org/pypi/paypal-server-sdk/0.5.1
+https://pypi.python.org/pypi/paypal-server-sdk/0.6.0
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -36,13 +51,13 @@ The following parameters are configurable for the API Client:
 | `backoff_factor` | `float` | A backoff factor to apply between attempts after the second try. <br> **Default: 2** |
 | `retry_statuses` | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | `retry_methods` | `Array of string` | The http methods on which retry is to be done. <br> **Default: ['GET', 'PUT']** |
-| `logging_configuration` | [`LoggingConfiguration`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/logging-configuration.md) | The SDK logging configuration for API calls |
-| `client_credentials_auth_credentials` | [`ClientCredentialsAuthCredentials`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
+| `logging_configuration` | [`LoggingConfiguration`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/logging-configuration.md) | The SDK logging configuration for API calls |
+| `client_credentials_auth_credentials` | [`ClientCredentialsAuthCredentials`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
 
 The API client can be initialized as follows:
 
 ```python
-client = PaypalserversdkClient(
+client = PaypalServersdkClient(
     client_credentials_auth_credentials=ClientCredentialsAuthCredentials(
         o_auth_client_id='OAuthClientId',
         o_auth_client_secret='OAuthClientSecret'
@@ -87,21 +102,21 @@ The SDK can be configured to use a different environment for making API calls. A
 
 This API uses the following authentication schemes.
 
-* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/auth/oauth-2-client-credentials-grant.md)
+* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/auth/oauth-2-client-credentials-grant.md)
 
 ## List of APIs
 
-* [Orders](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/controllers/orders.md)
-* [Payments](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/controllers/payments.md)
-* [Vault](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/controllers/vault.md)
+* [Orders](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/controllers/orders.md)
+* [Payments](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/controllers/payments.md)
+* [Vault](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/controllers/vault.md)
 
 ## Classes Documentation
 
-* [Utility Classes](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/utility-classes.md)
-* [HttpResponse](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/http-response.md)
-* [HttpRequest](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/http-request.md)
-* [LoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/logging-configuration.md)
-* [RequestLoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/request-logging-configuration.md)
-* [ResponseLoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/response-logging-configuration.md)
-* [AbstractLogger](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.5.1/doc/abstract-logger.md)
+* [Utility Classes](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/utility-classes.md)
+* [HttpResponse](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/http-response.md)
+* [HttpRequest](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/http-request.md)
+* [LoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/logging-configuration.md)
+* [RequestLoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/request-logging-configuration.md)
+* [ResponseLoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/response-logging-configuration.md)
+* [AbstractLogger](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/0.6.0/doc/abstract-logger.md)
 

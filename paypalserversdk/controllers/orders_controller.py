@@ -50,13 +50,13 @@ class OrdersController(BaseController):
                 of parameters that can be used are::
 
                     body -- OrderRequest -- TODO: type description here.
-                    pay_pal_request_id -- str -- The server stores keys for 6
+                    paypal_request_id -- str -- The server stores keys for 6
                         hours. The API callers can request the times to up to
                         72 hours by speaking to their Account Manager.
-                    pay_pal_partner_attribution_id -- str -- TODO: type
+                    paypal_partner_attribution_id -- str -- TODO: type
                         description here.
-                    pay_pal_client_metadata_id -- str -- TODO: type
-                        description here.
+                    paypal_client_metadata_id -- str -- TODO: type description
+                        here.
                     prefer -- str -- The preferred server response upon
                         successful completion of the request. Value
                         is:<ul><li><code>return=minimal</code>. The server
@@ -95,13 +95,13 @@ class OrdersController(BaseController):
                         .value(options.get('body', None)))
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
-                          .value(options.get('pay_pal_request_id', None)))
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('PayPal-Partner-Attribution-Id')
-                          .value(options.get('pay_pal_partner_attribution_id', None)))
+                          .value(options.get('paypal_partner_attribution_id', None)))
             .header_param(Parameter()
                           .key('PayPal-Client-Metadata-Id')
-                          .value(options.get('pay_pal_client_metadata_id', None)))
+                          .value(options.get('paypal_client_metadata_id', None)))
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
@@ -314,8 +314,8 @@ class OrdersController(BaseController):
 
                     id -- str -- The ID of the order for which the payer
                         confirms their intent to pay.
-                    pay_pal_client_metadata_id -- str -- TODO: type
-                        description here.
+                    paypal_client_metadata_id -- str -- TODO: type description
+                        here.
                     prefer -- str -- The preferred server response upon
                         successful completion of the request. Value
                         is:<ul><li><code>return=minimal</code>. The server
@@ -359,7 +359,7 @@ class OrdersController(BaseController):
                           .value('application/json'))
             .header_param(Parameter()
                           .key('PayPal-Client-Metadata-Id')
-                          .value(options.get('pay_pal_client_metadata_id', None)))
+                          .value(options.get('paypal_client_metadata_id', None)))
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
@@ -404,7 +404,7 @@ class OrdersController(BaseController):
                 of parameters that can be used are::
 
                     id -- str -- The ID of the order for which to authorize.
-                    pay_pal_request_id -- str -- The server stores keys for 6
+                    paypal_request_id -- str -- The server stores keys for 6
                         hours. The API callers can request the times to up to
                         72 hours by speaking to their Account Manager.
                     prefer -- str -- The preferred server response upon
@@ -418,9 +418,9 @@ class OrdersController(BaseController):
                         server returns a complete resource representation,
                         including the current state of the
                         resource.</li></ul>
-                    pay_pal_client_metadata_id -- str -- TODO: type
-                        description here.
-                    pay_pal_auth_assertion -- str -- An API-caller-provided
+                    paypal_client_metadata_id -- str -- TODO: type description
+                        here.
+                    paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see <a
                         href="https://developer.paypal.com/api/rest/requests/#p
@@ -456,16 +456,16 @@ class OrdersController(BaseController):
                           .value('application/json'))
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
-                          .value(options.get('pay_pal_request_id', None)))
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
             .header_param(Parameter()
                           .key('PayPal-Client-Metadata-Id')
-                          .value(options.get('pay_pal_client_metadata_id', None)))
+                          .value(options.get('paypal_client_metadata_id', None)))
             .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
-                          .value(options.get('pay_pal_auth_assertion', None)))
+                          .value(options.get('paypal_auth_assertion', None)))
             .body_param(Parameter()
                         .value(options.get('body', None)))
             .header_param(Parameter()
@@ -510,7 +510,7 @@ class OrdersController(BaseController):
 
                     id -- str -- The ID of the order for which to capture a
                         payment.
-                    pay_pal_request_id -- str -- The server stores keys for 6
+                    paypal_request_id -- str -- The server stores keys for 6
                         hours. The API callers can request the times to up to
                         72 hours by speaking to their Account Manager.
                     prefer -- str -- The preferred server response upon
@@ -524,9 +524,9 @@ class OrdersController(BaseController):
                         server returns a complete resource representation,
                         including the current state of the
                         resource.</li></ul>
-                    pay_pal_client_metadata_id -- str -- TODO: type
-                        description here.
-                    pay_pal_auth_assertion -- str -- An API-caller-provided
+                    paypal_client_metadata_id -- str -- TODO: type description
+                        here.
+                    paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see <a
                         href="https://developer.paypal.com/api/rest/requests/#p
@@ -562,16 +562,16 @@ class OrdersController(BaseController):
                           .value('application/json'))
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
-                          .value(options.get('pay_pal_request_id', None)))
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
             .header_param(Parameter()
                           .key('PayPal-Client-Metadata-Id')
-                          .value(options.get('pay_pal_client_metadata_id', None)))
+                          .value(options.get('paypal_client_metadata_id', None)))
             .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
-                          .value(options.get('pay_pal_auth_assertion', None)))
+                          .value(options.get('paypal_auth_assertion', None)))
             .body_param(Parameter()
                         .value(options.get('body', None)))
             .header_param(Parameter()
@@ -610,7 +610,7 @@ class OrdersController(BaseController):
                         information is associated with.
                     body -- OrderTrackerRequest -- TODO: type description
                         here.
-                    pay_pal_auth_assertion -- str -- An API-caller-provided
+                    paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see <a
                         href="https://developer.paypal.com/api/rest/requests/#p
@@ -646,7 +646,7 @@ class OrdersController(BaseController):
                         .value(options.get('body', None)))
             .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
-                          .value(options.get('pay_pal_auth_assertion', None)))
+                          .value(options.get('paypal_auth_assertion', None)))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))

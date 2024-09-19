@@ -14,10 +14,10 @@ from paypalserversdk.models.card_response import CardResponse
 from paypalserversdk.models.eps_payment_object import EPSPaymentObject
 from paypalserversdk.models.giropay_payment_object import GiropayPaymentObject
 from paypalserversdk.models.google_pay_wallet_response import GooglePayWalletResponse
-from paypalserversdk.models.ideal_payment_object import IDEALPaymentObject
-from paypalserversdk.models.my_bank_payment_object import MyBankPaymentObject
+from paypalserversdk.models.ideal_payment_object import IdealPaymentObject
+from paypalserversdk.models.mybank_payment_object import MybankPaymentObject
 from paypalserversdk.models.p_24_payment_object import P24PaymentObject
-from paypalserversdk.models.pay_pal_wallet_response import PayPalWalletResponse
+from paypalserversdk.models.paypal_wallet_response import PaypalWalletResponse
 from paypalserversdk.models.sofort_payment_object import SofortPaymentObject
 from paypalserversdk.models.trustly_payment_object import TrustlyPaymentObject
 from paypalserversdk.models.venmo_wallet_response import VenmoWalletResponse
@@ -32,15 +32,15 @@ class PaymentSourceResponse(object):
     Attributes:
         card (CardResponse): The payment card to use to fund a payment. Card
             can be a credit or debit card.
-        paypal (PayPalWalletResponse): The PayPal Wallet response.
+        paypal (PaypalWalletResponse): The PayPal Wallet response.
         bancontact (BancontactPaymentObject): Information used to pay
             Bancontact.
         blik (BLIKPaymentObject): Information used to pay using BLIK.
         eps (EPSPaymentObject): Information used to pay using eps.
         giropay (GiropayPaymentObject): Information needed to pay using
             giropay.
-        ideal (IDEALPaymentObject): Information used to pay using iDEAL.
-        mybank (MyBankPaymentObject): Information used to pay using MyBank.
+        ideal (IdealPaymentObject): Information used to pay using iDEAL.
+        mybank (MybankPaymentObject): Information used to pay using MyBank.
         p_24 (P24PaymentObject): Information used to pay using
             P24(Przelewy24).
         sofort (SofortPaymentObject): Information used to pay using Sofort.
@@ -155,13 +155,13 @@ class PaymentSourceResponse(object):
 
         # Extract variables from the dictionary
         card = CardResponse.from_dictionary(dictionary.get('card')) if 'card' in dictionary.keys() else APIHelper.SKIP
-        paypal = PayPalWalletResponse.from_dictionary(dictionary.get('paypal')) if 'paypal' in dictionary.keys() else APIHelper.SKIP
+        paypal = PaypalWalletResponse.from_dictionary(dictionary.get('paypal')) if 'paypal' in dictionary.keys() else APIHelper.SKIP
         bancontact = BancontactPaymentObject.from_dictionary(dictionary.get('bancontact')) if 'bancontact' in dictionary.keys() else APIHelper.SKIP
         blik = BLIKPaymentObject.from_dictionary(dictionary.get('blik')) if 'blik' in dictionary.keys() else APIHelper.SKIP
         eps = EPSPaymentObject.from_dictionary(dictionary.get('eps')) if 'eps' in dictionary.keys() else APIHelper.SKIP
         giropay = GiropayPaymentObject.from_dictionary(dictionary.get('giropay')) if 'giropay' in dictionary.keys() else APIHelper.SKIP
-        ideal = IDEALPaymentObject.from_dictionary(dictionary.get('ideal')) if 'ideal' in dictionary.keys() else APIHelper.SKIP
-        mybank = MyBankPaymentObject.from_dictionary(dictionary.get('mybank')) if 'mybank' in dictionary.keys() else APIHelper.SKIP
+        ideal = IdealPaymentObject.from_dictionary(dictionary.get('ideal')) if 'ideal' in dictionary.keys() else APIHelper.SKIP
+        mybank = MybankPaymentObject.from_dictionary(dictionary.get('mybank')) if 'mybank' in dictionary.keys() else APIHelper.SKIP
         p_24 = P24PaymentObject.from_dictionary(dictionary.get('p24')) if 'p24' in dictionary.keys() else APIHelper.SKIP
         sofort = SofortPaymentObject.from_dictionary(dictionary.get('sofort')) if 'sofort' in dictionary.keys() else APIHelper.SKIP
         trustly = TrustlyPaymentObject.from_dictionary(dictionary.get('trustly')) if 'trustly' in dictionary.keys() else APIHelper.SKIP

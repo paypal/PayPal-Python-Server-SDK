@@ -6,5 +6,5 @@ __all__ = [
     'http',
     'logging',
     'models',
-    'paypalserversdk_client',
+    'paypal_serversdk_client',
 ]

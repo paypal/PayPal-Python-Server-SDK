@@ -31,8 +31,7 @@ class ApplePayPaymentObject(object):
             allowed before and 255 characters are allowed after the
             <code>@</code> sign. However, the generally accepted maximum
             length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign
-            exists.</blockquote>
+            verifies that an unquoted <code>@</code> sign exists.</blockquote>
         phone_number (PhoneNumber): The phone number in its canonical
             international [E.164 numbering plan
             format](https://www.itu.int/rec/T-REC-E.164/en).

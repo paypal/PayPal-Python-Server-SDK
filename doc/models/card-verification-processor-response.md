@@ -11,8 +11,8 @@ The processor response information for payment requests, such as direct credit c
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `avs_code` | [`AVSCode`](../../doc/models/avs-code.md) | Optional | The address verification code for Visa, Discover, Mastercard, or American Express transactions. |
-| `cvv_code` | [`CVVCode`](../../doc/models/cvv-code.md) | Optional | The card verification value code for for Visa, Discover, Mastercard, or American Express. |
+| `avs_code` | [`AvsCode`](../../doc/models/avs-code.md) | Optional | The address verification code for Visa, Discover, Mastercard, or American Express transactions. |
+| `cvv_code` | [`CvvCode`](../../doc/models/cvv-code.md) | Optional | The card verification value code for for Visa, Discover, Mastercard, or American Express. |
 
 ## Example (as JSON)
 

@@ -29,7 +29,7 @@ class LinkDescription(object):
             the link. See [Link
             Relations](https://www.iana.org/assignments/link-relations/link-rel
             ations.xhtml).
-        method (LinkHTTPMethod): The HTTP method required to make the related
+        method (LinkHttpMethod): The HTTP method required to make the related
             call.
 
     """

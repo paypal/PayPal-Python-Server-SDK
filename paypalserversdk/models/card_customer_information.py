@@ -23,8 +23,7 @@ class CardCustomerInformation(object):
             allowed before and 255 characters are allowed after the
             <code>@</code> sign. However, the generally accepted maximum
             length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign
-            exists.</blockquote>
+            verifies that an unquoted <code>@</code> sign exists.</blockquote>
         phone (PhoneWithType): The phone information.
         merchant_customer_id (str): Merchants and partners may already have a
             data-store where their customer information is persisted. Use

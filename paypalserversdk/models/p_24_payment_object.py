@@ -22,8 +22,7 @@ class P24PaymentObject(object):
             allowed before and 255 characters are allowed after the
             <code>@</code> sign. However, the generally accepted maximum
             length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign
-            exists.</blockquote>
+            verifies that an unquoted <code>@</code> sign exists.</blockquote>
         country_code (str): The [two-character ISO 3166-1
             code](/api/rest/reference/country-codes/) that identifies the
             country or region.<blockquote><strong>Note:</strong> The country

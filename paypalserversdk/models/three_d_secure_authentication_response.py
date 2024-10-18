@@ -16,7 +16,7 @@ class ThreeDSecureAuthenticationResponse(object):
     Results of 3D Secure Authentication.
 
     Attributes:
-        authentication_status (PAResStatus): Transactions status result
+        authentication_status (PaResStatus): Transactions status result
             identifier. The outcome of the issuer's authentication.
         enrollment_status (EnrollmentStatus): Status of Authentication
             eligibility.

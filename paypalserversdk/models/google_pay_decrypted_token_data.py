@@ -14,8 +14,7 @@ class GooglePayDecryptedTokenData(object):
     """Implementation of the 'Google Pay Decrypted Token Data' model.
 
     Details shared by Google for the merchant to be shared with PayPal. This
-    is required to process the transaction using the Google Pay payment
-    method.
+    is required to process the transaction using the Google Pay payment method.
 
     Attributes:
         message_id (str): A unique ID that identifies the message in case it
@@ -33,8 +32,7 @@ class GooglePayDecryptedTokenData(object):
             CRYPTOGRAM_3DS.
         eci_indicator (str): Electronic Commerce Indicator may not always be
             present. It is only returned for tokens on the Visa card network.
-            This value is passed through in the payment authorization
-            request.
+            This value is passed through in the payment authorization request.
 
     """
 

@@ -17,9 +17,9 @@ class CardVerificationProcessorResponse(object):
     credit card transactions.
 
     Attributes:
-        avs_code (AVSCode): The address verification code for Visa, Discover,
+        avs_code (AvsCode): The address verification code for Visa, Discover,
             Mastercard, or American Express transactions.
-        cvv_code (CVVCode): The card verification value code for for Visa,
+        cvv_code (CvvCode): The card verification value code for for Visa,
             Discover, Mastercard, or American Express.
 
     """

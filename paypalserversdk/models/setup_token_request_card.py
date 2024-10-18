@@ -25,8 +25,7 @@ class SetupTokenRequestCard(object):
             format](https://tools.ietf.org/html/rfc3339#section-5.6).
         security_code (str): The three- or four-digit security code of the
             card. Also known as the CVV, CVC, CVN, CVE, or CID. This parameter
-            cannot be present in the request when
-            `payment_initiator=MERCHANT`.
+            cannot be present in the request when `payment_initiator=MERCHANT`.
         brand (CardBrand): The card network or brand. Applies to credit,
             debit, gift, and payment cards.
         billing_address (Address): The portable international postal address.

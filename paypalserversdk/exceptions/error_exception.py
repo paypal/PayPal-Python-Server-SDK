@@ -13,7 +13,7 @@ from paypalserversdk.models.error_details import ErrorDetails
 from paypalserversdk.models.link_description import LinkDescription
 
 
-class ErrorException(paypalserversdk.exceptions.api_exception.APIException):
+class ErrorException(paypalserversdk.exceptions.api_exception.ApiException):
     def __init__(self, reason, response):
         """Constructor for the ErrorException class
 

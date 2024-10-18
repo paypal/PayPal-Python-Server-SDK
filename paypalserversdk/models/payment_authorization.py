@@ -61,8 +61,7 @@ class PaymentAuthorization(object):
             optional.<blockquote><strong>Note:</strong> The regular expression
             provides guidance but does not reject all invalid
             dates.</blockquote>
-        supplementary_data (PaymentSupplementaryData): The supplementary
-            data.
+        supplementary_data (PaymentSupplementaryData): The supplementary data.
         payee (Payee): The details for the merchant who receives the funds and
             fulfills the order. The merchant is also known as the payee.
 

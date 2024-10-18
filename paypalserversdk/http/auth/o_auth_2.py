@@ -13,7 +13,7 @@ from paypalserversdk.models.o_auth_token import OAuthToken
 from apimatic_core.utilities.auth_helper import AuthHelper
 from paypalserversdk.controllers.o_auth_authorization_controller import\
     OAuthAuthorizationController
-from paypalserversdk.exceptions.api_exception import APIException
+from paypalserversdk.exceptions.api_exception import ApiException
 
 
 class OAuth2(HeaderAuth):
@@ -122,7 +122,7 @@ class OAuth2(HeaderAuth):
             o_auth_token = self.fetch_token()
             self._apply_on_token_update_callback(o_auth_token)
             return o_auth_token
-        except APIException:
+        except ApiException:
             return self._o_auth_token
 
     def _apply_on_token_update_callback(self, o_auth_token):

@@ -44,8 +44,7 @@ class VenmoPaymentToken(object):
             allowed before and 255 characters are allowed after the
             <code>@</code> sign. However, the generally accepted maximum
             length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign
-            exists.</blockquote>
+            verifies that an unquoted <code>@</code> sign exists.</blockquote>
         payer_id (str): The account identifier for a PayPal account.
         name (Name): The name of the party.
         phone (PhoneWithType): The phone information.

@@ -50,8 +50,7 @@ class AddressDetails(object):
         company (str): The name of the company or business associated to the
             address.
         phone (str): The phone number that can go on the mailing label with
-            the address to track the shipping. Phone number is in E.164
-            format.
+            the address to track the shipping. Phone number is in E.164 format.
         phone_number (Phone): The phone number, in its canonical international
             [E.164 numbering plan
             format](https://www.itu.int/rec/T-REC-E.164/en).

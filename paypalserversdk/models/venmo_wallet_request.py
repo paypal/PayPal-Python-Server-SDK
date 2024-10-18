@@ -26,8 +26,7 @@ class VenmoWalletRequest(object):
             allowed before and 255 characters are allowed after the
             <code>@</code> sign. However, the generally accepted maximum
             length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign
-            exists.</blockquote>
+            verifies that an unquoted <code>@</code> sign exists.</blockquote>
         experience_context (VenmoWalletExperienceContext): Customizes the
             buyer experience during the approval process for payment with
             Venmo.<blockquote><strong>Note:</strong> Partners and Marketplaces

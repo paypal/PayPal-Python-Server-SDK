@@ -10,7 +10,7 @@ from paypalserversdk.api_helper import APIHelper
 from paypalserversdk.models.experience_context import ExperienceContext
 
 
-class IDEALPaymentRequest(object):
+class IdealPaymentRequest(object):
 
     """Implementation of the 'iDEAL Payment Request' model.
 
@@ -52,7 +52,7 @@ class IDEALPaymentRequest(object):
                  country_code=None,
                  bic=APIHelper.SKIP,
                  experience_context=APIHelper.SKIP):
-        """Constructor for the IDEALPaymentRequest class"""
+        """Constructor for the IdealPaymentRequest class"""
 
         # Initialize members of the class
         self.name = name 

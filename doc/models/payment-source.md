@@ -13,13 +13,13 @@ The payment source definition.
 |  --- | --- | --- | --- |
 | `card` | [`CardRequest`](../../doc/models/card-request.md) | Optional | The payment card to use to fund a payment. Can be a credit or debit card.<blockquote><strong>Note:</strong> Passing card number, cvv and expiry directly via the API requires <a href="https://www.pcisecuritystandards.org/pci_security/completing_self_assessment"> PCI SAQ D compliance</a>. <br>*PayPal offers a mechanism by which you do not have to take on the <strong>PCI SAQ D</strong> burden by using hosted fields - refer to <a href="https://developer.paypal.com/docs/checkout/advanced/integrate/">this Integration Guide</a>*.</blockquote> |
 | `token` | [`Token`](../../doc/models/token.md) | Optional | The tokenized payment source to fund a payment. |
-| `paypal` | [`PayPalWallet`](../../doc/models/pay-pal-wallet.md) | Optional | A resource that identifies a PayPal Wallet is used for payment. |
+| `paypal` | [`PaypalWallet`](../../doc/models/paypal-wallet.md) | Optional | A resource that identifies a PayPal Wallet is used for payment. |
 | `bancontact` | [`BancontactPaymentRequest`](../../doc/models/bancontact-payment-request.md) | Optional | Information needed to pay using Bancontact. |
-| `blik` | [`BLIKPaymentRequest`](../../doc/models/blik-payment-request.md) | Optional | Information needed to pay using BLIK. |
-| `eps` | [`EPSPaymentRequest`](../../doc/models/eps-payment-request.md) | Optional | Information needed to pay using eps. |
+| `blik` | [`BlikPaymentRequest`](../../doc/models/blik-payment-request.md) | Optional | Information needed to pay using BLIK. |
+| `eps` | [`EpsPaymentRequest`](../../doc/models/eps-payment-request.md) | Optional | Information needed to pay using eps. |
 | `giropay` | [`GiropayPaymentRequest`](../../doc/models/giropay-payment-request.md) | Optional | Information needed to pay using giropay. |
-| `ideal` | [`IDEALPaymentRequest`](../../doc/models/ideal-payment-request.md) | Optional | Information needed to pay using iDEAL. |
-| `mybank` | [`MyBankPaymentRequest`](../../doc/models/my-bank-payment-request.md) | Optional | Information needed to pay using MyBank. |
+| `ideal` | [`IdealPaymentRequest`](../../doc/models/ideal-payment-request.md) | Optional | Information needed to pay using iDEAL. |
+| `mybank` | [`MybankPaymentRequest`](../../doc/models/mybank-payment-request.md) | Optional | Information needed to pay using MyBank. |
 | `p_24` | [`P24PaymentRequest`](../../doc/models/p24-payment-request.md) | Optional | Information needed to pay using P24 (Przelewy24). |
 | `sofort` | [`SofortPaymentRequest`](../../doc/models/sofort-payment-request.md) | Optional | Information needed to pay using Sofort. |
 | `trustly` | [`TrustlyPaymentRequest`](../../doc/models/trustly-payment-request.md) | Optional | Information needed to pay using Trustly. |

@@ -36,8 +36,7 @@ class CardRequest(object):
             format](https://tools.ietf.org/html/rfc3339#section-5.6).
         security_code (str): The three- or four-digit security code of the
             card. Also known as the CVV, CVC, CVN, CVE, or CID. This parameter
-            cannot be present in the request when
-            `payment_initiator=MERCHANT`.
+            cannot be present in the request when `payment_initiator=MERCHANT`.
         billing_address (Address): The portable international postal address.
             Maps to
             [AddressValidationMetadata](https://github.com/googlei18n/libaddres

@@ -15,7 +15,7 @@ class UniversalProductCode(object):
     The Universal Product Code of the item.
 
     Attributes:
-        mtype (UPCType): The Universal Product Code type.
+        mtype (UpcType): The Universal Product Code type.
         code (str): The UPC product code of the item.
 
     """

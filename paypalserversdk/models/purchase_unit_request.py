@@ -52,8 +52,7 @@ class PurchaseUnitRequest(object):
             input might not equal the permissible max length.
         custom_id (str): The API caller-provided external ID. Used to
             reconcile client transactions with PayPal transactions. Appears in
-            transaction and settlement reports but is not visible to the
-            payer.
+            transaction and settlement reports but is not visible to the payer.
         invoice_id (str): The API caller-provided external invoice number for
             this order. Appears in both the payer's transaction history and
             the emails that the payer receives.

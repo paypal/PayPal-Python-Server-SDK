@@ -41,15 +41,14 @@ class OAuthAuthorizationController(BaseController):
 
                     authorization -- str -- Authorization header in Basic auth
                         format
-                    scope -- str -- Requested scopes as a space-delimited
-                        list.
+                    scope -- str -- Requested scopes as a space-delimited list.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers.
 
         Raises:
-            APIException: When an error occurs while fetching the data from
+            ApiException: When an error occurs while fetching the data from
                 the remote API. This exception includes the HTTP Response
                 code, an error message, and the HTTP body that was received in
                 the request.

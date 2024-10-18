@@ -10,7 +10,7 @@ from paypalserversdk.api_helper import APIHelper
 from paypalserversdk.models.experience_context import ExperienceContext
 
 
-class EPSPaymentRequest(object):
+class EpsPaymentRequest(object):
 
     """Implementation of the 'EPS Payment Request' model.
 
@@ -46,7 +46,7 @@ class EPSPaymentRequest(object):
                  name=None,
                  country_code=None,
                  experience_context=APIHelper.SKIP):
-        """Constructor for the EPSPaymentRequest class"""
+        """Constructor for the EpsPaymentRequest class"""
 
         # Initialize members of the class
         self.name = name 

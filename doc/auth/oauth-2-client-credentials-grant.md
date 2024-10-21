@@ -27,7 +27,7 @@ Documentation for accessing and setting credentials for Oauth2.
 You must initialize the client with *OAuth 2.0 Client Credentials Grant* credentials as shown in the following code snippet. This will fetch the OAuth token automatically when any of the endpoints, requiring *OAuth 2.0 Client Credentials Grant* autentication, are called.
 
 ```python
-client = PaypalserversdkClient(
+client = PaypalServersdkClient(
     client_credentials_auth_credentials=ClientCredentialsAuthCredentials(
         o_auth_client_id='OAuthClientId',
         o_auth_client_secret='OAuthClientSecret'
@@ -44,7 +44,7 @@ Your application can also manually provide an OAuthToken using the setter `o_aut
 Whenever the OAuth Token gets updated, the provided callback implementation will be executed. For instance, you may use it to store your access token whenever it gets updated.
 
 ```python
-client = PaypalserversdkClient(
+client = PaypalServersdkClient(
     client_credentials_auth_credentials=ClientCredentialsAuthCredentials(
         o_auth_client_id='OAuthClientId',
         o_auth_client_secret='OAuthClientSecret',
@@ -70,7 +70,7 @@ def _o_auth_token_provider(last_oauth_token, auth_manager):
     return o_auth_token
 
 
-client = PaypalserversdkClient(
+client = PaypalServersdkClient(
     client_credentials_auth_credentials=ClientCredentialsAuthCredentials(
         o_auth_client_id='OAuthClientId',
         o_auth_client_secret='OAuthClientSecret',

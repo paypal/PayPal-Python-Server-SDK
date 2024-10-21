@@ -18,8 +18,7 @@ class RefundStatusWithDetails(object):
 
     Attributes:
         status (RefundStatus): The status of the refund.
-        status_details (RefundStatusDetails): The details of the refund
-            status.
+        status_details (RefundStatusDetails): The details of the refund status.
 
     """
 

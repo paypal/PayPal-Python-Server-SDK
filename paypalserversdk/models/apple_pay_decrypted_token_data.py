@@ -16,8 +16,7 @@ class ApplePayDecryptedTokenData(object):
 
     """Implementation of the 'Apple Pay Decrypted Token Data' model.
 
-    Information about the Payment data obtained by decrypting Apple Pay
-    token.
+    Information about the Payment data obtained by decrypting Apple Pay token.
 
     Attributes:
         transaction_amount (Money): The currency and amount for a financial

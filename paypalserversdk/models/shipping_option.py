@@ -18,8 +18,7 @@ class ShippingOption(object):
     up their items.
 
     Attributes:
-        id (str): A unique ID that identifies a payer-selected shipping
-            option.
+        id (str): A unique ID that identifies a payer-selected shipping option.
         label (str): A description that the payer sees, which helps them
             choose an appropriate shipping option. For example, `Free
             Shipping`, `USPS Priority Shipping`, `Expédition prioritaire

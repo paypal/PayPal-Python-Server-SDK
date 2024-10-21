@@ -38,7 +38,7 @@ class CustomLogger(AbstractLogger):
 Following is how the custom logger implementation can be injected in the SDK client.
 
 ```python
-client = PaypalserversdkClient(
+client = PaypalServersdkClient(
     logging_configuration=LoggingConfiguration(
         logger=CustomLogger()
     )

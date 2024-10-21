@@ -17,8 +17,7 @@ class CardVerification(object):
     verification services (e.g. Smart Dollar Auth, 3DS).
 
     Attributes:
-        method (CardVerificationMethod): The method used for card
-            verification.
+        method (CardVerificationMethod): The method used for card verification.
 
     """
 

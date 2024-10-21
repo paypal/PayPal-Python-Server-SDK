@@ -11,7 +11,7 @@ from paypalserversdk.api_helper import APIHelper
 import paypalserversdk.exceptions.api_exception
 
 
-class OAuthProviderException(paypalserversdk.exceptions.api_exception.APIException):
+class OAuthProviderException(paypalserversdk.exceptions.api_exception.ApiException):
     def __init__(self, reason, response):
         """Constructor for the OAuthProviderException class
 

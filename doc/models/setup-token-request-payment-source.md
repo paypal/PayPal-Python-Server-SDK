@@ -12,7 +12,7 @@ The payment method to vault with the instrument details.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `card` | [`SetupTokenRequestCard`](../../doc/models/setup-token-request-card.md) | Optional | A Resource representing a request to vault a Card. |
-| `paypal` | [`VaultPayPalWalletRequest`](../../doc/models/vault-pay-pal-wallet-request.md) | Optional | A resource representing a request to vault PayPal Wallet. |
+| `paypal` | [`VaultPaypalWalletRequest`](../../doc/models/vault-paypal-wallet-request.md) | Optional | A resource representing a request to vault PayPal Wallet. |
 | `venmo` | [`VaultVenmoRequest`](../../doc/models/vault-venmo-request.md) | Optional | - |
 | `token` | [`VaultTokenRequest`](../../doc/models/vault-token-request.md) | Optional | The Tokenized Payment Source representing a Request to Vault a Token. |
 

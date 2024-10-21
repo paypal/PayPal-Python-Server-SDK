@@ -22,8 +22,7 @@ class Refund(object):
 
     Attributes:
         status (RefundStatus): The status of the refund.
-        status_details (RefundStatusDetails): The details of the refund
-            status.
+        status_details (RefundStatusDetails): The details of the refund status.
         id (str): The PayPal-generated ID for the refund.
         amount (Money): The currency and amount for a financial transaction,
             such as a balance or payment due.
@@ -37,8 +36,7 @@ class Refund(object):
             transaction. This ID can be used to track the transaction across
             processors, card brands and issuing banks.
         note_to_payer (str): The reason for the refund. Appears in both the
-            payer's transaction history and the emails that the payer
-            receives.
+            payer's transaction history and the emails that the payer receives.
         seller_payable_breakdown (SellerPayableBreakdown): The breakdown of
             the refund.
         payer (PayeeBase): The details for the merchant who receives the funds

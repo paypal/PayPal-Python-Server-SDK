@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.7"
 keywords = []
 authors = []
-urls = {}
+urls = {Homepage = "https://github.com/paypal/PayPal-Python-Server-SDK"}
 dependencies = ["apimatic-core~=0.2.0, >= 0.2.15", "apimatic-core-interfaces~=0.1.0, >= 0.1.5", "apimatic-requests-client-adapter~=0.1.0, >= 0.1.6"]
 classifiers = []
 [project.optional-dependencies]

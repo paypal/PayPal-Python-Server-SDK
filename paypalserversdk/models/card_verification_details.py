@@ -38,6 +38,10 @@ class CardVerificationDetails(object):
         processor_response (CardVerificationProcessorResponse): The processor
             response information for payment requests, such as direct credit
             card transactions.
+        three_d_secure (object): DEPRECATED. This field is DEPRECATED. Please
+            find the 3D secure authentication data in 'three_d_secure' object
+            under 'authentication_result' object instead of the 'verification'
+            field.
 
     """
 
@@ -48,7 +52,8 @@ class CardVerificationDetails(object):
         "network": 'network',
         "time": 'time',
         "amount": 'amount',
-        "processor_response": 'processor_response'
+        "processor_response": 'processor_response',
+        "three_d_secure": 'three_d_secure'
     }
 
     _optionals = [
@@ -58,6 +63,7 @@ class CardVerificationDetails(object):
         'time',
         'amount',
         'processor_response',
+        'three_d_secure',
     ]
 
     def __init__(self,
@@ -66,7 +72,8 @@ class CardVerificationDetails(object):
                  network=APIHelper.SKIP,
                  time=APIHelper.SKIP,
                  amount=APIHelper.SKIP,
-                 processor_response=APIHelper.SKIP):
+                 processor_response=APIHelper.SKIP,
+                 three_d_secure=APIHelper.SKIP):
         """Constructor for the CardVerificationDetails class"""
 
         # Initialize members of the class
@@ -82,6 +89,8 @@ class CardVerificationDetails(object):
             self.amount = amount 
         if processor_response is not APIHelper.SKIP:
             self.processor_response = processor_response 
+        if three_d_secure is not APIHelper.SKIP:
+            self.three_d_secure = three_d_secure 
 
     @classmethod
     def from_dictionary(cls,
@@ -108,10 +117,12 @@ class CardVerificationDetails(object):
         time = dictionary.get("time") if dictionary.get("time") else APIHelper.SKIP
         amount = Money.from_dictionary(dictionary.get('amount')) if 'amount' in dictionary.keys() else APIHelper.SKIP
         processor_response = CardVerificationProcessorResponse.from_dictionary(dictionary.get('processor_response')) if 'processor_response' in dictionary.keys() else APIHelper.SKIP
+        three_d_secure = dictionary.get("three_d_secure") if dictionary.get("three_d_secure") else APIHelper.SKIP
         # Return an object of this model
         return cls(network_transaction_id,
                    date,
                    network,
                    time,
                    amount,
-                   processor_response)
+                   processor_response,
+                   three_d_secure)

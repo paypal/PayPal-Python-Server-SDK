@@ -38,8 +38,7 @@ class OrderAuthorizeResponse(object):
         intent (CheckoutPaymentIntent): The intent to either capture payment
             immediately or authorize a payment for an order after order
             creation.
-        processing_instruction (ProcessingInstruction): The instruction to
-            process an order.
+        processing_instruction (object): TODO: type description here.
         payer (Payer): TODO: type description here.
         purchase_units (List[PurchaseUnit]): An array of purchase units. Each
             purchase unit establishes a contract between a customer and
@@ -86,7 +85,7 @@ class OrderAuthorizeResponse(object):
                  id=APIHelper.SKIP,
                  payment_source=APIHelper.SKIP,
                  intent=APIHelper.SKIP,
-                 processing_instruction='NO_INSTRUCTION',
+                 processing_instruction=APIHelper.SKIP,
                  payer=APIHelper.SKIP,
                  purchase_units=APIHelper.SKIP,
                  status=APIHelper.SKIP,
@@ -104,7 +103,8 @@ class OrderAuthorizeResponse(object):
             self.payment_source = payment_source 
         if intent is not APIHelper.SKIP:
             self.intent = intent 
-        self.processing_instruction = processing_instruction 
+        if processing_instruction is not APIHelper.SKIP:
+            self.processing_instruction = processing_instruction 
         if payer is not APIHelper.SKIP:
             self.payer = payer 
         if purchase_units is not APIHelper.SKIP:
@@ -138,7 +138,7 @@ class OrderAuthorizeResponse(object):
         id = dictionary.get("id") if dictionary.get("id") else APIHelper.SKIP
         payment_source = OrderAuthorizeResponsePaymentSource.from_dictionary(dictionary.get('payment_source')) if 'payment_source' in dictionary.keys() else APIHelper.SKIP
         intent = dictionary.get("intent") if dictionary.get("intent") else APIHelper.SKIP
-        processing_instruction = dictionary.get("processing_instruction") if dictionary.get("processing_instruction") else 'NO_INSTRUCTION'
+        processing_instruction = dictionary.get("processing_instruction") if dictionary.get("processing_instruction") else APIHelper.SKIP
         payer = Payer.from_dictionary(dictionary.get('payer')) if 'payer' in dictionary.keys() else APIHelper.SKIP
         purchase_units = None
         if dictionary.get('purchase_units') is not None:

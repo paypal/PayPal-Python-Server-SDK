@@ -25,7 +25,7 @@ class ShippingWithTrackingDetails(object):
         phone_number (PhoneNumberWithCountryCode): The phone number in its
             canonical international [E.164 numbering plan
             format](https://www.itu.int/rec/T-REC-E.164/en).
-        mtype (FullfillmentType): A classification for the method of purchase
+        mtype (FulfillmentType): A classification for the method of purchase
             fulfillment (e.g shipping, in-store pickup, etc). Either `type` or
             `options` may be present, but not both.
         options (List[ShippingOption]): An array of shipping options that the

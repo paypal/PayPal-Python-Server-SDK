@@ -19,7 +19,7 @@ class VaultedDigitalWalletShippingDetails(object):
 
     Attributes:
         name (ShippingName): The name of the party.
-        mtype (FullfillmentType): A classification for the method of purchase
+        mtype (FulfillmentType): A classification for the method of purchase
             fulfillment (e.g shipping, in-store pickup, etc). Either `type` or
             `options` may be present, but not both.
         address (Address): The portable international postal address. Maps to

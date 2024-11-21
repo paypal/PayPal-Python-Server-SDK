@@ -38,8 +38,7 @@ class Order(object):
         intent (CheckoutPaymentIntent): The intent to either capture payment
             immediately or authorize a payment for an order after order
             creation.
-        processing_instruction (ProcessingInstruction): The instruction to
-            process an order.
+        processing_instruction (object): TODO: type description here.
         payer (Payer): TODO: type description here.
         purchase_units (List[PurchaseUnit]): An array of purchase units. Each
             purchase unit establishes a contract between a customer and
@@ -48,11 +47,11 @@ class Order(object):
         status (OrderStatus): The order status.
         links (List[LinkDescription]): An array of request-related HATEOAS
             links. To complete payer approval, use the `approve` link to
-            redirect the payer. The API caller has 3 hours (default setting,
+            redirect the payer. The API caller has 6 hours (default setting,
             this which can be changed by your account manager to 24/48/72
             hours to accommodate your use case) from the time the order is
             created, to redirect your payer. Once redirected, the API caller
-            has 3 hours for the payer to approve the order and either
+            has 6 hours for the payer to approve the order and either
             authorize or capture the order. If you are not using the PayPal
             JavaScript SDK to initiate PayPal Checkout (in context) ensure
             that you include `application_context.return_url` is specified or
@@ -94,7 +93,7 @@ class Order(object):
                  id=APIHelper.SKIP,
                  payment_source=APIHelper.SKIP,
                  intent=APIHelper.SKIP,
-                 processing_instruction='NO_INSTRUCTION',
+                 processing_instruction=APIHelper.SKIP,
                  payer=APIHelper.SKIP,
                  purchase_units=APIHelper.SKIP,
                  status=APIHelper.SKIP,
@@ -112,7 +111,8 @@ class Order(object):
             self.payment_source = payment_source 
         if intent is not APIHelper.SKIP:
             self.intent = intent 
-        self.processing_instruction = processing_instruction 
+        if processing_instruction is not APIHelper.SKIP:
+            self.processing_instruction = processing_instruction 
         if payer is not APIHelper.SKIP:
             self.payer = payer 
         if purchase_units is not APIHelper.SKIP:
@@ -146,7 +146,7 @@ class Order(object):
         id = dictionary.get("id") if dictionary.get("id") else APIHelper.SKIP
         payment_source = PaymentSourceResponse.from_dictionary(dictionary.get('payment_source')) if 'payment_source' in dictionary.keys() else APIHelper.SKIP
         intent = dictionary.get("intent") if dictionary.get("intent") else APIHelper.SKIP
-        processing_instruction = dictionary.get("processing_instruction") if dictionary.get("processing_instruction") else 'NO_INSTRUCTION'
+        processing_instruction = dictionary.get("processing_instruction") if dictionary.get("processing_instruction") else APIHelper.SKIP
         payer = Payer.from_dictionary(dictionary.get('payer')) if 'payer' in dictionary.keys() else APIHelper.SKIP
         purchase_units = None
         if dictionary.get('purchase_units') is not None:

@@ -1298,6 +1298,114 @@ class ShipmentCarrier(object):
         LOGINEXT_WEBHOOK: TODO: type description here.
         EMS: TODO: type description here.
         SPEEDY: TODO: type description here.
+        ZOOM_RED: TODO: type description here.
+        NAVLUNGO: TODO: type description here.
+        CASTLEPARCELS: TODO: type description here.
+        WEEE: TODO: type description here.
+        PACKALY: TODO: type description here.
+        YUNHUIPOST: TODO: type description here.
+        YOUPARCEL: TODO: type description here.
+        LEMAN: TODO: type description here.
+        MOOVIN: TODO: type description here.
+        URB_IT: TODO: type description here.
+        MULTIENTREGAPANAMA: TODO: type description here.
+        JUSDASR: TODO: type description here.
+        DISCOUNTPOST: TODO: type description here.
+        RHENUS_UK: TODO: type description here.
+        SWISHIP_JP: TODO: type description here.
+        GLS_US: TODO: type description here.
+        SMTL: TODO: type description here.
+        EMEGA: TODO: type description here.
+        EXPRESSONE_SV: TODO: type description here.
+        HEPSIJET: TODO: type description here.
+        WELIVERY: TODO: type description here.
+        BRINGER: TODO: type description here.
+        EASYROUTES: TODO: type description here.
+        MRW: TODO: type description here.
+        RPM: TODO: type description here.
+        DPD_PRT: TODO: type description here.
+        GLS_ROMANIA: TODO: type description here.
+        LMPARCEL: TODO: type description here.
+        GTAGSM: TODO: type description here.
+        DOMINO: TODO: type description here.
+        ESHIPPER: TODO: type description here.
+        TRANSPAK: TODO: type description here.
+        XINDUS: TODO: type description here.
+        AOYUE: TODO: type description here.
+        EASYPARCEL: TODO: type description here.
+        EXPRESSONE: TODO: type description here.
+        SENDEO_KARGO: TODO: type description here.
+        SPEEDAF: TODO: type description here.
+        ETOWER: TODO: type description here.
+        GCX: TODO: type description here.
+        NINJAVAN_VN: TODO: type description here.
+        ALLEGRO: TODO: type description here.
+        JUMPPOINT: TODO: type description here.
+        SHIPGLOBAL_US: TODO: type description here.
+        KINISI: TODO: type description here.
+        OAKH: TODO: type description here.
+        AWEST: TODO: type description here.
+        BARSAN: TODO: type description here.
+        ENERGOLOGISTIC: TODO: type description here.
+        MADROOEX: TODO: type description here.
+        GOBOLT: TODO: type description here.
+        SWISS_UNIVERSAL_EXPRESS: TODO: type description here.
+        IORDIRECT: TODO: type description here.
+        XMSZM: TODO: type description here.
+        GLS_HUN: TODO: type description here.
+        SENDY: TODO: type description here.
+        BRAUNSEXPRESS: TODO: type description here.
+        GRANDSLAMEXPRESS: TODO: type description here.
+        XGS: TODO: type description here.
+        OTSCHILE: TODO: type description here.
+        PACK_UP: TODO: type description here.
+        PARCELSTARS: TODO: type description here.
+        TEAMEXPRESSLLC: TODO: type description here.
+        ASYADEXPRESS: TODO: type description here.
+        TDN: TODO: type description here.
+        EARLYBIRD: TODO: type description here.
+        CACESA: TODO: type description here.
+        PARCELJET: TODO: type description here.
+        MNG_KARGO: TODO: type description here.
+        SUPERPACKLINE: TODO: type description here.
+        SPEEDX: TODO: type description here.
+        VESYL: TODO: type description here.
+        SKYKING: TODO: type description here.
+        DIRMENSAJERIA: TODO: type description here.
+        NETLOGIXGROUP: TODO: type description here.
+        ZYOU: TODO: type description here.
+        JAWAR: TODO: type description here.
+        AGSYSTEMS: TODO: type description here.
+        GPS: TODO: type description here.
+        PTT_KARGO: TODO: type description here.
+        MAERGO: TODO: type description here.
+        ARIHANTCOURIER: TODO: type description here.
+        VTFE: TODO: type description here.
+        YUNANT: TODO: type description here.
+        URBIFY: TODO: type description here.
+        PACK_MAN: TODO: type description here.
+        LIEFERGRUN: TODO: type description here.
+        OBIBOX: TODO: type description here.
+        PAIKEDA: TODO: type description here.
+        SCOTTY: TODO: type description here.
+        INTELCOM_CA: TODO: type description here.
+        SWE: TODO: type description here.
+        ASENDIA: TODO: type description here.
+        DPD_AT: TODO: type description here.
+        RELAY: TODO: type description here.
+        ATA: TODO: type description here.
+        SKYEXPRESS_INTERNATIONAL: TODO: type description here.
+        SURAT_KARGO: TODO: type description here.
+        SGLINK: TODO: type description here.
+        FLEETOPTICSINC: TODO: type description here.
+        SHOPLINE: TODO: type description here.
+        PIGGYSHIP: TODO: type description here.
+        LOGOIX: TODO: type description here.
+        KOLAY_GELSIN: TODO: type description here.
+        ASSOCIATED_COURIERS: TODO: type description here.
+        UPS_CHECKER: TODO: type description here.
+        WINESHIPPING: TODO: type description here.
+        SPEDISCI: TODO: type description here.
 
     """
     DPD_RU = 'DPD_RU'
@@ -3851,4 +3959,220 @@ class ShipmentCarrier(object):
     EMS = 'EMS'
 
     SPEEDY = 'SPEEDY'
+
+    ZOOM_RED = 'ZOOM_RED'
+
+    NAVLUNGO = 'NAVLUNGO'
+
+    CASTLEPARCELS = 'CASTLEPARCELS'
+
+    WEEE = 'WEEE'
+
+    PACKALY = 'PACKALY'
+
+    YUNHUIPOST = 'YUNHUIPOST'
+
+    YOUPARCEL = 'YOUPARCEL'
+
+    LEMAN = 'LEMAN'
+
+    MOOVIN = 'MOOVIN'
+
+    URB_IT = 'URB_IT'
+
+    MULTIENTREGAPANAMA = 'MULTIENTREGAPANAMA'
+
+    JUSDASR = 'JUSDASR'
+
+    DISCOUNTPOST = 'DISCOUNTPOST'
+
+    RHENUS_UK = 'RHENUS_UK'
+
+    SWISHIP_JP = 'SWISHIP_JP'
+
+    GLS_US = 'GLS_US'
+
+    SMTL = 'SMTL'
+
+    EMEGA = 'EMEGA'
+
+    EXPRESSONE_SV = 'EXPRESSONE_SV'
+
+    HEPSIJET = 'HEPSIJET'
+
+    WELIVERY = 'WELIVERY'
+
+    BRINGER = 'BRINGER'
+
+    EASYROUTES = 'EASYROUTES'
+
+    MRW = 'MRW'
+
+    RPM = 'RPM'
+
+    DPD_PRT = 'DPD_PRT'
+
+    GLS_ROMANIA = 'GLS_ROMANIA'
+
+    LMPARCEL = 'LMPARCEL'
+
+    GTAGSM = 'GTAGSM'
+
+    DOMINO = 'DOMINO'
+
+    ESHIPPER = 'ESHIPPER'
+
+    TRANSPAK = 'TRANSPAK'
+
+    XINDUS = 'XINDUS'
+
+    AOYUE = 'AOYUE'
+
+    EASYPARCEL = 'EASYPARCEL'
+
+    EXPRESSONE = 'EXPRESSONE'
+
+    SENDEO_KARGO = 'SENDEO_KARGO'
+
+    SPEEDAF = 'SPEEDAF'
+
+    ETOWER = 'ETOWER'
+
+    GCX = 'GCX'
+
+    NINJAVAN_VN = 'NINJAVAN_VN'
+
+    ALLEGRO = 'ALLEGRO'
+
+    JUMPPOINT = 'JUMPPOINT'
+
+    SHIPGLOBAL_US = 'SHIPGLOBAL_US'
+
+    KINISI = 'KINISI'
+
+    OAKH = 'OAKH'
+
+    AWEST = 'AWEST'
+
+    BARSAN = 'BARSAN'
+
+    ENERGOLOGISTIC = 'ENERGOLOGISTIC'
+
+    MADROOEX = 'MADROOEX'
+
+    GOBOLT = 'GOBOLT'
+
+    SWISS_UNIVERSAL_EXPRESS = 'SWISS_UNIVERSAL_EXPRESS'
+
+    IORDIRECT = 'IORDIRECT'
+
+    XMSZM = 'XMSZM'
+
+    GLS_HUN = 'GLS_HUN'
+
+    SENDY = 'SENDY'
+
+    BRAUNSEXPRESS = 'BRAUNSEXPRESS'
+
+    GRANDSLAMEXPRESS = 'GRANDSLAMEXPRESS'
+
+    XGS = 'XGS'
+
+    OTSCHILE = 'OTSCHILE'
+
+    PACK_UP = 'PACK_UP'
+
+    PARCELSTARS = 'PARCELSTARS'
+
+    TEAMEXPRESSLLC = 'TEAMEXPRESSLLC'
+
+    ASYADEXPRESS = 'ASYADEXPRESS'
+
+    TDN = 'TDN'
+
+    EARLYBIRD = 'EARLYBIRD'
+
+    CACESA = 'CACESA'
+
+    PARCELJET = 'PARCELJET'
+
+    MNG_KARGO = 'MNG_KARGO'
+
+    SUPERPACKLINE = 'SUPERPACKLINE'
+
+    SPEEDX = 'SPEEDX'
+
+    VESYL = 'VESYL'
+
+    SKYKING = 'SKYKING'
+
+    DIRMENSAJERIA = 'DIRMENSAJERIA'
+
+    NETLOGIXGROUP = 'NETLOGIXGROUP'
+
+    ZYOU = 'ZYOU'
+
+    JAWAR = 'JAWAR'
+
+    AGSYSTEMS = 'AGSYSTEMS'
+
+    GPS = 'GPS'
+
+    PTT_KARGO = 'PTT_KARGO'
+
+    MAERGO = 'MAERGO'
+
+    ARIHANTCOURIER = 'ARIHANTCOURIER'
+
+    VTFE = 'VTFE'
+
+    YUNANT = 'YUNANT'
+
+    URBIFY = 'URBIFY'
+
+    PACK_MAN = 'PACK_MAN'
+
+    LIEFERGRUN = 'LIEFERGRUN'
+
+    OBIBOX = 'OBIBOX'
+
+    PAIKEDA = 'PAIKEDA'
+
+    SCOTTY = 'SCOTTY'
+
+    INTELCOM_CA = 'INTELCOM_CA'
+
+    SWE = 'SWE'
+
+    ASENDIA = 'ASENDIA'
+
+    DPD_AT = 'DPD_AT'
+
+    RELAY = 'RELAY'
+
+    ATA = 'ATA'
+
+    SKYEXPRESS_INTERNATIONAL = 'SKYEXPRESS_INTERNATIONAL'
+
+    SURAT_KARGO = 'SURAT_KARGO'
+
+    SGLINK = 'SGLINK'
+
+    FLEETOPTICSINC = 'FLEETOPTICSINC'
+
+    SHOPLINE = 'SHOPLINE'
+
+    PIGGYSHIP = 'PIGGYSHIP'
+
+    LOGOIX = 'LOGOIX'
+
+    KOLAY_GELSIN = 'KOLAY_GELSIN'
+
+    ASSOCIATED_COURIERS = 'ASSOCIATED_COURIERS'
+
+    UPS_CHECKER = 'UPS_CHECKER'
+
+    WINESHIPPING = 'WINESHIPPING'
+
+    SPEDISCI = 'SPEDISCI'
 

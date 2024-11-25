@@ -30,14 +30,30 @@ class PaymentsController(BaseController):
         super(PaymentsController, self).__init__(config)
 
     def authorizations_get(self,
-                           authorization_id):
+                           options=dict()):
         """Does a GET request to /v2/payments/authorizations/{authorization_id}.
 
         Shows details for an authorized payment, by ID.
 
         Args:
-            authorization_id (str): The ID of the authorized payment for which
-                to show details.
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    authorization_id -- str -- The ID of the authorized
+                        payment for which to show details.
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see
+                        [PayPal-Auth-Assertion](/docs/api/reference/api-request
+                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
+                        rong>For three party transactions in which a partner
+                        is managing the API calls on behalf of a merchant, the
+                        partner must identify the merchant using either a
+                        PayPal-Auth-Assertion header or an access token with
+                        target_subject.</blockquote>
 
         Returns:
             ApiResponse: An object with the response value as well as other
@@ -59,8 +75,11 @@ class PaymentsController(BaseController):
             .http_method(HttpMethodEnum.GET)
             .template_param(Parameter()
                             .key('authorization_id')
-                            .value(authorization_id)
+                            .value(options.get('authorization_id', None))
                             .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))
@@ -71,7 +90,6 @@ class PaymentsController(BaseController):
             .deserialize_into(PaymentAuthorization.from_dictionary)
             .is_api_response(True)
             .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
-            .local_error('403', 'The request failed because the caller has insufficient permissions.', ErrorException)
             .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
             .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
             .local_error('default', 'The error response.', ErrorException)
@@ -104,14 +122,24 @@ class PaymentsController(BaseController):
                         links.</li><li><code>return=representation</code>. The
                         server returns a complete resource representation,
                         including the current state of the resource.</li></ul>
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see
+                        [PayPal-Auth-Assertion](/docs/api/reference/api-request
+                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
+                        rong>For three party transactions in which a partner
+                        is managing the API calls on behalf of a merchant, the
+                        partner must identify the merchant using either a
+                        PayPal-Auth-Assertion header or an access token with
+                        target_subject.</blockquote>
                     body -- CaptureRequest -- TODO: type description here.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>201 Created</code>
-                status code and a JSON response body that shows captured
-                payment details.
+                successful request returns the HTTP <code>200 OK</code> status
+                code and a JSON response body that shows captured payment
+                details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -138,6 +166,9 @@ class PaymentsController(BaseController):
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
             .body_param(Parameter()
                         .value(options.get('body', None)))
             .header_param(Parameter()
@@ -156,92 +187,6 @@ class PaymentsController(BaseController):
             .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
             .local_error('409', 'The server has detected a conflict while processing this request.', ErrorException)
             .local_error('422', 'The request failed because it is semantically incorrect or failed business validation.', ErrorException)
-            .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
-            .local_error('default', 'The error response.', ErrorException)
-        ).execute()
-
-    def authorizations_void(self,
-                            options=dict()):
-        """Does a POST request to /v2/payments/authorizations/{authorization_id}/void.
-
-        Voids, or cancels, an authorized payment, by ID. You cannot void an
-        authorized payment that has been fully captured.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    authorization_id -- str -- The PayPal-generated ID for the
-                        authorized payment to void.
-                    paypal_auth_assertion -- str -- An API-caller-provided
-                        JSON Web Token (JWT) assertion that identifies the
-                        merchant. For details, see
-                        [PayPal-Auth-Assertion](/docs/api/reference/api-request
-                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
-                        rong>For three party transactions in which a partner
-                        is managing the API calls on behalf of a merchant, the
-                        partner must identify the merchant using either a
-                        PayPal-Auth-Assertion header or an access token with
-                        target_subject.</blockquote>
-                    prefer -- str -- The preferred server response upon
-                        successful completion of the request. Value
-                        is:<ul><li><code>return=minimal</code>. The server
-                        returns a minimal response to optimize communication
-                        between the API caller and the server. A minimal
-                        response includes the <code>id</code>,
-                        <code>status</code> and HATEOAS
-                        links.</li><li><code>return=representation</code>. The
-                        server returns a complete resource representation,
-                        including the current state of the resource.</li></ul>
-
-        Returns:
-            ApiResponse: An object with the response value as well as other
-                useful information such as status codes and headers. A
-                successful request returns the HTTP <code>200 OK</code> status
-                code and a JSON response body that shows authorization
-                details. This response is returned when the Prefer header is
-                set to return=representation.
-
-        Raises:
-            ApiException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
-            .path('/v2/payments/authorizations/{authorization_id}/void')
-            .http_method(HttpMethodEnum.POST)
-            .template_param(Parameter()
-                            .key('authorization_id')
-                            .value(options.get('authorization_id', None))
-                            .should_encode(True))
-            .header_param(Parameter()
-                          .key('PayPal-Auth-Assertion')
-                          .value(options.get('paypal_auth_assertion', None)))
-            .header_param(Parameter()
-                          .key('Prefer')
-                          .value(options.get('prefer', None)))
-            .header_param(Parameter()
-                          .key('accept')
-                          .value('application/json'))
-            .auth(Single('Oauth2'))
-        ).response(
-            ResponseHandler()
-            .deserializer(APIHelper.json_deserialize)
-            .deserialize_into(PaymentAuthorization.from_dictionary)
-            .is_api_response(True)
-            .local_error('400', 'The request failed because it is not well-formed or is syntactically incorrect or violates schema.', ErrorException)
-            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
-            .local_error('403', 'The request failed because the caller has insufficient permissions.', ErrorException)
-            .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
-            .local_error('409', 'The request failed because a previous call for the given resource is in progress.', ErrorException)
-            .local_error('422', 'The request failed because it either is semantically incorrect or failed business validation.', ErrorException)
             .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
@@ -287,14 +232,24 @@ class PaymentsController(BaseController):
                         links.</li><li><code>return=representation</code>. The
                         server returns a complete resource representation,
                         including the current state of the resource.</li></ul>
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see
+                        [PayPal-Auth-Assertion](/docs/api/reference/api-request
+                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
+                        rong>For three party transactions in which a partner
+                        is managing the API calls on behalf of a merchant, the
+                        partner must identify the merchant using either a
+                        PayPal-Auth-Assertion header or an access token with
+                        target_subject.</blockquote>
                     body -- ReauthorizeRequest -- TODO: type description here.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>201 Created</code>
-                status code and a JSON response body that shows the
-                reauthorized payment details.
+                successful request returns the HTTP <code>200 OK</code> status
+                code and a JSON response body that shows the reauthorized
+                payment details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -321,6 +276,9 @@ class PaymentsController(BaseController):
             .header_param(Parameter()
                           .key('Prefer')
                           .value(options.get('prefer', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
             .body_param(Parameter()
                         .value(options.get('body', None)))
             .header_param(Parameter()
@@ -335,8 +293,97 @@ class PaymentsController(BaseController):
             .is_api_response(True)
             .local_error('400', 'The request failed because it is not well-formed or is syntactically incorrect or violates schema.', ErrorException)
             .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
+            .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
+            .local_error('422', 'The request failed because it either is semantically incorrect or failed business validation.', ErrorException)
+            .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
+            .local_error('default', 'The error response.', ErrorException)
+        ).execute()
+
+    def authorizations_void(self,
+                            options=dict()):
+        """Does a POST request to /v2/payments/authorizations/{authorization_id}/void.
+
+        Voids, or cancels, an authorized payment, by ID. You cannot void an
+        authorized payment that has been fully captured.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    authorization_id -- str -- The PayPal-generated ID for the
+                        authorized payment to void.
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see
+                        [PayPal-Auth-Assertion](/docs/api/reference/api-request
+                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
+                        rong>For three party transactions in which a partner
+                        is managing the API calls on behalf of a merchant, the
+                        partner must identify the merchant using either a
+                        PayPal-Auth-Assertion header or an access token with
+                        target_subject.</blockquote>
+                    paypal_request_id -- str -- The server stores keys for 45
+                        days.
+                    prefer -- str -- The preferred server response upon
+                        successful completion of the request. Value
+                        is:<ul><li><code>return=minimal</code>. The server
+                        returns a minimal response to optimize communication
+                        between the API caller and the server. A minimal
+                        response includes the <code>id</code>,
+                        <code>status</code> and HATEOAS
+                        links.</li><li><code>return=representation</code>. The
+                        server returns a complete resource representation,
+                        including the current state of the resource.</li></ul>
+
+        Returns:
+            ApiResponse: An object with the response value as well as other
+                useful information such as status codes and headers. A
+                successful request returns the HTTP <code>200 OK</code> status
+                code and a JSON response body that shows authorization
+                details. This response is returned when the Prefer header is
+                set to return=representation.
+
+        Raises:
+            ApiException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.DEFAULT)
+            .path('/v2/payments/authorizations/{authorization_id}/void')
+            .http_method(HttpMethodEnum.POST)
+            .template_param(Parameter()
+                            .key('authorization_id')
+                            .value(options.get('authorization_id', None))
+                            .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Request-Id')
+                          .value(options.get('paypal_request_id', None)))
+            .header_param(Parameter()
+                          .key('Prefer')
+                          .value(options.get('prefer', None)))
+            .header_param(Parameter()
+                          .key('accept')
+                          .value('application/json'))
+            .auth(Single('Oauth2'))
+        ).response(
+            ResponseHandler()
+            .deserializer(APIHelper.json_deserialize)
+            .deserialize_into(PaymentAuthorization.from_dictionary)
+            .is_api_response(True)
+            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
             .local_error('403', 'The request failed because the caller has insufficient permissions.', ErrorException)
             .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
+            .local_error('409', 'The request failed because a previous call for the given resource is in progress.', ErrorException)
             .local_error('422', 'The request failed because it either is semantically incorrect or failed business validation.', ErrorException)
             .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
             .local_error('default', 'The error response.', ErrorException)
@@ -435,8 +482,8 @@ class PaymentsController(BaseController):
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>201 Created</code>
-                status code and a JSON response body that shows refund details.
+                successful request returns the HTTP <code>200 OK</code> status
+                code and a JSON response body that shows refund details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -489,14 +536,30 @@ class PaymentsController(BaseController):
         ).execute()
 
     def refunds_get(self,
-                    refund_id):
+                    options=dict()):
         """Does a GET request to /v2/payments/refunds/{refund_id}.
 
         Shows details for a refund, by ID.
 
         Args:
-            refund_id (str): The PayPal-generated ID for the refund for which
-                to show details.
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    refund_id -- str -- The PayPal-generated ID for the refund
+                        for which to show details.
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see
+                        [PayPal-Auth-Assertion](/docs/api/reference/api-request
+                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
+                        rong>For three party transactions in which a partner
+                        is managing the API calls on behalf of a merchant, the
+                        partner must identify the merchant using either a
+                        PayPal-Auth-Assertion header or an access token with
+                        target_subject.</blockquote>
 
         Returns:
             ApiResponse: An object with the response value as well as other
@@ -518,8 +581,11 @@ class PaymentsController(BaseController):
             .http_method(HttpMethodEnum.GET)
             .template_param(Parameter()
                             .key('refund_id')
-                            .value(refund_id)
+                            .value(options.get('refund_id', None))
                             .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))

@@ -12,12 +12,55 @@ vault_controller = client.vault
 
 ## Methods
 
+* [Payment-Tokens Create](../../doc/controllers/vault.md#payment-tokens-create)
 * [Customer Payment-Tokens Get](../../doc/controllers/vault.md#customer-payment-tokens-get)
 * [Payment-Tokens Get](../../doc/controllers/vault.md#payment-tokens-get)
-* [Payment-Tokens Create](../../doc/controllers/vault.md#payment-tokens-create)
-* [Setup-Tokens Create](../../doc/controllers/vault.md#setup-tokens-create)
 * [Payment-Tokens Delete](../../doc/controllers/vault.md#payment-tokens-delete)
+* [Setup-Tokens Create](../../doc/controllers/vault.md#setup-tokens-create)
 * [Setup-Tokens Get](../../doc/controllers/vault.md#setup-tokens-get)
+
+
+# Payment-Tokens Create
+
+Creates a Payment Token from the given payment source and adds it to the Vault of the associated customer.
+
+```python
+def payment_tokens_create(self,
+                         options=dict())
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `paypal_request_id` | `str` | Header, Required | The server stores keys for 3 hours. |
+| `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
+
+## Response Type
+
+This method returns a `ApiResponse` instance. The `body` property of this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+
+## Example Usage
+
+```python
+collect = {
+    'paypal_request_id': 'PayPal-Request-Id6',
+    'body': PaymentTokenRequest(
+        payment_source=PaymentTokenRequestPaymentSource()
+    )
+}
+result = vault_controller.payment_tokens_create(collect)
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 404 | Request contains reference to resources that do not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
 # Customer Payment-Tokens Get
@@ -100,36 +143,31 @@ result = vault_controller.payment_tokens_get(id)
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Payment-Tokens Create
+# Payment-Tokens Delete
 
-Creates a Payment Token from the given payment source and adds it to the Vault of the associated customer.
+Delete the payment token associated with the payment token id.
 
 ```python
-def payment_tokens_create(self,
-                         options=dict())
+def payment_tokens_delete(self,
+                         id)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paypal_request_id` | `str` | Header, Required | The server stores keys for 3 hours. |
-| `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
+| `id` | `str` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 
-This method returns a `ApiResponse` instance. The `body` property of this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+This method returns a `ApiResponse` instance.
 
 ## Example Usage
 
 ```python
-collect = {
-    'paypal_request_id': 'PayPal-Request-Id6',
-    'body': PaymentTokenRequest(
-        payment_source=PaymentTokenRequestPaymentSource()
-    )
-}
-result = vault_controller.payment_tokens_create(collect)
+id = 'id0'
+
+result = vault_controller.payment_tokens_delete(id)
 ```
 
 ## Errors
@@ -138,8 +176,6 @@ result = vault_controller.payment_tokens_create(collect)
 |  --- | --- | --- |
 | 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 404 | Request contains reference to resources that do not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
@@ -182,42 +218,6 @@ result = vault_controller.setup_tokens_create(collect)
 | 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
-
-
-# Payment-Tokens Delete
-
-Delete the payment token associated with the payment token id.
-
-```python
-def payment_tokens_delete(self,
-                         id)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `str` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
-
-## Response Type
-
-This method returns a `ApiResponse` instance.
-
-## Example Usage
-
-```python
-id = 'id0'
-
-result = vault_controller.payment_tokens_delete(id)
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 

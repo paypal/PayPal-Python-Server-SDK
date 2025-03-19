@@ -54,10 +54,18 @@ class OrderCaptureRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         payment_source = OrderCaptureRequestPaymentSource.from_dictionary(dictionary.get('payment_source')) if 'payment_source' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(payment_source)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'payment_source={(self.payment_source if hasattr(self, "payment_source") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'payment_source={(self.payment_source if hasattr(self, "payment_source") else None)!s})')

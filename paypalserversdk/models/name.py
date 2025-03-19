@@ -62,7 +62,7 @@ class Name(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -71,3 +71,13 @@ class Name(object):
         # Return an object of this model
         return cls(given_name,
                    surname)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'given_name={(self.given_name if hasattr(self, "given_name") else None)!r}, '
+                f'surname={(self.surname if hasattr(self, "surname") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'given_name={(self.given_name if hasattr(self, "given_name") else None)!s}, '
+                f'surname={(self.surname if hasattr(self, "surname") else None)!s})')

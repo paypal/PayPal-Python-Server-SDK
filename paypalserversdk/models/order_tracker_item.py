@@ -87,7 +87,7 @@ class OrderTrackerItem(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -104,3 +104,21 @@ class OrderTrackerItem(object):
                    url,
                    image_url,
                    upc)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'quantity={(self.quantity if hasattr(self, "quantity") else None)!r}, '
+                f'sku={(self.sku if hasattr(self, "sku") else None)!r}, '
+                f'url={(self.url if hasattr(self, "url") else None)!r}, '
+                f'image_url={(self.image_url if hasattr(self, "image_url") else None)!r}, '
+                f'upc={(self.upc if hasattr(self, "upc") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'quantity={(self.quantity if hasattr(self, "quantity") else None)!s}, '
+                f'sku={(self.sku if hasattr(self, "sku") else None)!s}, '
+                f'url={(self.url if hasattr(self, "url") else None)!s}, '
+                f'image_url={(self.image_url if hasattr(self, "image_url") else None)!s}, '
+                f'upc={(self.upc if hasattr(self, "upc") else None)!s})')

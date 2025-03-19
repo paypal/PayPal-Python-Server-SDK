@@ -16,16 +16,14 @@ class CardStoredCredential(object):
 
     Provides additional details to process a payment using a `card` that has
     been stored or is intended to be stored (also referred to as
-    stored_credential or card-on-file).<br/>Parameter
-    compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with
-    `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only
-    with
-    `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or
+    stored_credential or card-on-file). Parameter compatibility:
+    `payment_type=ONE_TIME` is compatible only with
+    `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with
+    `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
     `previous_network_transaction_reference` is compatible only with
-    `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
+    `payment_initiator=MERCHANT`. Only one of the parameters -
     `previous_transaction_reference` and
-    `previous_network_transaction_reference` - can be present in the
-    request.</li></ul>
+    `previous_network_transaction_reference` - can be present in the request.
 
     Attributes:
         payment_initiator (PaymentInitiator): The person or party who
@@ -83,7 +81,7 @@ class CardStoredCredential(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -96,3 +94,17 @@ class CardStoredCredential(object):
                    payment_type,
                    usage,
                    previous_network_transaction_reference)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'payment_initiator={self.payment_initiator!r}, '
+                f'payment_type={self.payment_type!r}, '
+                f'usage={(self.usage if hasattr(self, "usage") else None)!r}, '
+                f'previous_network_transaction_reference={(self.previous_network_transaction_reference if hasattr(self, "previous_network_transaction_reference") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'payment_initiator={self.payment_initiator!s}, '
+                f'payment_type={self.payment_type!s}, '
+                f'usage={(self.usage if hasattr(self, "usage") else None)!s}, '
+                f'previous_network_transaction_reference={(self.previous_network_transaction_reference if hasattr(self, "previous_network_transaction_reference") else None)!s})')

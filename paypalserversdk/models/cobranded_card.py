@@ -68,7 +68,7 @@ class CobrandedCard(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -79,3 +79,15 @@ class CobrandedCard(object):
         return cls(labels,
                    payee,
                    amount)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'labels={(self.labels if hasattr(self, "labels") else None)!r}, '
+                f'payee={(self.payee if hasattr(self, "payee") else None)!r}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'labels={(self.labels if hasattr(self, "labels") else None)!s}, '
+                f'payee={(self.payee if hasattr(self, "payee") else None)!s}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!s})')

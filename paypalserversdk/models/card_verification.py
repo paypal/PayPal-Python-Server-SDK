@@ -17,7 +17,8 @@ class CardVerification(object):
     verification services (e.g. Smart Dollar Auth, 3DS).
 
     Attributes:
-        method (CardVerificationMethod): The method used for card verification.
+        method (OrdersCardVerificationMethod): The method used for card
+            verification.
 
     """
 
@@ -52,10 +53,18 @@ class CardVerification(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         method = dictionary.get("method") if dictionary.get("method") else 'SCA_WHEN_REQUIRED'
         # Return an object of this model
         return cls(method)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'method={(self.method if hasattr(self, "method") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'method={(self.method if hasattr(self, "method") else None)!s})')

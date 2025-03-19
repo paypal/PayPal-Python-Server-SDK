@@ -24,12 +24,11 @@ class ApplePayRequest(object):
             identifier for this transaction provided by Apple. The pattern is
             defined by an external party and supports Unicode.
         name (str): The full name representation like Mr J Smith.
-        email_address (str): The internationalized email
-            address.<blockquote><strong>Note:</strong> Up to 64 characters are
-            allowed before and 255 characters are allowed after the
-            <code>@</code> sign. However, the generally accepted maximum
-            length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign exists.</blockquote>
+        email_address (str): The internationalized email address. Note: Up to
+            64 characters are allowed before and 255 characters are allowed
+            after the @ sign. However, the generally accepted maximum length
+            for an email address is 254 characters. The pattern verifies that
+            an unquoted @ sign exists.
         phone_number (PhoneNumber): The phone number in its canonical
             international [E.164 numbering plan
             format](https://www.itu.int/rec/T-REC-E.164/en).
@@ -38,16 +37,15 @@ class ApplePayRequest(object):
         stored_credential (CardStoredCredential): Provides additional details
             to process a payment using a `card` that has been stored or is
             intended to be stored (also referred to as stored_credential or
-            card-on-file).<br/>Parameter
-            compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible
-            only with `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is
-            compatible only with
-            `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_referen
-            ce` or `previous_network_transaction_reference` is compatible only
-            with `payment_initiator=MERCHANT`.</li><li>Only one of the
-            parameters - `previous_transaction_reference` and
+            card-on-file). Parameter compatibility: `payment_type=ONE_TIME` is
+            compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST`
+            is compatible only with `payment_initiator=CUSTOMER`.
+            `previous_transaction_reference` or
+            `previous_network_transaction_reference` is compatible only with
+            `payment_initiator=MERCHANT`. Only one of the parameters -
+            `previous_transaction_reference` and
             `previous_network_transaction_reference` - can be present in the
-            request.</li></ul>
+            request.
         vault_id (str): The PayPal-generated ID for the vaulted payment
             source. This ID should be stored on the merchant's server so the
             saved payment source can be used for future transactions.
@@ -123,7 +121,7 @@ class ApplePayRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -144,3 +142,25 @@ class ApplePayRequest(object):
                    stored_credential,
                    vault_id,
                    attributes)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={(self.id if hasattr(self, "id") else None)!r}, '
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!r}, '
+                f'phone_number={(self.phone_number if hasattr(self, "phone_number") else None)!r}, '
+                f'decrypted_token={(self.decrypted_token if hasattr(self, "decrypted_token") else None)!r}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!r}, '
+                f'vault_id={(self.vault_id if hasattr(self, "vault_id") else None)!r}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={(self.id if hasattr(self, "id") else None)!s}, '
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!s}, '
+                f'phone_number={(self.phone_number if hasattr(self, "phone_number") else None)!s}, '
+                f'decrypted_token={(self.decrypted_token if hasattr(self, "decrypted_token") else None)!s}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!s}, '
+                f'vault_id={(self.vault_id if hasattr(self, "vault_id") else None)!s}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s})')

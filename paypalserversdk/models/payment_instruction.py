@@ -84,7 +84,7 @@ class PaymentInstruction(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -101,3 +101,17 @@ class PaymentInstruction(object):
                    disbursement_mode,
                    payee_pricing_tier_id,
                    payee_receivable_fx_rate_id)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'platform_fees={(self.platform_fees if hasattr(self, "platform_fees") else None)!r}, '
+                f'disbursement_mode={(self.disbursement_mode if hasattr(self, "disbursement_mode") else None)!r}, '
+                f'payee_pricing_tier_id={(self.payee_pricing_tier_id if hasattr(self, "payee_pricing_tier_id") else None)!r}, '
+                f'payee_receivable_fx_rate_id={(self.payee_receivable_fx_rate_id if hasattr(self, "payee_receivable_fx_rate_id") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'platform_fees={(self.platform_fees if hasattr(self, "platform_fees") else None)!s}, '
+                f'disbursement_mode={(self.disbursement_mode if hasattr(self, "disbursement_mode") else None)!s}, '
+                f'payee_pricing_tier_id={(self.payee_pricing_tier_id if hasattr(self, "payee_pricing_tier_id") else None)!s}, '
+                f'payee_receivable_fx_rate_id={(self.payee_receivable_fx_rate_id if hasattr(self, "payee_receivable_fx_rate_id") else None)!s})')

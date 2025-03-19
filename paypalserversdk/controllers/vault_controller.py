@@ -28,8 +28,8 @@ class VaultController(BaseController):
     def __init__(self, config):
         super(VaultController, self).__init__(config)
 
-    def payment_tokens_create(self,
-                              options=dict()):
+    def create_payment_token(self,
+                             options=dict()):
         """Does a POST request to /v3/vault/payment-tokens.
 
         Creates a Payment Token from the given payment source and adds it to
@@ -42,10 +42,10 @@ class VaultController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    paypal_request_id -- str -- The server stores keys for 3
-                        hours.
                     body -- PaymentTokenRequest -- Payment Token creation with
                         a financial instrument and an optional customer_id.
+                    paypal_request_id -- str -- The server stores keys for 3
+                        hours.
 
         Returns:
             ApiResponse: An object with the response value as well as other
@@ -65,13 +65,13 @@ class VaultController(BaseController):
             .path('/v3/vault/payment-tokens')
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
-                          .key('PayPal-Request-Id')
-                          .value(options.get('paypal_request_id', None)))
-            .header_param(Parameter()
                           .key('Content-Type')
                           .value('application/json'))
             .body_param(Parameter()
                         .value(options.get('body', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Request-Id')
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))
@@ -89,8 +89,8 @@ class VaultController(BaseController):
             .local_error('500', 'An internal server error has occurred.', ErrorException)
         ).execute()
 
-    def customer_payment_tokens_get(self,
-                                    options=dict()):
+    def list_customer_payment_tokens(self,
+                                     options=dict()):
         """Does a GET request to /v3/vault/payment-tokens.
 
         Returns all payment tokens for a customer.
@@ -157,8 +157,8 @@ class VaultController(BaseController):
             .local_error('500', 'An internal server error has occurred.', ErrorException)
         ).execute()
 
-    def payment_tokens_get(self,
-                           id):
+    def get_payment_token(self,
+                          id):
         """Does a GET request to /v3/vault/payment-tokens/{id}.
 
         Returns a readable representation of vaulted payment source associated
@@ -203,8 +203,8 @@ class VaultController(BaseController):
             .local_error('500', 'An internal server error has occurred.', ErrorException)
         ).execute()
 
-    def payment_tokens_delete(self,
-                              id):
+    def delete_payment_token(self,
+                             id):
         """Does a DELETE request to /v3/vault/payment-tokens/{id}.
 
         Delete the payment token associated with the payment token id.
@@ -243,8 +243,8 @@ class VaultController(BaseController):
             .local_error('500', 'An internal server error has occurred.', ErrorException)
         ).execute()
 
-    def setup_tokens_create(self,
-                            options=dict()):
+    def create_setup_token(self,
+                           options=dict()):
         """Does a POST request to /v3/vault/setup-tokens.
 
         Creates a Setup Token from the given payment source and adds it to the
@@ -257,11 +257,11 @@ class VaultController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    paypal_request_id -- str -- The server stores keys for 3
-                        hours.
                     body -- SetupTokenRequest -- Setup Token creation with a
                         instrument type optional financial instrument details
                         and customer_id.
+                    paypal_request_id -- str -- The server stores keys for 3
+                        hours.
 
         Returns:
             ApiResponse: An object with the response value as well as other
@@ -281,13 +281,13 @@ class VaultController(BaseController):
             .path('/v3/vault/setup-tokens')
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
-                          .key('PayPal-Request-Id')
-                          .value(options.get('paypal_request_id', None)))
-            .header_param(Parameter()
                           .key('Content-Type')
                           .value('application/json'))
             .body_param(Parameter()
                         .value(options.get('body', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Request-Id')
+                          .value(options.get('paypal_request_id', None)))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))
@@ -304,8 +304,8 @@ class VaultController(BaseController):
             .local_error('500', 'An internal server error has occurred.', ErrorException)
         ).execute()
 
-    def setup_tokens_get(self,
-                         id):
+    def get_setup_token(self,
+                        id):
         """Does a GET request to /v3/vault/setup-tokens/{id}.
 
         Returns a readable representation of temporarily vaulted payment

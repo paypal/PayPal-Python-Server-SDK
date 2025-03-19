@@ -85,7 +85,7 @@ class ApplePayDecryptedTokenData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -100,3 +100,19 @@ class ApplePayDecryptedTokenData(object):
                    device_manufacturer_id,
                    payment_data_type,
                    payment_data)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'transaction_amount={(self.transaction_amount if hasattr(self, "transaction_amount") else None)!r}, '
+                f'tokenized_card={self.tokenized_card!r}, '
+                f'device_manufacturer_id={(self.device_manufacturer_id if hasattr(self, "device_manufacturer_id") else None)!r}, '
+                f'payment_data_type={(self.payment_data_type if hasattr(self, "payment_data_type") else None)!r}, '
+                f'payment_data={(self.payment_data if hasattr(self, "payment_data") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'transaction_amount={(self.transaction_amount if hasattr(self, "transaction_amount") else None)!s}, '
+                f'tokenized_card={self.tokenized_card!s}, '
+                f'device_manufacturer_id={(self.device_manufacturer_id if hasattr(self, "device_manufacturer_id") else None)!s}, '
+                f'payment_data_type={(self.payment_data_type if hasattr(self, "payment_data_type") else None)!s}, '
+                f'payment_data={(self.payment_data if hasattr(self, "payment_data") else None)!s})')

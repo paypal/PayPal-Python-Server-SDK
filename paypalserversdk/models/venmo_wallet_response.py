@@ -20,12 +20,11 @@ class VenmoWalletResponse(object):
     Venmo wallet response.
 
     Attributes:
-        email_address (str): The internationalized email
-            address.<blockquote><strong>Note:</strong> Up to 64 characters are
-            allowed before and 255 characters are allowed after the
-            <code>@</code> sign. However, the generally accepted maximum
-            length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign exists.</blockquote>
+        email_address (str): The internationalized email address. Note: Up to
+            64 characters are allowed before and 255 characters are allowed
+            after the @ sign. However, the generally accepted maximum length
+            for an email address is 254 characters. The pattern verifies that
+            an unquoted @ sign exists.
         account_id (str): The PayPal payer ID, which is a masked version of
             the PayPal account number intended for use with third parties. The
             account number is reversibly encrypted and a proprietary variant
@@ -109,7 +108,7 @@ class VenmoWalletResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -128,3 +127,23 @@ class VenmoWalletResponse(object):
                    phone_number,
                    address,
                    attributes)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!r}, '
+                f'account_id={(self.account_id if hasattr(self, "account_id") else None)!r}, '
+                f'user_name={(self.user_name if hasattr(self, "user_name") else None)!r}, '
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'phone_number={(self.phone_number if hasattr(self, "phone_number") else None)!r}, '
+                f'address={(self.address if hasattr(self, "address") else None)!r}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!s}, '
+                f'account_id={(self.account_id if hasattr(self, "account_id") else None)!s}, '
+                f'user_name={(self.user_name if hasattr(self, "user_name") else None)!s}, '
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'phone_number={(self.phone_number if hasattr(self, "phone_number") else None)!s}, '
+                f'address={(self.address if hasattr(self, "address") else None)!s}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s})')

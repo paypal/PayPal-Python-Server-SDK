@@ -15,26 +15,26 @@ class UpcType(object):
     The Universal Product Code type.
 
     Attributes:
-        UPCA: TODO: type description here.
-        UPCB: TODO: type description here.
-        UPCC: TODO: type description here.
-        UPCD: TODO: type description here.
-        UPCE: TODO: type description here.
-        UPC2: TODO: type description here.
-        UPC5: TODO: type description here.
+        UPC_A: The enum member of type str.
+        UPC_B: The enum member of type str.
+        UPC_C: The enum member of type str.
+        UPC_D: The enum member of type str.
+        UPC_E: The enum member of type str.
+        UPC_2: The enum member of type str.
+        UPC_5: The enum member of type str.
 
     """
-    UPCA = 'UPC-A'
+    UPC_A = 'UPC-A'
 
-    UPCB = 'UPC-B'
+    UPC_B = 'UPC-B'
 
-    UPCC = 'UPC-C'
+    UPC_C = 'UPC-C'
 
-    UPCD = 'UPC-D'
+    UPC_D = 'UPC-D'
 
-    UPCE = 'UPC-E'
+    UPC_E = 'UPC-E'
 
-    UPC2 = 'UPC-2'
+    UPC_2 = 'UPC-2'
 
-    UPC5 = 'UPC-5'
+    UPC_5 = 'UPC-5'
 

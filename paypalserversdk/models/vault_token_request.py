@@ -16,8 +16,8 @@ class VaultTokenRequest(object):
 
     Attributes:
         id (str): The PayPal-generated ID for the token.
-        mtype (TokenRequestType): The tokenization method that generated the
-            ID.
+        mtype (VaultTokenRequestType): The tokenization method that generated
+            the ID.
 
     """
 
@@ -51,7 +51,7 @@ class VaultTokenRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -60,3 +60,13 @@ class VaultTokenRequest(object):
         # Return an object of this model
         return cls(id,
                    mtype)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={self.id!r}, '
+                f'mtype={self.mtype!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={self.id!s}, '
+                f'mtype={self.mtype!s})')

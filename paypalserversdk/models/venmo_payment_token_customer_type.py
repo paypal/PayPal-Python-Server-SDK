@@ -17,8 +17,10 @@ class VenmoPaymentTokenCustomerType(object):
     a business or a consumer.
 
     Attributes:
-        CONSUMER: TODO: type description here.
-        BUSINESS: TODO: type description here.
+        CONSUMER: The customer vaulting the Venmo payment token is a consumer
+            on the merchant / platform.
+        BUSINESS: The customer vaulting the Venmo payment token is a business
+            on merchant / platform.
 
     """
     CONSUMER = 'CONSUMER'

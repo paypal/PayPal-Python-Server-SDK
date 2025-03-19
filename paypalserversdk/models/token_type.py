@@ -15,7 +15,8 @@ class TokenType(object):
     The tokenization method that generated the ID.
 
     Attributes:
-        BILLING_AGREEMENT: TODO: type description here.
+        BILLING_AGREEMENT: The PayPal billing agreement ID. References an
+            approved recurring payment for goods or services.
 
     """
     BILLING_AGREEMENT = 'BILLING_AGREEMENT'

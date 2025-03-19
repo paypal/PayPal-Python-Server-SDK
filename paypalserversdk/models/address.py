@@ -32,22 +32,19 @@ class Address(object):
         admin_area_1 (str): The highest-level sub-division in a country, which
             is usually a province, state, or ISO-3166-2 subdivision. This data
             is formatted for postal delivery, for example, `CA` and not
-            `California`. Value, by country, is:<ul><li>UK. A
-            county.</li><li>US. A state.</li><li>Canada. A
-            province.</li><li>Japan. A prefecture.</li><li>Switzerland. A
-            *kanton*.</li></ul>
+            `California`. Value, by country, is: UK. A county. US. A state.
+            Canada. A province. Japan. A prefecture. Switzerland. A *kanton*.
         postal_code (str): The postal code, which is the ZIP code or
             equivalent. Typically required for countries with a postal code or
             an equivalent. See [postal
             code](https://en.wikipedia.org/wiki/Postal_code).
         country_code (str): The [2-character ISO 3166-1
             code](/api/rest/reference/country-codes/) that identifies the
-            country or region.<blockquote><strong>Note:</strong> The country
-            code for Great Britain is <code>GB</code> and not <code>UK</code>
-            as used in the top-level domain names for that country. Use the
-            `C2` country code for China worldwide for comparable uncontrolled
-            price (CUP) method, bank card, and cross-border
-            transactions.</blockquote>
+            country or region. Note: The country code for Great Britain is GB
+            and not UK as used in the top-level domain names for that country.
+            Use the `C2` country code for China worldwide for comparable
+            uncontrolled price (CUP) method, bank card, and cross-border
+            transactions.
 
     """
 
@@ -106,7 +103,7 @@ class Address(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -123,3 +120,21 @@ class Address(object):
                    admin_area_2,
                    admin_area_1,
                    postal_code)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'address_line_1={(self.address_line_1 if hasattr(self, "address_line_1") else None)!r}, '
+                f'address_line_2={(self.address_line_2 if hasattr(self, "address_line_2") else None)!r}, '
+                f'admin_area_2={(self.admin_area_2 if hasattr(self, "admin_area_2") else None)!r}, '
+                f'admin_area_1={(self.admin_area_1 if hasattr(self, "admin_area_1") else None)!r}, '
+                f'postal_code={(self.postal_code if hasattr(self, "postal_code") else None)!r}, '
+                f'country_code={self.country_code!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'address_line_1={(self.address_line_1 if hasattr(self, "address_line_1") else None)!s}, '
+                f'address_line_2={(self.address_line_2 if hasattr(self, "address_line_2") else None)!s}, '
+                f'admin_area_2={(self.admin_area_2 if hasattr(self, "admin_area_2") else None)!s}, '
+                f'admin_area_1={(self.admin_area_1 if hasattr(self, "admin_area_1") else None)!s}, '
+                f'postal_code={(self.postal_code if hasattr(self, "postal_code") else None)!s}, '
+                f'country_code={self.country_code!s})')

@@ -13,6 +13,8 @@ class PhoneNumberWithCountryCode(object):
     """Implementation of the 'Phone Number With Country Code' model.
 
     The phone number in its canonical international [E.164 numbering plan
+    format](https://www.itu.int/rec/T-REC-E.164/en)., The phone number, in its
+    canonical international [E.164 numbering plan
     format](https://www.itu.int/rec/T-REC-E.164/en).
 
     Attributes:
@@ -61,7 +63,7 @@ class PhoneNumberWithCountryCode(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -70,3 +72,13 @@ class PhoneNumberWithCountryCode(object):
         # Return an object of this model
         return cls(country_code,
                    national_number)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'country_code={self.country_code!r}, '
+                f'national_number={self.national_number!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'country_code={self.country_code!s}, '
+                f'national_number={self.national_number!s})')

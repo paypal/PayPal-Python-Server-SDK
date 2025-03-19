@@ -83,7 +83,7 @@ class NetworkToken(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -98,3 +98,19 @@ class NetworkToken(object):
                    cryptogram,
                    eci_flag,
                    token_requestor_id)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'number={self.number!r}, '
+                f'expiry={self.expiry!r}, '
+                f'cryptogram={(self.cryptogram if hasattr(self, "cryptogram") else None)!r}, '
+                f'eci_flag={(self.eci_flag if hasattr(self, "eci_flag") else None)!r}, '
+                f'token_requestor_id={(self.token_requestor_id if hasattr(self, "token_requestor_id") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'number={self.number!s}, '
+                f'expiry={self.expiry!s}, '
+                f'cryptogram={(self.cryptogram if hasattr(self, "cryptogram") else None)!s}, '
+                f'eci_flag={(self.eci_flag if hasattr(self, "eci_flag") else None)!s}, '
+                f'token_requestor_id={(self.token_requestor_id if hasattr(self, "token_requestor_id") else None)!s})')

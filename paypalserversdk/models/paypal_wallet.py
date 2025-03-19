@@ -11,6 +11,7 @@ from paypalserversdk.models.address import Address
 from paypalserversdk.models.name import Name
 from paypalserversdk.models.paypal_wallet_attributes import PaypalWalletAttributes
 from paypalserversdk.models.paypal_wallet_experience_context import PaypalWalletExperienceContext
+from paypalserversdk.models.paypal_wallet_stored_credential import PaypalWalletStoredCredential
 from paypalserversdk.models.phone_with_type import PhoneWithType
 from paypalserversdk.models.tax_info import TaxInfo
 
@@ -25,12 +26,11 @@ class PaypalWallet(object):
         vault_id (str): The PayPal-generated ID for the vaulted payment
             source. This ID should be stored on the merchant's server so the
             saved payment source can be used for future transactions.
-        email_address (str): The internationalized email
-            address.<blockquote><strong>Note:</strong> Up to 64 characters are
-            allowed before and 255 characters are allowed after the
-            <code>@</code> sign. However, the generally accepted maximum
-            length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign exists.</blockquote>
+        email_address (str): The internationalized email address. Note: Up to
+            64 characters are allowed before and 255 characters are allowed
+            after the @ sign. However, the generally accepted maximum length
+            for an email address is 254 characters. The pattern verifies that
+            an unquoted @ sign exists.
         name (Name): The name of the party.
         phone (PhoneWithType): The phone information.
         birth_date (str): The stand-alone date, in [Internet date and time
@@ -52,12 +52,15 @@ class PaypalWallet(object):
             with the use of this PayPal Wallet.
         experience_context (PaypalWalletExperienceContext): Customizes the
             payer experience during the approval process for payment with
-            PayPal.<blockquote><strong>Note:</strong> Partners and
-            Marketplaces might configure <code>brand_name</code> and
-            <code>shipping_preference</code> during partner account setup,
-            which overrides the request values.</blockquote>
+            PayPal. Note: Partners and Marketplaces might configure brand_name
+            and shipping_preference during partner account setup, which
+            overrides the request values.
         billing_agreement_id (str): The PayPal billing agreement ID.
             References an approved recurring payment for goods or services.
+        stored_credential (PaypalWalletStoredCredential): Provides additional
+            details to process a payment using the PayPal wallet billing
+            agreement or a vaulted payment method that has been stored or is
+            intended to be stored.
 
     """
 
@@ -72,7 +75,8 @@ class PaypalWallet(object):
         "address": 'address',
         "attributes": 'attributes',
         "experience_context": 'experience_context',
-        "billing_agreement_id": 'billing_agreement_id'
+        "billing_agreement_id": 'billing_agreement_id',
+        "stored_credential": 'stored_credential'
     }
 
     _optionals = [
@@ -86,6 +90,7 @@ class PaypalWallet(object):
         'attributes',
         'experience_context',
         'billing_agreement_id',
+        'stored_credential',
     ]
 
     def __init__(self,
@@ -98,7 +103,8 @@ class PaypalWallet(object):
                  address=APIHelper.SKIP,
                  attributes=APIHelper.SKIP,
                  experience_context=APIHelper.SKIP,
-                 billing_agreement_id=APIHelper.SKIP):
+                 billing_agreement_id=APIHelper.SKIP,
+                 stored_credential=APIHelper.SKIP):
         """Constructor for the PaypalWallet class"""
 
         # Initialize members of the class
@@ -122,6 +128,8 @@ class PaypalWallet(object):
             self.experience_context = experience_context 
         if billing_agreement_id is not APIHelper.SKIP:
             self.billing_agreement_id = billing_agreement_id 
+        if stored_credential is not APIHelper.SKIP:
+            self.stored_credential = stored_credential 
 
     @classmethod
     def from_dictionary(cls,
@@ -138,7 +146,7 @@ class PaypalWallet(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -152,6 +160,7 @@ class PaypalWallet(object):
         attributes = PaypalWalletAttributes.from_dictionary(dictionary.get('attributes')) if 'attributes' in dictionary.keys() else APIHelper.SKIP
         experience_context = PaypalWalletExperienceContext.from_dictionary(dictionary.get('experience_context')) if 'experience_context' in dictionary.keys() else APIHelper.SKIP
         billing_agreement_id = dictionary.get("billing_agreement_id") if dictionary.get("billing_agreement_id") else APIHelper.SKIP
+        stored_credential = PaypalWalletStoredCredential.from_dictionary(dictionary.get('stored_credential')) if 'stored_credential' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(vault_id,
                    email_address,
@@ -162,4 +171,33 @@ class PaypalWallet(object):
                    address,
                    attributes,
                    experience_context,
-                   billing_agreement_id)
+                   billing_agreement_id,
+                   stored_credential)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'vault_id={(self.vault_id if hasattr(self, "vault_id") else None)!r}, '
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!r}, '
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'phone={(self.phone if hasattr(self, "phone") else None)!r}, '
+                f'birth_date={(self.birth_date if hasattr(self, "birth_date") else None)!r}, '
+                f'tax_info={(self.tax_info if hasattr(self, "tax_info") else None)!r}, '
+                f'address={(self.address if hasattr(self, "address") else None)!r}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!r}, '
+                f'billing_agreement_id={(self.billing_agreement_id if hasattr(self, "billing_agreement_id") else None)!r}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'vault_id={(self.vault_id if hasattr(self, "vault_id") else None)!s}, '
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!s}, '
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'phone={(self.phone if hasattr(self, "phone") else None)!s}, '
+                f'birth_date={(self.birth_date if hasattr(self, "birth_date") else None)!s}, '
+                f'tax_info={(self.tax_info if hasattr(self, "tax_info") else None)!s}, '
+                f'address={(self.address if hasattr(self, "address") else None)!s}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!s}, '
+                f'billing_agreement_id={(self.billing_agreement_id if hasattr(self, "billing_agreement_id") else None)!s}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!s})')

@@ -15,9 +15,9 @@ class LiabilityShiftIndicator(object):
     Liability shift indicator. The outcome of the issuer's authentication.
 
     Attributes:
-        NO: TODO: type description here.
-        POSSIBLE: TODO: type description here.
-        UNKNOWN: TODO: type description here.
+        NO: Liability is with the merchant.
+        POSSIBLE: Liability may shift to the card issuer.
+        UNKNOWN: The authentication system is not available.
 
     """
     NO = 'NO'

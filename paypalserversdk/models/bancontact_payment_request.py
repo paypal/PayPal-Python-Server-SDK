@@ -20,12 +20,11 @@ class BancontactPaymentRequest(object):
         name (str): The full name representation like Mr J Smith.
         country_code (str): The [two-character ISO 3166-1
             code](/api/rest/reference/country-codes/) that identifies the
-            country or region.<blockquote><strong>Note:</strong> The country
-            code for Great Britain is <code>GB</code> and not <code>UK</code>
-            as used in the top-level domain names for that country. Use the
-            `C2` country code for China worldwide for comparable uncontrolled
-            price (CUP) method, bank card, and cross-border
-            transactions.</blockquote>
+            country or region. Note: The country code for Great Britain is GB
+            and not UK as used in the top-level domain names for that country.
+            Use the `C2` country code for China worldwide for comparable
+            uncontrolled price (CUP) method, bank card, and cross-border
+            transactions.
         experience_context (ExperienceContext): Customizes the payer
             experience during the approval process for the payment.
 
@@ -69,7 +68,7 @@ class BancontactPaymentRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -80,3 +79,15 @@ class BancontactPaymentRequest(object):
         return cls(name,
                    country_code,
                    experience_context)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={self.name!r}, '
+                f'country_code={self.country_code!r}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={self.name!s}, '
+                f'country_code={self.country_code!s}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!s})')

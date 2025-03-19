@@ -18,8 +18,10 @@ class PaypalWalletAttributes(object):
     Additional attributes associated with the use of this PayPal Wallet.
 
     Attributes:
-        customer (PaypalWalletCustomerRequest): TODO: type description here.
-        vault (PaypalWalletVaultInstruction): TODO: type description here.
+        customer (PaypalWalletCustomerRequest): The model property of type
+            PaypalWalletCustomerRequest.
+        vault (PaypalWalletVaultInstruction): The model property of type
+            PaypalWalletVaultInstruction.
 
     """
 
@@ -60,7 +62,7 @@ class PaypalWalletAttributes(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -69,3 +71,13 @@ class PaypalWalletAttributes(object):
         # Return an object of this model
         return cls(customer,
                    vault)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'customer={(self.customer if hasattr(self, "customer") else None)!r}, '
+                f'vault={(self.vault if hasattr(self, "vault") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'customer={(self.customer if hasattr(self, "customer") else None)!s}, '
+                f'vault={(self.vault if hasattr(self, "vault") else None)!s})')

@@ -21,17 +21,16 @@ class VenmoWalletRequest(object):
         vault_id (str): The PayPal-generated ID for the vaulted payment
             source. This ID should be stored on the merchant's server so the
             saved payment source can be used for future transactions.
-        email_address (str): The internationalized email
-            address.<blockquote><strong>Note:</strong> Up to 64 characters are
-            allowed before and 255 characters are allowed after the
-            <code>@</code> sign. However, the generally accepted maximum
-            length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign exists.</blockquote>
+        email_address (str): The internationalized email address. Note: Up to
+            64 characters are allowed before and 255 characters are allowed
+            after the @ sign. However, the generally accepted maximum length
+            for an email address is 254 characters. The pattern verifies that
+            an unquoted @ sign exists.
         experience_context (VenmoWalletExperienceContext): Customizes the
             buyer experience during the approval process for payment with
-            Venmo.<blockquote><strong>Note:</strong> Partners and Marketplaces
-            might configure <code>shipping_preference</code> during partner
-            account setup, which overrides the request values.</blockquote>
+            Venmo. Note: Partners and Marketplaces might configure
+            shipping_preference during partner account setup, which overrides
+            the request values.
         attributes (VenmoWalletAdditionalAttributes): Additional attributes
             associated with the use of this Venmo Wallet.
 
@@ -84,7 +83,7 @@ class VenmoWalletRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -97,3 +96,17 @@ class VenmoWalletRequest(object):
                    email_address,
                    experience_context,
                    attributes)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'vault_id={(self.vault_id if hasattr(self, "vault_id") else None)!r}, '
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!r}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!r}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'vault_id={(self.vault_id if hasattr(self, "vault_id") else None)!s}, '
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!s}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!s}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s})')

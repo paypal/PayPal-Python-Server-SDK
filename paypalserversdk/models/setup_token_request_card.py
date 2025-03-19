@@ -35,10 +35,10 @@ class SetupTokenRequestCard(object):
             form controls: the autocomplete
             attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-
             form-controls-the-autocomplete-attribute).
-        verification_method (str): The verification method of the card.
+        verification_method (VaultCardVerificationMethod): The verification
+            method of the card.
         experience_context (SetupTokenCardExperienceContext): Customizes the
             Vault creation flow experience for your customers.
-        network_transaction_reference (object): TODO: type description here.
 
     """
 
@@ -51,8 +51,7 @@ class SetupTokenRequestCard(object):
         "brand": 'brand',
         "billing_address": 'billing_address',
         "verification_method": 'verification_method',
-        "experience_context": 'experience_context',
-        "network_transaction_reference": 'network_transaction_reference'
+        "experience_context": 'experience_context'
     }
 
     _optionals = [
@@ -64,7 +63,6 @@ class SetupTokenRequestCard(object):
         'billing_address',
         'verification_method',
         'experience_context',
-        'network_transaction_reference',
     ]
 
     def __init__(self,
@@ -75,8 +73,7 @@ class SetupTokenRequestCard(object):
                  brand=APIHelper.SKIP,
                  billing_address=APIHelper.SKIP,
                  verification_method=APIHelper.SKIP,
-                 experience_context=APIHelper.SKIP,
-                 network_transaction_reference=APIHelper.SKIP):
+                 experience_context=APIHelper.SKIP):
         """Constructor for the SetupTokenRequestCard class"""
 
         # Initialize members of the class
@@ -96,8 +93,6 @@ class SetupTokenRequestCard(object):
             self.verification_method = verification_method 
         if experience_context is not APIHelper.SKIP:
             self.experience_context = experience_context 
-        if network_transaction_reference is not APIHelper.SKIP:
-            self.network_transaction_reference = network_transaction_reference 
 
     @classmethod
     def from_dictionary(cls,
@@ -114,7 +109,7 @@ class SetupTokenRequestCard(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -126,7 +121,6 @@ class SetupTokenRequestCard(object):
         billing_address = Address.from_dictionary(dictionary.get('billing_address')) if 'billing_address' in dictionary.keys() else APIHelper.SKIP
         verification_method = dictionary.get("verification_method") if dictionary.get("verification_method") else APIHelper.SKIP
         experience_context = SetupTokenCardExperienceContext.from_dictionary(dictionary.get('experience_context')) if 'experience_context' in dictionary.keys() else APIHelper.SKIP
-        network_transaction_reference = dictionary.get("network_transaction_reference") if dictionary.get("network_transaction_reference") else APIHelper.SKIP
         # Return an object of this model
         return cls(name,
                    number,
@@ -135,5 +129,26 @@ class SetupTokenRequestCard(object):
                    brand,
                    billing_address,
                    verification_method,
-                   experience_context,
-                   network_transaction_reference)
+                   experience_context)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'number={(self.number if hasattr(self, "number") else None)!r}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!r}, '
+                f'security_code={(self.security_code if hasattr(self, "security_code") else None)!r}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!r}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!r}, '
+                f'verification_method={(self.verification_method if hasattr(self, "verification_method") else None)!r}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'number={(self.number if hasattr(self, "number") else None)!s}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!s}, '
+                f'security_code={(self.security_code if hasattr(self, "security_code") else None)!s}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!s}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!s}, '
+                f'verification_method={(self.verification_method if hasattr(self, "verification_method") else None)!s}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!s})')

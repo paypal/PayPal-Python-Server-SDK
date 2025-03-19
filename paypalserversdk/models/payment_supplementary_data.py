@@ -54,10 +54,18 @@ class PaymentSupplementaryData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         related_ids = RelatedIdentifiers.from_dictionary(dictionary.get('related_ids')) if 'related_ids' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(related_ids)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'related_ids={(self.related_ids if hasattr(self, "related_ids") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'related_ids={(self.related_ids if hasattr(self, "related_ids") else None)!s})')

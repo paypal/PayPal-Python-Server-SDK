@@ -48,10 +48,18 @@ class VaultInstruction(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         store_in_vault = dictionary.get("store_in_vault") if dictionary.get("store_in_vault") else None
         # Return an object of this model
         return cls(store_in_vault)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'store_in_vault={self.store_in_vault!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'store_in_vault={self.store_in_vault!s})')

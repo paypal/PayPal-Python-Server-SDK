@@ -38,18 +38,6 @@ client = PaypalServersdkClient(
 )
 ```
 
-API calls return an `ApiResponse` object that includes the following fields:
-
-| Field | Description |
-|  --- | --- |
-| `status_code` | Status code of the HTTP response |
-| `reason_phrase` | Reason phrase of the HTTP response |
-| `headers` | Headers of the HTTP response as a dictionary |
-| `text` | The body of the HTTP response as a string |
-| `request` | HTTP request info |
-| `errors` | Errors, if they exist |
-| `body` | The deserialized body of the HTTP response |
-
 ## PayPal Server SDK Client
 
 The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.

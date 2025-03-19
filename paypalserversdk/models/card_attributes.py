@@ -72,7 +72,7 @@ class CardAttributes(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -83,3 +83,15 @@ class CardAttributes(object):
         return cls(customer,
                    vault,
                    verification)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'customer={(self.customer if hasattr(self, "customer") else None)!r}, '
+                f'vault={(self.vault if hasattr(self, "vault") else None)!r}, '
+                f'verification={(self.verification if hasattr(self, "verification") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'customer={(self.customer if hasattr(self, "customer") else None)!s}, '
+                f'vault={(self.vault if hasattr(self, "vault") else None)!s}, '
+                f'verification={(self.verification if hasattr(self, "verification") else None)!s})')

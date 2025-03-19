@@ -63,7 +63,7 @@ class ApplePayAttributes(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -72,3 +72,13 @@ class ApplePayAttributes(object):
         # Return an object of this model
         return cls(customer,
                    vault)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'customer={(self.customer if hasattr(self, "customer") else None)!r}, '
+                f'vault={(self.vault if hasattr(self, "vault") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'customer={(self.customer if hasattr(self, "customer") else None)!s}, '
+                f'vault={(self.vault if hasattr(self, "vault") else None)!s})')

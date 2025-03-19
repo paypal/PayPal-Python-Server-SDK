@@ -14,11 +14,15 @@ class PaypalPaymentTokenCustomerType(object):
 
     The customer type associated with the PayPal payment token. This is to
     indicate whether the customer acting on the merchant / platform is either
-    a business or a consumer.
+    a business or a consumer., The customer type associated with a digital
+    wallet payment token. This is to indicate whether the customer acting on
+    the merchant / platform is either a business or a consumer.
 
     Attributes:
-        CONSUMER: TODO: type description here.
-        BUSINESS: TODO: type description here.
+        CONSUMER: The customer vaulting the PayPal payment token is a consumer
+            on the merchant / platform.
+        BUSINESS: The customer vaulting the PayPal payment token is a business
+            on merchant / platform.
 
     """
     CONSUMER = 'CONSUMER'

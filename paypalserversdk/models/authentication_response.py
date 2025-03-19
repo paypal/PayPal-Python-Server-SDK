@@ -61,7 +61,7 @@ class AuthenticationResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -70,3 +70,13 @@ class AuthenticationResponse(object):
         # Return an object of this model
         return cls(liability_shift,
                    three_d_secure)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'liability_shift={(self.liability_shift if hasattr(self, "liability_shift") else None)!r}, '
+                f'three_d_secure={(self.three_d_secure if hasattr(self, "three_d_secure") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'liability_shift={(self.liability_shift if hasattr(self, "liability_shift") else None)!s}, '
+                f'three_d_secure={(self.three_d_secure if hasattr(self, "three_d_secure") else None)!s})')

@@ -23,7 +23,7 @@ class OrderRequest(object):
         intent (CheckoutPaymentIntent): The intent to either capture payment
             immediately or authorize a payment for an order after order
             creation.
-        payer (Payer): TODO: type description here.
+        payer (Payer): The model property of type Payer.
         purchase_units (List[PurchaseUnitRequest]): An array of purchase
             units. Each purchase unit establishes a contract between a payer
             and the payee. Each purchase unit represents either a full or
@@ -31,10 +31,9 @@ class OrderRequest(object):
         payment_source (PaymentSource): The payment source definition.
         application_context (OrderApplicationContext): Customizes the payer
             experience during the approval process for the payment with
-            PayPal.<blockquote><strong>Note:</strong> Partners and
-            Marketplaces might configure <code>brand_name</code> and
-            <code>shipping_preference</code> during partner account setup,
-            which overrides the request values.</blockquote>
+            PayPal. Note: Partners and Marketplaces might configure brand_name
+            and shipping_preference during partner account setup, which
+            overrides the request values.
 
     """
 
@@ -86,7 +85,7 @@ class OrderRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -103,3 +102,19 @@ class OrderRequest(object):
                    payer,
                    payment_source,
                    application_context)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'intent={self.intent!r}, '
+                f'payer={(self.payer if hasattr(self, "payer") else None)!r}, '
+                f'purchase_units={self.purchase_units!r}, '
+                f'payment_source={(self.payment_source if hasattr(self, "payment_source") else None)!r}, '
+                f'application_context={(self.application_context if hasattr(self, "application_context") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'intent={self.intent!s}, '
+                f'payer={(self.payer if hasattr(self, "payer") else None)!s}, '
+                f'purchase_units={self.purchase_units!s}, '
+                f'payment_source={(self.payment_source if hasattr(self, "payment_source") else None)!s}, '
+                f'application_context={(self.application_context if hasattr(self, "application_context") else None)!s})')

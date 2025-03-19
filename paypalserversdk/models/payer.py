@@ -17,15 +17,12 @@ class Payer(object):
 
     """Implementation of the 'Payer' model.
 
-    TODO: type model description here.
-
     Attributes:
-        email_address (str): The internationalized email
-            address.<blockquote><strong>Note:</strong> Up to 64 characters are
-            allowed before and 255 characters are allowed after the
-            <code>@</code> sign. However, the generally accepted maximum
-            length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign exists.</blockquote>
+        email_address (str): The internationalized email address. Note: Up to
+            64 characters are allowed before and 255 characters are allowed
+            after the @ sign. However, the generally accepted maximum length
+            for an email address is 254 characters. The pattern verifies that
+            an unquoted @ sign exists.
         payer_id (str): The account identifier for a PayPal account.
         name (Name): The name of the party.
         phone (PhoneWithType): The phone information.
@@ -109,7 +106,7 @@ class Payer(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -128,3 +125,23 @@ class Payer(object):
                    birth_date,
                    tax_info,
                    address)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!r}, '
+                f'payer_id={(self.payer_id if hasattr(self, "payer_id") else None)!r}, '
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'phone={(self.phone if hasattr(self, "phone") else None)!r}, '
+                f'birth_date={(self.birth_date if hasattr(self, "birth_date") else None)!r}, '
+                f'tax_info={(self.tax_info if hasattr(self, "tax_info") else None)!r}, '
+                f'address={(self.address if hasattr(self, "address") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!s}, '
+                f'payer_id={(self.payer_id if hasattr(self, "payer_id") else None)!s}, '
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'phone={(self.phone if hasattr(self, "phone") else None)!s}, '
+                f'birth_date={(self.birth_date if hasattr(self, "birth_date") else None)!s}, '
+                f'tax_info={(self.tax_info if hasattr(self, "tax_info") else None)!s}, '
+                f'address={(self.address if hasattr(self, "address") else None)!s})')

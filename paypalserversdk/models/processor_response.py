@@ -76,7 +76,7 @@ class ProcessorResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -89,3 +89,17 @@ class ProcessorResponse(object):
                    cvv_code,
                    response_code,
                    payment_advice_code)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'avs_code={(self.avs_code if hasattr(self, "avs_code") else None)!r}, '
+                f'cvv_code={(self.cvv_code if hasattr(self, "cvv_code") else None)!r}, '
+                f'response_code={(self.response_code if hasattr(self, "response_code") else None)!r}, '
+                f'payment_advice_code={(self.payment_advice_code if hasattr(self, "payment_advice_code") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'avs_code={(self.avs_code if hasattr(self, "avs_code") else None)!s}, '
+                f'cvv_code={(self.cvv_code if hasattr(self, "cvv_code") else None)!s}, '
+                f'response_code={(self.response_code if hasattr(self, "response_code") else None)!s}, '
+                f'payment_advice_code={(self.payment_advice_code if hasattr(self, "payment_advice_code") else None)!s})')

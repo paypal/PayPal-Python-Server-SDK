@@ -60,7 +60,7 @@ class ThreeDSecureAuthenticationResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -69,3 +69,13 @@ class ThreeDSecureAuthenticationResponse(object):
         # Return an object of this model
         return cls(authentication_status,
                    enrollment_status)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'authentication_status={(self.authentication_status if hasattr(self, "authentication_status") else None)!r}, '
+                f'enrollment_status={(self.enrollment_status if hasattr(self, "enrollment_status") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'authentication_status={(self.authentication_status if hasattr(self, "authentication_status") else None)!s}, '
+                f'enrollment_status={(self.enrollment_status if hasattr(self, "enrollment_status") else None)!s})')

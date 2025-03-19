@@ -44,24 +44,21 @@ class AuthorizationWithAdditionalData(object):
             otection).
         expiration_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         links (List[LinkDescription]): An array of related [HATEOAS
             links](/docs/api/reference/api-responses/#hateoas-links).
         create_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         update_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         processor_response (ProcessorResponse): The processor response
             information for payment requests, such as direct credit card
             transactions.
@@ -160,7 +157,7 @@ class AuthorizationWithAdditionalData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -195,3 +192,35 @@ class AuthorizationWithAdditionalData(object):
                    create_time,
                    update_time,
                    processor_response)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'status_details={(self.status_details if hasattr(self, "status_details") else None)!r}, '
+                f'id={(self.id if hasattr(self, "id") else None)!r}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!r}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
+                f'custom_id={(self.custom_id if hasattr(self, "custom_id") else None)!r}, '
+                f'network_transaction_reference={(self.network_transaction_reference if hasattr(self, "network_transaction_reference") else None)!r}, '
+                f'seller_protection={(self.seller_protection if hasattr(self, "seller_protection") else None)!r}, '
+                f'expiration_time={(self.expiration_time if hasattr(self, "expiration_time") else None)!r}, '
+                f'links={(self.links if hasattr(self, "links") else None)!r}, '
+                f'create_time={(self.create_time if hasattr(self, "create_time") else None)!r}, '
+                f'update_time={(self.update_time if hasattr(self, "update_time") else None)!r}, '
+                f'processor_response={(self.processor_response if hasattr(self, "processor_response") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'status_details={(self.status_details if hasattr(self, "status_details") else None)!s}, '
+                f'id={(self.id if hasattr(self, "id") else None)!s}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!s}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
+                f'custom_id={(self.custom_id if hasattr(self, "custom_id") else None)!s}, '
+                f'network_transaction_reference={(self.network_transaction_reference if hasattr(self, "network_transaction_reference") else None)!s}, '
+                f'seller_protection={(self.seller_protection if hasattr(self, "seller_protection") else None)!s}, '
+                f'expiration_time={(self.expiration_time if hasattr(self, "expiration_time") else None)!s}, '
+                f'links={(self.links if hasattr(self, "links") else None)!s}, '
+                f'create_time={(self.create_time if hasattr(self, "create_time") else None)!s}, '
+                f'update_time={(self.update_time if hasattr(self, "update_time") else None)!s}, '
+                f'processor_response={(self.processor_response if hasattr(self, "processor_response") else None)!s})')

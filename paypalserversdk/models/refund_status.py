@@ -15,10 +15,12 @@ class RefundStatus(object):
     The status of the refund.
 
     Attributes:
-        CANCELLED: TODO: type description here.
-        FAILED: TODO: type description here.
-        PENDING: TODO: type description here.
-        COMPLETED: TODO: type description here.
+        CANCELLED: The refund was cancelled.
+        FAILED: The refund could not be processed.
+        PENDING: The refund is pending. For more information, see
+            status_details.reason.
+        COMPLETED: The funds for this transaction were debited to the
+            customer's account.
 
     """
     CANCELLED = 'CANCELLED'

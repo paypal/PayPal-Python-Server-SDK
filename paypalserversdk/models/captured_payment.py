@@ -11,9 +11,9 @@ from paypalserversdk.models.capture_status_details import CaptureStatusDetails
 from paypalserversdk.models.link_description import LinkDescription
 from paypalserversdk.models.money import Money
 from paypalserversdk.models.network_transaction_reference import NetworkTransactionReference
-from paypalserversdk.models.payee import Payee
+from paypalserversdk.models.payee_base import PayeeBase
 from paypalserversdk.models.payment_supplementary_data import PaymentSupplementaryData
-from paypalserversdk.models.processor_response import ProcessorResponse
+from paypalserversdk.models.payments_processor_response import PaymentsProcessorResponse
 from paypalserversdk.models.seller_protection import SellerProtection
 from paypalserversdk.models.seller_receivable_breakdown import SellerReceivableBreakdown
 
@@ -55,24 +55,22 @@ class CapturedPayment(object):
             behalf of the merchant.
         links (List[LinkDescription]): An array of related [HATEOAS
             links](/docs/api/reference/api-responses/#hateoas-links).
-        processor_response (ProcessorResponse): The processor response
+        processor_response (PaymentsProcessorResponse): The processor response
             information for payment requests, such as direct credit card
             transactions.
         create_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         update_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         supplementary_data (PaymentSupplementaryData): The supplementary data.
-        payee (Payee): The details for the merchant who receives the funds and
-            fulfills the order. The merchant is also known as the payee.
+        payee (PayeeBase): The details for the merchant who receives the funds
+            and fulfills the order. The merchant is also known as the payee.
 
     """
 
@@ -186,7 +184,7 @@ class CapturedPayment(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -206,11 +204,11 @@ class CapturedPayment(object):
             links = [LinkDescription.from_dictionary(x) for x in dictionary.get('links')]
         else:
             links = APIHelper.SKIP
-        processor_response = ProcessorResponse.from_dictionary(dictionary.get('processor_response')) if 'processor_response' in dictionary.keys() else APIHelper.SKIP
+        processor_response = PaymentsProcessorResponse.from_dictionary(dictionary.get('processor_response')) if 'processor_response' in dictionary.keys() else APIHelper.SKIP
         create_time = dictionary.get("create_time") if dictionary.get("create_time") else APIHelper.SKIP
         update_time = dictionary.get("update_time") if dictionary.get("update_time") else APIHelper.SKIP
         supplementary_data = PaymentSupplementaryData.from_dictionary(dictionary.get('supplementary_data')) if 'supplementary_data' in dictionary.keys() else APIHelper.SKIP
-        payee = Payee.from_dictionary(dictionary.get('payee')) if 'payee' in dictionary.keys() else APIHelper.SKIP
+        payee = PayeeBase.from_dictionary(dictionary.get('payee')) if 'payee' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(status,
                    status_details,
@@ -229,3 +227,43 @@ class CapturedPayment(object):
                    update_time,
                    supplementary_data,
                    payee)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'status_details={(self.status_details if hasattr(self, "status_details") else None)!r}, '
+                f'id={(self.id if hasattr(self, "id") else None)!r}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!r}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
+                f'custom_id={(self.custom_id if hasattr(self, "custom_id") else None)!r}, '
+                f'network_transaction_reference={(self.network_transaction_reference if hasattr(self, "network_transaction_reference") else None)!r}, '
+                f'seller_protection={(self.seller_protection if hasattr(self, "seller_protection") else None)!r}, '
+                f'final_capture={(self.final_capture if hasattr(self, "final_capture") else None)!r}, '
+                f'seller_receivable_breakdown={(self.seller_receivable_breakdown if hasattr(self, "seller_receivable_breakdown") else None)!r}, '
+                f'disbursement_mode={(self.disbursement_mode if hasattr(self, "disbursement_mode") else None)!r}, '
+                f'links={(self.links if hasattr(self, "links") else None)!r}, '
+                f'processor_response={(self.processor_response if hasattr(self, "processor_response") else None)!r}, '
+                f'create_time={(self.create_time if hasattr(self, "create_time") else None)!r}, '
+                f'update_time={(self.update_time if hasattr(self, "update_time") else None)!r}, '
+                f'supplementary_data={(self.supplementary_data if hasattr(self, "supplementary_data") else None)!r}, '
+                f'payee={(self.payee if hasattr(self, "payee") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'status_details={(self.status_details if hasattr(self, "status_details") else None)!s}, '
+                f'id={(self.id if hasattr(self, "id") else None)!s}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!s}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
+                f'custom_id={(self.custom_id if hasattr(self, "custom_id") else None)!s}, '
+                f'network_transaction_reference={(self.network_transaction_reference if hasattr(self, "network_transaction_reference") else None)!s}, '
+                f'seller_protection={(self.seller_protection if hasattr(self, "seller_protection") else None)!s}, '
+                f'final_capture={(self.final_capture if hasattr(self, "final_capture") else None)!s}, '
+                f'seller_receivable_breakdown={(self.seller_receivable_breakdown if hasattr(self, "seller_receivable_breakdown") else None)!s}, '
+                f'disbursement_mode={(self.disbursement_mode if hasattr(self, "disbursement_mode") else None)!s}, '
+                f'links={(self.links if hasattr(self, "links") else None)!s}, '
+                f'processor_response={(self.processor_response if hasattr(self, "processor_response") else None)!s}, '
+                f'create_time={(self.create_time if hasattr(self, "create_time") else None)!s}, '
+                f'update_time={(self.update_time if hasattr(self, "update_time") else None)!s}, '
+                f'supplementary_data={(self.supplementary_data if hasattr(self, "supplementary_data") else None)!s}, '
+                f'payee={(self.payee if hasattr(self, "payee") else None)!s})')

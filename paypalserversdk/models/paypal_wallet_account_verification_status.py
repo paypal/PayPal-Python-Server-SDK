@@ -16,8 +16,12 @@ class PaypalWalletAccountVerificationStatus(object):
     details associated with their PayPal account.
 
     Attributes:
-        VERIFIED: TODO: type description here.
-        UNVERIFIED: TODO: type description here.
+        VERIFIED: The buyer has completed the verification of the financial
+            details associated with this PayPal account. For example:
+            confirming their bank account.
+        UNVERIFIED: The buyer has not completed the verification of the
+            financial details associated with this PayPal account. For
+            example: confirming their bank account.
 
     """
     VERIFIED = 'VERIFIED'

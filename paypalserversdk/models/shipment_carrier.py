@@ -18,1394 +18,1386 @@ class ShipmentCarrier(object):
     your country. If the carrier is not available for your country, choose the
     global version of the carrier. If your carrier name is not in the list,
     set `carrier` to `OTHER` and set carrier name in `carrier_name_other`. For
-    allowed values, see <a
-    href="/docs/tracking/reference/carriers/">Carriers</a>.
+    allowed values, see Carriers.
 
     Attributes:
-        DPD_RU: TODO: type description here.
-        BG_BULGARIAN_POST: TODO: type description here.
-        KR_KOREA_POST: TODO: type description here.
-        ZA_COURIERIT: TODO: type description here.
-        FR_EXAPAQ: TODO: type description here.
-        ARE_EMIRATES_POST: TODO: type description here.
-        GAC: TODO: type description here.
-        GEIS: TODO: type description here.
-        SF_EX: TODO: type description here.
-        PAGO: TODO: type description here.
-        MYHERMES: TODO: type description here.
-        DIAMOND_EUROGISTICS: TODO: type description here.
-        CORPORATECOURIERS_WEBHOOK: TODO: type description here.
-        BOND: TODO: type description here.
-        OMNIPARCEL: TODO: type description here.
-        SK_POSTA: TODO: type description here.
-        PUROLATOR: TODO: type description here.
-        FETCHR_WEBHOOK: TODO: type description here.
-        THEDELIVERYGROUP: TODO: type description here.
-        CELLO_SQUARE: TODO: type description here.
-        TARRIVE: TODO: type description here.
-        COLLIVERY: TODO: type description here.
-        MAINFREIGHT: TODO: type description here.
-        IND_FIRSTFLIGHT: TODO: type description here.
-        ACSWORLDWIDE: TODO: type description here.
-        AMSTAN: TODO: type description here.
-        OKAYPARCEL: TODO: type description here.
-        ENVIALIA_REFERENCE: TODO: type description here.
-        SEUR_ES: TODO: type description here.
-        CONTINENTAL: TODO: type description here.
-        FDSEXPRESS: TODO: type description here.
-        AMAZON_FBA_SWISHIP: TODO: type description here.
-        WYNGS: TODO: type description here.
-        DHL_ACTIVE_TRACING: TODO: type description here.
-        ZYLLEM: TODO: type description here.
-        RUSTON: TODO: type description here.
-        XPOST: TODO: type description here.
-        CORREOS_ES: TODO: type description here.
-        DHL_FR: TODO: type description here.
-        PAN_ASIA: TODO: type description here.
-        BRT_IT: TODO: type description here.
-        SRE_KOREA: TODO: type description here.
-        SPEEDEE: TODO: type description here.
-        TNT_UK: TODO: type description here.
-        VENIPAK: TODO: type description here.
-        SHREENANDANCOURIER: TODO: type description here.
-        CROSHOT: TODO: type description here.
-        NIPOST_NG: TODO: type description here.
-        EPST_GLBL: TODO: type description here.
-        NEWGISTICS: TODO: type description here.
-        POST_SLOVENIA: TODO: type description here.
-        JERSEY_POST: TODO: type description here.
-        BOMBINOEXP: TODO: type description here.
-        WMG: TODO: type description here.
-        XQ_EXPRESS: TODO: type description here.
-        FURDECO: TODO: type description here.
-        LHT_EXPRESS: TODO: type description here.
-        SOUTH_AFRICAN_POST_OFFICE: TODO: type description here.
-        SPOTON: TODO: type description here.
-        DIMERCO: TODO: type description here.
-        CYPRUS_POST_CYP: TODO: type description here.
-        ABCUSTOM: TODO: type description here.
-        IND_DELIVREE: TODO: type description here.
-        CN_BESTEXPRESS: TODO: type description here.
-        DX_SFTP: TODO: type description here.
-        PICKUPP_MYS: TODO: type description here.
-        FMX: TODO: type description here.
-        HELLMANN: TODO: type description here.
-        SHIP_IT_ASIA: TODO: type description here.
-        KERRY_ECOMMERCE: TODO: type description here.
-        FRETERAPIDO: TODO: type description here.
-        PITNEY_BOWES: TODO: type description here.
-        XPRESSEN_DK: TODO: type description here.
-        SEUR_SP_API: TODO: type description here.
-        DELIVERYONTIME: TODO: type description here.
-        JINSUNG: TODO: type description here.
-        TRANS_KARGO: TODO: type description here.
-        SWISHIP_DE: TODO: type description here.
-        IVOY_WEBHOOK: TODO: type description here.
-        AIRMEE_WEBHOOK: TODO: type description here.
-        DHL_BENELUX: TODO: type description here.
-        FIRSTMILE: TODO: type description here.
-        FASTWAY_IR: TODO: type description here.
-        HH_EXP: TODO: type description here.
-        MYS_MYPOST_ONLINE: TODO: type description here.
-        TNT_NL: TODO: type description here.
-        TIPSA: TODO: type description here.
-        TAQBIN_MY: TODO: type description here.
-        KGMHUB: TODO: type description here.
-        INTEXPRESS: TODO: type description here.
-        OVERSE_EXP: TODO: type description here.
-        ONECLICK: TODO: type description here.
-        ROADRUNNER_FREIGHT: TODO: type description here.
-        GLS_CROTIA: TODO: type description here.
-        MRW_FTP: TODO: type description here.
-        BLUEX: TODO: type description here.
-        DYLT: TODO: type description here.
-        DPD_IR: TODO: type description here.
-        SIN_GLBL: TODO: type description here.
-        TUFFNELLS_REFERENCE: TODO: type description here.
-        CJPACKET: TODO: type description here.
-        MILKMAN: TODO: type description here.
-        ASIGNA: TODO: type description here.
-        ONEWORLDEXPRESS: TODO: type description here.
-        ROYAL_MAIL: TODO: type description here.
-        VIA_EXPRESS: TODO: type description here.
-        TIGFREIGHT: TODO: type description here.
-        ZTO_EXPRESS: TODO: type description here.
-        TWO_GO: TODO: type description here.
-        IML: TODO: type description here.
-        INTEL_VALLEY: TODO: type description here.
-        EFS: TODO: type description here.
-        UK_UK_MAIL: TODO: type description here.
-        RAM: TODO: type description here.
-        ALLIEDEXPRESS: TODO: type description here.
-        APC_OVERNIGHT: TODO: type description here.
-        SHIPPIT: TODO: type description here.
-        TFM: TODO: type description here.
-        M_XPRESS: TODO: type description here.
-        HDB_BOX: TODO: type description here.
-        CLEVY_LINKS: TODO: type description here.
-        IBEONE: TODO: type description here.
-        FIEGE_NL: TODO: type description here.
-        KWE_GLOBAL: TODO: type description here.
-        CTC_EXPRESS: TODO: type description here.
-        LAO_POST: TODO: type description here.
-        AMAZON: TODO: type description here.
-        MORE_LINK: TODO: type description here.
-        JX: TODO: type description here.
-        EASY_MAIL: TODO: type description here.
-        ADUIEPYLE: TODO: type description here.
-        GB_PANTHER: TODO: type description here.
-        EXPRESSSALE: TODO: type description here.
-        SG_DETRACK: TODO: type description here.
-        TRUNKRS_WEBHOOK: TODO: type description here.
-        MATDESPATCH: TODO: type description here.
-        DICOM: TODO: type description here.
-        MBW: TODO: type description here.
-        KHM_CAMBODIA_POST: TODO: type description here.
-        SINOTRANS: TODO: type description here.
-        BRT_IT_PARCELID: TODO: type description here.
-        DHL_SUPPLY_CHAIN: TODO: type description here.
-        DHL_PL: TODO: type description here.
-        TOPYOU: TODO: type description here.
-        PALEXPRESS: TODO: type description here.
-        DHL_SG: TODO: type description here.
-        CN_WEDO: TODO: type description here.
-        FULFILLME: TODO: type description here.
-        DPD_DELISTRACK: TODO: type description here.
-        UPS_REFERENCE: TODO: type description here.
-        CARIBOU: TODO: type description here.
-        LOCUS_WEBHOOK: TODO: type description here.
-        DSV: TODO: type description here.
-        CN_GOFLY: TODO: type description here.
-        P2P_TRC: TODO: type description here.
-        DIRECTPARCELS: TODO: type description here.
-        NOVA_POSHTA_INT: TODO: type description here.
-        FEDEX_POLAND: TODO: type description here.
-        CN_JCEX: TODO: type description here.
-        FAR_INTERNATIONAL: TODO: type description here.
-        IDEXPRESS: TODO: type description here.
-        GANGBAO: TODO: type description here.
-        NEWAY: TODO: type description here.
-        POSTNL_INT_3_S: TODO: type description here.
-        RPX_ID: TODO: type description here.
-        DESIGNERTRANSPORT_WEBHOOK: TODO: type description here.
-        GLS_SLOVEN: TODO: type description here.
-        PARCELLED_IN: TODO: type description here.
-        GSI_EXPRESS: TODO: type description here.
-        CON_WAY: TODO: type description here.
-        BROUWER_TRANSPORT: TODO: type description here.
-        CPEX: TODO: type description here.
-        ISRAEL_POST: TODO: type description here.
-        DTDC_IN: TODO: type description here.
-        PTT_POST: TODO: type description here.
-        XDE_WEBHOOK: TODO: type description here.
-        TOLOS: TODO: type description here.
-        GIAO_HANG: TODO: type description here.
-        GEODIS_ESPACE: TODO: type description here.
-        MAGYAR_HU: TODO: type description here.
-        DOORDASH_WEBHOOK: TODO: type description here.
-        TIKI_ID: TODO: type description here.
-        CJ_HK_INTERNATIONAL: TODO: type description here.
-        STAR_TRACK_EXPRESS: TODO: type description here.
-        HELTHJEM: TODO: type description here.
-        SFB2C: TODO: type description here.
-        FREIGHTQUOTE: TODO: type description here.
-        LANDMARK_GLOBAL_REFERENCE: TODO: type description here.
-        PARCEL2GO: TODO: type description here.
-        DELNEXT: TODO: type description here.
-        RCL: TODO: type description here.
-        CGS_EXPRESS: TODO: type description here.
-        HK_POST: TODO: type description here.
-        SAP_EXPRESS: TODO: type description here.
-        PARCELPOST_SG: TODO: type description here.
-        HERMES: TODO: type description here.
-        IND_SAFEEXPRESS: TODO: type description here.
-        TOPHATTEREXPRESS: TODO: type description here.
-        MGLOBAL: TODO: type description here.
-        AVERITT: TODO: type description here.
-        LEADER: TODO: type description here.
-        _2EBOX: TODO: type description here.
-        SG_SPEEDPOST: TODO: type description here.
-        DBSCHENKER_SE: TODO: type description here.
-        ISR_POST_DOMESTIC: TODO: type description here.
-        BESTWAYPARCEL: TODO: type description here.
-        ASENDIA_DE: TODO: type description here.
-        NIGHTLINE_UK: TODO: type description here.
-        TAQBIN_SG: TODO: type description here.
-        TCK_EXPRESS: TODO: type description here.
-        ENDEAVOUR_DELIVERY: TODO: type description here.
-        NANJINGWOYUAN: TODO: type description here.
-        HEPPNER_FR: TODO: type description here.
-        EMPS_CN: TODO: type description here.
-        FONSEN: TODO: type description here.
-        PICKRR: TODO: type description here.
-        APC_OVERNIGHT_CONNUM: TODO: type description here.
-        STAR_TRACK_NEXT_FLIGHT: TODO: type description here.
-        DAJIN: TODO: type description here.
-        UPS_FREIGHT: TODO: type description here.
-        POSTA_PLUS: TODO: type description here.
-        CEVA: TODO: type description here.
-        ANSERX: TODO: type description here.
-        JS_EXPRESS: TODO: type description here.
-        PADTF: TODO: type description here.
-        UPS_MAIL_INNOVATIONS: TODO: type description here.
-        EZSHIP: TODO: type description here.
-        SYPOST: TODO: type description here.
-        AMAZON_SHIP_MCF: TODO: type description here.
-        YUSEN: TODO: type description here.
-        BRING: TODO: type description here.
-        SDA_IT: TODO: type description here.
-        GBA: TODO: type description here.
-        NEWEGGEXPRESS: TODO: type description here.
-        SPEEDCOURIERS_GR: TODO: type description here.
-        FORRUN: TODO: type description here.
-        PICKUP: TODO: type description here.
-        ECMS: TODO: type description here.
-        INTELIPOST: TODO: type description here.
-        FLASHEXPRESS: TODO: type description here.
-        CN_STO: TODO: type description here.
-        SEKO_SFTP: TODO: type description here.
-        HOME_DELIVERY_SOLUTIONS: TODO: type description here.
-        DPD_HGRY: TODO: type description here.
-        KERRYTTC_VN: TODO: type description here.
-        JOYING_BOX: TODO: type description here.
-        TOTAL_EXPRESS: TODO: type description here.
-        ZJS_EXPRESS: TODO: type description here.
-        STARKEN: TODO: type description here.
-        DEMANDSHIP: TODO: type description here.
-        CN_DPEX: TODO: type description here.
-        AUPOST_CN: TODO: type description here.
-        LOGISTERS: TODO: type description here.
-        GOGLOBALPOST: TODO: type description here.
-        GLS_CZ: TODO: type description here.
-        PAACK_WEBHOOK: TODO: type description here.
-        GRAB_WEBHOOK: TODO: type description here.
-        PARCELPOINT: TODO: type description here.
-        ICUMULUS: TODO: type description here.
-        DAIGLOBALTRACK: TODO: type description here.
-        GLOBAL_IPARCEL: TODO: type description here.
-        YURTICI_KARGO: TODO: type description here.
-        CN_PAYPAL_PACKAGE: TODO: type description here.
-        PARCEL_2_POST: TODO: type description here.
-        GLS_IT: TODO: type description here.
-        PIL_LOGISTICS: TODO: type description here.
-        HEPPNER: TODO: type description here.
-        GENERAL_OVERNIGHT: TODO: type description here.
-        HAPPY2POINT: TODO: type description here.
-        CHITCHATS: TODO: type description here.
-        SMOOTH: TODO: type description here.
-        CLE_LOGISTICS: TODO: type description here.
-        FIEGE: TODO: type description here.
-        MX_CARGO: TODO: type description here.
-        ZIINGFINALMILE: TODO: type description here.
-        DAYTON_FREIGHT: TODO: type description here.
-        TCS: TODO: type description here.
-        AEX: TODO: type description here.
-        HERMES_DE: TODO: type description here.
-        ROUTIFIC_WEBHOOK: TODO: type description here.
-        GLOBAVEND: TODO: type description here.
-        CJ_LOGISTICS: TODO: type description here.
-        PALLET_NETWORK: TODO: type description here.
-        RAF_PH: TODO: type description here.
-        UK_XDP: TODO: type description here.
-        PAPER_EXPRESS: TODO: type description here.
-        LA_POSTE_SUIVI: TODO: type description here.
-        PAQUETEXPRESS: TODO: type description here.
-        LIEFERY: TODO: type description here.
-        STRECK_TRANSPORT: TODO: type description here.
-        PONY_EXPRESS: TODO: type description here.
-        ALWAYS_EXPRESS: TODO: type description here.
-        GBS_BROKER: TODO: type description here.
-        CITYLINK_MY: TODO: type description here.
-        ALLJOY: TODO: type description here.
-        YODEL: TODO: type description here.
-        YODEL_DIR: TODO: type description here.
-        STONE3PL: TODO: type description here.
-        PARCELPAL_WEBHOOK: TODO: type description here.
-        DHL_ECOMERCE_ASA: TODO: type description here.
-        SIMPLYPOST: TODO: type description here.
-        KY_EXPRESS: TODO: type description here.
-        SHENZHEN: TODO: type description here.
-        US_LASERSHIP: TODO: type description here.
-        UC_EXPRE: TODO: type description here.
-        DIDADI: TODO: type description here.
-        CJ_KR: TODO: type description here.
-        DBSCHENKER_B2B: TODO: type description here.
-        MXE: TODO: type description here.
-        CAE_DELIVERS: TODO: type description here.
-        PFCEXPRESS: TODO: type description here.
-        WHISTL: TODO: type description here.
-        WEPOST: TODO: type description here.
-        DHL_PARCEL_ES: TODO: type description here.
-        DDEXPRESS: TODO: type description here.
-        ARAMEX_AU: TODO: type description here.
-        BNEED: TODO: type description here.
-        HK_TGX: TODO: type description here.
-        LATVIJAS_PASTS: TODO: type description here.
-        VIAEUROPE: TODO: type description here.
-        CORREO_UY: TODO: type description here.
-        CHRONOPOST_FR: TODO: type description here.
-        J_NET: TODO: type description here.
-        _6LS: TODO: type description here.
-        BLR_BELPOST: TODO: type description here.
-        BIRDSYSTEM: TODO: type description here.
-        DOBROPOST: TODO: type description here.
-        WAHANA_ID: TODO: type description here.
-        WEASHIP: TODO: type description here.
-        SONICTL: TODO: type description here.
-        KWT: TODO: type description here.
-        AFLLOG_FTP: TODO: type description here.
-        SKYNET_WORLDWIDE: TODO: type description here.
-        NOVA_POSHTA: TODO: type description here.
-        SEINO: TODO: type description here.
-        SZENDEX: TODO: type description here.
-        BPOST_INT: TODO: type description here.
-        DBSCHENKER_SV: TODO: type description here.
-        AO_DEUTSCHLAND: TODO: type description here.
-        EU_FLEET_SOLUTIONS: TODO: type description here.
-        PCFCORP: TODO: type description here.
-        LINKBRIDGE: TODO: type description here.
-        PRIMAMULTICIPTA: TODO: type description here.
-        COUREX: TODO: type description here.
-        ZAJIL_EXPRESS: TODO: type description here.
-        COLLECTCO: TODO: type description here.
-        JTEXPRESS: TODO: type description here.
-        FEDEX_UK: TODO: type description here.
-        USHIP: TODO: type description here.
-        PIXSELL: TODO: type description here.
-        SHIPTOR: TODO: type description here.
-        CDEK: TODO: type description here.
-        VNM_VIETTELPOST: TODO: type description here.
-        CJ_CENTURY: TODO: type description here.
-        GSO: TODO: type description here.
-        VIWO: TODO: type description here.
-        SKYBOX: TODO: type description here.
-        KERRYTJ: TODO: type description here.
-        NTLOGISTICS_VN: TODO: type description here.
-        SDH_SCM: TODO: type description here.
-        ZINC: TODO: type description here.
-        DPE_SOUTH_AFRC: TODO: type description here.
-        CESKA_CZ: TODO: type description here.
-        ACS_GR: TODO: type description here.
-        DEALERSEND: TODO: type description here.
-        JOCOM: TODO: type description here.
-        CSE: TODO: type description here.
-        TFORCE_FINALMILE: TODO: type description here.
-        SHIP_GATE: TODO: type description here.
-        SHIPTER: TODO: type description here.
-        NATIONAL_SAMEDAY: TODO: type description here.
-        YUNEXPRESS: TODO: type description here.
-        CAINIAO: TODO: type description here.
-        DMS_MATRIX: TODO: type description here.
-        DIRECTLOG: TODO: type description here.
-        ASENDIA_US: TODO: type description here.
-        _3JMSLOGISTICS: TODO: type description here.
-        LICCARDI_EXPRESS: TODO: type description here.
-        SKY_POSTAL: TODO: type description here.
-        CNWANGTONG: TODO: type description here.
-        POSTNORD_LOGISTICS_DK: TODO: type description here.
-        LOGISTIKA: TODO: type description here.
-        CELERITAS: TODO: type description here.
-        PRESSIODE: TODO: type description here.
-        SHREE_MARUTI: TODO: type description here.
-        LOGISTICSWORLDWIDE_HK: TODO: type description here.
-        EFEX: TODO: type description here.
-        LOTTE: TODO: type description here.
-        LONESTAR: TODO: type description here.
-        APRISAEXPRESS: TODO: type description here.
-        BEL_RS: TODO: type description here.
-        OSM_WORLDWIDE: TODO: type description here.
-        WESTGATE_GL: TODO: type description here.
-        FASTRACK: TODO: type description here.
-        DTD_EXPR: TODO: type description here.
-        ALFATREX: TODO: type description here.
-        PROMEDDELIVERY: TODO: type description here.
-        THABIT_LOGISTICS: TODO: type description here.
-        HCT_LOGISTICS: TODO: type description here.
-        CARRY_FLAP: TODO: type description here.
-        US_OLD_DOMINION: TODO: type description here.
-        ANICAM_BOX: TODO: type description here.
-        WANBEXPRESS: TODO: type description here.
-        AN_POST: TODO: type description here.
-        DPD_LOCAL: TODO: type description here.
-        STALLIONEXPRESS: TODO: type description here.
-        RAIDEREX: TODO: type description here.
-        SHOPFANS: TODO: type description here.
-        KYUNGDONG_PARCEL: TODO: type description here.
-        CHAMPION_LOGISTICS: TODO: type description here.
-        PICKUPP_SGP: TODO: type description here.
-        MORNING_EXPRESS: TODO: type description here.
-        NACEX: TODO: type description here.
-        THENILE_WEBHOOK: TODO: type description here.
-        HOLISOL: TODO: type description here.
-        LBCEXPRESS_FTP: TODO: type description here.
-        KURASI: TODO: type description here.
-        USF_REDDAWAY: TODO: type description here.
-        APG: TODO: type description here.
-        CN_BOXC: TODO: type description here.
-        ECOSCOOTING: TODO: type description here.
-        MAINWAY: TODO: type description here.
-        PAPERFLY: TODO: type description here.
-        HOUNDEXPRESS: TODO: type description here.
-        BOX_BERRY: TODO: type description here.
-        EP_BOX: TODO: type description here.
-        PLUS_LOG_UK: TODO: type description here.
-        FULFILLA: TODO: type description here.
-        ASE: TODO: type description here.
-        MAIL_PLUS: TODO: type description here.
-        XPO_LOGISTICS: TODO: type description here.
-        WNDIRECT: TODO: type description here.
-        CLOUDWISH_ASIA: TODO: type description here.
-        ZELERIS: TODO: type description here.
-        GIO_EXPRESS: TODO: type description here.
-        OCS_WORLDWIDE: TODO: type description here.
-        ARK_LOGISTICS: TODO: type description here.
-        AQUILINE: TODO: type description here.
-        PILOT_FREIGHT: TODO: type description here.
-        QWINTRY: TODO: type description here.
-        DANSKE_FRAGT: TODO: type description here.
-        CARRIERS: TODO: type description here.
-        AIR_CANADA_GLOBAL: TODO: type description here.
-        PRESIDENT_TRANS: TODO: type description here.
-        STEPFORWARDFS: TODO: type description here.
-        SKYNET_UK: TODO: type description here.
-        PITTOHIO: TODO: type description here.
-        CORREOS_EXPRESS: TODO: type description here.
-        RL_US: TODO: type description here.
-        MARA_XPRESS: TODO: type description here.
-        DESTINY: TODO: type description here.
-        UK_YODEL: TODO: type description here.
-        COMET_TECH: TODO: type description here.
-        DHL_PARCEL_RU: TODO: type description here.
-        TNT_REFR: TODO: type description here.
-        SHREE_ANJANI_COURIER: TODO: type description here.
-        MIKROPAKKET_BE: TODO: type description here.
-        ETS_EXPRESS: TODO: type description here.
-        COLIS_PRIVE: TODO: type description here.
-        CN_YUNDA: TODO: type description here.
-        AAA_COOPER: TODO: type description here.
-        ROCKET_PARCEL: TODO: type description here.
-        _360LION: TODO: type description here.
-        PANDU: TODO: type description here.
-        PROFESSIONAL_COURIERS: TODO: type description here.
-        FLYTEXPRESS: TODO: type description here.
-        LOGISTICSWORLDWIDE_MY: TODO: type description here.
-        CORREOS_DE_ESPANA: TODO: type description here.
-        IMX: TODO: type description here.
-        FOUR_PX_EXPRESS: TODO: type description here.
-        XPRESSBEES: TODO: type description here.
-        PICKUPP_VNM: TODO: type description here.
-        STARTRACK_EXPRESS1: TODO: type description here.
-        FR_COLISSIMO: TODO: type description here.
-        NACEX_SPAIN_REFERENCE: TODO: type description here.
-        DHL_SUPPLY_CHAIN_AU: TODO: type description here.
-        ESHIPPING: TODO: type description here.
-        SHREETIRUPATI: TODO: type description here.
-        HX_EXPRESS: TODO: type description here.
-        INDOPAKET: TODO: type description here.
-        CN_17POST: TODO: type description here.
-        K1_EXPRESS: TODO: type description here.
-        CJ_GLS: TODO: type description here.
-        MYS_GDEX: TODO: type description here.
-        NATIONEX: TODO: type description here.
-        ANJUN: TODO: type description here.
-        FARGOOD: TODO: type description here.
-        SMG_EXPRESS: TODO: type description here.
-        RZYEXPRESS: TODO: type description here.
-        SEFL: TODO: type description here.
-        TNT_CLICK_IT: TODO: type description here.
-        HDB: TODO: type description here.
-        HIPSHIPPER: TODO: type description here.
-        RPXLOGISTICS: TODO: type description here.
-        KUEHNE: TODO: type description here.
-        IT_NEXIVE: TODO: type description here.
-        PTS: TODO: type description here.
-        SWISS_POST_FTP: TODO: type description here.
-        FASTRK_SERV: TODO: type description here.
-        _4_72: TODO: type description here.
-        US_YRC: TODO: type description here.
-        POSTNL_INTL_3S: TODO: type description here.
-        ELIAN_POST: TODO: type description here.
-        CUBYN: TODO: type description here.
-        SAU_SAUDI_POST: TODO: type description here.
-        ABXEXPRESS_MY: TODO: type description here.
-        HUAHAN_EXPRESS: TODO: type description here.
-        IND_JAYONEXPRESS: TODO: type description here.
-        ZES_EXPRESS: TODO: type description here.
-        ZEPTO_EXPRESS: TODO: type description here.
-        SKYNET_ZA: TODO: type description here.
-        ZEEK_2_DOOR: TODO: type description here.
-        BLINKLASTMILE: TODO: type description here.
-        POSTA_UKR: TODO: type description here.
-        CHROBINSON: TODO: type description here.
-        CN_POST56: TODO: type description here.
-        COURANT_PLUS: TODO: type description here.
-        SCUDEX_EXPRESS: TODO: type description here.
-        SHIPENTEGRA: TODO: type description here.
-        B_TWO_C_EUROPE: TODO: type description here.
-        COPE: TODO: type description here.
-        IND_GATI: TODO: type description here.
-        CN_WISHPOST: TODO: type description here.
-        NACEX_ES: TODO: type description here.
-        TAQBIN_HK: TODO: type description here.
-        GLOBALTRANZ: TODO: type description here.
-        HKD: TODO: type description here.
-        BJSHOMEDELIVERY: TODO: type description here.
-        OMNIVA: TODO: type description here.
-        SUTTON: TODO: type description here.
-        PANTHER_REFERENCE: TODO: type description here.
-        SFCSERVICE: TODO: type description here.
-        LTL: TODO: type description here.
-        PARKNPARCEL: TODO: type description here.
-        SPRING_GDS: TODO: type description here.
-        ECEXPRESS: TODO: type description here.
-        INTERPARCEL_AU: TODO: type description here.
-        AGILITY: TODO: type description here.
-        XL_EXPRESS: TODO: type description here.
-        ADERONLINE: TODO: type description here.
-        DIRECTCOURIERS: TODO: type description here.
-        PLANZER: TODO: type description here.
-        SENDING: TODO: type description here.
-        NINJAVAN_WB: TODO: type description here.
-        NATIONWIDE_MY: TODO: type description here.
-        SENDIT: TODO: type description here.
-        GB_ARROW: TODO: type description here.
-        IND_GOJAVAS: TODO: type description here.
-        KPOST: TODO: type description here.
-        DHL_FREIGHT: TODO: type description here.
-        BLUECARE: TODO: type description here.
-        JINDOUYUN: TODO: type description here.
-        TRACKON: TODO: type description here.
-        GB_TUFFNELLS: TODO: type description here.
-        TRUMPCARD: TODO: type description here.
-        ETOTAL: TODO: type description here.
-        SFPLUS_WEBHOOK: TODO: type description here.
-        SEKOLOGISTICS: TODO: type description here.
-        HERMES_2MANN_HANDLING: TODO: type description here.
-        DPD_LOCAL_REF: TODO: type description here.
-        UDS: TODO: type description here.
-        ZA_SPECIALISED_FREIGHT: TODO: type description here.
-        THA_KERRY: TODO: type description here.
-        PRT_INT_SEUR: TODO: type description here.
-        BRA_CORREIOS: TODO: type description here.
-        NZ_NZ_POST: TODO: type description here.
-        CN_EQUICK: TODO: type description here.
-        MYS_EMS: TODO: type description here.
-        GB_NORSK: TODO: type description here.
-        ESP_MRW: TODO: type description here.
-        ESP_PACKLINK: TODO: type description here.
-        KANGAROO_MY: TODO: type description here.
-        RPX: TODO: type description here.
-        XDP_UK_REFERENCE: TODO: type description here.
-        NINJAVAN_MY: TODO: type description here.
-        ADICIONAL: TODO: type description here.
-        NINJAVAN_ID: TODO: type description here.
-        ROADBULL: TODO: type description here.
-        YAKIT: TODO: type description here.
-        MAILAMERICAS: TODO: type description here.
-        MIKROPAKKET: TODO: type description here.
-        DYNALOGIC: TODO: type description here.
-        DHL_ES: TODO: type description here.
-        DHL_PARCEL_NL: TODO: type description here.
-        DHL_GLOBAL_MAIL_ASIA: TODO: type description here.
-        DAWN_WING: TODO: type description here.
-        GENIKI_GR: TODO: type description here.
-        HERMESWORLD_UK: TODO: type description here.
-        ALPHAFAST: TODO: type description here.
-        BUYLOGIC: TODO: type description here.
-        EKART: TODO: type description here.
-        MEX_SENDA: TODO: type description here.
-        SFC_LOGISTICS: TODO: type description here.
-        POST_SERBIA: TODO: type description here.
-        IND_DELHIVERY: TODO: type description here.
-        DE_DPD_DELISTRACK: TODO: type description here.
-        RPD2MAN: TODO: type description here.
-        CN_SF_EXPRESS: TODO: type description here.
-        YANWEN: TODO: type description here.
-        MYS_SKYNET: TODO: type description here.
-        CORREOS_DE_MEXICO: TODO: type description here.
-        CBL_LOGISTICA: TODO: type description here.
-        MEX_ESTAFETA: TODO: type description here.
-        AU_AUSTRIAN_POST: TODO: type description here.
-        RINCOS: TODO: type description here.
-        NLD_DHL: TODO: type description here.
-        RUSSIAN_POST: TODO: type description here.
-        COURIERS_PLEASE: TODO: type description here.
-        POSTNORD_LOGISTICS: TODO: type description here.
-        FEDEX: TODO: type description here.
-        DPE_EXPRESS: TODO: type description here.
-        DPD: TODO: type description here.
-        ADSONE: TODO: type description here.
-        IDN_JNE: TODO: type description here.
-        THECOURIERGUY: TODO: type description here.
-        CNEXPS: TODO: type description here.
-        PRT_CHRONOPOST: TODO: type description here.
-        LANDMARK_GLOBAL: TODO: type description here.
-        IT_DHL_ECOMMERCE: TODO: type description here.
-        ESP_NACEX: TODO: type description here.
-        PRT_CTT: TODO: type description here.
-        BE_KIALA: TODO: type description here.
-        ASENDIA_UK: TODO: type description here.
-        GLOBAL_TNT: TODO: type description here.
-        POSTUR_IS: TODO: type description here.
-        EPARCEL_KR: TODO: type description here.
-        INPOST_PACZKOMATY: TODO: type description here.
-        IT_POSTE_ITALIA: TODO: type description here.
-        BE_BPOST: TODO: type description here.
-        PL_POCZTA_POLSKA: TODO: type description here.
-        MYS_MYS_POST: TODO: type description here.
-        SG_SG_POST: TODO: type description here.
-        THA_THAILAND_POST: TODO: type description here.
-        LEXSHIP: TODO: type description here.
-        FASTWAY_NZ: TODO: type description here.
-        DHL_AU: TODO: type description here.
-        COSTMETICSNOW: TODO: type description here.
-        PFLOGISTICS: TODO: type description here.
-        LOOMIS_EXPRESS: TODO: type description here.
-        GLS_ITALY: TODO: type description here.
-        LINE: TODO: type description here.
-        GEL_EXPRESS: TODO: type description here.
-        HUODULL: TODO: type description here.
-        NINJAVAN_SG: TODO: type description here.
-        JANIO: TODO: type description here.
-        AO_COURIER: TODO: type description here.
-        BRT_IT_SENDER_REF: TODO: type description here.
-        SAILPOST: TODO: type description here.
-        LALAMOVE: TODO: type description here.
-        NEWZEALAND_COURIERS: TODO: type description here.
-        ETOMARS: TODO: type description here.
-        VIRTRANSPORT: TODO: type description here.
-        WIZMO: TODO: type description here.
-        PALLETWAYS: TODO: type description here.
-        I_DIKA: TODO: type description here.
-        CFL_LOGISTICS: TODO: type description here.
-        GEMWORLDWIDE: TODO: type description here.
-        GLOBAL_EXPRESS: TODO: type description here.
-        LOGISTYX_TRANSGROUP: TODO: type description here.
-        WESTBANK_COURIER: TODO: type description here.
-        ARCO_SPEDIZIONI: TODO: type description here.
-        YDH_EXPRESS: TODO: type description here.
-        PARCELINKLOGISTICS: TODO: type description here.
-        CNDEXPRESS: TODO: type description here.
-        NOX_NIGHT_TIME_EXPRESS: TODO: type description here.
-        AERONET: TODO: type description here.
-        LTIANEXP: TODO: type description here.
-        INTEGRA2_FTP: TODO: type description here.
-        PARCELONE: TODO: type description here.
-        NOX_NACHTEXPRESS: TODO: type description here.
-        CN_CHINA_POST_EMS: TODO: type description here.
-        CHUKOU1: TODO: type description here.
-        GLS_SLOV: TODO: type description here.
-        ORANGE_DS: TODO: type description here.
-        JOOM_LOGIS: TODO: type description here.
-        AUS_STARTRACK: TODO: type description here.
-        DHL: TODO: type description here.
-        GB_APC: TODO: type description here.
-        BONDSCOURIERS: TODO: type description here.
-        JPN_JAPAN_POST: TODO: type description here.
-        USPS: TODO: type description here.
-        WINIT: TODO: type description here.
-        ARG_OCA: TODO: type description here.
-        TW_TAIWAN_POST: TODO: type description here.
-        DMM_NETWORK: TODO: type description here.
-        TNT: TODO: type description here.
-        BH_POSTA: TODO: type description here.
-        SWE_POSTNORD: TODO: type description here.
-        CA_CANADA_POST: TODO: type description here.
-        WISELOADS: TODO: type description here.
-        ASENDIA_HK: TODO: type description here.
-        NLD_GLS: TODO: type description here.
-        MEX_REDPACK: TODO: type description here.
-        JET_SHIP: TODO: type description here.
-        DE_DHL_EXPRESS: TODO: type description here.
-        NINJAVAN_THAI: TODO: type description here.
-        RABEN_GROUP: TODO: type description here.
-        ESP_ASM: TODO: type description here.
-        HRV_HRVATSKA: TODO: type description here.
-        GLOBAL_ESTES: TODO: type description here.
-        LTU_LIETUVOS: TODO: type description here.
-        BEL_DHL: TODO: type description here.
-        AU_AU_POST: TODO: type description here.
-        SPEEDEXCOURIER: TODO: type description here.
-        FR_COLIS: TODO: type description here.
-        ARAMEX: TODO: type description here.
-        DPEX: TODO: type description here.
-        MYS_AIRPAK: TODO: type description here.
-        CUCKOOEXPRESS: TODO: type description here.
-        DPD_POLAND: TODO: type description here.
-        NLD_POSTNL: TODO: type description here.
-        NIM_EXPRESS: TODO: type description here.
-        QUANTIUM: TODO: type description here.
-        SENDLE: TODO: type description here.
-        ESP_REDUR: TODO: type description here.
-        MATKAHUOLTO: TODO: type description here.
-        CPACKET: TODO: type description here.
-        POSTI: TODO: type description here.
-        HUNTER_EXPRESS: TODO: type description here.
-        CHOIR_EXP: TODO: type description here.
-        LEGION_EXPRESS: TODO: type description here.
-        AUSTRIAN_POST_EXPRESS: TODO: type description here.
-        GRUPO: TODO: type description here.
-        POSTA_RO: TODO: type description here.
-        INTERPARCEL_UK: TODO: type description here.
-        GLOBAL_ABF: TODO: type description here.
-        POSTEN_NORGE: TODO: type description here.
-        XPERT_DELIVERY: TODO: type description here.
-        DHL_REFR: TODO: type description here.
-        DHL_HK: TODO: type description here.
-        SKYNET_UAE: TODO: type description here.
-        GOJEK: TODO: type description here.
-        YODEL_INTNL: TODO: type description here.
-        JANCO: TODO: type description here.
-        YTO: TODO: type description here.
-        WISE_EXPRESS: TODO: type description here.
-        JTEXPRESS_VN: TODO: type description here.
-        FEDEX_INTL_MLSERV: TODO: type description here.
-        VAMOX: TODO: type description here.
-        AMS_GRP: TODO: type description here.
-        DHL_JP: TODO: type description here.
-        HRPARCEL: TODO: type description here.
-        GESWL: TODO: type description here.
-        BLUESTAR: TODO: type description here.
-        CDEK_TR: TODO: type description here.
-        DESCARTES: TODO: type description here.
-        DELTEC_UK: TODO: type description here.
-        DTDC_EXPRESS: TODO: type description here.
-        TOURLINE: TODO: type description here.
-        BH_WORLDWIDE: TODO: type description here.
-        OCS: TODO: type description here.
-        YINGNUO_LOGISTICS: TODO: type description here.
-        UPS: TODO: type description here.
-        TOLL: TODO: type description here.
-        PRT_SEUR: TODO: type description here.
-        DTDC_AU: TODO: type description here.
-        THA_DYNAMIC_LOGISTICS: TODO: type description here.
-        UBI_LOGISTICS: TODO: type description here.
-        FEDEX_CROSSBORDER: TODO: type description here.
-        A1POST: TODO: type description here.
-        TAZMANIAN_FREIGHT: TODO: type description here.
-        CJ_INT_MY: TODO: type description here.
-        SAIA_FREIGHT: TODO: type description here.
-        SG_QXPRESS: TODO: type description here.
-        NHANS_SOLUTIONS: TODO: type description here.
-        DPD_FR: TODO: type description here.
-        COORDINADORA: TODO: type description here.
-        ANDREANI: TODO: type description here.
-        DOORA: TODO: type description here.
-        INTERPARCEL_NZ: TODO: type description here.
-        PHL_JAMEXPRESS: TODO: type description here.
-        BEL_BELGIUM_POST: TODO: type description here.
-        US_APC: TODO: type description here.
-        IDN_POS: TODO: type description here.
-        FR_MONDIAL: TODO: type description here.
-        DE_DHL: TODO: type description here.
-        HK_RPX: TODO: type description here.
-        DHL_PIECEID: TODO: type description here.
-        VNPOST_EMS: TODO: type description here.
-        RRDONNELLEY: TODO: type description here.
-        DPD_DE: TODO: type description here.
-        DELCART_IN: TODO: type description here.
-        IMEXGLOBALSOLUTIONS: TODO: type description here.
-        ACOMMERCE: TODO: type description here.
-        EURODIS: TODO: type description here.
-        CANPAR: TODO: type description here.
-        GLS: TODO: type description here.
-        IND_ECOM: TODO: type description here.
-        ESP_ENVIALIA: TODO: type description here.
-        DHL_UK: TODO: type description here.
-        SMSA_EXPRESS: TODO: type description here.
-        TNT_FR: TODO: type description here.
-        DEX_I: TODO: type description here.
-        BUDBEE_WEBHOOK: TODO: type description here.
-        COPA_COURIER: TODO: type description here.
-        VNM_VIETNAM_POST: TODO: type description here.
-        DPD_HK: TODO: type description here.
-        TOLL_NZ: TODO: type description here.
-        ECHO: TODO: type description here.
-        FEDEX_FR: TODO: type description here.
-        BORDEREXPRESS: TODO: type description here.
-        MAILPLUS_JPN: TODO: type description here.
-        TNT_UK_REFR: TODO: type description here.
-        KEC: TODO: type description here.
-        DPD_RO: TODO: type description here.
-        TNT_JP: TODO: type description here.
-        TH_CJ: TODO: type description here.
-        EC_CN: TODO: type description here.
-        FASTWAY_UK: TODO: type description here.
-        FASTWAY_US: TODO: type description here.
-        GLS_DE: TODO: type description here.
-        GLS_ES: TODO: type description here.
-        GLS_FR: TODO: type description here.
-        MONDIAL_BE: TODO: type description here.
-        SGT_IT: TODO: type description here.
-        TNT_CN: TODO: type description here.
-        TNT_DE: TODO: type description here.
-        TNT_ES: TODO: type description here.
-        TNT_PL: TODO: type description here.
-        PARCELFORCE: TODO: type description here.
-        SWISS_POST: TODO: type description here.
-        TOLL_IPEC: TODO: type description here.
-        AIR_21: TODO: type description here.
-        AIRSPEED: TODO: type description here.
-        BERT: TODO: type description here.
-        BLUEDART: TODO: type description here.
-        COLLECTPLUS: TODO: type description here.
-        COURIERPLUS: TODO: type description here.
-        COURIER_POST: TODO: type description here.
-        DHL_GLOBAL_MAIL: TODO: type description here.
-        DPD_UK: TODO: type description here.
-        DELTEC_DE: TODO: type description here.
-        DEUTSCHE_DE: TODO: type description here.
-        DOTZOT: TODO: type description here.
-        ELTA_GR: TODO: type description here.
-        EMS_CN: TODO: type description here.
-        ECARGO: TODO: type description here.
-        ENSENDA: TODO: type description here.
-        FERCAM_IT: TODO: type description here.
-        FASTWAY_ZA: TODO: type description here.
-        FASTWAY_AU: TODO: type description here.
-        FIRST_LOGISITCS: TODO: type description here.
-        GEODIS: TODO: type description here.
-        GLOBEGISTICS: TODO: type description here.
-        GREYHOUND: TODO: type description here.
-        JETSHIP_MY: TODO: type description here.
-        LION_PARCEL: TODO: type description here.
-        AEROFLASH: TODO: type description here.
-        ONTRAC: TODO: type description here.
-        SAGAWA: TODO: type description here.
-        SIODEMKA: TODO: type description here.
-        STARTRACK: TODO: type description here.
-        TNT_AU: TODO: type description here.
-        TNT_IT: TODO: type description here.
-        TRANSMISSION: TODO: type description here.
-        YAMATO: TODO: type description here.
-        DHL_IT: TODO: type description here.
-        DHL_AT: TODO: type description here.
-        LOGISTICSWORLDWIDE_KR: TODO: type description here.
-        GLS_SPAIN: TODO: type description here.
-        AMAZON_UK_API: TODO: type description here.
-        DPD_FR_REFERENCE: TODO: type description here.
-        DHLPARCEL_UK: TODO: type description here.
-        MEGASAVE: TODO: type description here.
-        QUALITYPOST: TODO: type description here.
-        IDS_LOGISTICS: TODO: type description here.
-        JOYINGBOX1: TODO: type description here.
-        PANTHER_ORDER_NUMBER: TODO: type description here.
-        WATKINS_SHEPARD: TODO: type description here.
-        FASTTRACK: TODO: type description here.
-        UP_EXPRESS: TODO: type description here.
-        ELOGISTICA: TODO: type description here.
-        ECOURIER: TODO: type description here.
-        CJ_PHILIPPINES: TODO: type description here.
-        SPEEDEX: TODO: type description here.
-        ORANGECONNEX: TODO: type description here.
-        TECOR: TODO: type description here.
-        SAEE: TODO: type description here.
-        GLS_ITALY_FTP: TODO: type description here.
-        DELIVERE: TODO: type description here.
-        YYCOM: TODO: type description here.
-        ADICIONAL_PT: TODO: type description here.
-        DKSH: TODO: type description here.
-        NIPPON_EXPRESS_FTP: TODO: type description here.
-        GOLS: TODO: type description here.
-        FUJEXP: TODO: type description here.
-        QTRACK: TODO: type description here.
-        OMLOGISTICS_API: TODO: type description here.
-        GDPHARM: TODO: type description here.
-        MISUMI_CN: TODO: type description here.
-        AIR_CANADA: TODO: type description here.
-        CITY56_WEBHOOK: TODO: type description here.
-        SAGAWA_API: TODO: type description here.
-        KEDAEX: TODO: type description here.
-        PGEON_API: TODO: type description here.
-        WEWORLDEXPRESS: TODO: type description here.
-        JT_LOGISTICS: TODO: type description here.
-        TRUSK: TODO: type description here.
-        VIAXPRESS: TODO: type description here.
-        DHL_SUPPLYCHAIN_ID: TODO: type description here.
-        ZUELLIGPHARMA_SFTP: TODO: type description here.
-        MEEST: TODO: type description here.
-        TOLL_PRIORITY: TODO: type description here.
-        MOTHERSHIP_API: TODO: type description here.
-        CAPITAL: TODO: type description here.
-        EUROPAKET_API: TODO: type description here.
-        HFD: TODO: type description here.
-        TOURLINE_REFERENCE: TODO: type description here.
-        GIO_ECOURIER: TODO: type description here.
-        CN_LOGISTICS: TODO: type description here.
-        PANDION: TODO: type description here.
-        BPOST_API: TODO: type description here.
-        PASSPORTSHIPPING: TODO: type description here.
-        PAKAJO: TODO: type description here.
-        DACHSER: TODO: type description here.
-        YUSEN_SFTP: TODO: type description here.
-        SHYPLITE: TODO: type description here.
-        XYY: TODO: type description here.
-        MWD: TODO: type description here.
-        FAXECARGO: TODO: type description here.
-        MAZET: TODO: type description here.
-        FIRST_LOGISTICS_API: TODO: type description here.
-        SPRINT_PACK: TODO: type description here.
-        HERMES_DE_FTP: TODO: type description here.
-        CONCISE: TODO: type description here.
-        KERRY_EXPRESS_TW_API: TODO: type description here.
-        EWE: TODO: type description here.
-        FASTDESPATCH: TODO: type description here.
-        ABCUSTOM_SFTP: TODO: type description here.
-        CHAZKI: TODO: type description here.
-        SHIPPIE: TODO: type description here.
-        GEODIS_API: TODO: type description here.
-        NAQEL_EXPRESS: TODO: type description here.
-        PAPA_WEBHOOK: TODO: type description here.
-        FORWARDAIR: TODO: type description here.
-        DIALOGO_LOGISTICA_API: TODO: type description here.
-        LALAMOVE_API: TODO: type description here.
-        TOMYDOOR: TODO: type description here.
-        KRONOS_WEBHOOK: TODO: type description here.
-        JTCARGO: TODO: type description here.
-        T_CAT: TODO: type description here.
-        CONCISE_WEBHOOK: TODO: type description here.
-        TELEPORT_WEBHOOK: TODO: type description here.
-        CUSTOMCO_API: TODO: type description here.
-        SPX_TH: TODO: type description here.
-        BOLLORE_LOGISTICS: TODO: type description here.
-        CLICKLINK_SFTP: TODO: type description here.
-        M3LOGISTICS: TODO: type description here.
-        VNPOST_API: TODO: type description here.
-        AXLEHIRE_FTP: TODO: type description here.
-        SHADOWFAX: TODO: type description here.
-        MYHERMES_UK_API: TODO: type description here.
-        DAIICHI: TODO: type description here.
-        MENSAJEROSURBANOS_API: TODO: type description here.
-        POLARSPEED: TODO: type description here.
-        IDEXPRESS_ID: TODO: type description here.
-        PAYO: TODO: type description here.
-        WHISTL_SFTP: TODO: type description here.
-        INTEX_DE: TODO: type description here.
-        TRANS2U: TODO: type description here.
-        PRODUCTCAREGROUP_SFTP: TODO: type description here.
-        BIGSMART: TODO: type description here.
-        EXPEDITORS_API_REF: TODO: type description here.
-        AITWORLDWIDE_API: TODO: type description here.
-        WORLDCOURIER: TODO: type description here.
-        QUIQUP: TODO: type description here.
-        AGEDISS_SFTP: TODO: type description here.
-        ANDREANI_API: TODO: type description here.
-        CRLEXPRESS: TODO: type description here.
-        SMARTCAT: TODO: type description here.
-        CROSSFLIGHT: TODO: type description here.
-        PROCARRIER: TODO: type description here.
-        DHL_REFERENCE_API: TODO: type description here.
-        SEINO_API: TODO: type description here.
-        WSPEXPRESS: TODO: type description here.
-        KRONOS: TODO: type description here.
-        TOTAL_EXPRESS_API: TODO: type description here.
-        PARCLL: TODO: type description here.
-        XPEDIGO: TODO: type description here.
-        STAR_TRACK_WEBHOOK: TODO: type description here.
-        GPOST: TODO: type description here.
-        UCS: TODO: type description here.
-        DMFGROUP: TODO: type description here.
-        COORDINADORA_API: TODO: type description here.
-        MARKEN: TODO: type description here.
-        NTL: TODO: type description here.
-        REDJEPAKKETJE: TODO: type description here.
-        ALLIED_EXPRESS_FTP: TODO: type description here.
-        MONDIALRELAY_ES: TODO: type description here.
-        NAEKO_FTP: TODO: type description here.
-        MHI: TODO: type description here.
-        SHIPPIFY: TODO: type description here.
-        MALCA_AMIT_API: TODO: type description here.
-        JTEXPRESS_SG_API: TODO: type description here.
-        DACHSER_WEB: TODO: type description here.
-        FLIGHTLG: TODO: type description here.
-        CAGO: TODO: type description here.
-        COM1EXPRESS: TODO: type description here.
-        TONAMI_FTP: TODO: type description here.
-        PACKFLEET: TODO: type description here.
-        PUROLATOR_INTERNATIONAL: TODO: type description here.
-        WINESHIPPING_WEBHOOK: TODO: type description here.
-        DHL_ES_SFTP: TODO: type description here.
-        PCHOME_API: TODO: type description here.
-        CESKAPOSTA_API: TODO: type description here.
-        GORUSH: TODO: type description here.
-        HOMERUNNER: TODO: type description here.
-        AMAZON_ORDER: TODO: type description here.
-        EFWNOW_API: TODO: type description here.
-        CBL_LOGISTICA_API: TODO: type description here.
-        NIMBUSPOST: TODO: type description here.
-        LOGWIN_LOGISTICS: TODO: type description here.
-        NOWLOG_API: TODO: type description here.
-        DPD_NL: TODO: type description here.
-        GODEPENDABLE: TODO: type description here.
-        ESDEX: TODO: type description here.
-        LOGISYSTEMS_SFTP: TODO: type description here.
-        EXPEDITORS: TODO: type description here.
-        SNTGLOBAL_API: TODO: type description here.
-        SHIPX: TODO: type description here.
-        QINTL_API: TODO: type description here.
-        PACKS: TODO: type description here.
-        POSTNL_INTERNATIONAL: TODO: type description here.
-        AMAZON_EMAIL_PUSH: TODO: type description here.
-        DHL_API: TODO: type description here.
-        SPX: TODO: type description here.
-        AXLEHIRE: TODO: type description here.
-        ICSCOURIER: TODO: type description here.
-        DIALOGO_LOGISTICA: TODO: type description here.
-        SHUNBANG_EXPRESS: TODO: type description here.
-        TCS_API: TODO: type description here.
-        SF_EXPRESS_CN: TODO: type description here.
-        PACKETA: TODO: type description here.
-        SIC_TELIWAY: TODO: type description here.
-        MONDIALRELAY_FR: TODO: type description here.
-        INTIME_FTP: TODO: type description here.
-        JD_EXPRESS: TODO: type description here.
-        FASTBOX: TODO: type description here.
-        PATHEON: TODO: type description here.
-        INDIA_POST: TODO: type description here.
-        TIPSA_REF: TODO: type description here.
-        ECOFREIGHT: TODO: type description here.
-        VOX: TODO: type description here.
-        DIRECTFREIGHT_AU_REF: TODO: type description here.
-        BESTTRANSPORT_SFTP: TODO: type description here.
-        AUSTRALIA_POST_API: TODO: type description here.
-        FRAGILEPAK_SFTP: TODO: type description here.
-        FLIPXP: TODO: type description here.
-        VALUE_WEBHOOK: TODO: type description here.
-        DAESHIN: TODO: type description here.
-        SHERPA: TODO: type description here.
-        MWD_API: TODO: type description here.
-        SMARTKARGO: TODO: type description here.
-        DNJ_EXPRESS: TODO: type description here.
-        GOPEOPLE: TODO: type description here.
-        MYSENDLE_API: TODO: type description here.
-        ARAMEX_API: TODO: type description here.
-        PIDGE: TODO: type description here.
-        THAIPARCELS: TODO: type description here.
-        PANTHER_REFERENCE_API: TODO: type description here.
-        POSTAPLUS1: TODO: type description here.
-        BUFFALO: TODO: type description here.
-        U_ENVIOS: TODO: type description here.
-        ELITE_CO: TODO: type description here.
-        BARQEXP: TODO: type description here.
-        ROCHE_INTERNAL_SFTP: TODO: type description here.
-        DBSCHENKER_ICELAND: TODO: type description here.
-        TNT_FR_REFERENCE: TODO: type description here.
-        NEWGISTICSAPI: TODO: type description here.
-        GLOVO: TODO: type description here.
-        GWLOGIS_API: TODO: type description here.
-        SPREETAIL_API: TODO: type description here.
-        MOOVA: TODO: type description here.
-        PLYCONGROUP: TODO: type description here.
-        USPS_WEBHOOK: TODO: type description here.
-        REIMAGINEDELIVERY: TODO: type description here.
-        EDF_FTP: TODO: type description here.
-        DAO365: TODO: type description here.
-        BIOCAIR_FTP: TODO: type description here.
-        RANSA_WEBHOOK: TODO: type description here.
-        SHIPXPRES: TODO: type description here.
-        COURANT_PLUS_API: TODO: type description here.
-        SHIPA: TODO: type description here.
-        HOMELOGISTICS: TODO: type description here.
-        DX: TODO: type description here.
-        POSTE_ITALIANE_PACCOCELERE: TODO: type description here.
-        TOLL_WEBHOOK: TODO: type description here.
-        LCTBR_API: TODO: type description here.
-        DX_FREIGHT: TODO: type description here.
-        DHL_SFTP: TODO: type description here.
-        SHIPROCKET: TODO: type description here.
-        UBER_WEBHOOK: TODO: type description here.
-        STATOVERNIGHT: TODO: type description here.
-        BURD: TODO: type description here.
-        FASTSHIP: TODO: type description here.
-        IBVENTURE_WEBHOOK: TODO: type description here.
-        GATI_KWE_API: TODO: type description here.
-        CRYOPDP_FTP: TODO: type description here.
-        HUBBED: TODO: type description here.
-        TIPSA_API: TODO: type description here.
-        ARASKARGO: TODO: type description here.
-        THIJS_NL: TODO: type description here.
-        ATSHEALTHCARE_REFERENCE: TODO: type description here.
-        ENUM_99MINUTOS: TODO: type description here.
-        HELLENIC_POST: TODO: type description here.
-        HSM_GLOBAL: TODO: type description here.
-        MNX: TODO: type description here.
-        NMTRANSFER: TODO: type description here.
-        LOGYSTO: TODO: type description here.
-        INDIA_POST_INT: TODO: type description here.
-        AMAZON_FBA_SWISHIP_IN: TODO: type description here.
-        SRT_TRANSPORT: TODO: type description here.
-        BOMI: TODO: type description here.
-        DELIVERR_SFTP: TODO: type description here.
-        HSDEXPRESS: TODO: type description here.
-        SIMPLETIRE_WEBHOOK: TODO: type description here.
-        HUNTER_EXPRESS_SFTP: TODO: type description here.
-        UPS_API: TODO: type description here.
-        WOOYOUNG_LOGISTICS_SFTP: TODO: type description here.
-        PHSE_API: TODO: type description here.
-        WISH_EMAIL_PUSH: TODO: type description here.
-        NORTHLINE: TODO: type description here.
-        MEDAFRICA: TODO: type description here.
-        DPD_AT_SFTP: TODO: type description here.
-        ANTERAJA: TODO: type description here.
-        DHL_GLOBAL_FORWARDING_API: TODO: type description here.
-        LBCEXPRESS_API: TODO: type description here.
-        SIMSGLOBAL: TODO: type description here.
-        CDLDELIVERS: TODO: type description here.
-        TYP: TODO: type description here.
-        TESTING_COURIER_WEBHOOK: TODO: type description here.
-        PANDAGO_API: TODO: type description here.
-        ROYAL_MAIL_FTP: TODO: type description here.
-        THUNDEREXPRESS: TODO: type description here.
-        SECRETLAB_WEBHOOK: TODO: type description here.
-        SETEL: TODO: type description here.
-        JD_WORLDWIDE: TODO: type description here.
-        DPD_RU_API: TODO: type description here.
-        ARGENTS_WEBHOOK: TODO: type description here.
-        POSTONE: TODO: type description here.
-        TUSKLOGISTICS: TODO: type description here.
-        RHENUS_UK_API: TODO: type description here.
-        TAQBIN_SG_API: TODO: type description here.
-        INNTRALOG_SFTP: TODO: type description here.
-        DAYROSS: TODO: type description here.
-        CORREOSEXPRESS_API: TODO: type description here.
-        INTERNATIONAL_SEUR_API: TODO: type description here.
-        YODEL_API: TODO: type description here.
-        HEROEXPRESS: TODO: type description here.
-        DHL_SUPPLYCHAIN_IN: TODO: type description here.
-        URGENT_CARGUS: TODO: type description here.
-        FRONTDOORCORP: TODO: type description here.
-        JTEXPRESS_PH: TODO: type description here.
-        PARCELSTARS_WEBHOOK: TODO: type description here.
-        DPD_SK_SFTP: TODO: type description here.
-        MOVIANTO: TODO: type description here.
-        OZEPARTS_SHIPPING: TODO: type description here.
-        KARGOMKOLAY: TODO: type description here.
-        TRUNKRS: TODO: type description here.
-        OMNIRPS_WEBHOOK: TODO: type description here.
-        CHILEXPRESS: TODO: type description here.
-        TESTING_COURIER: TODO: type description here.
-        JNE_API: TODO: type description here.
-        BJSHOMEDELIVERY_FTP: TODO: type description here.
-        DEXPRESS_WEBHOOK: TODO: type description here.
-        USPS_API: TODO: type description here.
-        TRANSVIRTUAL: TODO: type description here.
-        SOLISTICA_API: TODO: type description here.
-        CHIENVENTURE_WEBHOOK: TODO: type description here.
-        DPD_UK_SFTP: TODO: type description here.
-        INPOST_UK: TODO: type description here.
-        JAVIT: TODO: type description here.
-        ZTO_DOMESTIC: TODO: type description here.
-        DHL_GT_API: TODO: type description here.
-        CEVA_TRACKING: TODO: type description here.
-        KOMON_EXPRESS: TODO: type description here.
-        EASTWESTCOURIER_FTP: TODO: type description here.
-        DANNIAO: TODO: type description here.
-        SPECTRAN: TODO: type description here.
-        DELIVER_IT: TODO: type description here.
-        RELAISCOLIS: TODO: type description here.
-        GLS_SPAIN_API: TODO: type description here.
-        POSTPLUS: TODO: type description here.
-        AIRTERRA: TODO: type description here.
-        GIO_ECOURIER_API: TODO: type description here.
-        DPD_CH_SFTP: TODO: type description here.
-        FEDEX_API: TODO: type description here.
-        INTERSMARTTRANS: TODO: type description here.
-        HERMES_UK_SFTP: TODO: type description here.
-        EXELOT_FTP: TODO: type description here.
-        DHL_PA_API: TODO: type description here.
-        VIRTRANSPORT_SFTP: TODO: type description here.
-        WORLDNET: TODO: type description here.
-        INSTABOX_WEBHOOK: TODO: type description here.
-        KNG: TODO: type description here.
-        FLASHEXPRESS_WEBHOOK: TODO: type description here.
-        MAGYAR_POSTA_API: TODO: type description here.
-        WESHIP_API: TODO: type description here.
-        OHI_WEBHOOK: TODO: type description here.
-        MUDITA: TODO: type description here.
-        BLUEDART_API: TODO: type description here.
-        T_CAT_API: TODO: type description here.
-        ADS: TODO: type description here.
-        HERMES_IT: TODO: type description here.
-        FITZMARK_API: TODO: type description here.
-        POSTI_API: TODO: type description here.
-        SMSA_EXPRESS_WEBHOOK: TODO: type description here.
-        TAMERGROUP_WEBHOOK: TODO: type description here.
-        LIVRAPIDE: TODO: type description here.
-        NIPPON_EXPRESS: TODO: type description here.
-        BETTERTRUCKS: TODO: type description here.
-        FAN: TODO: type description here.
-        PB_USPSFLATS_FTP: TODO: type description here.
-        PARCELRIGHT: TODO: type description here.
-        ITHINKLOGISTICS: TODO: type description here.
-        KERRY_EXPRESS_TH_WEBHOOK: TODO: type description here.
-        ECOUTIER: TODO: type description here.
-        SHOWL: TODO: type description here.
-        BRT_IT_API: TODO: type description here.
-        RIXONHK_API: TODO: type description here.
-        DBSCHENKER_API: TODO: type description here.
-        ILYANGLOGIS: TODO: type description here.
-        MAIL_BOX_ETC: TODO: type description here.
-        WESHIP: TODO: type description here.
-        DHL_GLOBAL_MAIL_API: TODO: type description here.
-        ACTIVOS24_API: TODO: type description here.
-        ATSHEALTHCARE: TODO: type description here.
-        LUWJISTIK: TODO: type description here.
-        GW_WORLD: TODO: type description here.
-        FAIRSENDEN_API: TODO: type description here.
-        SERVIP_WEBHOOK: TODO: type description here.
-        SWISHIP: TODO: type description here.
-        TANET: TODO: type description here.
-        HOTSIN_CARGO: TODO: type description here.
-        DIREX: TODO: type description here.
-        HUANTONG: TODO: type description here.
-        IMILE_API: TODO: type description here.
-        BDMNET: TODO: type description here.
-        AUEXPRESS: TODO: type description here.
-        NYTLOGISTICS: TODO: type description here.
-        DSV_REFERENCE: TODO: type description here.
-        NOVOFARMA_WEBHOOK: TODO: type description here.
-        AITWORLDWIDE_SFTP: TODO: type description here.
-        SHOPOLIVE: TODO: type description here.
-        FNF_ZA: TODO: type description here.
-        DHL_ECOMMERCE_GC: TODO: type description here.
-        FETCHR: TODO: type description here.
-        STARLINKS_API: TODO: type description here.
-        YYEXPRESS: TODO: type description here.
-        SERVIENTREGA: TODO: type description here.
-        HANJIN: TODO: type description here.
-        SPANISH_SEUR_FTP: TODO: type description here.
-        DX_B2B_CONNUM: TODO: type description here.
-        HELTHJEM_API: TODO: type description here.
-        INEXPOST: TODO: type description here.
-        A2B_BA: TODO: type description here.
-        RHENUS_GROUP: TODO: type description here.
-        SBERLOGISTICS_RU: TODO: type description here.
-        MALCA_AMIT: TODO: type description here.
-        PPL: TODO: type description here.
-        OSM_WORLDWIDE_SFTP: TODO: type description here.
-        ACILOGISTIX: TODO: type description here.
-        OPTIMACOURIER: TODO: type description here.
-        NOVA_POSHTA_API: TODO: type description here.
-        LOGGI: TODO: type description here.
-        YIFAN: TODO: type description here.
-        MYDYNALOGIC: TODO: type description here.
-        MORNINGLOBAL: TODO: type description here.
-        CONCISE_API: TODO: type description here.
-        FXTRAN: TODO: type description here.
-        DELIVERYOURPARCEL_ZA: TODO: type description here.
-        UPARCEL: TODO: type description here.
-        MOBI_BR: TODO: type description here.
-        LOGINEXT_WEBHOOK: TODO: type description here.
-        EMS: TODO: type description here.
-        SPEEDY: TODO: type description here.
-        ZOOM_RED: TODO: type description here.
-        NAVLUNGO: TODO: type description here.
-        CASTLEPARCELS: TODO: type description here.
-        WEEE: TODO: type description here.
-        PACKALY: TODO: type description here.
-        YUNHUIPOST: TODO: type description here.
-        YOUPARCEL: TODO: type description here.
-        LEMAN: TODO: type description here.
-        MOOVIN: TODO: type description here.
-        URB_IT: TODO: type description here.
-        MULTIENTREGAPANAMA: TODO: type description here.
-        JUSDASR: TODO: type description here.
-        DISCOUNTPOST: TODO: type description here.
-        RHENUS_UK: TODO: type description here.
-        SWISHIP_JP: TODO: type description here.
-        GLS_US: TODO: type description here.
-        SMTL: TODO: type description here.
-        EMEGA: TODO: type description here.
-        EXPRESSONE_SV: TODO: type description here.
-        HEPSIJET: TODO: type description here.
-        WELIVERY: TODO: type description here.
-        BRINGER: TODO: type description here.
-        EASYROUTES: TODO: type description here.
-        MRW: TODO: type description here.
-        RPM: TODO: type description here.
-        DPD_PRT: TODO: type description here.
-        GLS_ROMANIA: TODO: type description here.
-        LMPARCEL: TODO: type description here.
-        GTAGSM: TODO: type description here.
-        DOMINO: TODO: type description here.
-        ESHIPPER: TODO: type description here.
-        TRANSPAK: TODO: type description here.
-        XINDUS: TODO: type description here.
-        AOYUE: TODO: type description here.
-        EASYPARCEL: TODO: type description here.
-        EXPRESSONE: TODO: type description here.
-        SENDEO_KARGO: TODO: type description here.
-        SPEEDAF: TODO: type description here.
-        ETOWER: TODO: type description here.
-        GCX: TODO: type description here.
-        NINJAVAN_VN: TODO: type description here.
-        ALLEGRO: TODO: type description here.
-        JUMPPOINT: TODO: type description here.
-        SHIPGLOBAL_US: TODO: type description here.
-        KINISI: TODO: type description here.
-        OAKH: TODO: type description here.
-        AWEST: TODO: type description here.
-        BARSAN: TODO: type description here.
-        ENERGOLOGISTIC: TODO: type description here.
-        MADROOEX: TODO: type description here.
-        GOBOLT: TODO: type description here.
-        SWISS_UNIVERSAL_EXPRESS: TODO: type description here.
-        IORDIRECT: TODO: type description here.
-        XMSZM: TODO: type description here.
-        GLS_HUN: TODO: type description here.
-        SENDY: TODO: type description here.
-        BRAUNSEXPRESS: TODO: type description here.
-        GRANDSLAMEXPRESS: TODO: type description here.
-        XGS: TODO: type description here.
-        OTSCHILE: TODO: type description here.
-        PACK_UP: TODO: type description here.
-        PARCELSTARS: TODO: type description here.
-        TEAMEXPRESSLLC: TODO: type description here.
-        ASYADEXPRESS: TODO: type description here.
-        TDN: TODO: type description here.
-        EARLYBIRD: TODO: type description here.
-        CACESA: TODO: type description here.
-        PARCELJET: TODO: type description here.
-        MNG_KARGO: TODO: type description here.
-        SUPERPACKLINE: TODO: type description here.
-        SPEEDX: TODO: type description here.
-        VESYL: TODO: type description here.
-        SKYKING: TODO: type description here.
-        DIRMENSAJERIA: TODO: type description here.
-        NETLOGIXGROUP: TODO: type description here.
-        ZYOU: TODO: type description here.
-        JAWAR: TODO: type description here.
-        AGSYSTEMS: TODO: type description here.
-        GPS: TODO: type description here.
-        PTT_KARGO: TODO: type description here.
-        MAERGO: TODO: type description here.
-        ARIHANTCOURIER: TODO: type description here.
-        VTFE: TODO: type description here.
-        YUNANT: TODO: type description here.
-        URBIFY: TODO: type description here.
-        PACK_MAN: TODO: type description here.
-        LIEFERGRUN: TODO: type description here.
-        OBIBOX: TODO: type description here.
-        PAIKEDA: TODO: type description here.
-        SCOTTY: TODO: type description here.
-        INTELCOM_CA: TODO: type description here.
-        SWE: TODO: type description here.
-        ASENDIA: TODO: type description here.
-        DPD_AT: TODO: type description here.
-        RELAY: TODO: type description here.
-        ATA: TODO: type description here.
-        SKYEXPRESS_INTERNATIONAL: TODO: type description here.
-        SURAT_KARGO: TODO: type description here.
-        SGLINK: TODO: type description here.
-        FLEETOPTICSINC: TODO: type description here.
-        SHOPLINE: TODO: type description here.
-        PIGGYSHIP: TODO: type description here.
-        LOGOIX: TODO: type description here.
-        KOLAY_GELSIN: TODO: type description here.
-        ASSOCIATED_COURIERS: TODO: type description here.
-        UPS_CHECKER: TODO: type description here.
-        WINESHIPPING: TODO: type description here.
-        SPEDISCI: TODO: type description here.
+        DPD_RU: DPD Russia.
+        BG_BULGARIAN_POST: Bulgarian Posts.
+        KR_KOREA_POST: Koreapost (www.koreapost.go.kr).
+        ZA_COURIERIT: Courier IT.
+        FR_EXAPAQ: DPD France (formerly exapaq).
+        ARE_EMIRATES_POST: Emirates Post.
+        GAC: GAC.
+        GEIS: Geis CZ.
+        SF_EX: SF Express.
+        PAGO: Pago Logistics.
+        MYHERMES: MyHermes UK.
+        DIAMOND_EUROGISTICS: Diamond Eurogistics Limited.
+        CORPORATECOURIERS_WEBHOOK: Corporate Couriers.
+        BOND: Bond courier.
+        OMNIPARCEL: Omni Parcel.
+        SK_POSTA: Slovenska pošta.
+        PUROLATOR: purolator.
+        FETCHR_WEBHOOK: Mena 360 (Fetchr).
+        THEDELIVERYGROUP: TDG – The Delivery Group.
+        CELLO_SQUARE: Cello Square.
+        TARRIVE: TONDA GLOBAL.
+        COLLIVERY: MDS Collivery Pty (Ltd).
+        MAINFREIGHT: Mainfreight.
+        IND_FIRSTFLIGHT: First Flight Couriers.
+        ACSWORLDWIDE: ACS Worldwide Express.
+        AMSTAN: Amstan Logistics.
+        OKAYPARCEL: OkayParcel.
+        ENVIALIA_REFERENCE: Envialia Reference.
+        SEUR_ES: Seur Spain.
+        CONTINENTAL: Continental.
+        FDSEXPRESS: FDSEXPRESS.
+        AMAZON_FBA_SWISHIP: Swiship UK.
+        WYNGS: Wyngs.
+        DHL_ACTIVE_TRACING: DHL Active Tracing.
+        ZYLLEM: Zyllem.
+        RUSTON: Ruston.
+        XPOST: Xpost.ph.
+        CORREOS_ES: correos Express (www.correos.es).
+        DHL_FR: DHL France (www.dhl.com).
+        PAN_ASIA: Pan-Asia International.
+        BRT_IT: BRT couriers Italy (www.brt.it).
+        SRE_KOREA: SRE Korea (www.srekorea.co.kr).
+        SPEEDEE: Spee-Dee Delivery.
+        TNT_UK: TNT UK Limited (www.tnt.com).
+        VENIPAK: Venipak.
+        SHREENANDANCOURIER: SHREE NANDAN COURIER.
+        CROSHOT: Croshot.
+        NIPOST_NG: NIpost (www.nipost.gov.ng).
+        EPST_GLBL: ePost Global.
+        NEWGISTICS: Newgistics.
+        POST_SLOVENIA: Post of Slovenia.
+        JERSEY_POST: Jersey Post.
+        BOMBINOEXP: Bombino Express Pvt.
+        WMG: WMG Delivery.
+        XQ_EXPRESS: XQ Express.
+        FURDECO: Furdeco.
+        LHT_EXPRESS: LHT Express.
+        SOUTH_AFRICAN_POST_OFFICE: South African Post Office.
+        SPOTON: SPOTON Logistics Pvt Ltd.
+        DIMERCO: Dimerco Express Group.
+        CYPRUS_POST_CYP: cyprus post.
+        ABCUSTOM: AB Custom Group.
+        IND_DELIVREE: deliverE.
+        CN_BESTEXPRESS: Best Express.
+        DX_SFTP: DX (SFTP).
+        PICKUPP_MYS: PICK UPP.
+        FMX: FMX.
+        HELLMANN: Hellmann Worldwide Logistics.
+        SHIP_IT_ASIA: Ship It Asia.
+        KERRY_ECOMMERCE: Kerry eCommerce.
+        FRETERAPIDO: Frete Rapido.
+        PITNEY_BOWES: Pitney Bowes.
+        XPRESSEN_DK: Xpressen courier.
+        SEUR_SP_API: Spanish Seur API.
+        DELIVERYONTIME: DELIVERYONTIME LOGISTICS PVT LTD.
+        JINSUNG: JINSUNG TRADING.
+        TRANS_KARGO: Trans Kargo Internasional.
+        SWISHIP_DE: Swiship DE.
+        IVOY_WEBHOOK: Ivoy courier.
+        AIRMEE_WEBHOOK: Airmee couriers.
+        DHL_BENELUX: dhl benelux.
+        FIRSTMILE: FirstMile.
+        FASTWAY_IR: Fastway Ireland.
+        HH_EXP: Hua Han Logistics.
+        MYS_MYPOST_ONLINE: Mypostonline.
+        TNT_NL: THT Netherland.
+        TIPSA: TIPSA courier.
+        TAQBIN_MY: TAQBIN Malaysia.
+        KGMHUB: KGM Hub.
+        INTEXPRESS: Internet Express.
+        OVERSE_EXP: Overseas Express.
+        ONECLICK: One click delivery services.
+        ROADRUNNER_FREIGHT: Roadbull Logistics.
+        GLS_CROTIA: GLS Croatia.
+        MRW_FTP: MRW courier.
+        BLUEX: Blue Express.
+        DYLT: Daylight Transport.
+        DPD_IR: DPD Ireland.
+        SIN_GLBL: Sin Global Express.
+        TUFFNELLS_REFERENCE: Tuffnells Parcels Express- Reference.
+        CJPACKET: CJ Packet.
+        MILKMAN: Milkman courier.
+        ASIGNA: ASIGNA courier.
+        ONEWORLDEXPRESS: One World Express.
+        ROYAL_MAIL: RoyalShipments.
+        VIA_EXPRESS: Viaxpress.
+        TIGFREIGHT: TIG Freight.
+        ZTO_EXPRESS: ZTO Express.
+        TWO_GO: 2GO Courier.
+        IML: IML courier.
+        INTEL_VALLEY: Intel-Valley Supply chain (ShenZhen) Co. Ltd.
+        EFS: EFS (E-commerce Fulfillment Service).
+        UK_UK_MAIL: UK mail (ukmail.com).
+        RAM: RAM courier.
+        ALLIEDEXPRESS: Allied Express.
+        APC_OVERNIGHT: APC overnight (apc-overnight.com).
+        SHIPPIT: Shippit.
+        TFM: TFM Xpress.
+        M_XPRESS: M Xpress Sdn Bhd.
+        HDB_BOX: Haidaibao (BOX).
+        CLEVY_LINKS: Clevy Links.
+        IBEONE: Beone Logistics.
+        FIEGE_NL: Fiege Netherlands.
+        KWE_GLOBAL: KWE Global.
+        CTC_EXPRESS: CTC Express.
+        AMAZON: Amazon Shipping.
+        MORE_LINK: Morelink.
+        JX: JX courier.
+        EASY_MAIL: Easy Mail.
+        ADUIEPYLE: A Duie Pyle.
+        GB_PANTHER: Panther.
+        EXPRESSSALE: Expresssale.
+        SG_DETRACK: Detrack.
+        TRUNKRS_WEBHOOK: Trunkrs courier.
+        MATDESPATCH: Matdespatch.
+        DICOM: GLS Logistic Systems Canada Ltd./Dicom.
+        MBW: MBW Courier Inc..
+        KHM_CAMBODIA_POST: Cambodia Post.
+        SINOTRANS: Sinotrans.
+        BRT_IT_PARCELID: BRT Bartolini(Parcel ID).
+        DHL_SUPPLY_CHAIN: DHL Supply Chain APAC.
+        DHL_PL: DHL Poland.
+        TOPYOU: TopYou.
+        PALEXPRESS: PAL Express Limited.
+        DHL_SG: dhl Singapore.
+        CN_WEDO: WeDo Logistics.
+        FULFILLME: Fulfillme.
+        DPD_DELISTRACK: DPD delistrack.
+        UPS_REFERENCE: UPS Reference.
+        CARIBOU: Caribou.
+        LOCUS_WEBHOOK: Locus courier.
+        DSV: DSV courier.
+        P2P_TRC: P2P TrakPak.
+        DIRECTPARCELS: Direct Parcels.
+        NOVA_POSHTA_INT: Nova Poshta (International).
+        FEDEX_POLAND: FedEx® Poland Domestic.
+        CN_JCEX: JCEX courier.
+        FAR_INTERNATIONAL: FAR international.
+        IDEXPRESS: IDEX courier.
+        GANGBAO: GANGBAO Supplychain.
+        NEWAY: Neway Transport.
+        POSTNL_INT_3_S: PostNL International.
+        RPX_ID: RPX Indonesia.
+        DESIGNERTRANSPORT_WEBHOOK: Designer Transport.
+        GLS_SLOVEN: GLS Slovenia.
+        PARCELLED_IN: Parcelled.in.
+        GSI_EXPRESS: GSI EXPRESS.
+        CON_WAY: Con-way Freight.
+        BROUWER_TRANSPORT: Brouwer Transport en Logistiek.
+        CPEX: Captain Express International.
+        ISRAEL_POST: Israel Post.
+        DTDC_IN: DTDC India.
+        PTT_POST: PTT Post.
+        XDE_WEBHOOK: Ximex Delivery Express.
+        TOLOS: Tolos courier.
+        GIAO_HANG: Giao hàng nhanh.
+        GEODIS_ESPACE: Geodis E-space.
+        MAGYAR_HU: Magyar Post.
+        DOORDASH_WEBHOOK: DoorDash.
+        TIKI_ID: Tiki shipment.
+        CJ_HK_INTERNATIONAL: CJ Logistics International(Hong Kong).
+        STAR_TRACK_EXPRESS: Star Track Express.
+        HELTHJEM: Helthjem.
+        SFB2C: SF International.
+        FREIGHTQUOTE: Freightquote by C.H. Robinson.
+        LANDMARK_GLOBAL_REFERENCE: Landmark Global Reference.
+        PARCEL2GO: Parcel2Go.
+        DELNEXT: Delnext.
+        RCL: Red Carpet Logistics.
+        CGS_EXPRESS: CGS Express.
+        HK_POST: Hongkong Post (www.hongkongpost.hk).
+        SAP_EXPRESS: SAP EXPRESS.
+        PARCELPOST_SG: Parcel Post Singapore.
+        HERMES: HermesWorld UK.
+        IND_SAFEEXPRESS: Safexpress.
+        TOPHATTEREXPRESS: Tophatter Express.
+        MGLOBAL: PT MGLOBAL LOGISTICS INDONESIA.
+        AVERITT: Averitt Express.
+        LEADER: leader.
+        _2EBOX: 2ebox courier.
+        SG_SPEEDPOST: Singapore Speedpost.
+        DBSCHENKER_SE: DB Schenker (www.dbschenker.com).
+        ISR_POST_DOMESTIC: Israel Post Domestic.
+        BESTWAYPARCEL: Best Way Parcel.
+        ASENDIA_DE: asendia_de.
+        NIGHTLINE_UK: nightline_uk.
+        TAQBIN_SG: taqbin_sg.
+        TCK_EXPRESS: TCK Express.
+        ENDEAVOUR_DELIVERY: Endeavour Delivery.
+        NANJINGWOYUAN: Nanjing Woyuan.
+        HEPPNER_FR: Heppner France.
+        EMPS_CN: EMPS Express.
+        FONSEN: Fonsen Logistics.
+        PICKRR: Pickrr.
+        APC_OVERNIGHT_CONNUM: APC Overnight Consignment.
+        STAR_TRACK_NEXT_FLIGHT: Star Track Next Flight.
+        DAJIN: Shanghai Aqrum Chemical Logistics Co.Ltd.
+        UPS_FREIGHT: UPS Freight.
+        POSTA_PLUS: Posta Plus.
+        CEVA: CEVA LOGISTICS.
+        ANSERX: ANSERX courier.
+        JS_EXPRESS: JS EXPRESS.
+        PADTF: padtf.com.
+        UPS_MAIL_INNOVATIONS: UPS Mail Innovations.
+        SYPOST: Sunyou Post.
+        AMAZON_SHIP_MCF: Amazon Shipping + Amazon MCF.
+        YUSEN: Yusen Logistics.
+        BRING: Bring.
+        SDA_IT: SDA Italy.
+        GBA: GBA Services Ltd.
+        NEWEGGEXPRESS: Newegg Express.
+        SPEEDCOURIERS_GR: Speed Couriers.
+        FORRUN: forrun Pvt Ltd (Arpatech Venture).
+        PICKUP: Pickupp.
+        ECMS: ECMS International Logistics Co..
+        INTELIPOST: Intelipost (TMS for LATAM).
+        FLASHEXPRESS: Flash Express.
+        CN_STO: STO Express.
+        SEKO_SFTP: SEKO Worldwide.
+        HOME_DELIVERY_SOLUTIONS: Home Delivery Solutions Ltd.
+        DPD_HGRY: DPD Hungary.
+        KERRYTTC_VN: Kerry Express (Vietnam) Co Ltd.
+        JOYING_BOX: Joying Box.
+        TOTAL_EXPRESS: Total Express.
+        ZJS_EXPRESS: ZJS International.
+        STARKEN: STARKEN couriers.
+        DEMANDSHIP: DemandShip.
+        CN_DPEX: DPEX.
+        AUPOST_CN: AuPost China.
+        LOGISTERS: Logisters.
+        GOGLOBALPOST: Global Post.
+        GLS_CZ: GLS Czech Republic.
+        PAACK_WEBHOOK: Paack courier.
+        GRAB_WEBHOOK: Grab courier.
+        PARCELPOINT: Parcelpoint.
+        ICUMULUS: iCumulus.
+        DAIGLOBALTRACK: DAI Post.
+        GLOBAL_IPARCEL: i-parcel.
+        YURTICI_KARGO: Yurtici Kargo.
+        CN_PAYPAL_PACKAGE: PayPal Package.
+        PARCEL_2_POST: Parcel To Post.
+        GLS_IT: GLS Italy.
+        PIL_LOGISTICS: PIL Logistics (China) Co..
+        HEPPNER: Heppner Internationale Spedition GmbH & Co..
+        GENERAL_OVERNIGHT: Go!Express and logistics.
+        HAPPY2POINT: Happy 2ThePoint.
+        CHITCHATS: Chit Chats.
+        SMOOTH: Smooth Couriers.
+        CLE_LOGISTICS: CL E-Logistics Solutions Limited.
+        FIEGE: Fiege Logistics.
+        MX_CARGO: M&X cargo.
+        ZIINGFINALMILE: Ziing Final Mile Inc.
+        DAYTON_FREIGHT: Dayton Freight.
+        TCS: TCS courier.
+        AEX: AEX Group.
+        HERMES_DE: Hermes Germany.
+        ROUTIFIC_WEBHOOK: Routific.
+        GLOBAVEND: Globavend.
+        CJ_LOGISTICS: CJ Logistics International.
+        PALLET_NETWORK: The Pallet Network.
+        RAF_PH: RAF Philippines.
+        UK_XDP: XDP Express.
+        PAPER_EXPRESS: Paper Express.
+        LA_POSTE_SUIVI: La Poste.
+        PAQUETEXPRESS: Paquetexpress.
+        LIEFERY: liefery.
+        STRECK_TRANSPORT: Streck Transport.
+        PONY_EXPRESS: Pony express.
+        ALWAYS_EXPRESS: Always Express.
+        GBS_BROKER: GBS-Broker.
+        CITYLINK_MY: City-Link Express.
+        ALLJOY: ALLJOY SUPPLY CHAIN.
+        YODEL: yodel.
+        YODEL_DIR: Yodel Direct.
+        STONE3PL: STONE3PL.
+        PARCELPAL_WEBHOOK: ParcelPal.
+        DHL_ECOMERCE_ASA: DHL eCommerce Asia (API).
+        SIMPLYPOST: J&T Express Singapore.
+        KY_EXPRESS: Kua Yue Express.
+        SHENZHEN: shenzhen 1st International Logistics(Group)Co.
+        US_LASERSHIP: LaserShip.
+        UC_EXPRE: ucexpress.
+        DIDADI: DIDADI Logistics tech.
+        CJ_KR: CJ Korea Express.
+        DBSCHENKER_B2B: DB Schenker B2B.
+        MXE: MXE Express.
+        CAE_DELIVERS: CAE Delivers.
+        PFCEXPRESS: PFC Express.
+        WHISTL: Whistl.
+        WEPOST: WePost Sdn Bhd.
+        DHL_PARCEL_ES: DHL parcel Spain(www.dhl.com).
+        DDEXPRESS: DD Express Courier.
+        ARAMEX_AU: Aramex Australia (formerly Fastway AU).
+        BNEED: Bneed courier.
+        HK_TGX: Kerry Express Hong Kong.
+        LATVIJAS_PASTS: Latvijas Pasts.
+        VIAEUROPE: ViaEurope.
+        CORREO_UY: Correo Uruguayo.
+        CHRONOPOST_FR: Chronopost france (www.chronopost.fr).
+        J_NET: J-Net.
+        _6LS: 6ls.com.
+        BLR_BELPOST: Belpost.
+        BIRDSYSTEM: BirdSystem.
+        DOBROPOST: DobroPost.
+        WAHANA_ID: Wahana express (www.wahana.com).
+        WEASHIP: Weaship.
+        SONICTL: Sonic Transportation & Logistics.
+        KWT: Shenzhen Jinghuada Logistics Co..
+        AFLLOG_FTP: AFL LOGISTICS.
+        SKYNET_WORLDWIDE: SkyNet Worldwide Express.
+        NOVA_POSHTA: Nova Poshta (novaposhta.ua).
+        SEINO: Seino.
+        SZENDEX: SZENDEX.
+        BPOST_INT: Bpost international.
+        DBSCHENKER_SV: DB Schenker Sweden.
+        AO_DEUTSCHLAND: AO Deutschland.
+        EU_FLEET_SOLUTIONS: EU Fleet Solutions.
+        PCFCORP: PCF Final Mile.
+        LINKBRIDGE: Link Bridge(BeiJing)international logistics co..
+        PRIMAMULTICIPTA: PT Prima Multi Cipta.
+        COUREX: Urbanfox.
+        ZAJIL_EXPRESS: Zajil Express Company.
+        COLLECTCO: CollectCo.
+        JTEXPRESS: J&T EXPRESS MALAYSIA.
+        FEDEX_UK: FedEx® UK.
+        USHIP: uShip courier.
+        PIXSELL: PIXSELL LOGISTICS.
+        SHIPTOR: Shiptor.
+        CDEK: CDEK courier.
+        VNM_VIETTELPOST: ViettelPost.
+        CJ_CENTURY: CJ Century.
+        GSO: GSO(GLS-USA).
+        VIWO: VIWO IoT.
+        SKYBOX: SKYBOX.
+        KERRYTJ: Kerry TJ Logistics.
+        NTLOGISTICS_VN: Nhat Tin Logistics.
+        SDH_SCM: lightning monkey.
+        ZINC: Zinc courier.
+        DPE_SOUTH_AFRC: DPE South Africa.
+        CESKA_CZ: Czech Post.
+        ACS_GR: ACS Courier.
+        DEALERSEND: DealerSend.
+        JOCOM: Jocom.
+        CSE: CSE courier.
+        TFORCE_FINALMILE: TForce Final Mile.
+        SHIP_GATE: ShipGate.
+        SHIPTER: SHIPTER.
+        NATIONAL_SAMEDAY: National Sameday.
+        YUNEXPRESS: YunExpress.
+        CAINIAO: AliExpress Standard Shipping.
+        DMS_MATRIX: DMSMatrix.
+        DIRECTLOG: Directlog (www.directlog.com.br).
+        ASENDIA_US: Asendia USA.
+        _3JMSLOGISTICS: 3JMS Logistics.
+        LICCARDI_EXPRESS: LICCARDI EXPRESS COURIER.
+        SKY_POSTAL: SkyPostal.
+        CNWANGTONG: cnwangtong.
+        POSTNORD_LOGISTICS_DK: ostnord denmark.
+        LOGISTIKA: Logistika.
+        CELERITAS: Celeritas Transporte.
+        PRESSIODE: Pressio.
+        SHREE_MARUTI: Shree Maruti Courier Services Pvt Ltd.
+        LOGISTICSWORLDWIDE_HK: Logistic Worldwide Express (LWE Honkong).
+        EFEX: eFEx (E-Commerce Fulfillment & Express).
+        LOTTE: Lotte Global Logistics.
+        LONESTAR: Lone Star Overnight.
+        APRISAEXPRESS: Aprisa Express.
+        BEL_RS: BEL North Russia.
+        OSM_WORLDWIDE: OSM Worldwide.
+        WESTGATE_GL: Westgate Global.
+        FASTRACK: Fasttrack.
+        DTD_EXPR: DTD Express.
+        ALFATREX: AlfaTrex.
+        PROMEDDELIVERY: ProMed Delivery.
+        THABIT_LOGISTICS: Thabit Logistics.
+        HCT_LOGISTICS: HCT LOGISTICS CO.LTD..
+        CARRY_FLAP: Carry-Flap Co..
+        US_OLD_DOMINION: Old Dominion Freight Line.
+        ANICAM_BOX: ANICAM BOX EXPRESS.
+        WANBEXPRESS: WanbExpress.
+        AN_POST: An Post.
+        DPD_LOCAL: DPD Local.
+        STALLIONEXPRESS: Stallion Express.
+        RAIDEREX: RaidereX.
+        SHOPFANS: ShopfansRU LLC.
+        KYUNGDONG_PARCEL: Kyungdong Parcel.
+        CHAMPION_LOGISTICS: Champion Logistics.
+        PICKUPP_SGP: PICK UPP (Singapore).
+        MORNING_EXPRESS: Morning Express.
+        NACEX: NACEX.
+        THENILE_WEBHOOK: SortHub courier.
+        HOLISOL: Holisol.
+        LBCEXPRESS_FTP: LBC EXPRESS INC..
+        KURASI: KURASI.
+        USF_REDDAWAY: USF Reddaway.
+        APG: APG eCommerce Solutions.
+        CN_BOXC: BoxC courier.
+        ECOSCOOTING: ECOSCOOTING.
+        MAINWAY: Mainway.
+        PAPERFLY: Paperfly Private Limited.
+        HOUNDEXPRESS: Hound Express.
+        BOX_BERRY: Boxberry courier.
+        EP_BOX: EP-Box courier.
+        PLUS_LOG_UK: Plus UK Logistics.
+        FULFILLA: Fulfilla.
+        ASE: ASE KARGO.
+        MAIL_PLUS: MailPlus.
+        XPO_LOGISTICS: XPO logistics.
+        WNDIRECT: wnDirect.
+        CLOUDWISH_ASIA: Cloudwish Asia.
+        ZELERIS: Zeleris.
+        GIO_EXPRESS: Gio Express.
+        OCS_WORLDWIDE: OCS WORLDWIDE.
+        ARK_LOGISTICS: ARK Logistics.
+        AQUILINE: Aquiline.
+        PILOT_FREIGHT: Pilot Freight Services.
+        QWINTRY: Qwintry Logistics.
+        DANSKE_FRAGT: Danske Fragtaend.
+        CARRIERS: Carriers courier.
+        AIR_CANADA_GLOBAL: Rivo (Air canada).
+        PRESIDENT_TRANS: PRESIDENT TRANSNET CORP.
+        STEPFORWARDFS: STEP FORWARD FREIGHT SERVICE CO LTD.
+        SKYNET_UK: Skynet UK.
+        PITTOHIO: PITT OHIO.
+        CORREOS_EXPRESS: Correos Express.
+        RL_US: RL Carriers.
+        DESTINY: Destiny Transportation.
+        UK_YODEL: Yodel (www.yodel.co.uk).
+        COMET_TECH: CometTech.
+        DHL_PARCEL_RU: DHL Parcel Russia.
+        TNT_REFR: TNT Reference.
+        SHREE_ANJANI_COURIER: Shree Anjani Courier.
+        MIKROPAKKET_BE: Mikropakket Belgium.
+        ETS_EXPRESS: RETS express.
+        COLIS_PRIVE: Colis Privé.
+        CN_YUNDA: Yunda Express.
+        AAA_COOPER: AAA Cooper.
+        ROCKET_PARCEL: Rocket Parcel International.
+        _360LION: 360 Lion Express.
+        PANDU: PANDU.
+        PROFESSIONAL_COURIERS: PROFESSIONAL COURIERS.
+        FLYTEXPRESS: FLYTEXPRESS.
+        LOGISTICSWORLDWIDE_MY: LOGISTICSWORLDWIDE MY.
+        CORREOS_DE_ESPANA: CORREOS DE ESPANA.
+        IMX: IMX.
+        FOUR_PX_EXPRESS: FOUR PX EXPRESS.
+        XPRESSBEES: XPRESSBEES.
+        PICKUPP_VNM: pickupp_vnm.
+        STARTRACK_EXPRESS1: startrack_express.
+        FR_COLISSIMO: fr_colissimo.
+        NACEX_SPAIN_REFERENCE: nacex_spain_reference.
+        DHL_SUPPLY_CHAIN_AU: dhl_supply_chain_au.
+        ESHIPPING: Eshipping.
+        SHREETIRUPATI: SHREE TIRUPATI COURIER SERVICES PVT. LTD..
+        HX_EXPRESS: HX Express.
+        INDOPAKET: INDOPAKET.
+        CN_17POST: 17 Post Service.
+        K1_EXPRESS: K1 Express.
+        CJ_GLS: CJ GLS.
+        MYS_GDEX: GDEX courier.
+        NATIONEX: Nationex courier.
+        ANJUN: Anjun couriers.
+        FARGOOD: FarGood.
+        SMG_EXPRESS: SMG Direct.
+        RZYEXPRESS: RZY Express.
+        SEFL: Southeastern Freight Lines.
+        TNT_CLICK_IT: TNT-Click Italy.
+        HDB: Haidaibao.
+        HIPSHIPPER: Hipshipper.
+        RPXLOGISTICS: RPX Logistics.
+        KUEHNE: Kuehne + Nagel.
+        IT_NEXIVE: Nexive (TNT Post Italy).
+        PTS: PTS courier.
+        SWISS_POST_FTP: Swiss Post FTP.
+        FASTRK_SERV: Fastrak Services.
+        _4_72: 4-72 Entregando.
+        US_YRC: YRC courier.
+        POSTNL_INTL_3S: PostNL International 3S.
+        ELIAN_POST: Yilian (Elian) Supply Chain.
+        CUBYN: Cubyn.
+        SAU_SAUDI_POST: Saudi Post.
+        ABXEXPRESS_MY: ABX Express.
+        HUAHAN_EXPRESS: HUAHANG EXPRESS.
+        ZES_EXPRESS: Eshun international Logistic.
+        ZEPTO_EXPRESS: ZeptoExpress.
+        SKYNET_ZA: Skynet World Wide Express South Africa.
+        ZEEK_2_DOOR: Zeek2Door.
+        BLINKLASTMILE: Blink.
+        POSTA_UKR: UkrPoshta.
+        CHROBINSON: C.H. Robinson Worldwide.
+        CN_POST56: Post56.
+        COURANT_PLUS: Courant Plus.
+        SCUDEX_EXPRESS: Scudex Express.
+        SHIPENTEGRA: ShipEntegra.
+        B_TWO_C_EUROPE: B2C courier Europe.
+        COPE: Cope Sensitive Freight.
+        IND_GATI: Gati-KWE.
+        CN_WISHPOST: WishPost.
+        NACEX_ES: NACEX Spain.
+        TAQBIN_HK: TAQBIN Hong Kong.
+        GLOBALTRANZ: GlobalTranz.
+        HKD: Qingdao HKD International Logistics.
+        BJSHOMEDELIVERY: BJS Distribution courier.
+        OMNIVA: Omniva.
+        SUTTON: Sutton Transport.
+        PANTHER_REFERENCE: Panther Reference.
+        SFCSERVICE: SFC Service.
+        LTL: LTL COURIER.
+        PARKNPARCEL: Park N Parcel.
+        SPRING_GDS: Spring GDS.
+        ECEXPRESS: ECexpress.
+        INTERPARCEL_AU: Interparcel Australia.
+        AGILITY: Agility.
+        XL_EXPRESS: XL Express.
+        ADERONLINE: Ader couriers.
+        DIRECTCOURIERS: Direct Couriers.
+        PLANZER: Planzer Group.
+        SENDING: Sending Transporte Urgente y Comunicacion.
+        NINJAVAN_WB: Ninjavan Webhook.
+        NATIONWIDE_MY: Nationwide Express Courier Services Bhd
+            (www.nationwide.com.my).
+        SENDIT: Sendit.
+        GB_ARROW: Arrow XL.
+        IND_GOJAVAS: GoJavas.
+        KPOST: Korea Post.
+        DHL_FREIGHT: DHL Freight.
+        BLUECARE: Bluecare Express Ltd.
+        JINDOUYUN: jindouyun courier.
+        TRACKON: Trackon Couriers Pvt. Ltd.
+        GB_TUFFNELLS: Tuffnells Parcels Express.
+        TRUMPCARD: TRUMPCARD LLC.
+        ETOTAL: eTotal Solution Limited.
+        SFPLUS_WEBHOOK: Zeek courier.
+        SEKOLOGISTICS: SEKO Logistics.
+        HERMES_2MANN_HANDLING: Hermes Einrichtungs Service GmbH & Co. KG.
+        DPD_LOCAL_REF: DPD Local reference.
+        UDS: United Delivery Service.
+        ZA_SPECIALISED_FREIGHT: Specialised Freight.
+        THA_KERRY: Kerry Express Thailand.
+        PRT_INT_SEUR: SEUR International.
+        BRA_CORREIOS: Correios Brazil.
+        NZ_NZ_POST: New Zealand Post.
+        CN_EQUICK: Equick China.
+        MYS_EMS: Malaysia Post EMS / Pos Laju.
+        GB_NORSK: Norsk Global.
+        ESP_MRW: MRW spain.
+        ESP_PACKLINK: Packlink.
+        KANGAROO_MY: Kangaroo Worldwide Express.
+        RPX: RPX Online.
+        XDP_UK_REFERENCE: XDP Express Reference.
+        NINJAVAN_MY: ninja van (www.ninjavan.co).
+        ADICIONAL: Adicional Logistics.
+        ROADBULL: Red Carpet Logistics.
+        YAKIT: Yakit courier.
+        MAILAMERICAS: MailAmericas.
+        MIKROPAKKET: Mikropakket.
+        DYNALOGIC: Dynamic Logistics.
+        DHL_ES: DHL Spain(www.dhl.com).
+        DHL_PARCEL_NL: DHL Parcel NL.
+        DHL_GLOBAL_MAIL_ASIA: DHL Global Mail Asia (www.dhl.com).
+        DAWN_WING: Dawn Wing.
+        GENIKI_GR: Geniki Taxydromiki.
+        HERMESWORLD_UK: hermesworld_uk.
+        ALPHAFAST: Alphafast (www.alphafast.com).
+        BUYLOGIC: buylogic.
+        EKART: Ekart logistics (ekartlogistics.com).
+        MEX_SENDA: mexico senda express.
+        SFC_LOGISTICS: SFC.
+        POST_SERBIA: Posta Serbia.
+        IND_DELHIVERY: Delhivery India.
+        DE_DPD_DELISTRACK: DPD Germany.
+        RPD2MAN: RPD2man Deliveries.
+        CN_SF_EXPRESS: SF Express (www.sf-express.com).
+        YANWEN: Yanwen Logistics.
+        MYS_SKYNET: Skynet Malaysia.
+        CORREOS_DE_MEXICO: correos mexico.
+        CBL_LOGISTICA: CBL Logistica.
+        MEX_ESTAFETA: Estafeta (www.estafeta.com).
+        AU_AUSTRIAN_POST: Austrian Post (Registered).
+        RINCOS: Rincos.
+        NLD_DHL: DHL Netherland.
+        RUSSIAN_POST: Russian post.
+        COURIERS_PLEASE: CouriersPlease (couriersplease.com.au).
+        POSTNORD_LOGISTICS: PostNord Logistics.
+        FEDEX: Fedex.
+        DPE_EXPRESS: DPE Express.
+        DPD: DPD.
+        ADSONE: ADSone.
+        IDN_JNE: JNE Express (Jalur Nugraha Ekakurir).
+        THECOURIERGUY: The Courier Guy.
+        CNEXPS: CNE Express.
+        PRT_CHRONOPOST: Chronopost Portugal.
+        LANDMARK_GLOBAL: Landmark Global.
+        IT_DHL_ECOMMERCE: DHL International.
+        ESP_NACEX: NACEX Spain.
+        PRT_CTT: CTT Portugal.
+        BE_KIALA: Kiala.
+        ASENDIA_UK: Asendia UK.
+        GLOBAL_TNT: TNT global.
+        POSTUR_IS: Iceland Post.
+        EPARCEL_KR: eParcel Korea.
+        INPOST_PACZKOMATY: InPost Paczkomaty.
+        IT_POSTE_ITALIA: Poste italiane (www.poste.it).
+        BE_BPOST: Bpost (www.bpost.be).
+        PL_POCZTA_POLSKA: Poczta Polska (www.poczta-polska.pl).
+        MYS_MYS_POST: Malaysia Post.
+        SG_SG_POST: Singapore Post.
+        THA_THAILAND_POST: Thailand Post (www.thailandpost.co.th).
+        LEXSHIP: LexShip.
+        FASTWAY_NZ: Fastway New Zealand.
+        DHL_AU: DHL Supply Chain Australia.
+        COSTMETICSNOW: Cosmetics Now.
+        PFLOGISTICS: PFL.
+        LOOMIS_EXPRESS: Loomis Express.
+        GLS_ITALY: GLS Italy.
+        LINE: Line Clear Express & Logistics Sdn Bhd.
+        GEL_EXPRESS: Gel Express Logistik.
+        HUODULL: Huodull.
+        NINJAVAN_SG: Ninja van Singapore.
+        JANIO: Janio Asia.
+        AO_COURIER: AO Logistics.
+        BRT_IT_SENDER_REF: BRT Bartolini(Sender Reference).
+        SAILPOST: SAILPOST.
+        LALAMOVE: Lalamove.
+        NEWZEALAND_COURIERS: NEW ZEALAND COURIERS.
+        ETOMARS: Etomars.
+        VIRTRANSPORT: VIR Transport.
+        WIZMO: Wizmo.
+        PALLETWAYS: Palletways.
+        I_DIKA: i-dika.
+        CFL_LOGISTICS: CFL Logistics.
+        GEMWORLDWIDE: GEM Worldwide.
+        GLOBAL_EXPRESS: Tai Wan Global Business.
+        LOGISTYX_TRANSGROUP: Transgroup courier.
+        WESTBANK_COURIER: West Bank Courier.
+        ARCO_SPEDIZIONI: Arco Spedizioni SP.
+        YDH_EXPRESS: YDH express.
+        PARCELINKLOGISTICS: Parcelink Logistics.
+        CNDEXPRESS: CND Express.
+        NOX_NIGHT_TIME_EXPRESS: NOX NightTimeExpress.
+        AERONET: Aeronet couriers.
+        LTIANEXP: LTIAN EXP.
+        INTEGRA2_FTP: Integra2.
+        PARCELONE: PARCEL ONE.
+        NOX_NACHTEXPRESS: Innight Express Germany GmbH (nox NachtExpress).
+        CN_CHINA_POST_EMS: China Post.
+        CHUKOU1: Chukou1.
+        GLS_SLOV: GLS General Logistics Systems Slovakia s.r.o..
+        ORANGE_DS: OrangeDS (Orange Distribution Solutions Inc).
+        JOOM_LOGIS: Joom Logistics.
+        AUS_STARTRACK: StarTrack (startrack.com.au).
+        DHL: dhl Global.
+        GB_APC: APC postal logistics germany.
+        BONDSCOURIERS: Bonds Courier Service (bondscouriers.com.au).
+        JPN_JAPAN_POST: Japan Post.
+        USPS: United States Postal Service.
+        WINIT: WinIt.
+        ARG_OCA: OCA Argentina.
+        TW_TAIWAN_POST: Taiwan Post.
+        DMM_NETWORK: DMM Network.
+        TNT: TNT Express.
+        BH_POSTA: BH Posta (www.posta.ba).
+        SWE_POSTNORD: Postnord sweden.
+        CA_CANADA_POST: Canada Post.
+        WISELOADS: Wiseloads.
+        ASENDIA_HK: Asendia HonKong.
+        NLD_GLS: GLS Netherland.
+        MEX_REDPACK: Redpack.
+        JET_SHIP: Jet-Ship Worldwide.
+        DE_DHL_EXPRESS: DHL Express.
+        NINJAVAN_THAI: Ninja van Thai.
+        RABEN_GROUP: Raben Group.
+        ESP_ASM: ASM(GLS Spain).
+        HRV_HRVATSKA: Hrvatska posta.
+        GLOBAL_ESTES: Estes Express Lines.
+        LTU_LIETUVOS: Lietuvos pastas.
+        BEL_DHL: DHL Benelux.
+        AU_AU_POST: Australia Post.
+        SPEEDEXCOURIER: SPEEDEX couriers.
+        FR_COLIS: Colissimo.
+        ARAMEX: Aramex.
+        DPEX: DPEX (www.dpex.com).
+        MYS_AIRPAK: Airpak Express.
+        CUCKOOEXPRESS: Cuckoo Express.
+        DPD_POLAND: DPD Poland.
+        NLD_POSTNL: PostNL International.
+        NIM_EXPRESS: Nim Express.
+        QUANTIUM: Quantium.
+        SENDLE: Sendle.
+        ESP_REDUR: Redur Spain.
+        MATKAHUOLTO: Matkahuolto.
+        CPACKET: Cpacket couriers.
+        POSTI: Posti courier.
+        HUNTER_EXPRESS: Hunter Express.
+        CHOIR_EXP: Choir Express Indonesia.
+        LEGION_EXPRESS: Legion Express.
+        AUSTRIAN_POST_EXPRESS: austrian post.
+        GRUPO: Grupo ampm.
+        POSTA_RO: Post Roman (www.posta-romana.ro).
+        INTERPARCEL_UK: Interparcel UK.
+        GLOBAL_ABF: ABF Freight.
+        POSTEN_NORGE: Posten Norge (www.posten.no).
+        XPERT_DELIVERY: Xpert Delivery.
+        DHL_REFR: DHl (Reference number).
+        DHL_HK: DHL HonKong.
+        SKYNET_UAE: SKYNET UAE.
+        GOJEK: Gojek.
+        YODEL_INTNL: Yodel International.
+        JANCO: Janco Ecommerce.
+        YTO: YTO Express.
+        WISE_EXPRESS: Wise Express.
+        JTEXPRESS_VN: J&T Express Vietnam.
+        FEDEX_INTL_MLSERV: FedEx International MailService.
+        VAMOX: VAMOX.
+        AMS_GRP: AMS Group.
+        DHL_JP: DHL Japan.
+        HRPARCEL: HR Parcel.
+        GESWL: GESWL Express.
+        BLUESTAR: Blue Star.
+        CDEK_TR: CDEK TR.
+        DESCARTES: Innovel courier.
+        DELTEC_UK: Deltec Courier.
+        DTDC_EXPRESS: DTDC express.
+        TOURLINE: tourline.
+        BH_WORLDWIDE: B&H Worldwide.
+        OCS: OCS ANA Group.
+        YINGNUO_LOGISTICS: yingnuo logistics.
+        UPS: United Parcel Service.
+        TOLL: Toll IPEC.
+        PRT_SEUR: SEUR portugal.
+        DTDC_AU: DTDC Australia.
+        THA_DYNAMIC_LOGISTICS: Dynamic Logistics.
+        UBI_LOGISTICS: UBI Smart Parcel.
+        FEDEX_CROSSBORDER: FedEx Cross Border.
+        A1POST: A1Post.
+        TAZMANIAN_FREIGHT: Tazmanian Freight Systems.
+        CJ_INT_MY: CJ International malaysia.
+        SAIA_FREIGHT: Saia LTL Freight.
+        SG_QXPRESS: Qxpress.
+        NHANS_SOLUTIONS: Nhans Solutions.
+        DPD_FR: DPD France.
+        COORDINADORA: Coordinadora.
+        ANDREANI: Grupo logistico Andreani.
+        DOORA: Doora Logistics.
+        INTERPARCEL_NZ: Interparcel New Zealand.
+        PHL_JAMEXPRESS: Jam Express Philippines.
+        BEL_BELGIUM_POST: bel_belgium_post.
+        US_APC: us_apc.
+        IDN_POS: idn_pos.
+        FR_MONDIAL: fr_mondial.
+        DE_DHL: DE DHL.
+        HK_RPX: hk_rpx.
+        DHL_PIECEID: dhl_pieceid.
+        VNPOST_EMS: vnpost_ems.
+        RRDONNELLEY: rrdonnelley.
+        DPD_DE: dpd_de.
+        DELCART_IN: delcart_in.
+        IMEXGLOBALSOLUTIONS: imexglobalsolutions.
+        ACOMMERCE: ACOMMERCE.
+        EURODIS: eurodis.
+        CANPAR: CANPAR.
+        GLS: GLS.
+        IND_ECOM: Ecom Express.
+        ESP_ENVIALIA: Envialia.
+        DHL_UK: dhl UK.
+        SMSA_EXPRESS: SMSA Express.
+        TNT_FR: TNT France.
+        DEX_I: DEX-I courier.
+        BUDBEE_WEBHOOK: Budbee courier.
+        COPA_COURIER: Copa Airlines Courier.
+        VNM_VIETNAM_POST: Vietnam Post.
+        DPD_HK: DPD HongKong.
+        TOLL_NZ: Toll New Zealand.
+        ECHO: Echo courier.
+        FEDEX_FR: FedEx® Freight.
+        BORDEREXPRESS: Border Express.
+        MAILPLUS_JPN: MailPlus (Japan).
+        TNT_UK_REFR: TNT UK Reference.
+        KEC: KEC courier.
+        DPD_RO: DPD Romania.
+        TNT_JP: TNT_JP.
+        TH_CJ: TH_CJ.
+        EC_CN: EC_CN.
+        FASTWAY_UK: FASTWAY_UK.
+        FASTWAY_US: FASTWAY_US.
+        GLS_DE: GLS_DE.
+        GLS_ES: GLS_ES.
+        GLS_FR: GLS_FR.
+        MONDIAL_BE: MONDIAL_BE.
+        SGT_IT: SGT_IT.
+        TNT_CN: TNT_CN.
+        TNT_DE: TNT_DE.
+        TNT_ES: TNT_ES.
+        TNT_PL: TNT_PL.
+        PARCELFORCE: PARCELFORCE.
+        SWISS_POST: SWISS POST.
+        TOLL_IPEC: TOLL IPEC.
+        AIR_21: AIR 21.
+        AIRSPEED: AIRSPEED.
+        BERT: BERT.
+        BLUEDART: BLUEDART.
+        COLLECTPLUS: COLLECTPLUS.
+        COURIERPLUS: COURIERPLUS.
+        COURIER_POST: COURIER POST.
+        DHL_GLOBAL_MAIL: dhl_global_mail.
+        DPD_UK: dpd_uk.
+        DELTEC_DE: DELTEC DE.
+        DEUTSCHE_DE: deutsche_de.
+        DOTZOT: DOTZOT.
+        ELTA_GR: elta_gr.
+        EMS_CN: ems_cn.
+        ECARGO: ECARGO.
+        ENSENDA: ENSENDA.
+        FERCAM_IT: fercam_it.
+        FASTWAY_ZA: fastway_za.
+        FASTWAY_AU: fastway_au.
+        FIRST_LOGISITCS: first_logisitcs.
+        GEODIS: GEODIS.
+        GLOBEGISTICS: GLOBEGISTICS.
+        GREYHOUND: GREYHOUND.
+        JETSHIP_MY: jetship_my.
+        LION_PARCEL: LION PARCEL.
+        AEROFLASH: AEROFLASH.
+        ONTRAC: ONTRAC.
+        SAGAWA: SAGAWA.
+        SIODEMKA: SIODEMKA.
+        STARTRACK: startrack.
+        TNT_AU: tnt_au.
+        TNT_IT: tnt_it.
+        TRANSMISSION: TRANSMISSION.
+        YAMATO: YAMATO.
+        DHL_IT: dhl_it.
+        DHL_AT: dhl_at.
+        LOGISTICSWORLDWIDE_KR: LOGISTICSWORLDWIDE KR.
+        GLS_SPAIN: gls_spain.
+        AMAZON_UK_API: amazon_uk_api.
+        DPD_FR_REFERENCE: dpd_fr_reference.
+        DHLPARCEL_UK: dhlparcel_uk.
+        MEGASAVE: megasave.
+        QUALITYPOST: qualitypost.
+        IDS_LOGISTICS: ids_logistics.
+        JOYINGBOX1: joyingbox.
+        PANTHER_ORDER_NUMBER: panther_order_number.
+        WATKINS_SHEPARD: watkins_shepard.
+        FASTTRACK: fasttrack.
+        UP_EXPRESS: up_express.
+        ELOGISTICA: elogistica.
+        ECOURIER: ecourier.
+        CJ_PHILIPPINES: cj_philippines.
+        SPEEDEX: speedex.
+        ORANGECONNEX: orangeconnex.
+        TECOR: tecor.
+        SAEE: saee.
+        GLS_ITALY_FTP: gls_italy_ftp.
+        DELIVERE: delivere.
+        YYCOM: yycom.
+        ADICIONAL_PT: Adicional Logistics.
+        DKSH: DKSH.
+        NIPPON_EXPRESS_FTP: Nippon Express.
+        GOLS: GO Logistics & Storage.
+        FUJEXP: FUJIE EXPRESS.
+        QTRACK: QTrack.
+        OMLOGISTICS_API: OM LOGISTICS LTD.
+        GDPHARM: GDPharm Logistics.
+        MISUMI_CN: MISUMI Group Inc..
+        AIR_CANADA: Rivo.
+        CITY56_WEBHOOK: City Express.
+        SAGAWA_API: Sagawa.
+        KEDAEX: KedaEX.
+        PGEON_API: Pgeon.
+        WEWORLDEXPRESS: We World Express.
+        JT_LOGISTICS: J&T International logistics.
+        TRUSK: Trusk France.
+        VIAXPRESS: ViaXpress.
+        DHL_SUPPLYCHAIN_ID: DHL Supply Chain Indonesia.
+        ZUELLIGPHARMA_SFTP: Zuellig Pharma Korea.
+        MEEST: Meest.
+        TOLL_PRIORITY: Toll Priority.
+        MOTHERSHIP_API: Mothership.
+        CAPITAL: Capital Transport.
+        EUROPAKET_API: Europacket+.
+        HFD: HFD.
+        TOURLINE_REFERENCE: Tourline Express.
+        GIO_ECOURIER: GIO Express Inc.
+        CN_LOGISTICS: CN Logistics.
+        PANDION: Pandion.
+        BPOST_API: Bpost API.
+        PASSPORTSHIPPING: Passport Shipping.
+        PAKAJO: Pakajo World.
+        DACHSER: DACHSER.
+        YUSEN_SFTP: Yusen Logistics.
+        SHYPLITE: Shypmax.
+        XYY: Xingyunyi Logistics.
+        MWD: Metropolitan Warehouse & Delivery.
+        FAXECARGO: Faxe Cargo.
+        MAZET: Groupe Mazet.
+        FIRST_LOGISTICS_API: First Logistics.
+        SPRINT_PACK: SPRINT PACK.
+        HERMES_DE_FTP: Hermes Germany.
+        CONCISE: Concise.
+        KERRY_EXPRESS_TW_API: Kerry Express TaiWan.
+        EWE: EWE Global Express.
+        FASTDESPATCH: Fast Despatch Logistics Limited.
+        ABCUSTOM_SFTP: AB Custom Group.
+        CHAZKI: Chazki.
+        SHIPPIE: Shippie.
+        GEODIS_API: GEODIS - Distribution & Express.
+        NAQEL_EXPRESS: Naqel Express.
+        PAPA_WEBHOOK: Papa.
+        FORWARDAIR: Forward Air.
+        DIALOGO_LOGISTICA_API: Dialogo Logistica.
+        LALAMOVE_API: Lalamove.
+        TOMYDOOR: Tomydoor.
+        KRONOS_WEBHOOK: Kronos Express.
+        JTCARGO: J&T CARGO.
+        T_CAT: T-cat.
+        CONCISE_WEBHOOK: Concise.
+        TELEPORT_WEBHOOK: Teleport.
+        CUSTOMCO_API: The Custom Companies.
+        SPX_TH: Shopee Xpress.
+        BOLLORE_LOGISTICS: Bollore Logistics.
+        CLICKLINK_SFTP: ClickLink.
+        M3LOGISTICS: M3 Logistics.
+        VNPOST_API: Vietnam Post.
+        AXLEHIRE_FTP: Axlehire.
+        SHADOWFAX: Shadowfax.
+        MYHERMES_UK_API: EVRi.
+        DAIICHI: Daiichi Freight System Inc.
+        MENSAJEROSURBANOS_API: Mensajeros Urbanos.
+        POLARSPEED: PolarSpeed Inc.
+        IDEXPRESS_ID: iDexpress Indonesia.
+        PAYO: Payo.
+        WHISTL_SFTP: Whistl.
+        INTEX_DE: INTEX Paketdienst GmbH.
+        TRANS2U: Trans2u.
+        PRODUCTCAREGROUP_SFTP: Product Care Services Limited.
+        BIGSMART: Big Smart.
+        EXPEDITORS_API_REF: Expeditors API Reference.
+        AITWORLDWIDE_API: AIT.
+        WORLDCOURIER: World Courier.
+        QUIQUP: Quiqup.
+        AGEDISS_SFTP: Agediss.
+        ANDREANI_API: Andreani.
+        CRLEXPRESS: CRL Express.
+        SMARTCAT: SMARTCAT.
+        CROSSFLIGHT: Crossflight Limited.
+        PROCARRIER: Pro Carrier.
+        DHL_REFERENCE_API: DHL (Reference number).
+        SEINO_API: Seino.
+        WSPEXPRESS: WSP Express.
+        KRONOS: Kronos Express.
+        TOTAL_EXPRESS_API: Total Express.
+        PARCLL: PARCLL.
+        XPEDIGO: Xpedigo.
+        STAR_TRACK_WEBHOOK: StarTrack.
+        GPOST: Georgian Post.
+        UCS: UCS.
+        DMFGROUP: DMF.
+        COORDINADORA_API: Coordinadora.
+        MARKEN: Marken.
+        NTL: NTL logistics.
+        REDJEPAKKETJE: Red je Pakketje.
+        ALLIED_EXPRESS_FTP: Allied Express (FTP).
+        MONDIALRELAY_ES: Mondial Relay Spain(Punto Pack).
+        NAEKO_FTP: Naeko Logistics.
+        MHI: Mhi.
+        SHIPPIFY: Shippify, Inc.
+        MALCA_AMIT_API: Malca Amit.
+        JTEXPRESS_SG_API: J&T Express Singapore.
+        DACHSER_WEB: DACHSER.
+        FLIGHTLG: Flight Logistics Group.
+        CAGO: Cago.
+        COM1EXPRESS: ComOne Express.
+        TONAMI_FTP: Tonami.
+        PACKFLEET: PACKFLEET.
+        PUROLATOR_INTERNATIONAL: Purolator International.
+        WINESHIPPING_WEBHOOK: Wineshipping.
+        DHL_ES_SFTP: DHL Spain Domestic.
+        PCHOME_API: 網家速配股份有限公司.
+        CESKAPOSTA_API: Czech Post.
+        GORUSH: Go Rush.
+        HOMERUNNER: HomeRunner.
+        AMAZON_ORDER: Amazon order.
+        EFWNOW_API: Estes Forwarding Worldwide.
+        CBL_LOGISTICA_API: CBL Logistica (API).
+        NIMBUSPOST: NimbusPost.
+        LOGWIN_LOGISTICS: Logwin Logistics.
+        NOWLOG_API: Sequoialog.
+        DPD_NL: DPD Netherlands.
+        GODEPENDABLE: Dependable Supply Chain Services.
+        ESDEX: Top Ideal Express.
+        LOGISYSTEMS_SFTP: Kiitäjät.
+        EXPEDITORS: Expeditors.
+        SNTGLOBAL_API: Snt Global Etrax.
+        SHIPX: ShipX.
+        QINTL_API: Quickstat Courier LLC.
+        PACKS: Packs.
+        POSTNL_INTERNATIONAL: PostNL International.
+        AMAZON_EMAIL_PUSH: Amazon.
+        DHL_API: DHL.
+        SPX: Shopee Express.
+        AXLEHIRE: AxleHire.
+        ICSCOURIER: ICS COURIER.
+        DIALOGO_LOGISTICA: Dialogo Logistica.
+        SHUNBANG_EXPRESS: ShunBang Express.
+        TCS_API: TCS.
+        SF_EXPRESS_CN: SF Express China.
+        PACKETA: Packeta.
+        SIC_TELIWAY: Teliway SIC Express.
+        MONDIALRELAY_FR: Mondial Relay France.
+        INTIME_FTP: InTime.
+        JD_EXPRESS: 京东物流.
+        FASTBOX: Fastbox.
+        PATHEON: Patheon Logistics.
+        INDIA_POST: India Post Domestic.
+        TIPSA_REF: Tipsa Reference.
+        ECOFREIGHT: Eco Freight.
+        VOX: VOX SOLUCION EMPRESARIAL SRL.
+        DIRECTFREIGHT_AU_REF: Direct Freight Express.
+        BESTTRANSPORT_SFTP: Best Transport.
+        AUSTRALIA_POST_API: Australia Post.
+        FRAGILEPAK_SFTP: FragilePAK.
+        FLIPXP: FlipXpress.
+        VALUE_WEBHOOK: Value Logistics.
+        DAESHIN: Daeshin.
+        SHERPA: Sherpa.
+        MWD_API: Metropolitan Warehouse & Delivery.
+        SMARTKARGO: SmartKargo.
+        DNJ_EXPRESS: DNJ Express.
+        GOPEOPLE: Go People.
+        MYSENDLE_API: mySendle.
+        ARAMEX_API: Aramex.
+        PIDGE: Pidge.
+        THAIPARCELS: TP Logistic.
+        PANTHER_REFERENCE_API: Panther Reference.
+        POSTAPLUS1: Posta Plus.
+        BUFFALO: BUFFALO.
+        U_ENVIOS: U-ENVIOS.
+        ELITE_CO: Elite Express.
+        ROCHE_INTERNAL_SFTP: Roche Internal Courier.
+        DBSCHENKER_ICELAND: DB Schenker Iceland.
+        TNT_FR_REFERENCE: TNT France Reference.
+        NEWGISTICSAPI: Newgistics API.
+        GLOVO: Glovo.
+        GWLOGIS_API: G.I.G.
+        SPREETAIL_API: Spreetail.
+        MOOVA: Moova.
+        PLYCONGROUP: Plycon Transportation Group.
+        USPS_WEBHOOK: USPS Informed Visibility - Webhook.
+        REIMAGINEDELIVERY: maergo.
+        EDF_FTP: Eurodifarm.
+        DAO365: DAO365.
+        BIOCAIR_FTP: BioCair.
+        RANSA_WEBHOOK: Ransa.
+        SHIPXPRES: SHIPXPRESS.
+        COURANT_PLUS_API: Courant Plus.
+        SHIPA: SHIPA.
+        HOMELOGISTICS: Home Logistics.
+        DX: DX.
+        POSTE_ITALIANE_PACCOCELERE: Poste Italiane Paccocelere.
+        TOLL_WEBHOOK: Toll Group.
+        LCTBR_API: LCT do Brasil.
+        DX_FREIGHT: DX Freight.
+        DHL_SFTP: DHL Express.
+        SHIPROCKET: Shiprocket X.
+        UBER_WEBHOOK: Uber.
+        STATOVERNIGHT: Stat Overnight.
+        BURD: Burd Delivery.
+        FASTSHIP: Fastship Express.
+        IBVENTURE_WEBHOOK: IB Venture.
+        GATI_KWE_API: Gati-KWE.
+        CRYOPDP_FTP: CryoPDP.
+        HUBBED: HUBBED.
+        TIPSA_API: Tipsa API.
+        ARASKARGO: Aras Cargo.
+        THIJS_NL: Thijs Logistiek.
+        ATSHEALTHCARE_REFERENCE: ATS Healthcare.
+        ENUM_99MINUTOS: 99minutos.
+        HELLENIC_POST: Hellenic (Greece) Post.
+        HSM_GLOBAL: HSM Global.
+        MNX: MNX.
+        NMTRANSFER: N&M Transfer Co., Inc..
+        LOGYSTO: Logysto.
+        INDIA_POST_INT: India Post International.
+        AMAZON_FBA_SWISHIP_IN: Swiship IN.
+        SRT_TRANSPORT: SRT Transport.
+        BOMI: Bomi Group.
+        DELIVERR_SFTP: Deliverr.
+        HSDEXPRESS: HSDEXPRESS.
+        SIMPLETIRE_WEBHOOK: SimpleTire.
+        HUNTER_EXPRESS_SFTP: Hunter Express.
+        UPS_API: UPS.
+        WOOYOUNG_LOGISTICS_SFTP: WOO YOUNG LOGISTICS CO.,LTD..
+        PHSE_API: PHSE.
+        WISH_EMAIL_PUSH: Wish.
+        NORTHLINE: Northline.
+        MEDAFRICA: Med Africa Logistics.
+        DPD_AT_SFTP: DPD Austria.
+        ANTERAJA: Anteraja.
+        DHL_GLOBAL_FORWARDING_API: DHL Global Forwarding API.
+        LBCEXPRESS_API: LBC EXPRESS INC..
+        SIMSGLOBAL: Sims Global.
+        CDLDELIVERS: CDL Last Mile.
+        TYP: TYP.
+        TESTING_COURIER_WEBHOOK: Testing Courier.
+        PANDAGO_API: Pandago.
+        ROYAL_MAIL_FTP: Royal Mail.
+        THUNDEREXPRESS: Thunder Express Australia.
+        SECRETLAB_WEBHOOK: Secretlab.
+        SETEL: Setel Express.
+        JD_WORLDWIDE: JD Worldwide.
+        DPD_RU_API: DPD Russia.
+        ARGENTS_WEBHOOK: Argents Express Group.
+        POSTONE: Post ONE.
+        TUSKLOGISTICS: Tusk Logistics.
+        RHENUS_UK_API: Rhenus Logistics UK.
+        TAQBIN_SG_API: Yamato Singapore.
+        INNTRALOG_SFTP: Inntralog GmbH.
+        DAYROSS: Day & Ross.
+        CORREOSEXPRESS_API: Correos Express (API).
+        INTERNATIONAL_SEUR_API: International Seur API.
+        YODEL_API: Yodel API.
+        HEROEXPRESS: Hero Express.
+        DHL_SUPPLYCHAIN_IN: DHL supply chain India.
+        URGENT_CARGUS: Urgent Cargus.
+        FRONTDOORCORP: FRONTdoor Collective.
+        JTEXPRESS_PH: J&T Express Philippines.
+        PARCELSTARS_WEBHOOK: Parcelstars.
+        DPD_SK_SFTP: DPD Slovakia.
+        MOVIANTO: Movianto.
+        OZEPARTS_SHIPPING: Ozeparts Shipping.
+        KARGOMKOLAY: KargomKolay (CargoMini).
+        TRUNKRS: Trunkrs.
+        OMNIRPS_WEBHOOK: Omni Returns.
+        CHILEXPRESS: Chile Express.
+        TESTING_COURIER: Testing Courier.
+        JNE_API: JNE (API).
+        BJSHOMEDELIVERY_FTP: BJS Distribution, Storage & Couriers - FTP.
+        DEXPRESS_WEBHOOK: D Express.
+        USPS_API: USPS API.
+        TRANSVIRTUAL: TransVirtual.
+        SOLISTICA_API: solistica.
+        CHIENVENTURE_WEBHOOK: Chienventure.
+        DPD_UK_SFTP: DPD UK.
+        INPOST_UK: InPost.
+        JAVIT: Javit.
+        ZTO_DOMESTIC: ZTO Express China.
+        DHL_GT_API: DHL Global Forwarding Guatemala.
+        CEVA_TRACKING: CEVA Package.
+        KOMON_EXPRESS: Komon Express.
+        EASTWESTCOURIER_FTP: East West Courier Pte Ltd.
+        DANNIAO: Danniao.
+        SPECTRAN: Spectran.
+        DELIVER_IT: Deliver-iT.
+        RELAISCOLIS: Relais Colis.
+        GLS_SPAIN_API: GLS Spain.
+        POSTPLUS: PostPlus.
+        AIRTERRA: Airterra.
+        GIO_ECOURIER_API: GIO Express Ecourier.
+        DPD_CH_SFTP: DPD Switzerland.
+        FEDEX_API: FedEx®.
+        INTERSMARTTRANS: INTERSMARTTRANS & SOLUTIONS SL.
+        HERMES_UK_SFTP: Hermes UK.
+        EXELOT_FTP: Exelot Ltd..
+        DHL_PA_API: DHL GLOBAL FORWARDING PANAMÁ.
+        VIRTRANSPORT_SFTP: Vir Transport.
+        WORLDNET: Worldnet Logistics.
+        INSTABOX_WEBHOOK: Instabox.
+        KNG: Keuhne + Nagel Global.
+        FLASHEXPRESS_WEBHOOK: Flash Express.
+        MAGYAR_POSTA_API: Magyar Posta.
+        WESHIP_API: WeShip.
+        OHI_WEBHOOK: Ohi.
+        MUDITA: MUDITA.
+        BLUEDART_API: Bluedart.
+        T_CAT_API: T-cat.
+        ADS: ADS Express.
+        HERMES_IT: HR Parcel.
+        FITZMARK_API: FitzMark.
+        POSTI_API: Posti API.
+        SMSA_EXPRESS_WEBHOOK: SMSA Express.
+        TAMERGROUP_WEBHOOK: Tamer Logistics.
+        LIVRAPIDE: Livrapide.
+        NIPPON_EXPRESS: Nippon Express.
+        BETTERTRUCKS: Better Trucks.
+        FAN: FAN COURIER EXPRESS.
+        PB_USPSFLATS_FTP: USPS Flats (Pitney Bowes).
+        PARCELRIGHT: Parcel Right.
+        ITHINKLOGISTICS: iThink Logistics.
+        KERRY_EXPRESS_TH_WEBHOOK: Kerry Logistics.
+        ECOUTIER: eCoutier.
+        SHOWL: SENHONG INTERNATIONAL LOGISTICS.
+        BRT_IT_API: BRT Bartolini API.
+        RIXONHK_API: Rixon Logistics.
+        DBSCHENKER_API: DB Schenker.
+        ILYANGLOGIS: Ilyang logistics.
+        MAIL_BOX_ETC: Mail Boxes Etc..
+        WESHIP: WeShip.
+        DHL_GLOBAL_MAIL_API: DHL eCommerce Solutions.
+        ACTIVOS24_API: Activos24.
+        ATSHEALTHCARE: ATS Healthcare.
+        LUWJISTIK: Luwjistik.
+        GW_WORLD: Gebrüder Weiss.
+        FAIRSENDEN_API: fairsenden.
+        SERVIP_WEBHOOK: SerVIP.
+        SWISHIP: Swiship.
+        TANET: Transport Ambientales.
+        HOTSIN_CARGO: SHENZHEN HOTSIN CARGO INT'L FORWARDING CO.,LTD.
+        DIREX: Direx.
+        HUANTONG: HuanTong.
+        IMILE_API: iMile.
+        AUEXPRESS: Au Express.
+        NYTLOGISTICS: NYT SUPPLY CHAIN LOGISTICS Co.,LTD.
+        DSV_REFERENCE: DSV Futurewave.
+        NOVOFARMA_WEBHOOK: Novofarma.
+        AITWORLDWIDE_SFTP: AIT.
+        SHOPOLIVE: Olive.
+        FNF_ZA: Fast & Furious.
+        DHL_ECOMMERCE_GC: DHL eCommerce Greater China.
+        FETCHR: Fetchr.
+        STARLINKS_API: Starlinks Global.
+        YYEXPRESS: YYEXPRESS.
+        SERVIENTREGA: Servientrega.
+        HANJIN: HanJin.
+        SPANISH_SEUR_FTP: Spanish Seur.
+        DX_B2B_CONNUM: DX (B2B).
+        HELTHJEM_API: Helthjem.
+        INEXPOST: Inexpost.
+        A2B_BA: A2B Express Logistics.
+        RHENUS_GROUP: Rhenus Logistics.
+        SBERLOGISTICS_RU: Sber Logistics.
+        MALCA_AMIT: Malca-Amit.
+        PPL: Professional Parcel Logistics.
+        OSM_WORLDWIDE_SFTP: OSM Worldwide.
+        ACILOGISTIX: ACI Logistix.
+        OPTIMACOURIER: Optima Courier.
+        NOVA_POSHTA_API: Nova Poshta API.
+        LOGGI: Loggi.
+        YIFAN: YiFan Express.
+        MYDYNALOGIC: My DynaLogic.
+        MORNINGLOBAL: Morning Global.
+        CONCISE_API: Concise.
+        FXTRAN: Falcon Express.
+        DELIVERYOURPARCEL_ZA: Deliver Your Parcel.
+        UPARCEL: uParcel.
+        MOBI_BR: Mobi Logistica.
+        LOGINEXT_WEBHOOK: T&W Delivery.
+        EMS: EMS.
+        SPEEDY: Speedy.
+        ZOOM_RED: Zoom.
+        NAVLUNGO: Navlungo.
+        CASTLEPARCELS: Castle Parcels.
+        WEEE: Weee.
+        PACKALY: Packaly.
+        YUNHUIPOST: Yunhuipost.
+        YOUPARCEL: YouParcel.
+        LEMAN: Leman.
+        MOOVIN: Moovin.
+        URB_IT: Urb-it.
+        MULTIENTREGAPANAMA: Multientrega.
+        JUSDASR: Jusdasr.
+        DISCOUNTPOST: Discount Post.
+        RHENUS_UK: Rhenus Logistics UK.
+        SWISHIP_JP: Swiship JP.
+        GLS_US: GLS USA.
+        SMTL: Southwestern Motor Transport. Inc.
+        EMEGA: Discount Post Emega.
+        EXPRESSONE_SV: EXPRESSONE Slovenia.
+        HEPSIJET: hepsiJET.
+        WELIVERY: Welivery.
+        BRINGER: Bringer Parcel Services.
+        EASYROUTES: EasyRoutes.
+        MRW: MRW.
+        RPM: RPM.
+        DPD_PRT: DPD Portugal.
+        GLS_ROMANIA: GLS Romania.
+        LMPARCEL: LM Parcel.
+        GTAGSM: GTA GSM.
+        DOMINO: DOMINO.
+        ESHIPPER: eShipper.
+        TRANSPAK: Transpak Inc..
+        XINDUS: Xindus.
+        AOYUE: Aoyue.
+        EASYPARCEL: Easyparcel.
+        EXPRESSONE: EXPRESSONE.
+        SENDEO_KARGO: Sendeo Kargo.
+        SPEEDAF: Speedaf Express.
+        ETOWER: eTower.
+        GCX: GC Express.
+        NINJAVAN_VN: Ninjavan Vietnam.
+        ALLEGRO: Allegro.
+        JUMPPOINT: Jumppoint.
+        SHIPGLOBAL_US: ShipGlobal.
+        KINISI: Kinisi Transport Pty Ltd.
+        OAKH: Oakh Harbour Freight Lines.
+        AWEST: American West.
+        BARSAN: Barsan Global Lojistik.
+        ENERGOLOGISTIC: Energo Logistic.
+        MADROOEX: Madrooex.
+        GOBOLT: GoBolt.
+        SWISS_UNIVERSAL_EXPRESS: Swiss Universal Express.
+        IORDIRECT: IOR Direct Solutions.
+        XMSZM: xmszm.
+        GLS_HUN: GLS Hungary.
+        SENDY: Sendy Express.
+        BRAUNSEXPRESS: Brauns Express.
+        GRANDSLAMEXPRESS: Grand Slam Express.
+        XGS: XGS.
+        OTSCHILE: OTS.
+        PACK_UP: Pack-Up.
+        PARCELSTARS: Parcelstars.
+        TEAMEXPRESSLLC: Team Express Service LLC.
+        ASYADEXPRESS: Asyad Express.
+        TDN: TDN.
+        EARLYBIRD: Early Bird.
+        CACESA: Cacesa.
+        PARCELJET: Parceljet.
+        MNG_KARGO: MNG Kargo.
+        SUPERPACKLINE: Super Pac Line.
+        SPEEDX: SpeedX.
+        VESYL: Vesyl.
+        SKYKING: Sky King.
+        DIRMENSAJERIA: DIR.
+        NETLOGIXGROUP: Netlogix.
+        ZYOU: ZYEX.
+        JAWAR: Jawar.
+        AGSYSTEMS: Associate Global Systems.
+        GPS: GPS.
+        PTT_KARGO: PTT Kargo.
+        MAERGO: Maergo.
+        ARIHANTCOURIER: AICS.
+        VTFE: VicTas Freight Express.
+        YUNANT: Yunant.
+        URBIFY: Urbify.
+        PACK_MAN: pack-man.
+        LIEFERGRUN: LIEFERGRUN.
+        OBIBOX: Obibox.
+        PAIKEDA: Paikeda.
+        SCOTTY: Scotty.
+        INTELCOM_CA: Intelcom.
+        SWE: swe.
+        ASENDIA: Asendia Global.
+        DPD_AT: DPD Austria.
+        RELAY: Relay.
+        ATA: ATA.
+        SKYEXPRESS_INTERNATIONAL: SkyExpress Internationals.
+        SURAT_KARGO: Surat Kargo.
+        SGLINK: SG LINK.
+        FLEETOPTICSINC: FleetOptics.
+        SHOPLINE: shopline.
+        PIGGYSHIP: PIGGYSHIP.
+        LOGOIX: LogoiX.
+        KOLAY_GELSIN: Kolay Gelsin.
+        ASSOCIATED_COURIERS: Associated Couriers.
+        UPS_CHECKER: ups-checker.
+        WINESHIPPING: Wineshipping.
+        SPEDISCI: Spedisci online.
 
     """
     DPD_RU = 'DPD_RU'
@@ -1658,8 +1650,6 @@ class ShipmentCarrier(object):
 
     CTC_EXPRESS = 'CTC_EXPRESS'
 
-    LAO_POST = 'LAO_POST'
-
     AMAZON = 'AMAZON'
 
     MORE_LINK = 'MORE_LINK'
@@ -1713,8 +1703,6 @@ class ShipmentCarrier(object):
     LOCUS_WEBHOOK = 'LOCUS_WEBHOOK'
 
     DSV = 'DSV'
-
-    CN_GOFLY = 'CN_GOFLY'
 
     P2P_TRC = 'P2P_TRC'
 
@@ -1859,8 +1847,6 @@ class ShipmentCarrier(object):
     PADTF = 'PADTF'
 
     UPS_MAIL_INNOVATIONS = 'UPS_MAIL_INNOVATIONS'
-
-    EZSHIP = 'EZSHIP'
 
     SYPOST = 'SYPOST'
 
@@ -2306,8 +2292,6 @@ class ShipmentCarrier(object):
 
     RL_US = 'RL_US'
 
-    MARA_XPRESS = 'MARA_XPRESS'
-
     DESTINY = 'DESTINY'
 
     UK_YODEL = 'UK_YODEL'
@@ -2421,8 +2405,6 @@ class ShipmentCarrier(object):
     ABXEXPRESS_MY = 'ABXEXPRESS_MY'
 
     HUAHAN_EXPRESS = 'HUAHAN_EXPRESS'
-
-    IND_JAYONEXPRESS = 'IND_JAYONEXPRESS'
 
     ZES_EXPRESS = 'ZES_EXPRESS'
 
@@ -2559,8 +2541,6 @@ class ShipmentCarrier(object):
     NINJAVAN_MY = 'NINJAVAN_MY'
 
     ADICIONAL = 'ADICIONAL'
-
-    NINJAVAN_ID = 'NINJAVAN_ID'
 
     ROADBULL = 'ROADBULL'
 
@@ -3536,8 +3516,6 @@ class ShipmentCarrier(object):
 
     ELITE_CO = 'ELITE_CO'
 
-    BARQEXP = 'BARQEXP'
-
     ROCHE_INTERNAL_SFTP = 'ROCHE_INTERNAL_SFTP'
 
     DBSCHENKER_ICELAND = 'DBSCHENKER_ICELAND'
@@ -3881,8 +3859,6 @@ class ShipmentCarrier(object):
     HUANTONG = 'HUANTONG'
 
     IMILE_API = 'IMILE_API'
-
-    BDMNET = 'BDMNET'
 
     AUEXPRESS = 'AUEXPRESS'
 

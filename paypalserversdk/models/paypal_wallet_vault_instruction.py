@@ -13,16 +13,14 @@ class PaypalWalletVaultInstruction(object):
 
     """Implementation of the 'PayPal Wallet Vault Instruction' model.
 
-    TODO: type model description here.
-
     Attributes:
         store_in_vault (StoreInVaultInstruction): Defines how and when the
             payment source gets vaulted.
         description (str): The description displayed to PayPal consumer on the
             approval flow for PayPal, as well as on the PayPal payment token
             management experience on PayPal.com.
-        usage_pattern (PaypalPaymentTokenUsagePattern): Expected
-            business/pricing model for the billing agreement.
+        usage_pattern (UsagePattern): Expected business/pricing model for the
+            billing agreement.
         usage_type (PaypalPaymentTokenUsageType): The usage type associated
             with the PayPal payment token.
         customer_type (PaypalPaymentTokenCustomerType): The customer type
@@ -94,7 +92,7 @@ class PaypalWalletVaultInstruction(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -111,3 +109,21 @@ class PaypalWalletVaultInstruction(object):
                    usage_pattern,
                    customer_type,
                    permit_multiple_payment_tokens)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'store_in_vault={(self.store_in_vault if hasattr(self, "store_in_vault") else None)!r}, '
+                f'description={(self.description if hasattr(self, "description") else None)!r}, '
+                f'usage_pattern={(self.usage_pattern if hasattr(self, "usage_pattern") else None)!r}, '
+                f'usage_type={self.usage_type!r}, '
+                f'customer_type={(self.customer_type if hasattr(self, "customer_type") else None)!r}, '
+                f'permit_multiple_payment_tokens={(self.permit_multiple_payment_tokens if hasattr(self, "permit_multiple_payment_tokens") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'store_in_vault={(self.store_in_vault if hasattr(self, "store_in_vault") else None)!s}, '
+                f'description={(self.description if hasattr(self, "description") else None)!s}, '
+                f'usage_pattern={(self.usage_pattern if hasattr(self, "usage_pattern") else None)!s}, '
+                f'usage_type={self.usage_type!s}, '
+                f'customer_type={(self.customer_type if hasattr(self, "customer_type") else None)!s}, '
+                f'permit_multiple_payment_tokens={(self.permit_multiple_payment_tokens if hasattr(self, "permit_multiple_payment_tokens") else None)!s})')

@@ -107,7 +107,7 @@ class Item(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -132,3 +132,29 @@ class Item(object):
                    category,
                    image_url,
                    upc)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={self.name!r}, '
+                f'unit_amount={self.unit_amount!r}, '
+                f'tax={(self.tax if hasattr(self, "tax") else None)!r}, '
+                f'quantity={self.quantity!r}, '
+                f'description={(self.description if hasattr(self, "description") else None)!r}, '
+                f'sku={(self.sku if hasattr(self, "sku") else None)!r}, '
+                f'url={(self.url if hasattr(self, "url") else None)!r}, '
+                f'category={(self.category if hasattr(self, "category") else None)!r}, '
+                f'image_url={(self.image_url if hasattr(self, "image_url") else None)!r}, '
+                f'upc={(self.upc if hasattr(self, "upc") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={self.name!s}, '
+                f'unit_amount={self.unit_amount!s}, '
+                f'tax={(self.tax if hasattr(self, "tax") else None)!s}, '
+                f'quantity={self.quantity!s}, '
+                f'description={(self.description if hasattr(self, "description") else None)!s}, '
+                f'sku={(self.sku if hasattr(self, "sku") else None)!s}, '
+                f'url={(self.url if hasattr(self, "url") else None)!s}, '
+                f'category={(self.category if hasattr(self, "category") else None)!s}, '
+                f'image_url={(self.image_url if hasattr(self, "image_url") else None)!s}, '
+                f'upc={(self.upc if hasattr(self, "upc") else None)!s})')

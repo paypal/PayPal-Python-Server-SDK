@@ -19,12 +19,11 @@ class EpsPaymentObject(object):
         name (str): The full name representation like Mr J Smith.
         country_code (str): The [two-character ISO 3166-1
             code](/api/rest/reference/country-codes/) that identifies the
-            country or region.<blockquote><strong>Note:</strong> The country
-            code for Great Britain is <code>GB</code> and not <code>UK</code>
-            as used in the top-level domain names for that country. Use the
-            `C2` country code for China worldwide for comparable uncontrolled
-            price (CUP) method, bank card, and cross-border
-            transactions.</blockquote>
+            country or region. Note: The country code for Great Britain is GB
+            and not UK as used in the top-level domain names for that country.
+            Use the `C2` country code for China worldwide for comparable
+            uncontrolled price (CUP) method, bank card, and cross-border
+            transactions.
         bic (str): The business identification code (BIC). In payments
             systems, a BIC is used to identify a specific business, most
             commonly a bank.
@@ -73,7 +72,7 @@ class EpsPaymentObject(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -84,3 +83,15 @@ class EpsPaymentObject(object):
         return cls(name,
                    country_code,
                    bic)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'country_code={(self.country_code if hasattr(self, "country_code") else None)!r}, '
+                f'bic={(self.bic if hasattr(self, "bic") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'country_code={(self.country_code if hasattr(self, "country_code") else None)!s}, '
+                f'bic={(self.bic if hasattr(self, "bic") else None)!s})')

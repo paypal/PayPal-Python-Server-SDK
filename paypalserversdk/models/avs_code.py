@@ -16,77 +16,108 @@ class AvsCode(object):
     Express transactions.
 
     Attributes:
-        A: TODO: type description here.
-        B: TODO: type description here.
-        C: TODO: type description here.
-        D: TODO: type description here.
-        E: TODO: type description here.
-        F: TODO: type description here.
-        G: TODO: type description here.
-        I: TODO: type description here.
-        M: TODO: type description here.
-        N: TODO: type description here.
-        P: TODO: type description here.
-        R: TODO: type description here.
-        S: TODO: type description here.
-        U: TODO: type description here.
-        W: TODO: type description here.
-        X: TODO: type description here.
-        Y: TODO: type description here.
-        Z: TODO: type description here.
-        NULL: TODO: type description here.
-        ENUM_0: TODO: type description here.
-        ENUM_1: TODO: type description here.
-        ENUM_2: TODO: type description here.
-        ENUM_3: TODO: type description here.
-        ENUM_4: TODO: type description here.
+        AVS_A: For Visa, Mastercard, or Discover transactions, the address
+            matches but the zip code does not match. For American Express
+            transactions, the card holder address is correct.
+        AVS_B: For Visa, Mastercard, or Discover transactions, the address
+            matches. International A.
+        AVS_C: For Visa, Mastercard, or Discover transactions, no values
+            match. International N.
+        AVS_D: For Visa, Mastercard, or Discover transactions, the address and
+            postal code match. International X.
+        AVS_E: For Visa, Mastercard, or Discover transactions, not allowed for
+            Internet or phone transactions. For American Express card holder,
+            the name is incorrect but the address and postal code match.
+        AVS_F: For Visa, Mastercard, or Discover transactions, the address and
+            postal code match. UK-specific X. For American Express card
+            holder, the name is incorrect but the address matches.
+        AVS_G: For Visa, Mastercard, or Discover transactions, global is
+            unavailable. Nothing matches.
+        AVS_I: For Visa, Mastercard, or Discover transactions, international
+            is unavailable. Not applicable.
+        AVS_M: For Visa, Mastercard, or Discover transactions, the address and
+            postal code match. For American Express card holder, the name,
+            address, and postal code match.
+        AVS_N: For Visa, Mastercard, or Discover transactions, nothing
+            matches. For American Express card holder, the address and postal
+            code are both incorrect.
+        AVS_P: For Visa, Mastercard, or Discover transactions, postal
+            international Z. Postal code only.
+        AVS_R: For Visa, Mastercard, or Discover transactions, re-try the
+            request. For American Express, the system is unavailable.
+        AVS_S: For Visa, Mastercard, Discover, or American Express, the
+            service is not supported.
+        AVS_U: For Visa, Mastercard, or Discover transactions, the service is
+            unavailable. For American Express, information is not available.
+            For Maestro, the address is not checked or the acquirer had no
+            response. The service is not available.
+        AVS_W: For Visa, Mastercard, or Discover transactions, whole ZIP code.
+            For American Express, the card holder name, address, and postal
+            code are all incorrect.
+        AVS_X: For Visa, Mastercard, or Discover transactions, exact match of
+            the address and the nine-digit ZIP code. For American Express, the
+            card holder name, address, and postal code are all incorrect.
+        AVS_Y: For Visa, Mastercard, or Discover transactions, the address and
+            five-digit ZIP code match. For American Express, the card holder
+            address and postal code are both correct.
+        AVS_Z: For Visa, Mastercard, or Discover transactions, the five-digit
+            ZIP code matches but no address. For American Express, only the
+            card holder postal code is correct.
+        AVS_NULL: For Maestro, no AVS response was obtained.
+        AVS_0: For Maestro, all address information matches.
+        AVS_1: For Maestro, none of the address information matches.
+        AVS_2: For Maestro, part of the address information matches.
+        AVS_3: For Maestro, the merchant did not provide AVS information. It
+            was not processed.
+        AVS_4: For Maestro, the address was not checked or the acquirer had no
+            response. The service is not available.
 
     """
-    A = 'A'
+    AVS_A = 'A'
 
-    B = 'B'
+    AVS_B = 'B'
 
-    C = 'C'
+    AVS_C = 'C'
 
-    D = 'D'
+    AVS_D = 'D'
 
-    E = 'E'
+    AVS_E = 'E'
 
-    F = 'F'
+    AVS_F = 'F'
 
-    G = 'G'
+    AVS_G = 'G'
 
-    I = 'I'
+    AVS_I = 'I'
 
-    M = 'M'
+    AVS_M = 'M'
 
-    N = 'N'
+    AVS_N = 'N'
 
-    P = 'P'
+    AVS_P = 'P'
 
-    R = 'R'
+    AVS_R = 'R'
 
-    S = 'S'
+    AVS_S = 'S'
 
-    U = 'U'
+    AVS_U = 'U'
 
-    W = 'W'
+    AVS_W = 'W'
 
-    X = 'X'
+    AVS_X = 'X'
 
-    Y = 'Y'
+    AVS_Y = 'Y'
 
-    Z = 'Z'
+    AVS_Z = 'Z'
 
-    NULL = 'Null'
+    AVS_NULL = 'Null'
 
-    ENUM_0 = '0'
+    AVS_0 = '0'
 
-    ENUM_1 = '1'
+    AVS_1 = '1'
 
-    ENUM_2 = '2'
+    AVS_2 = '2'
 
-    ENUM_3 = '3'
+    AVS_3 = '3'
 
-    ENUM_4 = '4'
+    AVS_4 = '4'
 

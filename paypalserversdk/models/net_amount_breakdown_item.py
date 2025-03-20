@@ -70,7 +70,7 @@ class NetAmountBreakdownItem(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -81,3 +81,15 @@ class NetAmountBreakdownItem(object):
         return cls(payable_amount,
                    converted_amount,
                    exchange_rate)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'payable_amount={(self.payable_amount if hasattr(self, "payable_amount") else None)!r}, '
+                f'converted_amount={(self.converted_amount if hasattr(self, "converted_amount") else None)!r}, '
+                f'exchange_rate={(self.exchange_rate if hasattr(self, "exchange_rate") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'payable_amount={(self.payable_amount if hasattr(self, "payable_amount") else None)!s}, '
+                f'converted_amount={(self.converted_amount if hasattr(self, "converted_amount") else None)!s}, '
+                f'exchange_rate={(self.exchange_rate if hasattr(self, "exchange_rate") else None)!s})')

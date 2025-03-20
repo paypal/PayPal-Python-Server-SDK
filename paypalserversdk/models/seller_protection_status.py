@@ -18,9 +18,12 @@ class SellerProtectionStatus(object):
     ).
 
     Attributes:
-        ELIGIBLE: TODO: type description here.
-        PARTIALLY_ELIGIBLE: TODO: type description here.
-        NOT_ELIGIBLE: TODO: type description here.
+        ELIGIBLE: Your PayPal balance remains intact if the customer claims
+            that they did not receive an item or the account holder claims
+            that they did not authorize the payment.
+        PARTIALLY_ELIGIBLE: Your PayPal balance remains intact if the customer
+            claims that they did not receive an item.
+        NOT_ELIGIBLE: This transaction is not eligible for seller protection.
 
     """
     ELIGIBLE = 'ELIGIBLE'

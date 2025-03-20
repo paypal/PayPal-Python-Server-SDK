@@ -149,7 +149,7 @@ class PaymentSourceResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -182,3 +182,37 @@ class PaymentSourceResponse(object):
                    apple_pay,
                    google_pay,
                    venmo)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'card={(self.card if hasattr(self, "card") else None)!r}, '
+                f'paypal={(self.paypal if hasattr(self, "paypal") else None)!r}, '
+                f'bancontact={(self.bancontact if hasattr(self, "bancontact") else None)!r}, '
+                f'blik={(self.blik if hasattr(self, "blik") else None)!r}, '
+                f'eps={(self.eps if hasattr(self, "eps") else None)!r}, '
+                f'giropay={(self.giropay if hasattr(self, "giropay") else None)!r}, '
+                f'ideal={(self.ideal if hasattr(self, "ideal") else None)!r}, '
+                f'mybank={(self.mybank if hasattr(self, "mybank") else None)!r}, '
+                f'p_24={(self.p_24 if hasattr(self, "p_24") else None)!r}, '
+                f'sofort={(self.sofort if hasattr(self, "sofort") else None)!r}, '
+                f'trustly={(self.trustly if hasattr(self, "trustly") else None)!r}, '
+                f'apple_pay={(self.apple_pay if hasattr(self, "apple_pay") else None)!r}, '
+                f'google_pay={(self.google_pay if hasattr(self, "google_pay") else None)!r}, '
+                f'venmo={(self.venmo if hasattr(self, "venmo") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'card={(self.card if hasattr(self, "card") else None)!s}, '
+                f'paypal={(self.paypal if hasattr(self, "paypal") else None)!s}, '
+                f'bancontact={(self.bancontact if hasattr(self, "bancontact") else None)!s}, '
+                f'blik={(self.blik if hasattr(self, "blik") else None)!s}, '
+                f'eps={(self.eps if hasattr(self, "eps") else None)!s}, '
+                f'giropay={(self.giropay if hasattr(self, "giropay") else None)!s}, '
+                f'ideal={(self.ideal if hasattr(self, "ideal") else None)!s}, '
+                f'mybank={(self.mybank if hasattr(self, "mybank") else None)!s}, '
+                f'p_24={(self.p_24 if hasattr(self, "p_24") else None)!s}, '
+                f'sofort={(self.sofort if hasattr(self, "sofort") else None)!s}, '
+                f'trustly={(self.trustly if hasattr(self, "trustly") else None)!s}, '
+                f'apple_pay={(self.apple_pay if hasattr(self, "apple_pay") else None)!s}, '
+                f'google_pay={(self.google_pay if hasattr(self, "google_pay") else None)!s}, '
+                f'venmo={(self.venmo if hasattr(self, "venmo") else None)!s})')

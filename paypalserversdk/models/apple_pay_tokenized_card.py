@@ -99,7 +99,7 @@ class ApplePayTokenizedCard(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -118,3 +118,23 @@ class ApplePayTokenizedCard(object):
                    mtype,
                    brand,
                    billing_address)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'number={(self.number if hasattr(self, "number") else None)!r}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!r}, '
+                f'card_type={(self.card_type if hasattr(self, "card_type") else None)!r}, '
+                f'mtype={(self.mtype if hasattr(self, "mtype") else None)!r}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!r}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'number={(self.number if hasattr(self, "number") else None)!s}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!s}, '
+                f'card_type={(self.card_type if hasattr(self, "card_type") else None)!s}, '
+                f'mtype={(self.mtype if hasattr(self, "mtype") else None)!s}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!s}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!s})')

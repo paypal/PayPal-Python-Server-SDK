@@ -19,12 +19,11 @@ class Money(object):
         currency_code (str): The [three-character ISO-4217 currency
             code](/api/rest/reference/currency-codes/) that identifies the
             currency.
-        value (str): The value, which might be:<ul><li>An integer for
-            currencies like `JPY` that are not typically fractional.</li><li>A
-            decimal fraction for currencies like `TND` that are subdivided
-            into thousandths.</li></ul>For the required number of decimal
-            places for a currency code, see [Currency
-            Codes](/api/rest/reference/currency-codes/).
+        value (str): The value, which might be: An integer for currencies like
+            `JPY` that are not typically fractional. A decimal fraction for
+            currencies like `TND` that are subdivided into thousandths. For
+            the required number of decimal places for a currency code, see
+            [Currency Codes](/api/rest/reference/currency-codes/).
 
     """
 
@@ -58,7 +57,7 @@ class Money(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -67,3 +66,13 @@ class Money(object):
         # Return an object of this model
         return cls(currency_code,
                    value)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'currency_code={self.currency_code!r}, '
+                f'value={self.value!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'currency_code={self.currency_code!s}, '
+                f'value={self.value!s})')

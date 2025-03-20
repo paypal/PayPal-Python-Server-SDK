@@ -64,7 +64,7 @@ class PaypalWalletAttributesResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -77,3 +77,13 @@ class PaypalWalletAttributesResponse(object):
         # Return an object of this model
         return cls(vault,
                    cobranded_cards)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'vault={(self.vault if hasattr(self, "vault") else None)!r}, '
+                f'cobranded_cards={(self.cobranded_cards if hasattr(self, "cobranded_cards") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'vault={(self.vault if hasattr(self, "vault") else None)!s}, '
+                f'cobranded_cards={(self.cobranded_cards if hasattr(self, "cobranded_cards") else None)!s})')

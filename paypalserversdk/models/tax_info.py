@@ -51,7 +51,7 @@ class TaxInfo(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -60,3 +60,13 @@ class TaxInfo(object):
         # Return an object of this model
         return cls(tax_id,
                    tax_id_type)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'tax_id={self.tax_id!r}, '
+                f'tax_id_type={self.tax_id_type!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'tax_id={self.tax_id!s}, '
+                f'tax_id_type={self.tax_id_type!s})')

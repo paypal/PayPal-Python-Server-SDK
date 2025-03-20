@@ -101,7 +101,7 @@ class Level3CardProcessingData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -122,3 +122,21 @@ class Level3CardProcessingData(object):
                    shipping_address,
                    ships_from_postal_code,
                    line_items)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'shipping_amount={(self.shipping_amount if hasattr(self, "shipping_amount") else None)!r}, '
+                f'duty_amount={(self.duty_amount if hasattr(self, "duty_amount") else None)!r}, '
+                f'discount_amount={(self.discount_amount if hasattr(self, "discount_amount") else None)!r}, '
+                f'shipping_address={(self.shipping_address if hasattr(self, "shipping_address") else None)!r}, '
+                f'ships_from_postal_code={(self.ships_from_postal_code if hasattr(self, "ships_from_postal_code") else None)!r}, '
+                f'line_items={(self.line_items if hasattr(self, "line_items") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'shipping_amount={(self.shipping_amount if hasattr(self, "shipping_amount") else None)!s}, '
+                f'duty_amount={(self.duty_amount if hasattr(self, "duty_amount") else None)!s}, '
+                f'discount_amount={(self.discount_amount if hasattr(self, "discount_amount") else None)!s}, '
+                f'shipping_address={(self.shipping_address if hasattr(self, "shipping_address") else None)!s}, '
+                f'ships_from_postal_code={(self.ships_from_postal_code if hasattr(self, "ships_from_postal_code") else None)!s}, '
+                f'line_items={(self.line_items if hasattr(self, "line_items") else None)!s})')

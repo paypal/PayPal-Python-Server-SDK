@@ -16,23 +16,21 @@ class AmountWithBreakdown(object):
 
     The total order amount with an optional breakdown that provides details,
     such as the total item amount, total tax amount, shipping, handling,
-    insurance, and discounts, if any.<br/>If you specify `amount.breakdown`,
-    the amount equals `item_total` plus `tax_total` plus `shipping` plus
-    `handling` plus `insurance` minus `shipping_discount` minus
-    discount.<br/>The amount must be a positive number. For listed of
-    supported currencies and decimal precision, see the PayPal REST APIs <a
-    href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>.
+    insurance, and discounts, if any. If you specify `amount.breakdown`, the
+    amount equals `item_total` plus `tax_total` plus `shipping` plus
+    `handling` plus `insurance` minus `shipping_discount` minus discount. The
+    amount must be a positive number. For listed of supported currencies and
+    decimal precision, see the PayPal REST APIs Currency Codes.
 
     Attributes:
         currency_code (str): The [three-character ISO-4217 currency
             code](/api/rest/reference/currency-codes/) that identifies the
             currency.
-        value (str): The value, which might be:<ul><li>An integer for
-            currencies like `JPY` that are not typically fractional.</li><li>A
-            decimal fraction for currencies like `TND` that are subdivided
-            into thousandths.</li></ul>For the required number of decimal
-            places for a currency code, see [Currency
-            Codes](/api/rest/reference/currency-codes/).
+        value (str): The value, which might be: An integer for currencies like
+            `JPY` that are not typically fractional. A decimal fraction for
+            currencies like `TND` that are subdivided into thousandths. For
+            the required number of decimal places for a currency code, see
+            [Currency Codes](/api/rest/reference/currency-codes/).
         breakdown (AmountBreakdown): The breakdown of the amount. Breakdown
             provides details such as total item amount, total tax amount,
             shipping, handling, insurance, and discounts, if any.
@@ -77,7 +75,7 @@ class AmountWithBreakdown(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -88,3 +86,15 @@ class AmountWithBreakdown(object):
         return cls(currency_code,
                    value,
                    breakdown)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'currency_code={self.currency_code!r}, '
+                f'value={self.value!r}, '
+                f'breakdown={(self.breakdown if hasattr(self, "breakdown") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'currency_code={self.currency_code!s}, '
+                f'value={self.value!s}, '
+                f'breakdown={(self.breakdown if hasattr(self, "breakdown") else None)!s})')

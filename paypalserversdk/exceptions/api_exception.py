@@ -33,3 +33,8 @@ class ApiException(Exception):
         self.reason = reason
         self.response = response
         self.response_code = response.status_code
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'status_code={self.response_code!s}, '
+                f'message={self.reason!s})')

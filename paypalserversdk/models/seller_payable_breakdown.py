@@ -107,7 +107,7 @@ class SellerPayableBreakdown(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -136,3 +136,25 @@ class SellerPayableBreakdown(object):
                    platform_fees,
                    net_amount_breakdown,
                    total_refunded_amount)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'gross_amount={(self.gross_amount if hasattr(self, "gross_amount") else None)!r}, '
+                f'paypal_fee={(self.paypal_fee if hasattr(self, "paypal_fee") else None)!r}, '
+                f'paypal_fee_in_receivable_currency={(self.paypal_fee_in_receivable_currency if hasattr(self, "paypal_fee_in_receivable_currency") else None)!r}, '
+                f'net_amount={(self.net_amount if hasattr(self, "net_amount") else None)!r}, '
+                f'net_amount_in_receivable_currency={(self.net_amount_in_receivable_currency if hasattr(self, "net_amount_in_receivable_currency") else None)!r}, '
+                f'platform_fees={(self.platform_fees if hasattr(self, "platform_fees") else None)!r}, '
+                f'net_amount_breakdown={(self.net_amount_breakdown if hasattr(self, "net_amount_breakdown") else None)!r}, '
+                f'total_refunded_amount={(self.total_refunded_amount if hasattr(self, "total_refunded_amount") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'gross_amount={(self.gross_amount if hasattr(self, "gross_amount") else None)!s}, '
+                f'paypal_fee={(self.paypal_fee if hasattr(self, "paypal_fee") else None)!s}, '
+                f'paypal_fee_in_receivable_currency={(self.paypal_fee_in_receivable_currency if hasattr(self, "paypal_fee_in_receivable_currency") else None)!s}, '
+                f'net_amount={(self.net_amount if hasattr(self, "net_amount") else None)!s}, '
+                f'net_amount_in_receivable_currency={(self.net_amount_in_receivable_currency if hasattr(self, "net_amount_in_receivable_currency") else None)!s}, '
+                f'platform_fees={(self.platform_fees if hasattr(self, "platform_fees") else None)!s}, '
+                f'net_amount_breakdown={(self.net_amount_breakdown if hasattr(self, "net_amount_breakdown") else None)!s}, '
+                f'total_refunded_amount={(self.total_refunded_amount if hasattr(self, "total_refunded_amount") else None)!s})')

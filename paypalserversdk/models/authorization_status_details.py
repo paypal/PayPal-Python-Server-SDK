@@ -53,10 +53,18 @@ class AuthorizationStatusDetails(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         reason = dictionary.get("reason") if dictionary.get("reason") else APIHelper.SKIP
         # Return an object of this model
         return cls(reason)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'reason={(self.reason if hasattr(self, "reason") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'reason={(self.reason if hasattr(self, "reason") else None)!s})')

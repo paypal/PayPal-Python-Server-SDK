@@ -19,29 +19,29 @@ class CardVerificationDetails(object):
     SECURE details.
 
     Attributes:
-        network_transaction_id (str): Transaction Identifier as given by the
-            network to indicate a previously executed CIT authorization. Only
-            present when authorization is successful for a verification.
-        date (str): The date that the transaction was authorized by the
-            scheme. This field may not be returned for all networks.
-            MasterCard refers to this field as "BankNet reference date".
+        network_transaction_id (str): DEPRECATED. This field is DEPRECATED.
+            Please find the network transaction id data in the 'id' field
+            under the 'network_transaction_reference' object instead of the
+            'verification' object.
+        date (str): DEPRECATED. This field is DEPRECATED. Please find the date
+            data in the 'date' field under the 'network_transaction_reference'
+            object instead of the 'verification' object.
         network (CardBrand): The card network or brand. Applies to credit,
             debit, gift, and payment cards.
         time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         amount (Money): The currency and amount for a financial transaction,
             such as a balance or payment due.
         processor_response (CardVerificationProcessorResponse): The processor
             response information for payment requests, such as direct credit
             card transactions.
         three_d_secure (object): DEPRECATED. This field is DEPRECATED. Please
-            find the 3D secure authentication data in 'three_d_secure' object
-            under 'authentication_result' object instead of the 'verification'
-            field.
+            find the 3D secure authentication data in the 'three_d_secure'
+            object under the 'authentication_result' object instead of the
+            'verification' object.
 
     """
 
@@ -107,7 +107,7 @@ class CardVerificationDetails(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -126,3 +126,23 @@ class CardVerificationDetails(object):
                    amount,
                    processor_response,
                    three_d_secure)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'network_transaction_id={(self.network_transaction_id if hasattr(self, "network_transaction_id") else None)!r}, '
+                f'date={(self.date if hasattr(self, "date") else None)!r}, '
+                f'network={(self.network if hasattr(self, "network") else None)!r}, '
+                f'time={(self.time if hasattr(self, "time") else None)!r}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!r}, '
+                f'processor_response={(self.processor_response if hasattr(self, "processor_response") else None)!r}, '
+                f'three_d_secure={(self.three_d_secure if hasattr(self, "three_d_secure") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'network_transaction_id={(self.network_transaction_id if hasattr(self, "network_transaction_id") else None)!s}, '
+                f'date={(self.date if hasattr(self, "date") else None)!s}, '
+                f'network={(self.network if hasattr(self, "network") else None)!s}, '
+                f'time={(self.time if hasattr(self, "time") else None)!s}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!s}, '
+                f'processor_response={(self.processor_response if hasattr(self, "processor_response") else None)!s}, '
+                f'three_d_secure={(self.three_d_secure if hasattr(self, "three_d_secure") else None)!s})')

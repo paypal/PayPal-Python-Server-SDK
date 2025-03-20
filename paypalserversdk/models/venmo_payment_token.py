@@ -17,12 +17,12 @@ class VenmoPaymentToken(object):
 
     """Implementation of the 'Venmo Payment Token' model.
 
-    TODO: type model description here.
-
     Attributes:
         description (str): The description displayed to the consumer on the
             approval flow for a digital wallet, as well as on the merchant
             view of the payment token management experience. exp: PayPal.com.
+        usage_pattern (UsagePattern): Expected business/charge model for the
+            billing agreement.
         shipping (VaultedDigitalWalletShippingDetails): The shipping details.
         permit_multiple_payment_tokens (bool): Create multiple payment tokens
             for the same payer, merchant/platform combination. Use this when
@@ -33,18 +33,17 @@ class VenmoPaymentToken(object):
             merchant/platform. This helps to identify customers distinctly
             even though they may share the same PayPal account. This only
             applies to PayPal payment source.
-        usage_type (str): The usage type associated with a digital wallet
-            payment token.
-        customer_type (str): The customer type associated with a digital
-            wallet payment token. This is to indicate whether the customer
-            acting on the merchant / platform is either a business or a
-            consumer.
-        email_address (str): The internationalized email
-            address.<blockquote><strong>Note:</strong> Up to 64 characters are
-            allowed before and 255 characters are allowed after the
-            <code>@</code> sign. However, the generally accepted maximum
-            length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign exists.</blockquote>
+        usage_type (PaypalPaymentTokenUsageType): The usage type associated
+            with a digital wallet payment token.
+        customer_type (PaypalPaymentTokenCustomerType): The customer type
+            associated with a digital wallet payment token. This is to
+            indicate whether the customer acting on the merchant / platform is
+            either a business or a consumer.
+        email_address (str): The internationalized email address. Note: Up to
+            64 characters are allowed before and 255 characters are allowed
+            after the @ sign. However, the generally accepted maximum length
+            for an email address is 254 characters. The pattern verifies that
+            an unquoted @ sign exists.
         payer_id (str): The account identifier for a PayPal account.
         name (Name): The name of the party.
         phone (PhoneWithType): The phone information.
@@ -61,6 +60,7 @@ class VenmoPaymentToken(object):
     # Create a mapping from Model property names to API property names
     _names = {
         "description": 'description',
+        "usage_pattern": 'usage_pattern',
         "shipping": 'shipping',
         "permit_multiple_payment_tokens": 'permit_multiple_payment_tokens',
         "usage_type": 'usage_type',
@@ -75,6 +75,7 @@ class VenmoPaymentToken(object):
 
     _optionals = [
         'description',
+        'usage_pattern',
         'shipping',
         'permit_multiple_payment_tokens',
         'usage_type',
@@ -89,6 +90,7 @@ class VenmoPaymentToken(object):
 
     def __init__(self,
                  description=APIHelper.SKIP,
+                 usage_pattern=APIHelper.SKIP,
                  shipping=APIHelper.SKIP,
                  permit_multiple_payment_tokens=False,
                  usage_type=APIHelper.SKIP,
@@ -104,6 +106,8 @@ class VenmoPaymentToken(object):
         # Initialize members of the class
         if description is not APIHelper.SKIP:
             self.description = description 
+        if usage_pattern is not APIHelper.SKIP:
+            self.usage_pattern = usage_pattern 
         if shipping is not APIHelper.SKIP:
             self.shipping = shipping 
         self.permit_multiple_payment_tokens = permit_multiple_payment_tokens 
@@ -139,11 +143,12 @@ class VenmoPaymentToken(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         description = dictionary.get("description") if dictionary.get("description") else APIHelper.SKIP
+        usage_pattern = dictionary.get("usage_pattern") if dictionary.get("usage_pattern") else APIHelper.SKIP
         shipping = VaultedDigitalWalletShippingDetails.from_dictionary(dictionary.get('shipping')) if 'shipping' in dictionary.keys() else APIHelper.SKIP
         permit_multiple_payment_tokens = dictionary.get("permit_multiple_payment_tokens") if dictionary.get("permit_multiple_payment_tokens") else False
         usage_type = dictionary.get("usage_type") if dictionary.get("usage_type") else APIHelper.SKIP
@@ -156,6 +161,7 @@ class VenmoPaymentToken(object):
         user_name = dictionary.get("user_name") if dictionary.get("user_name") else APIHelper.SKIP
         # Return an object of this model
         return cls(description,
+                   usage_pattern,
                    shipping,
                    permit_multiple_payment_tokens,
                    usage_type,
@@ -166,3 +172,33 @@ class VenmoPaymentToken(object):
                    phone,
                    address,
                    user_name)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'description={(self.description if hasattr(self, "description") else None)!r}, '
+                f'usage_pattern={(self.usage_pattern if hasattr(self, "usage_pattern") else None)!r}, '
+                f'shipping={(self.shipping if hasattr(self, "shipping") else None)!r}, '
+                f'permit_multiple_payment_tokens={(self.permit_multiple_payment_tokens if hasattr(self, "permit_multiple_payment_tokens") else None)!r}, '
+                f'usage_type={(self.usage_type if hasattr(self, "usage_type") else None)!r}, '
+                f'customer_type={(self.customer_type if hasattr(self, "customer_type") else None)!r}, '
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!r}, '
+                f'payer_id={(self.payer_id if hasattr(self, "payer_id") else None)!r}, '
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'phone={(self.phone if hasattr(self, "phone") else None)!r}, '
+                f'address={(self.address if hasattr(self, "address") else None)!r}, '
+                f'user_name={(self.user_name if hasattr(self, "user_name") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'description={(self.description if hasattr(self, "description") else None)!s}, '
+                f'usage_pattern={(self.usage_pattern if hasattr(self, "usage_pattern") else None)!s}, '
+                f'shipping={(self.shipping if hasattr(self, "shipping") else None)!s}, '
+                f'permit_multiple_payment_tokens={(self.permit_multiple_payment_tokens if hasattr(self, "permit_multiple_payment_tokens") else None)!s}, '
+                f'usage_type={(self.usage_type if hasattr(self, "usage_type") else None)!s}, '
+                f'customer_type={(self.customer_type if hasattr(self, "customer_type") else None)!s}, '
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!s}, '
+                f'payer_id={(self.payer_id if hasattr(self, "payer_id") else None)!s}, '
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'phone={(self.phone if hasattr(self, "phone") else None)!s}, '
+                f'address={(self.address if hasattr(self, "address") else None)!s}, '
+                f'user_name={(self.user_name if hasattr(self, "user_name") else None)!s})')

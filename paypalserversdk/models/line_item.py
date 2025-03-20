@@ -141,7 +141,7 @@ class LineItem(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -172,3 +172,35 @@ class LineItem(object):
                    discount_amount,
                    total_amount,
                    unit_of_measure)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={self.name!r}, '
+                f'quantity={self.quantity!r}, '
+                f'description={(self.description if hasattr(self, "description") else None)!r}, '
+                f'sku={(self.sku if hasattr(self, "sku") else None)!r}, '
+                f'url={(self.url if hasattr(self, "url") else None)!r}, '
+                f'image_url={(self.image_url if hasattr(self, "image_url") else None)!r}, '
+                f'upc={(self.upc if hasattr(self, "upc") else None)!r}, '
+                f'unit_amount={(self.unit_amount if hasattr(self, "unit_amount") else None)!r}, '
+                f'tax={(self.tax if hasattr(self, "tax") else None)!r}, '
+                f'commodity_code={(self.commodity_code if hasattr(self, "commodity_code") else None)!r}, '
+                f'discount_amount={(self.discount_amount if hasattr(self, "discount_amount") else None)!r}, '
+                f'total_amount={(self.total_amount if hasattr(self, "total_amount") else None)!r}, '
+                f'unit_of_measure={(self.unit_of_measure if hasattr(self, "unit_of_measure") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={self.name!s}, '
+                f'quantity={self.quantity!s}, '
+                f'description={(self.description if hasattr(self, "description") else None)!s}, '
+                f'sku={(self.sku if hasattr(self, "sku") else None)!s}, '
+                f'url={(self.url if hasattr(self, "url") else None)!s}, '
+                f'image_url={(self.image_url if hasattr(self, "image_url") else None)!s}, '
+                f'upc={(self.upc if hasattr(self, "upc") else None)!s}, '
+                f'unit_amount={(self.unit_amount if hasattr(self, "unit_amount") else None)!s}, '
+                f'tax={(self.tax if hasattr(self, "tax") else None)!s}, '
+                f'commodity_code={(self.commodity_code if hasattr(self, "commodity_code") else None)!s}, '
+                f'discount_amount={(self.discount_amount if hasattr(self, "discount_amount") else None)!s}, '
+                f'total_amount={(self.total_amount if hasattr(self, "total_amount") else None)!s}, '
+                f'unit_of_measure={(self.unit_of_measure if hasattr(self, "unit_of_measure") else None)!s})')

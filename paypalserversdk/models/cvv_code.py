@@ -16,47 +16,58 @@ class CvvCode(object):
     American Express.
 
     Attributes:
-        E: TODO: type description here.
-        I: TODO: type description here.
-        M: TODO: type description here.
-        N: TODO: type description here.
-        P: TODO: type description here.
-        S: TODO: type description here.
-        U: TODO: type description here.
-        X: TODO: type description here.
-        ENUM_ALL OTHERS: TODO: type description here.
-        ENUM_0: TODO: type description here.
-        ENUM_1: TODO: type description here.
-        ENUM_2: TODO: type description here.
-        ENUM_3: TODO: type description here.
-        ENUM_4: TODO: type description here.
+        CVV_E: For Visa, Mastercard, Discover, or American Express, error -
+            unrecognized or unknown response.
+        CVV_I: For Visa, Mastercard, Discover, or American Express, invalid or
+            null.
+        CVV_M: For Visa, Mastercard, Discover, or American Express, the
+            CVV2/CSC matches.
+        CVV_N: For Visa, Mastercard, Discover, or American Express, the
+            CVV2/CSC does not match.
+        CVV_P: For Visa, Mastercard, Discover, or American Express, it was not
+            processed.
+        CVV_S: For Visa, Mastercard, Discover, or American Express, the
+            service is not supported.
+        CVV_U: For Visa, Mastercard, Discover, or American Express, unknown -
+            the issuer is not certified.
+        CVV_X: For Visa, Mastercard, Discover, or American Express, no
+            response. For Maestro, the service is not available.
+        ENUM_ALL OTHERS: For Visa, Mastercard, Discover, or American Express,
+            error.
+        CVV_0: For Maestro, the CVV2 matched.
+        CVV_1: For Maestro, the CVV2 did not match.
+        CVV_2: For Maestro, the merchant has not implemented CVV2 code
+            handling.
+        CVV_3: For Maestro, the merchant has indicated that CVV2 is not
+            present on card.
+        CVV_4: For Maestro, the service is not available.
 
     """
-    E = 'E'
+    CVV_E = 'E'
 
-    I = 'I'
+    CVV_I = 'I'
 
-    M = 'M'
+    CVV_M = 'M'
 
-    N = 'N'
+    CVV_N = 'N'
 
-    P = 'P'
+    CVV_P = 'P'
 
-    S = 'S'
+    CVV_S = 'S'
 
-    U = 'U'
+    CVV_U = 'U'
 
-    X = 'X'
+    CVV_X = 'X'
 
     ENUM_ALL_OTHERS = 'All others'
 
-    ENUM_0 = '0'
+    CVV_0 = '0'
 
-    ENUM_1 = '1'
+    CVV_1 = '1'
 
-    ENUM_2 = '2'
+    CVV_2 = '2'
 
-    ENUM_3 = '3'
+    CVV_3 = '3'
 
-    ENUM_4 = '4'
+    CVV_4 = '4'
 

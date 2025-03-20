@@ -98,7 +98,7 @@ class SellerReceivableBreakdown(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -121,3 +121,23 @@ class SellerReceivableBreakdown(object):
                    receivable_amount,
                    exchange_rate,
                    platform_fees)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'gross_amount={self.gross_amount!r}, '
+                f'paypal_fee={(self.paypal_fee if hasattr(self, "paypal_fee") else None)!r}, '
+                f'paypal_fee_in_receivable_currency={(self.paypal_fee_in_receivable_currency if hasattr(self, "paypal_fee_in_receivable_currency") else None)!r}, '
+                f'net_amount={(self.net_amount if hasattr(self, "net_amount") else None)!r}, '
+                f'receivable_amount={(self.receivable_amount if hasattr(self, "receivable_amount") else None)!r}, '
+                f'exchange_rate={(self.exchange_rate if hasattr(self, "exchange_rate") else None)!r}, '
+                f'platform_fees={(self.platform_fees if hasattr(self, "platform_fees") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'gross_amount={self.gross_amount!s}, '
+                f'paypal_fee={(self.paypal_fee if hasattr(self, "paypal_fee") else None)!s}, '
+                f'paypal_fee_in_receivable_currency={(self.paypal_fee_in_receivable_currency if hasattr(self, "paypal_fee_in_receivable_currency") else None)!s}, '
+                f'net_amount={(self.net_amount if hasattr(self, "net_amount") else None)!s}, '
+                f'receivable_amount={(self.receivable_amount if hasattr(self, "receivable_amount") else None)!s}, '
+                f'exchange_rate={(self.exchange_rate if hasattr(self, "exchange_rate") else None)!s}, '
+                f'platform_fees={(self.platform_fees if hasattr(self, "platform_fees") else None)!s})')

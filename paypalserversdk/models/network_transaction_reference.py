@@ -79,7 +79,7 @@ class NetworkTransactionReference(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -92,3 +92,17 @@ class NetworkTransactionReference(object):
                    date,
                    network,
                    acquirer_reference_number)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={self.id!r}, '
+                f'date={(self.date if hasattr(self, "date") else None)!r}, '
+                f'network={(self.network if hasattr(self, "network") else None)!r}, '
+                f'acquirer_reference_number={(self.acquirer_reference_number if hasattr(self, "acquirer_reference_number") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={self.id!s}, '
+                f'date={(self.date if hasattr(self, "date") else None)!s}, '
+                f'network={(self.network if hasattr(self, "network") else None)!s}, '
+                f'acquirer_reference_number={(self.acquirer_reference_number if hasattr(self, "acquirer_reference_number") else None)!s})')

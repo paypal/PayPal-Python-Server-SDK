@@ -71,7 +71,7 @@ class ExchangeRate(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -82,3 +82,15 @@ class ExchangeRate(object):
         return cls(source_currency,
                    target_currency,
                    value)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'source_currency={(self.source_currency if hasattr(self, "source_currency") else None)!r}, '
+                f'target_currency={(self.target_currency if hasattr(self, "target_currency") else None)!r}, '
+                f'value={(self.value if hasattr(self, "value") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'source_currency={(self.source_currency if hasattr(self, "source_currency") else None)!s}, '
+                f'target_currency={(self.target_currency if hasattr(self, "target_currency") else None)!s}, '
+                f'value={(self.value if hasattr(self, "value") else None)!s})')

@@ -15,11 +15,11 @@ class PhoneType(object):
     The phone type.
 
     Attributes:
-        FAX: TODO: type description here.
-        HOME: TODO: type description here.
-        MOBILE: TODO: type description here.
-        OTHER: TODO: type description here.
-        PAGER: TODO: type description here.
+        FAX: The enum member of type str.
+        HOME: The enum member of type str.
+        MOBILE: The enum member of type str.
+        OTHER: The enum member of type str.
+        PAGER: The enum member of type str.
 
     """
     FAX = 'FAX'

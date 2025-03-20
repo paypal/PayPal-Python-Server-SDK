@@ -52,10 +52,18 @@ class ShippingName(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         full_name = dictionary.get("full_name") if dictionary.get("full_name") else APIHelper.SKIP
         # Return an object of this model
         return cls(full_name)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'full_name={(self.full_name if hasattr(self, "full_name") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'full_name={(self.full_name if hasattr(self, "full_name") else None)!s})')

@@ -30,10 +30,9 @@ class NetworkTransactionReferenceEntity(object):
             debit, gift, and payment cards.
         time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
 
     """
 
@@ -82,7 +81,7 @@ class NetworkTransactionReferenceEntity(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -95,3 +94,17 @@ class NetworkTransactionReferenceEntity(object):
                    date,
                    network,
                    time)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={self.id!r}, '
+                f'date={(self.date if hasattr(self, "date") else None)!r}, '
+                f'network={(self.network if hasattr(self, "network") else None)!r}, '
+                f'time={(self.time if hasattr(self, "time") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={self.id!s}, '
+                f'date={(self.date if hasattr(self, "date") else None)!s}, '
+                f'network={(self.network if hasattr(self, "network") else None)!s}, '
+                f'time={(self.time if hasattr(self, "time") else None)!s})')

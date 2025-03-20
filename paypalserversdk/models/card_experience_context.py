@@ -58,7 +58,7 @@ class CardExperienceContext(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -67,3 +67,13 @@ class CardExperienceContext(object):
         # Return an object of this model
         return cls(return_url,
                    cancel_url)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!r}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!s}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!s})')

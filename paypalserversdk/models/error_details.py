@@ -88,7 +88,7 @@ class ErrorDetails(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -109,3 +109,21 @@ class ErrorDetails(object):
                    location,
                    links,
                    description)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'field={(self.field if hasattr(self, "field") else None)!r}, '
+                f'value={(self.value if hasattr(self, "value") else None)!r}, '
+                f'location={(self.location if hasattr(self, "location") else None)!r}, '
+                f'issue={self.issue!r}, '
+                f'links={(self.links if hasattr(self, "links") else None)!r}, '
+                f'description={(self.description if hasattr(self, "description") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'field={(self.field if hasattr(self, "field") else None)!s}, '
+                f'value={(self.value if hasattr(self, "value") else None)!s}, '
+                f'location={(self.location if hasattr(self, "location") else None)!s}, '
+                f'issue={self.issue!s}, '
+                f'links={(self.links if hasattr(self, "links") else None)!s}, '
+                f'description={(self.description if hasattr(self, "description") else None)!s})')

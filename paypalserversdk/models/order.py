@@ -22,24 +22,21 @@ class Order(object):
     Attributes:
         create_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         update_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         id (str): The ID of the order.
         payment_source (PaymentSourceResponse): The payment source used to
             fund the payment.
         intent (CheckoutPaymentIntent): The intent to either capture payment
             immediately or authorize a payment for an order after order
             creation.
-        processing_instruction (object): TODO: type description here.
-        payer (Payer): TODO: type description here.
+        payer (Payer): The model property of type Payer.
         purchase_units (List[PurchaseUnit]): An array of purchase units. Each
             purchase unit establishes a contract between a customer and
             merchant. Each purchase unit represents either a full or partial
@@ -67,7 +64,6 @@ class Order(object):
         "id": 'id',
         "payment_source": 'payment_source',
         "intent": 'intent',
-        "processing_instruction": 'processing_instruction',
         "payer": 'payer',
         "purchase_units": 'purchase_units',
         "status": 'status',
@@ -80,7 +76,6 @@ class Order(object):
         'id',
         'payment_source',
         'intent',
-        'processing_instruction',
         'payer',
         'purchase_units',
         'status',
@@ -93,7 +88,6 @@ class Order(object):
                  id=APIHelper.SKIP,
                  payment_source=APIHelper.SKIP,
                  intent=APIHelper.SKIP,
-                 processing_instruction=APIHelper.SKIP,
                  payer=APIHelper.SKIP,
                  purchase_units=APIHelper.SKIP,
                  status=APIHelper.SKIP,
@@ -111,8 +105,6 @@ class Order(object):
             self.payment_source = payment_source 
         if intent is not APIHelper.SKIP:
             self.intent = intent 
-        if processing_instruction is not APIHelper.SKIP:
-            self.processing_instruction = processing_instruction 
         if payer is not APIHelper.SKIP:
             self.payer = payer 
         if purchase_units is not APIHelper.SKIP:
@@ -137,7 +129,7 @@ class Order(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -146,7 +138,6 @@ class Order(object):
         id = dictionary.get("id") if dictionary.get("id") else APIHelper.SKIP
         payment_source = PaymentSourceResponse.from_dictionary(dictionary.get('payment_source')) if 'payment_source' in dictionary.keys() else APIHelper.SKIP
         intent = dictionary.get("intent") if dictionary.get("intent") else APIHelper.SKIP
-        processing_instruction = dictionary.get("processing_instruction") if dictionary.get("processing_instruction") else APIHelper.SKIP
         payer = Payer.from_dictionary(dictionary.get('payer')) if 'payer' in dictionary.keys() else APIHelper.SKIP
         purchase_units = None
         if dictionary.get('purchase_units') is not None:
@@ -165,8 +156,31 @@ class Order(object):
                    id,
                    payment_source,
                    intent,
-                   processing_instruction,
                    payer,
                    purchase_units,
                    status,
                    links)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'create_time={(self.create_time if hasattr(self, "create_time") else None)!r}, '
+                f'update_time={(self.update_time if hasattr(self, "update_time") else None)!r}, '
+                f'id={(self.id if hasattr(self, "id") else None)!r}, '
+                f'payment_source={(self.payment_source if hasattr(self, "payment_source") else None)!r}, '
+                f'intent={(self.intent if hasattr(self, "intent") else None)!r}, '
+                f'payer={(self.payer if hasattr(self, "payer") else None)!r}, '
+                f'purchase_units={(self.purchase_units if hasattr(self, "purchase_units") else None)!r}, '
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'links={(self.links if hasattr(self, "links") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'create_time={(self.create_time if hasattr(self, "create_time") else None)!s}, '
+                f'update_time={(self.update_time if hasattr(self, "update_time") else None)!s}, '
+                f'id={(self.id if hasattr(self, "id") else None)!s}, '
+                f'payment_source={(self.payment_source if hasattr(self, "payment_source") else None)!s}, '
+                f'intent={(self.intent if hasattr(self, "intent") else None)!s}, '
+                f'payer={(self.payer if hasattr(self, "payer") else None)!s}, '
+                f'purchase_units={(self.purchase_units if hasattr(self, "purchase_units") else None)!s}, '
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'links={(self.links if hasattr(self, "links") else None)!s})')

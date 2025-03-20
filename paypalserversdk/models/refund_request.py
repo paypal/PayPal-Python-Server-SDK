@@ -16,8 +16,8 @@ class RefundRequest(object):
     """Implementation of the 'Refund Request' model.
 
     Refunds a captured payment, by ID. For a full refund, include an empty
-    request body. For a partial refund, include an <code>amount</code> object
-    in the request body.
+    request body. For a partial refund, include an amount object in the
+    request body.
 
     Attributes:
         amount (Money): The currency and amount for a financial transaction,
@@ -94,7 +94,7 @@ class RefundRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -109,3 +109,19 @@ class RefundRequest(object):
                    invoice_id,
                    note_to_payer,
                    payment_instruction)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'amount={(self.amount if hasattr(self, "amount") else None)!r}, '
+                f'custom_id={(self.custom_id if hasattr(self, "custom_id") else None)!r}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!r}, '
+                f'payment_instruction={(self.payment_instruction if hasattr(self, "payment_instruction") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'amount={(self.amount if hasattr(self, "amount") else None)!s}, '
+                f'custom_id={(self.custom_id if hasattr(self, "custom_id") else None)!s}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!s}, '
+                f'payment_instruction={(self.payment_instruction if hasattr(self, "payment_instruction") else None)!s})')

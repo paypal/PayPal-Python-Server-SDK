@@ -63,7 +63,7 @@ class SupplementaryPurchaseData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -72,3 +72,13 @@ class SupplementaryPurchaseData(object):
         # Return an object of this model
         return cls(invoice_id,
                    note_to_payer)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!s})')

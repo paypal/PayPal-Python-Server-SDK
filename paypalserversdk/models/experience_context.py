@@ -89,7 +89,7 @@ class ExperienceContext(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -104,3 +104,19 @@ class ExperienceContext(object):
                    shipping_preference,
                    return_url,
                    cancel_url)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!r}, '
+                f'locale={(self.locale if hasattr(self, "locale") else None)!r}, '
+                f'shipping_preference={(self.shipping_preference if hasattr(self, "shipping_preference") else None)!r}, '
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!r}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!s}, '
+                f'locale={(self.locale if hasattr(self, "locale") else None)!s}, '
+                f'shipping_preference={(self.shipping_preference if hasattr(self, "shipping_preference") else None)!s}, '
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!s}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!s})')

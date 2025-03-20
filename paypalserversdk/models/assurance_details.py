@@ -63,7 +63,7 @@ class AssuranceDetails(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -72,3 +72,13 @@ class AssuranceDetails(object):
         # Return an object of this model
         return cls(account_verified,
                    card_holder_authenticated)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'account_verified={(self.account_verified if hasattr(self, "account_verified") else None)!r}, '
+                f'card_holder_authenticated={(self.card_holder_authenticated if hasattr(self, "card_holder_authenticated") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'account_verified={(self.account_verified if hasattr(self, "account_verified") else None)!s}, '
+                f'card_holder_authenticated={(self.card_holder_authenticated if hasattr(self, "card_holder_authenticated") else None)!s})')

@@ -62,7 +62,7 @@ class PaymentTokenRequestPaymentSource(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -71,3 +71,13 @@ class PaymentTokenRequestPaymentSource(object):
         # Return an object of this model
         return cls(card,
                    token)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'card={(self.card if hasattr(self, "card") else None)!r}, '
+                f'token={(self.token if hasattr(self, "token") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'card={(self.card if hasattr(self, "card") else None)!s}, '
+                f'token={(self.token if hasattr(self, "token") else None)!s})')

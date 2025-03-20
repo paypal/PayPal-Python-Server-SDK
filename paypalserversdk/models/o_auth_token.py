@@ -18,10 +18,10 @@ class OAuthToken(object):
     Attributes:
         access_token (str): Access token
         token_type (str): Type of access token
-        expires_in (long|int): Time in seconds before the access token expires
+        expires_in (int): Time in seconds before the access token expires
         scope (str): List of scopes granted This is a space-delimited list of
             strings.
-        expiry (long|int): Time of token expiry as unix timestamp (UTC)
+        expiry (int): Time of token expiry as unix timestamp (UTC)
         refresh_token (str): Refresh token Used to get a new access token when
             it expires.
         id_token (str): An ID token response type is of JSON Web Token (JWT)
@@ -87,7 +87,7 @@ class OAuthToken(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary

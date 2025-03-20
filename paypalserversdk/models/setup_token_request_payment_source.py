@@ -24,7 +24,8 @@ class SetupTokenRequestPaymentSource(object):
             vault a Card.
         paypal (VaultPaypalWalletRequest): A resource representing a request
             to vault PayPal Wallet.
-        venmo (VaultVenmoRequest): TODO: type description here.
+        venmo (VaultVenmoRequest): The model property of type
+            VaultVenmoRequest.
         token (VaultTokenRequest): The Tokenized Payment Source representing a
             Request to Vault a Token.
 
@@ -77,7 +78,7 @@ class SetupTokenRequestPaymentSource(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -90,3 +91,17 @@ class SetupTokenRequestPaymentSource(object):
                    paypal,
                    venmo,
                    token)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'card={(self.card if hasattr(self, "card") else None)!r}, '
+                f'paypal={(self.paypal if hasattr(self, "paypal") else None)!r}, '
+                f'venmo={(self.venmo if hasattr(self, "venmo") else None)!r}, '
+                f'token={(self.token if hasattr(self, "token") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'card={(self.card if hasattr(self, "card") else None)!s}, '
+                f'paypal={(self.paypal if hasattr(self, "paypal") else None)!s}, '
+                f'venmo={(self.venmo if hasattr(self, "venmo") else None)!s}, '
+                f'token={(self.token if hasattr(self, "token") else None)!s})')

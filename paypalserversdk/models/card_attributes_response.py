@@ -54,10 +54,18 @@ class CardAttributesResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         vault = CardVaultResponse.from_dictionary(dictionary.get('vault')) if 'vault' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(vault)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'vault={(self.vault if hasattr(self, "vault") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'vault={(self.vault if hasattr(self, "vault") else None)!s})')

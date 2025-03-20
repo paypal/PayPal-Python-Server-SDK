@@ -20,7 +20,6 @@ class ConfirmOrderRequest(object):
 
     Attributes:
         payment_source (PaymentSource): The payment source definition.
-        processing_instruction (object): TODO: type description here.
         application_context (OrderConfirmApplicationContext): Customizes the
             payer confirmation experience.
 
@@ -29,25 +28,20 @@ class ConfirmOrderRequest(object):
     # Create a mapping from Model property names to API property names
     _names = {
         "payment_source": 'payment_source',
-        "processing_instruction": 'processing_instruction',
         "application_context": 'application_context'
     }
 
     _optionals = [
-        'processing_instruction',
         'application_context',
     ]
 
     def __init__(self,
                  payment_source=None,
-                 processing_instruction=APIHelper.SKIP,
                  application_context=APIHelper.SKIP):
         """Constructor for the ConfirmOrderRequest class"""
 
         # Initialize members of the class
         self.payment_source = payment_source 
-        if processing_instruction is not APIHelper.SKIP:
-            self.processing_instruction = processing_instruction 
         if application_context is not APIHelper.SKIP:
             self.application_context = application_context 
 
@@ -66,14 +60,22 @@ class ConfirmOrderRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         payment_source = PaymentSource.from_dictionary(dictionary.get('payment_source')) if dictionary.get('payment_source') else None
-        processing_instruction = dictionary.get("processing_instruction") if dictionary.get("processing_instruction") else APIHelper.SKIP
         application_context = OrderConfirmApplicationContext.from_dictionary(dictionary.get('application_context')) if 'application_context' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(payment_source,
-                   processing_instruction,
                    application_context)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'payment_source={self.payment_source!r}, '
+                f'application_context={(self.application_context if hasattr(self, "application_context") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'payment_source={self.payment_source!s}, '
+                f'application_context={(self.application_context if hasattr(self, "application_context") else None)!s})')

@@ -10,6 +10,7 @@ from paypalserversdk.api_helper import APIHelper
 from paypalserversdk.models.address import Address
 from paypalserversdk.models.name import Name
 from paypalserversdk.models.paypal_wallet_attributes_response import PaypalWalletAttributesResponse
+from paypalserversdk.models.paypal_wallet_stored_credential import PaypalWalletStoredCredential
 from paypalserversdk.models.phone_number import PhoneNumber
 from paypalserversdk.models.tax_info import TaxInfo
 
@@ -21,12 +22,11 @@ class PaypalWalletResponse(object):
     The PayPal Wallet response.
 
     Attributes:
-        email_address (str): The internationalized email
-            address.<blockquote><strong>Note:</strong> Up to 64 characters are
-            allowed before and 255 characters are allowed after the
-            <code>@</code> sign. However, the generally accepted maximum
-            length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign exists.</blockquote>
+        email_address (str): The internationalized email address. Note: Up to
+            64 characters are allowed before and 255 characters are allowed
+            after the @ sign. However, the generally accepted maximum length
+            for an email address is 254 characters. The pattern verifies that
+            an unquoted @ sign exists.
         account_id (str): The PayPal payer ID, which is a masked version of
             the PayPal account number intended for use with third parties. The
             account number is reversibly encrypted and a proprietary variant
@@ -58,6 +58,10 @@ class PaypalWalletResponse(object):
             form-controls-the-autocomplete-attribute).
         attributes (PaypalWalletAttributesResponse): Additional attributes
             associated with the use of a PayPal Wallet.
+        stored_credential (PaypalWalletStoredCredential): Provides additional
+            details to process a payment using the PayPal wallet billing
+            agreement or a vaulted payment method that has been stored or is
+            intended to be stored.
 
     """
 
@@ -73,7 +77,8 @@ class PaypalWalletResponse(object):
         "business_name": 'business_name',
         "tax_info": 'tax_info',
         "address": 'address',
-        "attributes": 'attributes'
+        "attributes": 'attributes',
+        "stored_credential": 'stored_credential'
     }
 
     _optionals = [
@@ -88,6 +93,7 @@ class PaypalWalletResponse(object):
         'tax_info',
         'address',
         'attributes',
+        'stored_credential',
     ]
 
     def __init__(self,
@@ -101,7 +107,8 @@ class PaypalWalletResponse(object):
                  business_name=APIHelper.SKIP,
                  tax_info=APIHelper.SKIP,
                  address=APIHelper.SKIP,
-                 attributes=APIHelper.SKIP):
+                 attributes=APIHelper.SKIP,
+                 stored_credential=APIHelper.SKIP):
         """Constructor for the PaypalWalletResponse class"""
 
         # Initialize members of the class
@@ -127,6 +134,8 @@ class PaypalWalletResponse(object):
             self.address = address 
         if attributes is not APIHelper.SKIP:
             self.attributes = attributes 
+        if stored_credential is not APIHelper.SKIP:
+            self.stored_credential = stored_credential 
 
     @classmethod
     def from_dictionary(cls,
@@ -143,7 +152,7 @@ class PaypalWalletResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -158,6 +167,7 @@ class PaypalWalletResponse(object):
         tax_info = TaxInfo.from_dictionary(dictionary.get('tax_info')) if 'tax_info' in dictionary.keys() else APIHelper.SKIP
         address = Address.from_dictionary(dictionary.get('address')) if 'address' in dictionary.keys() else APIHelper.SKIP
         attributes = PaypalWalletAttributesResponse.from_dictionary(dictionary.get('attributes')) if 'attributes' in dictionary.keys() else APIHelper.SKIP
+        stored_credential = PaypalWalletStoredCredential.from_dictionary(dictionary.get('stored_credential')) if 'stored_credential' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(email_address,
                    account_id,
@@ -169,4 +179,35 @@ class PaypalWalletResponse(object):
                    business_name,
                    tax_info,
                    address,
-                   attributes)
+                   attributes,
+                   stored_credential)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!r}, '
+                f'account_id={(self.account_id if hasattr(self, "account_id") else None)!r}, '
+                f'account_status={(self.account_status if hasattr(self, "account_status") else None)!r}, '
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'phone_type={(self.phone_type if hasattr(self, "phone_type") else None)!r}, '
+                f'phone_number={(self.phone_number if hasattr(self, "phone_number") else None)!r}, '
+                f'birth_date={(self.birth_date if hasattr(self, "birth_date") else None)!r}, '
+                f'business_name={(self.business_name if hasattr(self, "business_name") else None)!r}, '
+                f'tax_info={(self.tax_info if hasattr(self, "tax_info") else None)!r}, '
+                f'address={(self.address if hasattr(self, "address") else None)!r}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!s}, '
+                f'account_id={(self.account_id if hasattr(self, "account_id") else None)!s}, '
+                f'account_status={(self.account_status if hasattr(self, "account_status") else None)!s}, '
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'phone_type={(self.phone_type if hasattr(self, "phone_type") else None)!s}, '
+                f'phone_number={(self.phone_number if hasattr(self, "phone_number") else None)!s}, '
+                f'birth_date={(self.birth_date if hasattr(self, "birth_date") else None)!s}, '
+                f'business_name={(self.business_name if hasattr(self, "business_name") else None)!s}, '
+                f'tax_info={(self.tax_info if hasattr(self, "tax_info") else None)!s}, '
+                f'address={(self.address if hasattr(self, "address") else None)!s}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!s})')

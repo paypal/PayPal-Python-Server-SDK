@@ -67,7 +67,7 @@ class Level2CardProcessingData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -76,3 +76,13 @@ class Level2CardProcessingData(object):
         # Return an object of this model
         return cls(invoice_id,
                    tax_total)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
+                f'tax_total={(self.tax_total if hasattr(self, "tax_total") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
+                f'tax_total={(self.tax_total if hasattr(self, "tax_total") else None)!s})')

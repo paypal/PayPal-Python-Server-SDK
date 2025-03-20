@@ -11,6 +11,7 @@ from paypalserversdk.models.authentication_response import AuthenticationRespons
 from paypalserversdk.models.bin_details import BinDetails
 from paypalserversdk.models.card_attributes_response import CardAttributesResponse
 from paypalserversdk.models.card_from_request import CardFromRequest
+from paypalserversdk.models.card_stored_credential import CardStoredCredential
 
 
 class CardResponse(object):
@@ -39,6 +40,18 @@ class CardResponse(object):
             format](https://tools.ietf.org/html/rfc3339#section-5.6).
         bin_details (BinDetails): Bank Identification Number (BIN) details
             used to fund a payment.
+        stored_credential (CardStoredCredential): Provides additional details
+            to process a payment using a `card` that has been stored or is
+            intended to be stored (also referred to as stored_credential or
+            card-on-file). Parameter compatibility: `payment_type=ONE_TIME` is
+            compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST`
+            is compatible only with `payment_initiator=CUSTOMER`.
+            `previous_transaction_reference` or
+            `previous_network_transaction_reference` is compatible only with
+            `payment_initiator=MERCHANT`. Only one of the parameters -
+            `previous_transaction_reference` and
+            `previous_network_transaction_reference` - can be present in the
+            request.
 
     """
 
@@ -53,7 +66,8 @@ class CardResponse(object):
         "attributes": 'attributes',
         "from_request": 'from_request',
         "expiry": 'expiry',
-        "bin_details": 'bin_details'
+        "bin_details": 'bin_details',
+        "stored_credential": 'stored_credential'
     }
 
     _optionals = [
@@ -67,6 +81,7 @@ class CardResponse(object):
         'from_request',
         'expiry',
         'bin_details',
+        'stored_credential',
     ]
 
     def __init__(self,
@@ -79,7 +94,8 @@ class CardResponse(object):
                  attributes=APIHelper.SKIP,
                  from_request=APIHelper.SKIP,
                  expiry=APIHelper.SKIP,
-                 bin_details=APIHelper.SKIP):
+                 bin_details=APIHelper.SKIP,
+                 stored_credential=APIHelper.SKIP):
         """Constructor for the CardResponse class"""
 
         # Initialize members of the class
@@ -103,6 +119,8 @@ class CardResponse(object):
             self.expiry = expiry 
         if bin_details is not APIHelper.SKIP:
             self.bin_details = bin_details 
+        if stored_credential is not APIHelper.SKIP:
+            self.stored_credential = stored_credential 
 
     @classmethod
     def from_dictionary(cls,
@@ -119,7 +137,7 @@ class CardResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -133,6 +151,7 @@ class CardResponse(object):
         from_request = CardFromRequest.from_dictionary(dictionary.get('from_request')) if 'from_request' in dictionary.keys() else APIHelper.SKIP
         expiry = dictionary.get("expiry") if dictionary.get("expiry") else APIHelper.SKIP
         bin_details = BinDetails.from_dictionary(dictionary.get('bin_details')) if 'bin_details' in dictionary.keys() else APIHelper.SKIP
+        stored_credential = CardStoredCredential.from_dictionary(dictionary.get('stored_credential')) if 'stored_credential' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(name,
                    last_digits,
@@ -143,4 +162,33 @@ class CardResponse(object):
                    attributes,
                    from_request,
                    expiry,
-                   bin_details)
+                   bin_details,
+                   stored_credential)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'last_digits={(self.last_digits if hasattr(self, "last_digits") else None)!r}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!r}, '
+                f'available_networks={(self.available_networks if hasattr(self, "available_networks") else None)!r}, '
+                f'mtype={(self.mtype if hasattr(self, "mtype") else None)!r}, '
+                f'authentication_result={(self.authentication_result if hasattr(self, "authentication_result") else None)!r}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r}, '
+                f'from_request={(self.from_request if hasattr(self, "from_request") else None)!r}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!r}, '
+                f'bin_details={(self.bin_details if hasattr(self, "bin_details") else None)!r}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'last_digits={(self.last_digits if hasattr(self, "last_digits") else None)!s}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!s}, '
+                f'available_networks={(self.available_networks if hasattr(self, "available_networks") else None)!s}, '
+                f'mtype={(self.mtype if hasattr(self, "mtype") else None)!s}, '
+                f'authentication_result={(self.authentication_result if hasattr(self, "authentication_result") else None)!s}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s}, '
+                f'from_request={(self.from_request if hasattr(self, "from_request") else None)!s}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!s}, '
+                f'bin_details={(self.bin_details if hasattr(self, "bin_details") else None)!s}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!s})')

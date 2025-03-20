@@ -15,11 +15,11 @@ class CardType(object):
     Type of card. i.e Credit, Debit and so on.
 
     Attributes:
-        CREDIT: TODO: type description here.
-        DEBIT: TODO: type description here.
-        PREPAID: TODO: type description here.
-        STORE: TODO: type description here.
-        UNKNOWN: TODO: type description here.
+        CREDIT: A credit card.
+        DEBIT: A debit card.
+        PREPAID: A Prepaid card.
+        STORE: A store card.
+        UNKNOWN: Card type cannot be determined.
 
     """
     CREDIT = 'CREDIT'

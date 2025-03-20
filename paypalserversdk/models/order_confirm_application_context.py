@@ -37,16 +37,16 @@ class OrderConfirmApplicationContext(object):
         stored_payment_source (StoredPaymentSource): Provides additional
             details to process a payment using a `payment_source` that has
             been stored or is intended to be stored (also referred to as
-            stored_credential or card-on-file).<br/>Parameter
-            compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible
-            only with `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is
-            compatible only with
-            `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_referen
-            ce` or `previous_network_transaction_reference` is compatible only
-            with `payment_initiator=MERCHANT`.</li><li>Only one of the
-            parameters - `previous_transaction_reference` and
+            stored_credential or card-on-file). Parameter compatibility:
+            `payment_type=ONE_TIME` is compatible only with
+            `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only
+            with `payment_initiator=CUSTOMER`.
+            `previous_transaction_reference` or
+            `previous_network_transaction_reference` is compatible only with
+            `payment_initiator=MERCHANT`. Only one of the parameters -
+            `previous_transaction_reference` and
             `previous_network_transaction_reference` - can be present in the
-            request.</li></ul>
+            request.
 
     """
 
@@ -102,7 +102,7 @@ class OrderConfirmApplicationContext(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -117,3 +117,19 @@ class OrderConfirmApplicationContext(object):
                    return_url,
                    cancel_url,
                    stored_payment_source)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!r}, '
+                f'locale={(self.locale if hasattr(self, "locale") else None)!r}, '
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!r}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!r}, '
+                f'stored_payment_source={(self.stored_payment_source if hasattr(self, "stored_payment_source") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!s}, '
+                f'locale={(self.locale if hasattr(self, "locale") else None)!s}, '
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!s}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!s}, '
+                f'stored_payment_source={(self.stored_payment_source if hasattr(self, "stored_payment_source") else None)!s})')

@@ -16,29 +16,33 @@ class PaResStatus(object):
     authentication.
 
     Attributes:
-        Y: TODO: type description here.
-        N: TODO: type description here.
-        U: TODO: type description here.
-        A: TODO: type description here.
-        C: TODO: type description here.
-        R: TODO: type description here.
-        D: TODO: type description here.
-        I: TODO: type description here.
+        SUCCESSFULAUTHENTICATION: Successful authentication.
+        FAILEDAUTHENTICATION: Failed authentication / account not verified /
+            transaction denied.
+        UNABLETOCOMPLETEAUTHENTICATION: Unable to complete authentication.
+        SUCCESSFULATTEMPTSTRANSACTION: Successful attempts transaction.
+        CHALLENGEREQUIRED: Challenge required for authentication.
+        AUTHENTICATIONREJECTED: Authentication rejected (merchant must not
+            submit for authorization).
+        DECOUPLEDAUTHENTICATION: Challenge required; decoupled authentication
+            confirmed.
+        INFORMATIONALONLY: Informational only; 3DS requestor challenge
+            preference acknowledged.
 
     """
-    Y = 'Y'
+    SUCCESSFULAUTHENTICATION = 'Y'
 
-    N = 'N'
+    FAILEDAUTHENTICATION = 'N'
 
-    U = 'U'
+    UNABLETOCOMPLETEAUTHENTICATION = 'U'
 
-    A = 'A'
+    SUCCESSFULATTEMPTSTRANSACTION = 'A'
 
-    C = 'C'
+    CHALLENGEREQUIRED = 'C'
 
-    R = 'R'
+    AUTHENTICATIONREJECTED = 'R'
 
-    D = 'D'
+    DECOUPLEDAUTHENTICATION = 'D'
 
-    I = 'I'
+    INFORMATIONALONLY = 'I'
 

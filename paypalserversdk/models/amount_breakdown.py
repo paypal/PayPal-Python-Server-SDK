@@ -98,7 +98,7 @@ class AmountBreakdown(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -117,3 +117,23 @@ class AmountBreakdown(object):
                    insurance,
                    shipping_discount,
                    discount)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'item_total={(self.item_total if hasattr(self, "item_total") else None)!r}, '
+                f'shipping={(self.shipping if hasattr(self, "shipping") else None)!r}, '
+                f'handling={(self.handling if hasattr(self, "handling") else None)!r}, '
+                f'tax_total={(self.tax_total if hasattr(self, "tax_total") else None)!r}, '
+                f'insurance={(self.insurance if hasattr(self, "insurance") else None)!r}, '
+                f'shipping_discount={(self.shipping_discount if hasattr(self, "shipping_discount") else None)!r}, '
+                f'discount={(self.discount if hasattr(self, "discount") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'item_total={(self.item_total if hasattr(self, "item_total") else None)!s}, '
+                f'shipping={(self.shipping if hasattr(self, "shipping") else None)!s}, '
+                f'handling={(self.handling if hasattr(self, "handling") else None)!s}, '
+                f'tax_total={(self.tax_total if hasattr(self, "tax_total") else None)!s}, '
+                f'insurance={(self.insurance if hasattr(self, "insurance") else None)!s}, '
+                f'shipping_discount={(self.shipping_discount if hasattr(self, "shipping_discount") else None)!s}, '
+                f'discount={(self.discount if hasattr(self, "discount") else None)!s})')

@@ -93,7 +93,7 @@ class GooglePayCardResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -110,3 +110,21 @@ class GooglePayCardResponse(object):
                    brand,
                    billing_address,
                    authentication_result)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'last_digits={(self.last_digits if hasattr(self, "last_digits") else None)!r}, '
+                f'mtype={(self.mtype if hasattr(self, "mtype") else None)!r}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!r}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!r}, '
+                f'authentication_result={(self.authentication_result if hasattr(self, "authentication_result") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'last_digits={(self.last_digits if hasattr(self, "last_digits") else None)!s}, '
+                f'mtype={(self.mtype if hasattr(self, "mtype") else None)!s}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!s}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!s}, '
+                f'authentication_result={(self.authentication_result if hasattr(self, "authentication_result") else None)!s})')

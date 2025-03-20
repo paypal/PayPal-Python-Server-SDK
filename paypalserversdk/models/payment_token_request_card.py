@@ -34,7 +34,6 @@ class PaymentTokenRequestCard(object):
             form controls: the autocomplete
             attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-
             form-controls-the-autocomplete-attribute).
-        network_transaction_reference (object): TODO: type description here.
 
     """
 
@@ -45,8 +44,7 @@ class PaymentTokenRequestCard(object):
         "expiry": 'expiry',
         "security_code": 'security_code',
         "brand": 'brand',
-        "billing_address": 'billing_address',
-        "network_transaction_reference": 'network_transaction_reference'
+        "billing_address": 'billing_address'
     }
 
     _optionals = [
@@ -56,7 +54,6 @@ class PaymentTokenRequestCard(object):
         'security_code',
         'brand',
         'billing_address',
-        'network_transaction_reference',
     ]
 
     def __init__(self,
@@ -65,8 +62,7 @@ class PaymentTokenRequestCard(object):
                  expiry=APIHelper.SKIP,
                  security_code=APIHelper.SKIP,
                  brand=APIHelper.SKIP,
-                 billing_address=APIHelper.SKIP,
-                 network_transaction_reference=APIHelper.SKIP):
+                 billing_address=APIHelper.SKIP):
         """Constructor for the PaymentTokenRequestCard class"""
 
         # Initialize members of the class
@@ -82,8 +78,6 @@ class PaymentTokenRequestCard(object):
             self.brand = brand 
         if billing_address is not APIHelper.SKIP:
             self.billing_address = billing_address 
-        if network_transaction_reference is not APIHelper.SKIP:
-            self.network_transaction_reference = network_transaction_reference 
 
     @classmethod
     def from_dictionary(cls,
@@ -100,7 +94,7 @@ class PaymentTokenRequestCard(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -110,12 +104,28 @@ class PaymentTokenRequestCard(object):
         security_code = dictionary.get("security_code") if dictionary.get("security_code") else APIHelper.SKIP
         brand = dictionary.get("brand") if dictionary.get("brand") else APIHelper.SKIP
         billing_address = Address.from_dictionary(dictionary.get('billing_address')) if 'billing_address' in dictionary.keys() else APIHelper.SKIP
-        network_transaction_reference = dictionary.get("network_transaction_reference") if dictionary.get("network_transaction_reference") else APIHelper.SKIP
         # Return an object of this model
         return cls(name,
                    number,
                    expiry,
                    security_code,
                    brand,
-                   billing_address,
-                   network_transaction_reference)
+                   billing_address)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'number={(self.number if hasattr(self, "number") else None)!r}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!r}, '
+                f'security_code={(self.security_code if hasattr(self, "security_code") else None)!r}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!r}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'number={(self.number if hasattr(self, "number") else None)!s}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!s}, '
+                f'security_code={(self.security_code if hasattr(self, "security_code") else None)!s}, '
+                f'brand={(self.brand if hasattr(self, "brand") else None)!s}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!s})')

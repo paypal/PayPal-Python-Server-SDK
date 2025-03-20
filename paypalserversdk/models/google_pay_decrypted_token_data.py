@@ -95,7 +95,7 @@ class GooglePayDecryptedTokenData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -114,3 +114,23 @@ class GooglePayDecryptedTokenData(object):
                    message_expiration,
                    cryptogram,
                    eci_indicator)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'message_id={(self.message_id if hasattr(self, "message_id") else None)!r}, '
+                f'message_expiration={(self.message_expiration if hasattr(self, "message_expiration") else None)!r}, '
+                f'payment_method={self.payment_method!r}, '
+                f'card={self.card!r}, '
+                f'authentication_method={self.authentication_method!r}, '
+                f'cryptogram={(self.cryptogram if hasattr(self, "cryptogram") else None)!r}, '
+                f'eci_indicator={(self.eci_indicator if hasattr(self, "eci_indicator") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'message_id={(self.message_id if hasattr(self, "message_id") else None)!s}, '
+                f'message_expiration={(self.message_expiration if hasattr(self, "message_expiration") else None)!s}, '
+                f'payment_method={self.payment_method!s}, '
+                f'card={self.card!s}, '
+                f'authentication_method={self.authentication_method!s}, '
+                f'cryptogram={(self.cryptogram if hasattr(self, "cryptogram") else None)!s}, '
+                f'eci_indicator={(self.eci_indicator if hasattr(self, "eci_indicator") else None)!s})')

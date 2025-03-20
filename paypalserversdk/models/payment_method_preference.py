@@ -66,7 +66,7 @@ class PaymentMethodPreference(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -75,3 +75,13 @@ class PaymentMethodPreference(object):
         # Return an object of this model
         return cls(payee_preferred,
                    standard_entry_class_code)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'payee_preferred={(self.payee_preferred if hasattr(self, "payee_preferred") else None)!r}, '
+                f'standard_entry_class_code={(self.standard_entry_class_code if hasattr(self, "standard_entry_class_code") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'payee_preferred={(self.payee_preferred if hasattr(self, "payee_preferred") else None)!s}, '
+                f'standard_entry_class_code={(self.standard_entry_class_code if hasattr(self, "standard_entry_class_code") else None)!s})')

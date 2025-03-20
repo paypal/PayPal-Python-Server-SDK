@@ -16,10 +16,9 @@ class OrderApplicationContext(object):
     """Implementation of the 'Order Application Context' model.
 
     Customizes the payer experience during the approval process for the
-    payment with PayPal.<blockquote><strong>Note:</strong> Partners and
-    Marketplaces might configure <code>brand_name</code> and
-    <code>shipping_preference</code> during partner account setup, which
-    overrides the request values.</blockquote>
+    payment with PayPal. Note: Partners and Marketplaces might configure
+    brand_name and shipping_preference during partner account setup, which
+    overrides the request values.
 
     Attributes:
         brand_name (str): DEPRECATED. The label that overrides the business
@@ -50,21 +49,21 @@ class OrderApplicationContext(object):
             specify this field in the `experience_context` object instead of
             the `application_context` object.
         shipping_preference (OrderApplicationContextShippingPreference):
-            DEPRECATED. DEPRECATED. The shipping preference:<ul><li>Displays
-            the shipping address to the customer.</li><li>Enables the customer
-            to choose an address on the PayPal site.</li><li>Restricts the
-            customer from changing the address during the payment-approval
-            process.</li></ul>.  The fields in `application_context` are now
-            available in the `experience_context` object under the
-            `payment_source` which supports them (eg.
+            DEPRECATED. DEPRECATED. The shipping preference: Displays the
+            shipping address to the customer. Enables the customer to choose
+            an address on the PayPal site. Restricts the customer from
+            changing the address during the payment-approval process. .  The
+            fields in `application_context` are now available in the
+            `experience_context` object under the `payment_source` which
+            supports them (eg.
             `payment_source.paypal.experience_context.shipping_preference`).
             Please specify this field in the `experience_context` object
             instead of the `application_context` object.
         user_action (OrderApplicationContextUserAction): DEPRECATED.
-            Configures a <strong>Continue</strong> or <strong>Pay Now</strong>
-            checkout flow.  The fields in `application_context` are now
-            available in the `experience_context` object under the
-            `payment_source` which supports them (eg.
+            Configures a Continue or Pay Now checkout flow.  The fields in
+            `application_context` are now available in the
+            `experience_context` object under the `payment_source` which
+            supports them (eg.
             `payment_source.paypal.experience_context.user_action`). Please
             specify this field in the `experience_context` object instead of
             the `application_context` object.
@@ -89,16 +88,16 @@ class OrderApplicationContext(object):
         stored_payment_source (StoredPaymentSource): Provides additional
             details to process a payment using a `payment_source` that has
             been stored or is intended to be stored (also referred to as
-            stored_credential or card-on-file).<br/>Parameter
-            compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible
-            only with `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is
-            compatible only with
-            `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_referen
-            ce` or `previous_network_transaction_reference` is compatible only
-            with `payment_initiator=MERCHANT`.</li><li>Only one of the
-            parameters - `previous_transaction_reference` and
+            stored_credential or card-on-file). Parameter compatibility:
+            `payment_type=ONE_TIME` is compatible only with
+            `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only
+            with `payment_initiator=CUSTOMER`.
+            `previous_transaction_reference` or
+            `previous_network_transaction_reference` is compatible only with
+            `payment_initiator=MERCHANT`. Only one of the parameters -
+            `previous_transaction_reference` and
             `previous_network_transaction_reference` - can be present in the
-            request.</li></ul>
+            request.
 
     """
 
@@ -171,7 +170,7 @@ class OrderApplicationContext(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -194,3 +193,27 @@ class OrderApplicationContext(object):
                    return_url,
                    cancel_url,
                    stored_payment_source)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!r}, '
+                f'locale={(self.locale if hasattr(self, "locale") else None)!r}, '
+                f'landing_page={(self.landing_page if hasattr(self, "landing_page") else None)!r}, '
+                f'shipping_preference={(self.shipping_preference if hasattr(self, "shipping_preference") else None)!r}, '
+                f'user_action={(self.user_action if hasattr(self, "user_action") else None)!r}, '
+                f'payment_method={(self.payment_method if hasattr(self, "payment_method") else None)!r}, '
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!r}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!r}, '
+                f'stored_payment_source={(self.stored_payment_source if hasattr(self, "stored_payment_source") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!s}, '
+                f'locale={(self.locale if hasattr(self, "locale") else None)!s}, '
+                f'landing_page={(self.landing_page if hasattr(self, "landing_page") else None)!s}, '
+                f'shipping_preference={(self.shipping_preference if hasattr(self, "shipping_preference") else None)!s}, '
+                f'user_action={(self.user_action if hasattr(self, "user_action") else None)!s}, '
+                f'payment_method={(self.payment_method if hasattr(self, "payment_method") else None)!s}, '
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!s}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!s}, '
+                f'stored_payment_source={(self.stored_payment_source if hasattr(self, "stored_payment_source") else None)!s})')

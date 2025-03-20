@@ -17,11 +17,7 @@ class CardSupplementaryData(object):
 
     Merchants and partners can add Level 2 and 3 data to payments to reduce
     risk and payment processing costs. For more information about processing
-    payments, see <a
-    href="https://developer.paypal.com/docs/checkout/advanced/processing/">chec
-    kout</a> or <a
-    href="https://developer.paypal.com/docs/multiparty/checkout/advanced/proces
-    sing/">multiparty checkout</a>.
+    payments, see checkout or multiparty checkout.
 
     Attributes:
         level_2 (Level2CardProcessingData): The level 2 card processing data
@@ -74,7 +70,7 @@ class CardSupplementaryData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -83,3 +79,13 @@ class CardSupplementaryData(object):
         # Return an object of this model
         return cls(level_2,
                    level_3)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'level_2={(self.level_2 if hasattr(self, "level_2") else None)!r}, '
+                f'level_3={(self.level_3 if hasattr(self, "level_3") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'level_2={(self.level_2 if hasattr(self, "level_2") else None)!s}, '
+                f'level_3={(self.level_3 if hasattr(self, "level_3") else None)!s})')

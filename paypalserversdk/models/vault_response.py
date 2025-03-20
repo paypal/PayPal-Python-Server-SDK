@@ -74,7 +74,7 @@ class VaultResponse(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -91,3 +91,17 @@ class VaultResponse(object):
                    status,
                    customer,
                    links)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={(self.id if hasattr(self, "id") else None)!r}, '
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'customer={(self.customer if hasattr(self, "customer") else None)!r}, '
+                f'links={(self.links if hasattr(self, "links") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={(self.id if hasattr(self, "id") else None)!s}, '
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'customer={(self.customer if hasattr(self, "customer") else None)!s}, '
+                f'links={(self.links if hasattr(self, "links") else None)!s})')

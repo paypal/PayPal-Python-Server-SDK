@@ -29,8 +29,8 @@ class PaymentsController(BaseController):
     def __init__(self, config):
         super(PaymentsController, self).__init__(config)
 
-    def authorizations_get(self,
-                           options=dict()):
+    def get_authorized_payment(self,
+                               options=dict()):
         """Does a GET request to /v2/payments/authorizations/{authorization_id}.
 
         Shows details for an authorized payment, by ID.
@@ -44,22 +44,27 @@ class PaymentsController(BaseController):
 
                     authorization_id -- str -- The ID of the authorized
                         payment for which to show details.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
                     paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see
                         [PayPal-Auth-Assertion](/docs/api/reference/api-request
-                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
-                        rong>For three party transactions in which a partner
-                        is managing the API calls on behalf of a merchant, the
-                        partner must identify the merchant using either a
+                        s/#paypal-auth-assertion). Note:For three party
+                        transactions in which a partner is managing the API
+                        calls on behalf of a merchant, the partner must
+                        identify the merchant using either a
                         PayPal-Auth-Assertion header or an access token with
-                        target_subject.</blockquote>
+                        target_subject.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>200 OK</code> status
-                code and a JSON response body that shows authorization details.
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows authorization details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -78,6 +83,9 @@ class PaymentsController(BaseController):
                             .value(options.get('authorization_id', None))
                             .should_encode(True))
             .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
+            .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
                           .value(options.get('paypal_auth_assertion', None)))
             .header_param(Parameter()
@@ -95,8 +103,8 @@ class PaymentsController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
-    def authorizations_capture(self,
-                               options=dict()):
+    def capture_authorized_payment(self,
+                                   options=dict()):
         """Does a POST request to /v2/payments/authorizations/{authorization_id}/capture.
 
         Captures an authorized payment, by ID.
@@ -110,36 +118,38 @@ class PaymentsController(BaseController):
 
                     authorization_id -- str -- The PayPal-generated ID for the
                         authorized payment to capture.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
                     paypal_request_id -- str -- The server stores keys for 45
                         days.
                     prefer -- str -- The preferred server response upon
-                        successful completion of the request. Value
-                        is:<ul><li><code>return=minimal</code>. The server
-                        returns a minimal response to optimize communication
-                        between the API caller and the server. A minimal
-                        response includes the <code>id</code>,
-                        <code>status</code> and HATEOAS
-                        links.</li><li><code>return=representation</code>. The
-                        server returns a complete resource representation,
-                        including the current state of the resource.</li></ul>
+                        successful completion of the request. Value is:
+                        return=minimal. The server returns a minimal response
+                        to optimize communication between the API caller and
+                        the server. A minimal response includes the id, status
+                        and HATEOAS links. return=representation. The server
+                        returns a complete resource representation, including
+                        the current state of the resource.
                     paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see
                         [PayPal-Auth-Assertion](/docs/api/reference/api-request
-                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
-                        rong>For three party transactions in which a partner
-                        is managing the API calls on behalf of a merchant, the
-                        partner must identify the merchant using either a
+                        s/#paypal-auth-assertion). Note:For three party
+                        transactions in which a partner is managing the API
+                        calls on behalf of a merchant, the partner must
+                        identify the merchant using either a
                         PayPal-Auth-Assertion header or an access token with
-                        target_subject.</blockquote>
-                    body -- CaptureRequest -- TODO: type description here.
+                        target_subject.
+                    body -- CaptureRequest -- The request body parameter.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>200 OK</code> status
-                code and a JSON response body that shows captured payment
-                details.
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows captured payment details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -160,6 +170,9 @@ class PaymentsController(BaseController):
             .header_param(Parameter()
                           .key('Content-Type')
                           .value('application/json'))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
                           .value(options.get('paypal_request_id', None)))
@@ -191,25 +204,24 @@ class PaymentsController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
-    def authorizations_reauthorize(self,
-                                   options=dict()):
+    def reauthorize_payment(self,
+                            options=dict()):
         """Does a POST request to /v2/payments/authorizations/{authorization_id}/reauthorize.
 
         Reauthorizes an authorized PayPal account payment, by ID. To ensure
         that funds are still available, reauthorize a payment after its
         initial three-day honor period expires. Within the 29-day
         authorization period, you can issue multiple re-authorizations after
-        the honor period expires.<br/><br/>If 30 days have transpired since
-        the date of the original authorization, you must create an authorized
-        payment instead of reauthorizing the original authorized
-        payment.<br/><br/>A reauthorized payment itself has a new honor period
-        of three days.<br/><br/>You can reauthorize an authorized payment from
-        4 to 29 days after the 3-day honor period. The allowed amount depends
-        on context and geography, for example in US it is up to 115% of the
-        original authorized amount, not to exceed an increase of $75
-        USD.<br/><br/>Supports only the `amount` request
-        parameter.<blockquote><strong>Note:</strong> This request is currently
-        not supported for Partner use cases.</blockquote>
+        the honor period expires. If 30 days have transpired since the date of
+        the original authorization, you must create an authorized payment
+        instead of reauthorizing the original authorized payment. A
+        reauthorized payment itself has a new honor period of three days. You
+        can reauthorize an authorized payment from 4 to 29 days after the
+        3-day honor period. The allowed amount depends on context and
+        geography, for example in US it is up to 115% of the original
+        authorized amount, not to exceed an increase of $75 USD. Supports only
+        the `amount` request parameter. Note: This request is currently not
+        supported for Partner use cases.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -223,33 +235,30 @@ class PaymentsController(BaseController):
                     paypal_request_id -- str -- The server stores keys for 45
                         days.
                     prefer -- str -- The preferred server response upon
-                        successful completion of the request. Value
-                        is:<ul><li><code>return=minimal</code>. The server
-                        returns a minimal response to optimize communication
-                        between the API caller and the server. A minimal
-                        response includes the <code>id</code>,
-                        <code>status</code> and HATEOAS
-                        links.</li><li><code>return=representation</code>. The
-                        server returns a complete resource representation,
-                        including the current state of the resource.</li></ul>
+                        successful completion of the request. Value is:
+                        return=minimal. The server returns a minimal response
+                        to optimize communication between the API caller and
+                        the server. A minimal response includes the id, status
+                        and HATEOAS links. return=representation. The server
+                        returns a complete resource representation, including
+                        the current state of the resource.
                     paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see
                         [PayPal-Auth-Assertion](/docs/api/reference/api-request
-                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
-                        rong>For three party transactions in which a partner
-                        is managing the API calls on behalf of a merchant, the
-                        partner must identify the merchant using either a
+                        s/#paypal-auth-assertion). Note:For three party
+                        transactions in which a partner is managing the API
+                        calls on behalf of a merchant, the partner must
+                        identify the merchant using either a
                         PayPal-Auth-Assertion header or an access token with
-                        target_subject.</blockquote>
-                    body -- ReauthorizeRequest -- TODO: type description here.
+                        target_subject.
+                    body -- ReauthorizeRequest -- The request body parameter.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>200 OK</code> status
-                code and a JSON response body that shows the reauthorized
-                payment details.
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows the reauthorized payment details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -299,8 +308,8 @@ class PaymentsController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
-    def authorizations_void(self,
-                            options=dict()):
+    def void_payment(self,
+                     options=dict()):
         """Does a POST request to /v2/payments/authorizations/{authorization_id}/void.
 
         Voids, or cancels, an authorized payment, by ID. You cannot void an
@@ -315,36 +324,39 @@ class PaymentsController(BaseController):
 
                     authorization_id -- str -- The PayPal-generated ID for the
                         authorized payment to void.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
                     paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see
                         [PayPal-Auth-Assertion](/docs/api/reference/api-request
-                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
-                        rong>For three party transactions in which a partner
-                        is managing the API calls on behalf of a merchant, the
-                        partner must identify the merchant using either a
+                        s/#paypal-auth-assertion). Note:For three party
+                        transactions in which a partner is managing the API
+                        calls on behalf of a merchant, the partner must
+                        identify the merchant using either a
                         PayPal-Auth-Assertion header or an access token with
-                        target_subject.</blockquote>
+                        target_subject.
                     paypal_request_id -- str -- The server stores keys for 45
                         days.
                     prefer -- str -- The preferred server response upon
-                        successful completion of the request. Value
-                        is:<ul><li><code>return=minimal</code>. The server
-                        returns a minimal response to optimize communication
-                        between the API caller and the server. A minimal
-                        response includes the <code>id</code>,
-                        <code>status</code> and HATEOAS
-                        links.</li><li><code>return=representation</code>. The
-                        server returns a complete resource representation,
-                        including the current state of the resource.</li></ul>
+                        successful completion of the request. Value is:
+                        return=minimal. The server returns a minimal response
+                        to optimize communication between the API caller and
+                        the server. A minimal response includes the id, status
+                        and HATEOAS links. return=representation. The server
+                        returns a complete resource representation, including
+                        the current state of the resource.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>200 OK</code> status
-                code and a JSON response body that shows authorization
-                details. This response is returned when the Prefer header is
-                set to return=representation.
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows authorization details. This
+                response is returned when the Prefer header is set to
+                return=representation.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -362,6 +374,9 @@ class PaymentsController(BaseController):
                             .key('authorization_id')
                             .value(options.get('authorization_id', None))
                             .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
             .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
                           .value(options.get('paypal_auth_assertion', None)))
@@ -389,22 +404,32 @@ class PaymentsController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
-    def captures_get(self,
-                     capture_id):
+    def get_captured_payment(self,
+                             options=dict()):
         """Does a GET request to /v2/payments/captures/{capture_id}.
 
         Shows details for a captured payment, by ID.
 
         Args:
-            capture_id (str): The PayPal-generated ID for the captured payment
-                for which to show details.
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    capture_id -- str -- The PayPal-generated ID for the
+                        captured payment for which to show details.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>200 OK</code> status
-                code and a JSON response body that shows captured payment
-                details.
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows captured payment details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -420,8 +445,11 @@ class PaymentsController(BaseController):
             .http_method(HttpMethodEnum.GET)
             .template_param(Parameter()
                             .key('capture_id')
-                            .value(capture_id)
+                            .value(options.get('capture_id', None))
                             .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))
@@ -438,13 +466,13 @@ class PaymentsController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
-    def captures_refund(self,
-                        options=dict()):
+    def refund_captured_payment(self,
+                                options=dict()):
         """Does a POST request to /v2/payments/captures/{capture_id}/refund.
 
         Refunds a captured payment, by ID. For a full refund, include an empty
         payload in the JSON request body. For a partial refund, include an
-        <code>amount</code> object in the JSON request body.
+        amount object in the JSON request body.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -455,35 +483,38 @@ class PaymentsController(BaseController):
 
                     capture_id -- str -- The PayPal-generated ID for the
                         captured payment to refund.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
                     paypal_request_id -- str -- The server stores keys for 45
                         days.
                     prefer -- str -- The preferred server response upon
-                        successful completion of the request. Value
-                        is:<ul><li><code>return=minimal</code>. The server
-                        returns a minimal response to optimize communication
-                        between the API caller and the server. A minimal
-                        response includes the <code>id</code>,
-                        <code>status</code> and HATEOAS
-                        links.</li><li><code>return=representation</code>. The
-                        server returns a complete resource representation,
-                        including the current state of the resource.</li></ul>
+                        successful completion of the request. Value is:
+                        return=minimal. The server returns a minimal response
+                        to optimize communication between the API caller and
+                        the server. A minimal response includes the id, status
+                        and HATEOAS links. return=representation. The server
+                        returns a complete resource representation, including
+                        the current state of the resource.
                     paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see
                         [PayPal-Auth-Assertion](/docs/api/reference/api-request
-                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
-                        rong>For three party transactions in which a partner
-                        is managing the API calls on behalf of a merchant, the
-                        partner must identify the merchant using either a
+                        s/#paypal-auth-assertion). Note:For three party
+                        transactions in which a partner is managing the API
+                        calls on behalf of a merchant, the partner must
+                        identify the merchant using either a
                         PayPal-Auth-Assertion header or an access token with
-                        target_subject.</blockquote>
-                    body -- RefundRequest -- TODO: type description here.
+                        target_subject.
+                    body -- RefundRequest -- The request body parameter.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>200 OK</code> status
-                code and a JSON response body that shows refund details.
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows refund details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -504,6 +535,9 @@ class PaymentsController(BaseController):
             .header_param(Parameter()
                           .key('Content-Type')
                           .value('application/json'))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
             .header_param(Parameter()
                           .key('PayPal-Request-Id')
                           .value(options.get('paypal_request_id', None)))
@@ -535,8 +569,8 @@ class PaymentsController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
-    def refunds_get(self,
-                    options=dict()):
+    def get_refund(self,
+                   options=dict()):
         """Does a GET request to /v2/payments/refunds/{refund_id}.
 
         Shows details for a refund, by ID.
@@ -550,22 +584,27 @@ class PaymentsController(BaseController):
 
                     refund_id -- str -- The PayPal-generated ID for the refund
                         for which to show details.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
                     paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see
                         [PayPal-Auth-Assertion](/docs/api/reference/api-request
-                        s/#paypal-auth-assertion).<blockquote><strong>Note:</st
-                        rong>For three party transactions in which a partner
-                        is managing the API calls on behalf of a merchant, the
-                        partner must identify the merchant using either a
+                        s/#paypal-auth-assertion). Note:For three party
+                        transactions in which a partner is managing the API
+                        calls on behalf of a merchant, the partner must
+                        identify the merchant using either a
                         PayPal-Auth-Assertion header or an access token with
-                        target_subject.</blockquote>
+                        target_subject.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP <code>200 OK</code> status
-                code and a JSON response body that shows refund details.
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows refund details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -583,6 +622,9 @@ class PaymentsController(BaseController):
                             .key('refund_id')
                             .value(options.get('refund_id', None))
                             .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
             .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
                           .value(options.get('paypal_auth_assertion', None)))

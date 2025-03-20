@@ -83,7 +83,7 @@ class OrderAuthorizeResponsePaymentSource(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -98,3 +98,19 @@ class OrderAuthorizeResponsePaymentSource(object):
                    apple_pay,
                    google_pay,
                    venmo)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'card={(self.card if hasattr(self, "card") else None)!r}, '
+                f'paypal={(self.paypal if hasattr(self, "paypal") else None)!r}, '
+                f'apple_pay={(self.apple_pay if hasattr(self, "apple_pay") else None)!r}, '
+                f'google_pay={(self.google_pay if hasattr(self, "google_pay") else None)!r}, '
+                f'venmo={(self.venmo if hasattr(self, "venmo") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'card={(self.card if hasattr(self, "card") else None)!s}, '
+                f'paypal={(self.paypal if hasattr(self, "paypal") else None)!s}, '
+                f'apple_pay={(self.apple_pay if hasattr(self, "apple_pay") else None)!s}, '
+                f'google_pay={(self.google_pay if hasattr(self, "google_pay") else None)!s}, '
+                f'venmo={(self.venmo if hasattr(self, "venmo") else None)!s})')

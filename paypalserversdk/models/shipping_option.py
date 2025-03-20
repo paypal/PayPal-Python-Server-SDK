@@ -85,7 +85,7 @@ class ShippingOption(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -100,3 +100,19 @@ class ShippingOption(object):
                    selected,
                    mtype,
                    amount)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={self.id!r}, '
+                f'label={self.label!r}, '
+                f'mtype={(self.mtype if hasattr(self, "mtype") else None)!r}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!r}, '
+                f'selected={self.selected!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={self.id!s}, '
+                f'label={self.label!s}, '
+                f'mtype={(self.mtype if hasattr(self, "mtype") else None)!s}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!s}, '
+                f'selected={self.selected!s})')

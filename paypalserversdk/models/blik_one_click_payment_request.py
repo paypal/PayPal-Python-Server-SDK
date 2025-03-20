@@ -75,7 +75,7 @@ class BlikOneClickPaymentRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -88,3 +88,17 @@ class BlikOneClickPaymentRequest(object):
                    auth_code,
                    alias_label,
                    alias_key)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'auth_code={(self.auth_code if hasattr(self, "auth_code") else None)!r}, '
+                f'consumer_reference={self.consumer_reference!r}, '
+                f'alias_label={(self.alias_label if hasattr(self, "alias_label") else None)!r}, '
+                f'alias_key={(self.alias_key if hasattr(self, "alias_key") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'auth_code={(self.auth_code if hasattr(self, "auth_code") else None)!s}, '
+                f'consumer_reference={self.consumer_reference!s}, '
+                f'alias_label={(self.alias_label if hasattr(self, "alias_label") else None)!s}, '
+                f'alias_key={(self.alias_key if hasattr(self, "alias_key") else None)!s})')

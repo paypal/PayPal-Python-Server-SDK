@@ -15,8 +15,9 @@ class AuthorizationIncompleteReason(object):
     The reason why the authorized status is `PENDING`.
 
     Attributes:
-        PENDING_REVIEW: TODO: type description here.
-        DECLINED_BY_RISK_FRAUD_FILTERS: TODO: type description here.
+        PENDING_REVIEW: Authorization is pending manual review.
+        DECLINED_BY_RISK_FRAUD_FILTERS: Risk Filter set by the payee failed
+            for the transaction.
 
     """
     PENDING_REVIEW = 'PENDING_REVIEW'

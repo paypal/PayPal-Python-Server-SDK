@@ -15,9 +15,13 @@ class ItemCategory(object):
     The item category type.
 
     Attributes:
-        DIGITAL_GOODS: TODO: type description here.
-        PHYSICAL_GOODS: TODO: type description here.
-        DONATION: TODO: type description here.
+        DIGITAL_GOODS: Goods that are stored, delivered, and used in their
+            electronic format. This value is not currently supported for API
+            callers that leverage the PayPal for Commerce Platform product.
+        PHYSICAL_GOODS: A tangible item that can be shipped with proof of
+            delivery.
+        DONATION: A contribution or gift for which no good or service is
+            exchanged, usually to a not for profit organization.
 
     """
     DIGITAL_GOODS = 'DIGITAL_GOODS'

@@ -54,10 +54,18 @@ class BlikOneClickPaymentObject(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         consumer_reference = dictionary.get("consumer_reference") if dictionary.get("consumer_reference") else APIHelper.SKIP
         # Return an object of this model
         return cls(consumer_reference)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'consumer_reference={(self.consumer_reference if hasattr(self, "consumer_reference") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'consumer_reference={(self.consumer_reference if hasattr(self, "consumer_reference") else None)!s})')

@@ -16,31 +16,35 @@ class CardBrand(object):
     cards.
 
     Attributes:
-        VISA: TODO: type description here.
-        MASTERCARD: TODO: type description here.
-        DISCOVER: TODO: type description here.
-        AMEX: TODO: type description here.
-        SOLO: TODO: type description here.
-        JCB: TODO: type description here.
-        STAR: TODO: type description here.
-        DELTA: TODO: type description here.
-        SWITCH: TODO: type description here.
-        MAESTRO: TODO: type description here.
-        CB_NATIONALE: TODO: type description here.
-        CONFIGOGA: TODO: type description here.
-        CONFIDIS: TODO: type description here.
-        ELECTRON: TODO: type description here.
-        CETELEM: TODO: type description here.
-        CHINA_UNION_PAY: TODO: type description here.
-        DINERS: TODO: type description here.
-        ELO: TODO: type description here.
-        HIPER: TODO: type description here.
-        HIPERCARD: TODO: type description here.
-        RUPAY: TODO: type description here.
-        GE: TODO: type description here.
-        SYNCHRONY: TODO: type description here.
-        EFTPOS: TODO: type description here.
-        UNKNOWN: TODO: type description here.
+        VISA: Visa card.
+        MASTERCARD: Mastecard card.
+        DISCOVER: Discover card.
+        AMEX: American Express card.
+        SOLO: Solo debit card.
+        JCB: Japan Credit Bureau card.
+        STAR: Military Star card.
+        DELTA: Delta Airlines card.
+        SWITCH: Switch credit card.
+        MAESTRO: Maestro credit card.
+        CB_NATIONALE: Carte Bancaire (CB) credit card.
+        CONFIGOGA: Configoga credit card.
+        CONFIDIS: Confidis credit card.
+        ELECTRON: Visa Electron credit card.
+        CETELEM: Cetelem credit card.
+        CHINA_UNION_PAY: China union pay credit card.
+        DINERS: The Diners Club International banking and payment services
+            capability network owned by Discover Financial Services (DFS), one
+            of the most recognized brands in US financial services.
+        ELO: The Brazilian Elo card payment network.
+        HIPER: The Hiper - Ingenico ePayment network.
+        HIPERCARD: The Brazilian Hipercard payment network that's widely
+            accepted in the retail market.
+        RUPAY: The RuPay payment network.
+        GE: The GE Credit Union 3Point card payment network.
+        SYNCHRONY: The Synchrony Financial (SYF) payment network.
+        EFTPOS: The Electronic Fund Transfer At Point of Sale(EFTPOS) Debit
+            card payment network.
+        UNKNOWN: UNKNOWN payment network.
 
     """
     VISA = 'VISA'

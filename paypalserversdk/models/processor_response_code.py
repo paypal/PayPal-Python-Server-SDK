@@ -15,467 +15,474 @@ class ProcessorResponseCode(object):
     Processor response code for the non-PayPal payment processor errors.
 
     Attributes:
-        ENUM_0000: TODO: type description here.
-        ENUM_00N7: TODO: type description here.
-        ENUM_0100: TODO: type description here.
-        ENUM_0390: TODO: type description here.
-        ENUM_0500: TODO: type description here.
-        ENUM_0580: TODO: type description here.
-        ENUM_0800: TODO: type description here.
-        ENUM_0880: TODO: type description here.
-        ENUM_0890: TODO: type description here.
-        ENUM_0960: TODO: type description here.
-        ENUM_0R00: TODO: type description here.
-        ENUM_1000: TODO: type description here.
-        ENUM_10BR: TODO: type description here.
-        ENUM_1300: TODO: type description here.
-        ENUM_1310: TODO: type description here.
-        ENUM_1312: TODO: type description here.
-        ENUM_1317: TODO: type description here.
-        ENUM_1320: TODO: type description here.
-        ENUM_1330: TODO: type description here.
-        ENUM_1335: TODO: type description here.
-        ENUM_1340: TODO: type description here.
-        ENUM_1350: TODO: type description here.
-        ENUM_1352: TODO: type description here.
-        ENUM_1360: TODO: type description here.
-        ENUM_1370: TODO: type description here.
-        ENUM_1380: TODO: type description here.
-        ENUM_1382: TODO: type description here.
-        ENUM_1384: TODO: type description here.
-        ENUM_1390: TODO: type description here.
-        ENUM_1393: TODO: type description here.
-        ENUM_5100: TODO: type description here.
-        ENUM_5110: TODO: type description here.
-        ENUM_5120: TODO: type description here.
-        ENUM_5130: TODO: type description here.
-        ENUM_5135: TODO: type description here.
-        ENUM_5140: TODO: type description here.
-        ENUM_5150: TODO: type description here.
-        ENUM_5160: TODO: type description here.
-        ENUM_5170: TODO: type description here.
-        ENUM_5180: TODO: type description here.
-        ENUM_5190: TODO: type description here.
-        ENUM_5200: TODO: type description here.
-        ENUM_5210: TODO: type description here.
-        ENUM_5400: TODO: type description here.
-        ENUM_5500: TODO: type description here.
-        ENUM_5650: TODO: type description here.
-        ENUM_5700: TODO: type description here.
-        ENUM_5710: TODO: type description here.
-        ENUM_5800: TODO: type description here.
-        ENUM_5900: TODO: type description here.
-        ENUM_5910: TODO: type description here.
-        ENUM_5920: TODO: type description here.
-        ENUM_5930: TODO: type description here.
-        ENUM_5950: TODO: type description here.
-        ENUM_6300: TODO: type description here.
-        ENUM_7600: TODO: type description here.
-        ENUM_7700: TODO: type description here.
-        ENUM_7710: TODO: type description here.
-        ENUM_7800: TODO: type description here.
-        ENUM_7900: TODO: type description here.
-        ENUM_8000: TODO: type description here.
-        ENUM_8010: TODO: type description here.
-        ENUM_8020: TODO: type description here.
-        ENUM_8030: TODO: type description here.
-        ENUM_8100: TODO: type description here.
-        ENUM_8110: TODO: type description here.
-        ENUM_8220: TODO: type description here.
-        ENUM_9100: TODO: type description here.
-        ENUM_9500: TODO: type description here.
-        ENUM_9510: TODO: type description here.
-        ENUM_9520: TODO: type description here.
-        ENUM_9530: TODO: type description here.
-        ENUM_9540: TODO: type description here.
-        ENUM_9600: TODO: type description here.
-        PCNR: TODO: type description here.
-        PCVV: TODO: type description here.
-        PP06: TODO: type description here.
-        PPRN: TODO: type description here.
-        PPAD: TODO: type description here.
-        PPAB: TODO: type description here.
-        PPAE: TODO: type description here.
-        PPAG: TODO: type description here.
-        PPAI: TODO: type description here.
-        PPAR: TODO: type description here.
-        PPAU: TODO: type description here.
-        PPAV: TODO: type description here.
-        PPAX: TODO: type description here.
-        PPBG: TODO: type description here.
-        PPC2: TODO: type description here.
-        PPCE: TODO: type description here.
-        PPCO: TODO: type description here.
-        PPCR: TODO: type description here.
-        PPCT: TODO: type description here.
-        PPCU: TODO: type description here.
-        PPD3: TODO: type description here.
-        PPDC: TODO: type description here.
-        PPDI: TODO: type description here.
-        PPDV: TODO: type description here.
-        PPDT: TODO: type description here.
-        PPEF: TODO: type description here.
-        PPEL: TODO: type description here.
-        PPER: TODO: type description here.
-        PPEX: TODO: type description here.
-        PPFE: TODO: type description here.
-        PPFI: TODO: type description here.
-        PPFR: TODO: type description here.
-        PPFV: TODO: type description here.
-        PPGR: TODO: type description here.
-        PPH1: TODO: type description here.
-        PPIF: TODO: type description here.
-        PPII: TODO: type description here.
-        PPIM: TODO: type description here.
-        PPIT: TODO: type description here.
-        PPLR: TODO: type description here.
-        PPLS: TODO: type description here.
-        PPMB: TODO: type description here.
-        PPMC: TODO: type description here.
-        PPMD: TODO: type description here.
-        PPNC: TODO: type description here.
-        PPNL: TODO: type description here.
-        PPNM: TODO: type description here.
-        PPNT: TODO: type description here.
-        PPPH: TODO: type description here.
-        PPPI: TODO: type description here.
-        PPPM: TODO: type description here.
-        PPQC: TODO: type description here.
-        PPRE: TODO: type description here.
-        PPRF: TODO: type description here.
-        PPRR: TODO: type description here.
-        PPS0: TODO: type description here.
-        PPS1: TODO: type description here.
-        PPS2: TODO: type description here.
-        PPS3: TODO: type description here.
-        PPS4: TODO: type description here.
-        PPS5: TODO: type description here.
-        PPS6: TODO: type description here.
-        PPSC: TODO: type description here.
-        PPSD: TODO: type description here.
-        PPSE: TODO: type description here.
-        PPTE: TODO: type description here.
-        PPTF: TODO: type description here.
-        PPTI: TODO: type description here.
-        PPTR: TODO: type description here.
-        PPTT: TODO: type description here.
-        PPTV: TODO: type description here.
-        PPUA: TODO: type description here.
-        PPUC: TODO: type description here.
-        PPUE: TODO: type description here.
-        PPUI: TODO: type description here.
-        PPUP: TODO: type description here.
-        PPUR: TODO: type description here.
-        PPVC: TODO: type description here.
-        PPVE: TODO: type description here.
-        PPVT: TODO: type description here.
+        RESPONSE_0000: APPROVED.
+        RESPONSE_00N7: CVV2_FAILURE_POSSIBLE_RETRY_WITH_CVV.
+        RESPONSE_0100: REFERRAL.
+        RESPONSE_0390: ACCOUNT_NOT_FOUND.
+        RESPONSE_0500: DO_NOT_HONOR.
+        RESPONSE_0580: UNAUTHORIZED_TRANSACTION.
+        RESPONSE_0800: BAD_RESPONSE_REVERSAL_REQUIRED.
+        RESPONSE_0880: CRYPTOGRAPHIC_FAILURE.
+        RESPONSE_0890: UNACCEPTABLE_PIN.
+        RESPONSE_0960: SYSTEM_MALFUNCTION.
+        RESPONSE_0R00: CANCELLED_PAYMENT.
+        RESPONSE_1000: PARTIAL_AUTHORIZATION.
+        RESPONSE_10BR: ISSUER_REJECTED.
+        RESPONSE_1300: INVALID_DATA_FORMAT.
+        RESPONSE_1310: INVALID_AMOUNT.
+        RESPONSE_1312: INVALID_TRANSACTION_CARD_ISSUER_ACQUIRER.
+        RESPONSE_1317: INVALID_CAPTURE_DATE.
+        RESPONSE_1320: INVALID_CURRENCY_CODE.
+        RESPONSE_1330: INVALID_ACCOUNT.
+        RESPONSE_1335: INVALID_ACCOUNT_RECURRING.
+        RESPONSE_1340: INVALID_TERMINAL.
+        RESPONSE_1350: INVALID_MERCHANT.
+        RESPONSE_1352: RESTRICTED_OR_INACTIVE_ACCOUNT.
+        RESPONSE_1360: BAD_PROCESSING_CODE.
+        RESPONSE_1370: INVALID_MCC.
+        RESPONSE_1380: INVALID_EXPIRATION.
+        RESPONSE_1382: INVALID_CARD_VERIFICATION_VALUE.
+        RESPONSE_1384: INVALID_LIFE_CYCLE_OF_TRANSACTION.
+        RESPONSE_1390: INVALID_ORDER.
+        RESPONSE_1393: TRANSACTION_CANNOT_BE_COMPLETED.
+        RESPONSE_5100: GENERIC_DECLINE.
+        RESPONSE_5110: CVV2_FAILURE.
+        RESPONSE_5120: INSUFFICIENT_FUNDS.
+        RESPONSE_5130: INVALID_PIN.
+        RESPONSE_5135: DECLINED_PIN_TRY_EXCEEDED.
+        RESPONSE_5140: CARD_CLOSED.
+        RESPONSE_5150: PICKUP_CARD_SPECIAL_CONDITIONS. Try using another card.
+            Do not retry the same card.
+        RESPONSE_5160: UNAUTHORIZED_USER.
+        RESPONSE_5170: AVS_FAILURE.
+        RESPONSE_5180: INVALID_OR_RESTRICTED_CARD. Try using another card. Do
+            not retry the same card.
+        RESPONSE_5190: SOFT_AVS.
+        RESPONSE_5200: DUPLICATE_TRANSACTION.
+        RESPONSE_5210: INVALID_TRANSACTION.
+        RESPONSE_5400: EXPIRED_CARD.
+        RESPONSE_5500: INCORRECT_PIN_REENTER.
+        RESPONSE_5650: DECLINED_SCA_REQUIRED.
+        RESPONSE_5700: TRANSACTION_NOT_PERMITTED. Outside of scope of accepted
+            business.
+        RESPONSE_5710: TX_ATTEMPTS_EXCEED_LIMIT.
+        RESPONSE_5800: REVERSAL_REJECTED.
+        RESPONSE_5900: INVALID_ISSUE.
+        RESPONSE_5910: ISSUER_NOT_AVAILABLE_NOT_RETRIABLE.
+        RESPONSE_5920: ISSUER_NOT_AVAILABLE_RETRIABLE.
+        RESPONSE_5930: CARD_NOT_ACTIVATED.
+        RESPONSE_5950: DECLINED_DUE_TO_UPDATED_ACCOUNT. External decline as an
+            updated card has been issued.
+        RESPONSE_6300: ACCOUNT_NOT_ON_FILE.
+        RESPONSE_7600: APPROVED_NON_CAPTURE.
+        RESPONSE_7700: ERROR_3DS.
+        RESPONSE_7710: AUTHENTICATION_FAILED.
+        RESPONSE_7800: BIN_ERROR.
+        RESPONSE_7900: PIN_ERROR.
+        RESPONSE_8000: PROCESSOR_SYSTEM_ERROR.
+        RESPONSE_8010: HOST_KEY_ERROR.
+        RESPONSE_8020: CONFIGURATION_ERROR.
+        RESPONSE_8030: UNSUPPORTED_OPERATION.
+        RESPONSE_8100: FATAL_COMMUNICATION_ERROR.
+        RESPONSE_8110: RETRIABLE_COMMUNICATION_ERROR.
+        RESPONSE_8220: SYSTEM_UNAVAILABLE.
+        RESPONSE_9100: DECLINED_PLEASE_RETRY. Retry.
+        RESPONSE_9500: SUSPECTED_FRAUD. Try using another card. Do not retry
+            the same card.
+        RESPONSE_9510: SECURITY_VIOLATION.
+        RESPONSE_9520: LOST_OR_STOLEN. Try using another card. Do not retry
+            the same card.
+        RESPONSE_9530: HOLD_CALL_CENTER. The merchant must call the number on
+            the back of the card. POS scenario.
+        RESPONSE_9540: REFUSED_CARD.
+        RESPONSE_9600: UNRECOGNIZED_RESPONSE_CODE.
+        RESPONSE_PCNR: CONTINGENCIES_NOT_RESOLVED.
+        RESPONSE_PCVV: CVV_FAILURE.
+        RESPONSE_PP06: ACCOUNT_CLOSED. A previously open account is now closed
+        RESPONSE_PPRN: REATTEMPT_NOT_PERMITTED.
+        RESPONSE_PPAD: BILLING_ADDRESS.
+        RESPONSE_PPAB: ACCOUNT_BLOCKED_BY_ISSUER.
+        RESPONSE_PPAE: AMEX_DISABLED.
+        RESPONSE_PPAG: ADULT_GAMING_UNSUPPORTED.
+        RESPONSE_PPAI: AMOUNT_INCOMPATIBLE.
+        RESPONSE_PPAR: AUTH_RESULT.
+        RESPONSE_PPAU: MCC_CODE.
+        RESPONSE_PPAV: ARC_AVS.
+        RESPONSE_PPAX: AMOUNT_EXCEEDED.
+        RESPONSE_PPBG: BAD_GAMING.
+        RESPONSE_PPC2: ARC_CVV.
+        RESPONSE_PPCE: CE_REGISTRATION_INCOMPLETE.
+        RESPONSE_PPCO: COUNTRY.
+        RESPONSE_PPCR: CREDIT_ERROR.
+        RESPONSE_PPCT: CARD_TYPE_UNSUPPORTED.
+        RESPONSE_PPCU: CURRENCY_USED_INVALID.
+        RESPONSE_PPD3: SECURE_ERROR_3DS.
+        RESPONSE_PPDC: DCC_UNSUPPORTED.
+        RESPONSE_PPDI: DINERS_REJECT.
+        RESPONSE_PPDV: AUTH_MESSAGE.
+        RESPONSE_PPDT: DECLINE_THRESHOLD_BREACH.
+        RESPONSE_PPEF: EXPIRED_FUNDING_INSTRUMENT.
+        RESPONSE_PPEL: EXCEEDS_FREQUENCY_LIMIT.
+        RESPONSE_PPER: INTERNAL_SYSTEM_ERROR.
+        RESPONSE_PPEX: EXPIRY_DATE.
+        RESPONSE_PPFE: FUNDING_SOURCE_ALREADY_EXISTS.
+        RESPONSE_PPFI: INVALID_FUNDING_INSTRUMENT.
+        RESPONSE_PPFR: RESTRICTED_FUNDING_INSTRUMENT.
+        RESPONSE_PPFV: FIELD_VALIDATION_FAILED.
+        RESPONSE_PPGR: GAMING_REFUND_ERROR.
+        RESPONSE_PPH1: H1_ERROR.
+        RESPONSE_PPIF: IDEMPOTENCY_FAILURE.
+        RESPONSE_PPII: INVALID_INPUT_FAILURE.
+        RESPONSE_PPIM: ID_MISMATCH.
+        RESPONSE_PPIT: INVALID_TRACE_ID.
+        RESPONSE_PPLR: LATE_REVERSAL.
+        RESPONSE_PPLS: LARGE_STATUS_CODE.
+        RESPONSE_PPMB: MISSING_BUSINESS_RULE_OR_DATA.
+        RESPONSE_PPMC: BLOCKED_Mastercard.
+        RESPONSE_PPMD: DEPRECATED The PPMD value has been deprecated.
+        RESPONSE_PPNC: NOT_SUPPORTED_NRC.
+        RESPONSE_PPNL: EXCEEDS_NETWORK_FREQUENCY_LIMIT.
+        RESPONSE_PPNM: NO_MID_FOUND.
+        RESPONSE_PPNT: NETWORK_ERROR.
+        RESPONSE_PPPH: NO_PHONE_FOR_DCC_TRANSACTION.
+        RESPONSE_PPPI: INVALID_PRODUCT.
+        RESPONSE_PPPM: INVALID_PAYMENT_METHOD.
+        RESPONSE_PPQC: QUASI_CASH_UNSUPPORTED.
+        RESPONSE_PPRE: UNSUPPORT_REFUND_ON_PENDING_BC.
+        RESPONSE_PPRF: INVALID_PARENT_TRANSACTION_STATUS.
+        RESPONSE_PPRR: MERCHANT_NOT_REGISTERED.
+        RESPONSE_PPS0: BANKAUTH_ROW_MISMATCH.
+        RESPONSE_PPS1: BANKAUTH_ROW_SETTLED.
+        RESPONSE_PPS2: BANKAUTH_ROW_VOIDED.
+        RESPONSE_PPS3: BANKAUTH_EXPIRED.
+        RESPONSE_PPS4: CURRENCY_MISMATCH.
+        RESPONSE_PPS5: CREDITCARD_MISMATCH.
+        RESPONSE_PPS6: AMOUNT_MISMATCH.
+        RESPONSE_PPSC: ARC_SCORE.
+        RESPONSE_PPSD: STATUS_DESCRIPTION.
+        RESPONSE_PPSE: AMEX_DENIED.
+        RESPONSE_PPTE: VERIFICATION_TOKEN_EXPIRED.
+        RESPONSE_PPTF: INVALID_TRACE_REFERENCE.
+        RESPONSE_PPTI: INVALID_TRANSACTION_ID.
+        RESPONSE_PPTR: VERIFICATION_TOKEN_REVOKED.
+        RESPONSE_PPTT: TRANSACTION_TYPE_UNSUPPORTED.
+        RESPONSE_PPTV: INVALID_VERIFICATION_TOKEN.
+        RESPONSE_PPUA: USER_NOT_AUTHORIZED.
+        RESPONSE_PPUC: CURRENCY_CODE_UNSUPPORTED.
+        RESPONSE_PPUE: UNSUPPORT_ENTITY.
+        RESPONSE_PPUI: UNSUPPORT_INSTALLMENT.
+        RESPONSE_PPUP: UNSUPPORT_POS_FLAG.
+        RESPONSE_PPUR: UNSUPPORTED_REVERSAL.
+        RESPONSE_PPVC: VALIDATE_CURRENCY.
+        RESPONSE_PPVE: VALIDATION_ERROR.
+        RESPONSE_PPVT: VIRTUAL_TERMINAL_UNSUPPORTED.
 
     """
-    ENUM_0000 = '0000'
+    RESPONSE_0000 = '0000'
 
-    ENUM_00N7 = '00N7'
+    RESPONSE_00N7 = '00N7'
 
-    ENUM_0100 = '0100'
+    RESPONSE_0100 = '0100'
 
-    ENUM_0390 = '0390'
+    RESPONSE_0390 = '0390'
 
-    ENUM_0500 = '0500'
+    RESPONSE_0500 = '0500'
 
-    ENUM_0580 = '0580'
+    RESPONSE_0580 = '0580'
 
-    ENUM_0800 = '0800'
+    RESPONSE_0800 = '0800'
 
-    ENUM_0880 = '0880'
+    RESPONSE_0880 = '0880'
 
-    ENUM_0890 = '0890'
+    RESPONSE_0890 = '0890'
 
-    ENUM_0960 = '0960'
+    RESPONSE_0960 = '0960'
 
-    ENUM_0R00 = '0R00'
+    RESPONSE_0R00 = '0R00'
 
-    ENUM_1000 = '1000'
+    RESPONSE_1000 = '1000'
 
-    ENUM_10BR = '10BR'
+    RESPONSE_10BR = '10BR'
 
-    ENUM_1300 = '1300'
+    RESPONSE_1300 = '1300'
 
-    ENUM_1310 = '1310'
+    RESPONSE_1310 = '1310'
 
-    ENUM_1312 = '1312'
+    RESPONSE_1312 = '1312'
 
-    ENUM_1317 = '1317'
+    RESPONSE_1317 = '1317'
 
-    ENUM_1320 = '1320'
+    RESPONSE_1320 = '1320'
 
-    ENUM_1330 = '1330'
+    RESPONSE_1330 = '1330'
 
-    ENUM_1335 = '1335'
+    RESPONSE_1335 = '1335'
 
-    ENUM_1340 = '1340'
+    RESPONSE_1340 = '1340'
 
-    ENUM_1350 = '1350'
+    RESPONSE_1350 = '1350'
 
-    ENUM_1352 = '1352'
+    RESPONSE_1352 = '1352'
 
-    ENUM_1360 = '1360'
+    RESPONSE_1360 = '1360'
 
-    ENUM_1370 = '1370'
+    RESPONSE_1370 = '1370'
 
-    ENUM_1380 = '1380'
+    RESPONSE_1380 = '1380'
 
-    ENUM_1382 = '1382'
+    RESPONSE_1382 = '1382'
 
-    ENUM_1384 = '1384'
+    RESPONSE_1384 = '1384'
 
-    ENUM_1390 = '1390'
+    RESPONSE_1390 = '1390'
 
-    ENUM_1393 = '1393'
+    RESPONSE_1393 = '1393'
 
-    ENUM_5100 = '5100'
+    RESPONSE_5100 = '5100'
 
-    ENUM_5110 = '5110'
+    RESPONSE_5110 = '5110'
 
-    ENUM_5120 = '5120'
+    RESPONSE_5120 = '5120'
 
-    ENUM_5130 = '5130'
+    RESPONSE_5130 = '5130'
 
-    ENUM_5135 = '5135'
+    RESPONSE_5135 = '5135'
 
-    ENUM_5140 = '5140'
+    RESPONSE_5140 = '5140'
 
-    ENUM_5150 = '5150'
+    RESPONSE_5150 = '5150'
 
-    ENUM_5160 = '5160'
+    RESPONSE_5160 = '5160'
 
-    ENUM_5170 = '5170'
+    RESPONSE_5170 = '5170'
 
-    ENUM_5180 = '5180'
+    RESPONSE_5180 = '5180'
 
-    ENUM_5190 = '5190'
+    RESPONSE_5190 = '5190'
 
-    ENUM_5200 = '5200'
+    RESPONSE_5200 = '5200'
 
-    ENUM_5210 = '5210'
+    RESPONSE_5210 = '5210'
 
-    ENUM_5400 = '5400'
+    RESPONSE_5400 = '5400'
 
-    ENUM_5500 = '5500'
+    RESPONSE_5500 = '5500'
 
-    ENUM_5650 = '5650'
+    RESPONSE_5650 = '5650'
 
-    ENUM_5700 = '5700'
+    RESPONSE_5700 = '5700'
 
-    ENUM_5710 = '5710'
+    RESPONSE_5710 = '5710'
 
-    ENUM_5800 = '5800'
+    RESPONSE_5800 = '5800'
 
-    ENUM_5900 = '5900'
+    RESPONSE_5900 = '5900'
 
-    ENUM_5910 = '5910'
+    RESPONSE_5910 = '5910'
 
-    ENUM_5920 = '5920'
+    RESPONSE_5920 = '5920'
 
-    ENUM_5930 = '5930'
+    RESPONSE_5930 = '5930'
 
-    ENUM_5950 = '5950'
+    RESPONSE_5950 = '5950'
 
-    ENUM_6300 = '6300'
+    RESPONSE_6300 = '6300'
 
-    ENUM_7600 = '7600'
+    RESPONSE_7600 = '7600'
 
-    ENUM_7700 = '7700'
+    RESPONSE_7700 = '7700'
 
-    ENUM_7710 = '7710'
+    RESPONSE_7710 = '7710'
 
-    ENUM_7800 = '7800'
+    RESPONSE_7800 = '7800'
 
-    ENUM_7900 = '7900'
+    RESPONSE_7900 = '7900'
 
-    ENUM_8000 = '8000'
+    RESPONSE_8000 = '8000'
 
-    ENUM_8010 = '8010'
+    RESPONSE_8010 = '8010'
 
-    ENUM_8020 = '8020'
+    RESPONSE_8020 = '8020'
 
-    ENUM_8030 = '8030'
+    RESPONSE_8030 = '8030'
 
-    ENUM_8100 = '8100'
+    RESPONSE_8100 = '8100'
 
-    ENUM_8110 = '8110'
+    RESPONSE_8110 = '8110'
 
-    ENUM_8220 = '8220'
+    RESPONSE_8220 = '8220'
 
-    ENUM_9100 = '9100'
+    RESPONSE_9100 = '9100'
 
-    ENUM_9500 = '9500'
+    RESPONSE_9500 = '9500'
 
-    ENUM_9510 = '9510'
+    RESPONSE_9510 = '9510'
 
-    ENUM_9520 = '9520'
+    RESPONSE_9520 = '9520'
 
-    ENUM_9530 = '9530'
+    RESPONSE_9530 = '9530'
 
-    ENUM_9540 = '9540'
+    RESPONSE_9540 = '9540'
 
-    ENUM_9600 = '9600'
+    RESPONSE_9600 = '9600'
 
-    PCNR = 'PCNR'
+    RESPONSE_PCNR = 'PCNR'
 
-    PCVV = 'PCVV'
+    RESPONSE_PCVV = 'PCVV'
 
-    PP06 = 'PP06'
+    RESPONSE_PP06 = 'PP06'
 
-    PPRN = 'PPRN'
+    RESPONSE_PPRN = 'PPRN'
 
-    PPAD = 'PPAD'
+    RESPONSE_PPAD = 'PPAD'
 
-    PPAB = 'PPAB'
+    RESPONSE_PPAB = 'PPAB'
 
-    PPAE = 'PPAE'
+    RESPONSE_PPAE = 'PPAE'
 
-    PPAG = 'PPAG'
+    RESPONSE_PPAG = 'PPAG'
 
-    PPAI = 'PPAI'
+    RESPONSE_PPAI = 'PPAI'
 
-    PPAR = 'PPAR'
+    RESPONSE_PPAR = 'PPAR'
 
-    PPAU = 'PPAU'
+    RESPONSE_PPAU = 'PPAU'
 
-    PPAV = 'PPAV'
+    RESPONSE_PPAV = 'PPAV'
 
-    PPAX = 'PPAX'
+    RESPONSE_PPAX = 'PPAX'
 
-    PPBG = 'PPBG'
+    RESPONSE_PPBG = 'PPBG'
 
-    PPC2 = 'PPC2'
+    RESPONSE_PPC2 = 'PPC2'
 
-    PPCE = 'PPCE'
+    RESPONSE_PPCE = 'PPCE'
 
-    PPCO = 'PPCO'
+    RESPONSE_PPCO = 'PPCO'
 
-    PPCR = 'PPCR'
+    RESPONSE_PPCR = 'PPCR'
 
-    PPCT = 'PPCT'
+    RESPONSE_PPCT = 'PPCT'
 
-    PPCU = 'PPCU'
+    RESPONSE_PPCU = 'PPCU'
 
-    PPD3 = 'PPD3'
+    RESPONSE_PPD3 = 'PPD3'
 
-    PPDC = 'PPDC'
+    RESPONSE_PPDC = 'PPDC'
 
-    PPDI = 'PPDI'
+    RESPONSE_PPDI = 'PPDI'
 
-    PPDV = 'PPDV'
+    RESPONSE_PPDV = 'PPDV'
 
-    PPDT = 'PPDT'
+    RESPONSE_PPDT = 'PPDT'
 
-    PPEF = 'PPEF'
+    RESPONSE_PPEF = 'PPEF'
 
-    PPEL = 'PPEL'
+    RESPONSE_PPEL = 'PPEL'
 
-    PPER = 'PPER'
+    RESPONSE_PPER = 'PPER'
 
-    PPEX = 'PPEX'
+    RESPONSE_PPEX = 'PPEX'
 
-    PPFE = 'PPFE'
+    RESPONSE_PPFE = 'PPFE'
 
-    PPFI = 'PPFI'
+    RESPONSE_PPFI = 'PPFI'
 
-    PPFR = 'PPFR'
+    RESPONSE_PPFR = 'PPFR'
 
-    PPFV = 'PPFV'
+    RESPONSE_PPFV = 'PPFV'
 
-    PPGR = 'PPGR'
+    RESPONSE_PPGR = 'PPGR'
 
-    PPH1 = 'PPH1'
+    RESPONSE_PPH1 = 'PPH1'
 
-    PPIF = 'PPIF'
+    RESPONSE_PPIF = 'PPIF'
 
-    PPII = 'PPII'
+    RESPONSE_PPII = 'PPII'
 
-    PPIM = 'PPIM'
+    RESPONSE_PPIM = 'PPIM'
 
-    PPIT = 'PPIT'
+    RESPONSE_PPIT = 'PPIT'
 
-    PPLR = 'PPLR'
+    RESPONSE_PPLR = 'PPLR'
 
-    PPLS = 'PPLS'
+    RESPONSE_PPLS = 'PPLS'
 
-    PPMB = 'PPMB'
+    RESPONSE_PPMB = 'PPMB'
 
-    PPMC = 'PPMC'
+    RESPONSE_PPMC = 'PPMC'
 
-    PPMD = 'PPMD'
+    RESPONSE_PPMD = 'PPMD'
 
-    PPNC = 'PPNC'
+    RESPONSE_PPNC = 'PPNC'
 
-    PPNL = 'PPNL'
+    RESPONSE_PPNL = 'PPNL'
 
-    PPNM = 'PPNM'
+    RESPONSE_PPNM = 'PPNM'
 
-    PPNT = 'PPNT'
+    RESPONSE_PPNT = 'PPNT'
 
-    PPPH = 'PPPH'
+    RESPONSE_PPPH = 'PPPH'
 
-    PPPI = 'PPPI'
+    RESPONSE_PPPI = 'PPPI'
 
-    PPPM = 'PPPM'
+    RESPONSE_PPPM = 'PPPM'
 
-    PPQC = 'PPQC'
+    RESPONSE_PPQC = 'PPQC'
 
-    PPRE = 'PPRE'
+    RESPONSE_PPRE = 'PPRE'
 
-    PPRF = 'PPRF'
+    RESPONSE_PPRF = 'PPRF'
 
-    PPRR = 'PPRR'
+    RESPONSE_PPRR = 'PPRR'
 
-    PPS0 = 'PPS0'
+    RESPONSE_PPS0 = 'PPS0'
 
-    PPS1 = 'PPS1'
+    RESPONSE_PPS1 = 'PPS1'
 
-    PPS2 = 'PPS2'
+    RESPONSE_PPS2 = 'PPS2'
 
-    PPS3 = 'PPS3'
+    RESPONSE_PPS3 = 'PPS3'
 
-    PPS4 = 'PPS4'
+    RESPONSE_PPS4 = 'PPS4'
 
-    PPS5 = 'PPS5'
+    RESPONSE_PPS5 = 'PPS5'
 
-    PPS6 = 'PPS6'
+    RESPONSE_PPS6 = 'PPS6'
 
-    PPSC = 'PPSC'
+    RESPONSE_PPSC = 'PPSC'
 
-    PPSD = 'PPSD'
+    RESPONSE_PPSD = 'PPSD'
 
-    PPSE = 'PPSE'
+    RESPONSE_PPSE = 'PPSE'
 
-    PPTE = 'PPTE'
+    RESPONSE_PPTE = 'PPTE'
 
-    PPTF = 'PPTF'
+    RESPONSE_PPTF = 'PPTF'
 
-    PPTI = 'PPTI'
+    RESPONSE_PPTI = 'PPTI'
 
-    PPTR = 'PPTR'
+    RESPONSE_PPTR = 'PPTR'
 
-    PPTT = 'PPTT'
+    RESPONSE_PPTT = 'PPTT'
 
-    PPTV = 'PPTV'
+    RESPONSE_PPTV = 'PPTV'
 
-    PPUA = 'PPUA'
+    RESPONSE_PPUA = 'PPUA'
 
-    PPUC = 'PPUC'
+    RESPONSE_PPUC = 'PPUC'
 
-    PPUE = 'PPUE'
+    RESPONSE_PPUE = 'PPUE'
 
-    PPUI = 'PPUI'
+    RESPONSE_PPUI = 'PPUI'
 
-    PPUP = 'PPUP'
+    RESPONSE_PPUP = 'PPUP'
 
-    PPUR = 'PPUR'
+    RESPONSE_PPUR = 'PPUR'
 
-    PPVC = 'PPVC'
+    RESPONSE_PPVC = 'PPVC'
 
-    PPVE = 'PPVE'
+    RESPONSE_PPVE = 'PPVE'
 
-    PPVT = 'PPVT'
+    RESPONSE_PPVT = 'PPVT'
 

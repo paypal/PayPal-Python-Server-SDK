@@ -22,12 +22,11 @@ class BinDetails(object):
         issuing_bank (str): The issuer of the card instrument.
         bin_country_code (str): The [two-character ISO 3166-1
             code](/api/rest/reference/country-codes/) that identifies the
-            country or region.<blockquote><strong>Note:</strong> The country
-            code for Great Britain is <code>GB</code> and not <code>UK</code>
-            as used in the top-level domain names for that country. Use the
-            `C2` country code for China worldwide for comparable uncontrolled
-            price (CUP) method, bank card, and cross-border
-            transactions.</blockquote>
+            country or region. Note: The country code for Great Britain is GB
+            and not UK as used in the top-level domain names for that country.
+            Use the `C2` country code for China worldwide for comparable
+            uncontrolled price (CUP) method, bank card, and cross-border
+            transactions.
         products (List[str]): The type of card product assigned to the BIN by
             the issuer. These values are defined by the issuer and may change
             over time. Some examples include: PREPAID_GIFT, CONSUMER,
@@ -82,7 +81,7 @@ class BinDetails(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -95,3 +94,17 @@ class BinDetails(object):
                    issuing_bank,
                    bin_country_code,
                    products)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'bin={(self.bin if hasattr(self, "bin") else None)!r}, '
+                f'issuing_bank={(self.issuing_bank if hasattr(self, "issuing_bank") else None)!r}, '
+                f'bin_country_code={(self.bin_country_code if hasattr(self, "bin_country_code") else None)!r}, '
+                f'products={(self.products if hasattr(self, "products") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'bin={(self.bin if hasattr(self, "bin") else None)!s}, '
+                f'issuing_bank={(self.issuing_bank if hasattr(self, "issuing_bank") else None)!s}, '
+                f'bin_country_code={(self.bin_country_code if hasattr(self, "bin_country_code") else None)!s}, '
+                f'products={(self.products if hasattr(self, "products") else None)!s})')

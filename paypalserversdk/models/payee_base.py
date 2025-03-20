@@ -17,12 +17,11 @@ class PayeeBase(object):
     order. The merchant is also known as the payee.
 
     Attributes:
-        email_address (str): The internationalized email
-            address.<blockquote><strong>Note:</strong> Up to 64 characters are
-            allowed before and 255 characters are allowed after the
-            <code>@</code> sign. However, the generally accepted maximum
-            length for an email address is 254 characters. The pattern
-            verifies that an unquoted <code>@</code> sign exists.</blockquote>
+        email_address (str): The internationalized email address. Note: Up to
+            64 characters are allowed before and 255 characters are allowed
+            after the @ sign. However, the generally accepted maximum length
+            for an email address is 254 characters. The pattern verifies that
+            an unquoted @ sign exists.
         merchant_id (str): The account identifier for a PayPal account.
 
     """
@@ -64,7 +63,7 @@ class PayeeBase(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -73,3 +72,13 @@ class PayeeBase(object):
         # Return an object of this model
         return cls(email_address,
                    merchant_id)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!r}, '
+                f'merchant_id={(self.merchant_id if hasattr(self, "merchant_id") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'email_address={(self.email_address if hasattr(self, "email_address") else None)!s}, '
+                f'merchant_id={(self.merchant_id if hasattr(self, "merchant_id") else None)!s})')

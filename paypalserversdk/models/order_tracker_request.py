@@ -26,15 +26,17 @@ class OrderTrackerRequest(object):
             If the carrier is not available for your country, choose the
             global version of the carrier. If your carrier name is not in the
             list, set `carrier` to `OTHER` and set carrier name in
-            `carrier_name_other`. For allowed values, see <a
-            href="/docs/tracking/reference/carriers/">Carriers</a>.
+            `carrier_name_other`. For allowed values, see Carriers.
         carrier_name_other (str): The name of the carrier for the shipment.
             Provide this value only if the carrier parameter is OTHER. This
             property supports Unicode.
         capture_id (str): The PayPal capture ID.
-        notify_payer (bool): If true, sends an email notification to the payer
-            of the PayPal transaction. The email contains the tracking
-            information that was uploaded through the API.
+        notify_payer (bool): If true, PayPal will send an email notification
+            to the payer of the PayPal transaction. The email contains the
+            tracking details provided through the Orders tracking API request.
+            Independent of any value passed for `notify_payer`, the payer may
+            receive tracking notifications within the PayPal app, based on the
+            user's notification preferences.
         items (List[OrderTrackerItem]): An array of details of items in the
             shipment.
 
@@ -94,7 +96,7 @@ class OrderTrackerRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -115,3 +117,21 @@ class OrderTrackerRequest(object):
                    carrier_name_other,
                    notify_payer,
                    items)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'tracking_number={(self.tracking_number if hasattr(self, "tracking_number") else None)!r}, '
+                f'carrier={(self.carrier if hasattr(self, "carrier") else None)!r}, '
+                f'carrier_name_other={(self.carrier_name_other if hasattr(self, "carrier_name_other") else None)!r}, '
+                f'capture_id={self.capture_id!r}, '
+                f'notify_payer={(self.notify_payer if hasattr(self, "notify_payer") else None)!r}, '
+                f'items={(self.items if hasattr(self, "items") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'tracking_number={(self.tracking_number if hasattr(self, "tracking_number") else None)!s}, '
+                f'carrier={(self.carrier if hasattr(self, "carrier") else None)!s}, '
+                f'carrier_name_other={(self.carrier_name_other if hasattr(self, "carrier_name_other") else None)!s}, '
+                f'capture_id={self.capture_id!s}, '
+                f'notify_payer={(self.notify_payer if hasattr(self, "notify_payer") else None)!s}, '
+                f'items={(self.items if hasattr(self, "items") else None)!s})')

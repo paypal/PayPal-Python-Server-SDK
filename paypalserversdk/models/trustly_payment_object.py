@@ -19,12 +19,16 @@ class TrustlyPaymentObject(object):
         name (str): The full name representation like Mr J Smith.
         country_code (str): The [two-character ISO 3166-1
             code](/api/rest/reference/country-codes/) that identifies the
-            country or region.<blockquote><strong>Note:</strong> The country
-            code for Great Britain is <code>GB</code> and not <code>UK</code>
-            as used in the top-level domain names for that country. Use the
-            `C2` country code for China worldwide for comparable uncontrolled
-            price (CUP) method, bank card, and cross-border
-            transactions.</blockquote>
+            country or region. Note: The country code for Great Britain is GB
+            and not UK as used in the top-level domain names for that country.
+            Use the `C2` country code for China worldwide for comparable
+            uncontrolled price (CUP) method, bank card, and cross-border
+            transactions.
+        email (str): The internationalized email address. Note: Up to 64
+            characters are allowed before and 255 characters are allowed after
+            the @ sign. However, the generally accepted maximum length for an
+            email address is 254 characters. The pattern verifies that an
+            unquoted @ sign exists.
         bic (str): The business identification code (BIC). In payments
             systems, a BIC is used to identify a specific business, most
             commonly a bank.
@@ -36,6 +40,7 @@ class TrustlyPaymentObject(object):
     _names = {
         "name": 'name',
         "country_code": 'country_code',
+        "email": 'email',
         "bic": 'bic',
         "iban_last_chars": 'iban_last_chars'
     }
@@ -43,6 +48,7 @@ class TrustlyPaymentObject(object):
     _optionals = [
         'name',
         'country_code',
+        'email',
         'bic',
         'iban_last_chars',
     ]
@@ -50,6 +56,7 @@ class TrustlyPaymentObject(object):
     def __init__(self,
                  name=APIHelper.SKIP,
                  country_code=APIHelper.SKIP,
+                 email=APIHelper.SKIP,
                  bic=APIHelper.SKIP,
                  iban_last_chars=APIHelper.SKIP):
         """Constructor for the TrustlyPaymentObject class"""
@@ -59,6 +66,8 @@ class TrustlyPaymentObject(object):
             self.name = name 
         if country_code is not APIHelper.SKIP:
             self.country_code = country_code 
+        if email is not APIHelper.SKIP:
+            self.email = email 
         if bic is not APIHelper.SKIP:
             self.bic = bic 
         if iban_last_chars is not APIHelper.SKIP:
@@ -79,16 +88,34 @@ class TrustlyPaymentObject(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         name = dictionary.get("name") if dictionary.get("name") else APIHelper.SKIP
         country_code = dictionary.get("country_code") if dictionary.get("country_code") else APIHelper.SKIP
+        email = dictionary.get("email") if dictionary.get("email") else APIHelper.SKIP
         bic = dictionary.get("bic") if dictionary.get("bic") else APIHelper.SKIP
         iban_last_chars = dictionary.get("iban_last_chars") if dictionary.get("iban_last_chars") else APIHelper.SKIP
         # Return an object of this model
         return cls(name,
                    country_code,
+                   email,
                    bic,
                    iban_last_chars)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'country_code={(self.country_code if hasattr(self, "country_code") else None)!r}, '
+                f'email={(self.email if hasattr(self, "email") else None)!r}, '
+                f'bic={(self.bic if hasattr(self, "bic") else None)!r}, '
+                f'iban_last_chars={(self.iban_last_chars if hasattr(self, "iban_last_chars") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'country_code={(self.country_code if hasattr(self, "country_code") else None)!s}, '
+                f'email={(self.email if hasattr(self, "email") else None)!s}, '
+                f'bic={(self.bic if hasattr(self, "bic") else None)!s}, '
+                f'iban_last_chars={(self.iban_last_chars if hasattr(self, "iban_last_chars") else None)!s})')

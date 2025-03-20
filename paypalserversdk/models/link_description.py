@@ -72,7 +72,7 @@ class LinkDescription(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -83,3 +83,15 @@ class LinkDescription(object):
         return cls(href,
                    rel,
                    method)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'href={self.href!r}, '
+                f'rel={self.rel!r}, '
+                f'method={(self.method if hasattr(self, "method") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'href={self.href!s}, '
+                f'rel={self.rel!s}, '
+                f'method={(self.method if hasattr(self, "method") else None)!s})')

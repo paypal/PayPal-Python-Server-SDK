@@ -36,8 +36,8 @@ class SetupTokenCardExperienceContext(object):
         cancel_url (str): The URL where the customer is redirected after
             customer cancels or leaves the flow. It is a required field for
             contingency flows like PayPal wallet, 3DS.
-        vault_instruction (str): Vault Instruction on action to be performed
-            after a successful payer approval.
+        vault_instruction (VaultInstructionAction): Vault Instruction on
+            action to be performed after a successful payer approval.
 
     """
 
@@ -92,7 +92,7 @@ class SetupTokenCardExperienceContext(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -107,3 +107,19 @@ class SetupTokenCardExperienceContext(object):
                    return_url,
                    cancel_url,
                    vault_instruction)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!r}, '
+                f'locale={(self.locale if hasattr(self, "locale") else None)!r}, '
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!r}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!r}, '
+                f'vault_instruction={(self.vault_instruction if hasattr(self, "vault_instruction") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!s}, '
+                f'locale={(self.locale if hasattr(self, "locale") else None)!s}, '
+                f'return_url={(self.return_url if hasattr(self, "return_url") else None)!s}, '
+                f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!s}, '
+                f'vault_instruction={(self.vault_instruction if hasattr(self, "vault_instruction") else None)!s})')

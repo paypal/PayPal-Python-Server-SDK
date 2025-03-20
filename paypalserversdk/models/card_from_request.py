@@ -60,7 +60,7 @@ class CardFromRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -69,3 +69,13 @@ class CardFromRequest(object):
         # Return an object of this model
         return cls(expiry,
                    last_digits)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!r}, '
+                f'last_digits={(self.last_digits if hasattr(self, "last_digits") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!s}, '
+                f'last_digits={(self.last_digits if hasattr(self, "last_digits") else None)!s})')

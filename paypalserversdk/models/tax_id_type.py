@@ -15,8 +15,8 @@ class TaxIdType(object):
     The customer's tax ID type.
 
     Attributes:
-        BR_CPF: TODO: type description here.
-        BR_CNPJ: TODO: type description here.
+        BR_CPF: The individual tax ID type, typically is 11 characters long.
+        BR_CNPJ: The business tax ID type, typically is 14 characters long.
 
     """
     BR_CPF = 'BR_CPF'

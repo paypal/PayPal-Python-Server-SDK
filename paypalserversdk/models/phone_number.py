@@ -52,10 +52,18 @@ class PhoneNumber(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         national_number = dictionary.get("national_number") if dictionary.get("national_number") else None
         # Return an object of this model
         return cls(national_number)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'national_number={self.national_number!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'national_number={self.national_number!s})')

@@ -13,7 +13,7 @@ The line items for this purchase. If your merchant account has been configured f
 |  --- | --- | --- | --- |
 | `name` | `str` | Required | The item name or title.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `127` |
 | `quantity` | `str` | Required | The item quantity. Must be a whole number.<br>**Constraints**: *Maximum Length*: `10`, *Pattern*: `^[1-9][0-9]{0,9}$` |
-| `description` | `str` | Optional | The detailed item description.<br>**Constraints**: *Maximum Length*: `127` |
+| `description` | `str` | Optional | The detailed item description.<br>**Constraints**: *Maximum Length*: `2048` |
 | `sku` | `str` | Optional | The stock keeping unit (SKU) for the item.<br>**Constraints**: *Maximum Length*: `127` |
 | `url` | `str` | Optional | The URL to the item being purchased. Visible to buyer and used in buyer experiences.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2048` |
 | `image_url` | `str` | Optional | The URL of the item's image. File type and size restrictions apply. An image that violates these restrictions will not be honored.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2048`, *Pattern*: `^(https:)([/\|.\|\w\|\s\|-])*\.(?:jpg\|gif\|png\|jpeg\|JPG\|GIF\|PNG\|JPEG)` |

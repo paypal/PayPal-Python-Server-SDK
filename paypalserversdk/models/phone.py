@@ -71,7 +71,7 @@ class Phone(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -82,3 +82,15 @@ class Phone(object):
         return cls(country_code,
                    national_number,
                    extension_number)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'country_code={self.country_code!r}, '
+                f'national_number={self.national_number!r}, '
+                f'extension_number={(self.extension_number if hasattr(self, "extension_number") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'country_code={self.country_code!s}, '
+                f'national_number={self.national_number!s}, '
+                f'extension_number={(self.extension_number if hasattr(self, "extension_number") else None)!s})')

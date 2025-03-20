@@ -15,8 +15,6 @@ class CaptureRequest(object):
 
     """Implementation of the 'Capture Request' model.
 
-    TODO: type model description here.
-
     Attributes:
         invoice_id (str): The API caller-provided external invoice number for
             this order. Appears in both the payer's transaction history and
@@ -96,7 +94,7 @@ class CaptureRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -113,3 +111,21 @@ class CaptureRequest(object):
                    final_capture,
                    payment_instruction,
                    soft_descriptor)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!r}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!r}, '
+                f'final_capture={(self.final_capture if hasattr(self, "final_capture") else None)!r}, '
+                f'payment_instruction={(self.payment_instruction if hasattr(self, "payment_instruction") else None)!r}, '
+                f'soft_descriptor={(self.soft_descriptor if hasattr(self, "soft_descriptor") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!s}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!s}, '
+                f'final_capture={(self.final_capture if hasattr(self, "final_capture") else None)!s}, '
+                f'payment_instruction={(self.payment_instruction if hasattr(self, "payment_instruction") else None)!s}, '
+                f'soft_descriptor={(self.soft_descriptor if hasattr(self, "soft_descriptor") else None)!s})')

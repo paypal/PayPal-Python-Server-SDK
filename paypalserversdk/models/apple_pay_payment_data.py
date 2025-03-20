@@ -76,7 +76,7 @@ class ApplePayPaymentData(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -89,3 +89,17 @@ class ApplePayPaymentData(object):
                    eci_indicator,
                    emv_data,
                    pin)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'cryptogram={(self.cryptogram if hasattr(self, "cryptogram") else None)!r}, '
+                f'eci_indicator={(self.eci_indicator if hasattr(self, "eci_indicator") else None)!r}, '
+                f'emv_data={(self.emv_data if hasattr(self, "emv_data") else None)!r}, '
+                f'pin={(self.pin if hasattr(self, "pin") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'cryptogram={(self.cryptogram if hasattr(self, "cryptogram") else None)!s}, '
+                f'eci_indicator={(self.eci_indicator if hasattr(self, "eci_indicator") else None)!s}, '
+                f'emv_data={(self.emv_data if hasattr(self, "emv_data") else None)!s}, '
+                f'pin={(self.pin if hasattr(self, "pin") else None)!s})')

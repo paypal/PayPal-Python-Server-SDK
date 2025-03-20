@@ -64,7 +64,7 @@ class RelatedIdentifiers(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -75,3 +75,15 @@ class RelatedIdentifiers(object):
         return cls(order_id,
                    authorization_id,
                    capture_id)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'order_id={(self.order_id if hasattr(self, "order_id") else None)!r}, '
+                f'authorization_id={(self.authorization_id if hasattr(self, "authorization_id") else None)!r}, '
+                f'capture_id={(self.capture_id if hasattr(self, "capture_id") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'order_id={(self.order_id if hasattr(self, "order_id") else None)!s}, '
+                f'authorization_id={(self.authorization_id if hasattr(self, "authorization_id") else None)!s}, '
+                f'capture_id={(self.capture_id if hasattr(self, "capture_id") else None)!s})')

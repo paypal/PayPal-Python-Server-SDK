@@ -51,10 +51,18 @@ class RefundPlatformFee(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
         amount = Money.from_dictionary(dictionary.get('amount')) if dictionary.get('amount') else None
         # Return an object of this model
         return cls(amount)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'amount={self.amount!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'amount={self.amount!s})')

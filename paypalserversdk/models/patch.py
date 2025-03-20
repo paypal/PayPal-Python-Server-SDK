@@ -17,18 +17,13 @@ class Patch(object):
 
     Attributes:
         op (PatchOp): The operation.
-        path (str): The <a href="https://tools.ietf.org/html/rfc6901">JSON
-            Pointer</a> to the target document location at which to complete
-            the operation.
-        value (object): The value to apply. The <code>remove</code>,
-            <code>copy</code>, and <code>move</code> operations do not require
-            a value. Since <a
-            href="https://www.rfc-editor.org/rfc/rfc69021">JSON Patch</a>
-            allows any type for <code>value</code>, the <code>type</code>
-            property is not specified.
-        mfrom (str): The <a href="https://tools.ietf.org/html/rfc6901">JSON
-            Pointer</a> to the target document location from which to move the
-            value. Required for the <code>move</code> operation.
+        path (str): The JSON Pointer to the target document location at which
+            to complete the operation.
+        value (object): The value to apply. The remove, copy, and move
+            operations do not require a value. Since JSON Patch allows any
+            type for value, the type property is not specified.
+        mfrom (str): The JSON Pointer to the target document location from
+            which to move the value. Required for the move operation.
 
     """
 
@@ -77,7 +72,7 @@ class Patch(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -90,3 +85,17 @@ class Patch(object):
                    path,
                    value,
                    mfrom)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'op={self.op!r}, '
+                f'path={(self.path if hasattr(self, "path") else None)!r}, '
+                f'value={(self.value if hasattr(self, "value") else None)!r}, '
+                f'mfrom={(self.mfrom if hasattr(self, "mfrom") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'op={self.op!s}, '
+                f'path={(self.path if hasattr(self, "path") else None)!s}, '
+                f'value={(self.value if hasattr(self, "value") else None)!s}, '
+                f'mfrom={(self.mfrom if hasattr(self, "mfrom") else None)!s})')

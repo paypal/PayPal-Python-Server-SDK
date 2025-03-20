@@ -45,16 +45,14 @@ class Refund(object):
             links](/docs/api/reference/api-responses/#hateoas-links).
         create_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
         update_time (str): The date and time, in [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds
-            are required while fractional seconds are
-            optional.<blockquote><strong>Note:</strong> The regular expression
-            provides guidance but does not reject all invalid
-            dates.</blockquote>
+            are required while fractional seconds are optional. Note: The
+            regular expression provides guidance but does not reject all
+            invalid dates.
 
     """
 
@@ -150,7 +148,7 @@ class Refund(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -185,3 +183,35 @@ class Refund(object):
                    links,
                    create_time,
                    update_time)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'status_details={(self.status_details if hasattr(self, "status_details") else None)!r}, '
+                f'id={(self.id if hasattr(self, "id") else None)!r}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!r}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
+                f'custom_id={(self.custom_id if hasattr(self, "custom_id") else None)!r}, '
+                f'acquirer_reference_number={(self.acquirer_reference_number if hasattr(self, "acquirer_reference_number") else None)!r}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!r}, '
+                f'seller_payable_breakdown={(self.seller_payable_breakdown if hasattr(self, "seller_payable_breakdown") else None)!r}, '
+                f'payer={(self.payer if hasattr(self, "payer") else None)!r}, '
+                f'links={(self.links if hasattr(self, "links") else None)!r}, '
+                f'create_time={(self.create_time if hasattr(self, "create_time") else None)!r}, '
+                f'update_time={(self.update_time if hasattr(self, "update_time") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'status_details={(self.status_details if hasattr(self, "status_details") else None)!s}, '
+                f'id={(self.id if hasattr(self, "id") else None)!s}, '
+                f'amount={(self.amount if hasattr(self, "amount") else None)!s}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
+                f'custom_id={(self.custom_id if hasattr(self, "custom_id") else None)!s}, '
+                f'acquirer_reference_number={(self.acquirer_reference_number if hasattr(self, "acquirer_reference_number") else None)!s}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!s}, '
+                f'seller_payable_breakdown={(self.seller_payable_breakdown if hasattr(self, "seller_payable_breakdown") else None)!s}, '
+                f'payer={(self.payer if hasattr(self, "payer") else None)!s}, '
+                f'links={(self.links if hasattr(self, "links") else None)!s}, '
+                f'create_time={(self.create_time if hasattr(self, "create_time") else None)!s}, '
+                f'update_time={(self.update_time if hasattr(self, "update_time") else None)!s})')

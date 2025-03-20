@@ -18,15 +18,11 @@ class CardRequest(object):
 
     """Implementation of the 'Card Request' model.
 
-    The payment card to use to fund a payment. Can be a credit or debit
-    card.<blockquote><strong>Note:</strong> Passing card number, cvv and
-    expiry directly via the API requires <a
-    href="https://www.pcisecuritystandards.org/pci_security/completing_self_ass
-    essment"> PCI SAQ D compliance</a>. <br>*PayPal offers a mechanism by
-    which you do not have to take on the <strong>PCI SAQ D</strong> burden by
-    using hosted fields - refer to <a
-    href="https://developer.paypal.com/docs/checkout/advanced/integrate/">this
-    Integration Guide</a>*.</blockquote>
+    The payment card to use to fund a payment. Can be a credit or debit card.
+    Note: Passing card number, cvv and expiry directly via the API requires
+    PCI SAQ D compliance. *PayPal offers a mechanism by which you do not have
+    to take on the PCI SAQ D burden by using hosted fields - refer to this
+    Integration Guide*.
 
     Attributes:
         name (str): The card holder's name as it appears on the card.
@@ -55,16 +51,15 @@ class CardRequest(object):
         stored_credential (CardStoredCredential): Provides additional details
             to process a payment using a `card` that has been stored or is
             intended to be stored (also referred to as stored_credential or
-            card-on-file).<br/>Parameter
-            compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible
-            only with `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is
-            compatible only with
-            `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_referen
-            ce` or `previous_network_transaction_reference` is compatible only
-            with `payment_initiator=MERCHANT`.</li><li>Only one of the
-            parameters - `previous_transaction_reference` and
+            card-on-file). Parameter compatibility: `payment_type=ONE_TIME` is
+            compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST`
+            is compatible only with `payment_initiator=CUSTOMER`.
+            `previous_transaction_reference` or
+            `previous_network_transaction_reference` is compatible only with
+            `payment_initiator=MERCHANT`. Only one of the parameters -
+            `previous_transaction_reference` and
             `previous_network_transaction_reference` - can be present in the
-            request.</li></ul>
+            request.
         network_token (NetworkToken): The Third Party Network token used to
             fund a payment.
         experience_context (CardExperienceContext): Customizes the payer
@@ -154,7 +149,7 @@ class CardRequest(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary
@@ -181,3 +176,31 @@ class CardRequest(object):
                    stored_credential,
                    network_token,
                    experience_context)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!r}, '
+                f'number={(self.number if hasattr(self, "number") else None)!r}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!r}, '
+                f'security_code={(self.security_code if hasattr(self, "security_code") else None)!r}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!r}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r}, '
+                f'vault_id={(self.vault_id if hasattr(self, "vault_id") else None)!r}, '
+                f'single_use_token={(self.single_use_token if hasattr(self, "single_use_token") else None)!r}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!r}, '
+                f'network_token={(self.network_token if hasattr(self, "network_token") else None)!r}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'name={(self.name if hasattr(self, "name") else None)!s}, '
+                f'number={(self.number if hasattr(self, "number") else None)!s}, '
+                f'expiry={(self.expiry if hasattr(self, "expiry") else None)!s}, '
+                f'security_code={(self.security_code if hasattr(self, "security_code") else None)!s}, '
+                f'billing_address={(self.billing_address if hasattr(self, "billing_address") else None)!s}, '
+                f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s}, '
+                f'vault_id={(self.vault_id if hasattr(self, "vault_id") else None)!s}, '
+                f'single_use_token={(self.single_use_token if hasattr(self, "single_use_token") else None)!s}, '
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!s}, '
+                f'network_token={(self.network_token if hasattr(self, "network_token") else None)!s}, '
+                f'experience_context={(self.experience_context if hasattr(self, "experience_context") else None)!s})')

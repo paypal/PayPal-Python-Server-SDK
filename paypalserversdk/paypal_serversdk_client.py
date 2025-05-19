@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 """
 paypalserversdk
 
@@ -18,9 +17,13 @@ from paypalserversdk.controllers.payments_controller import PaymentsController
 from paypalserversdk.controllers.vault_controller import VaultController
 from paypalserversdk.controllers.o_auth_authorization_controller\
     import OAuthAuthorizationController
+from paypalserversdk.controllers.products_controller import ProductsController
+from paypalserversdk.controllers.plans_controller import PlansController
+from paypalserversdk.controllers.subscriptions_controller import SubscriptionsController
 
 
 class PaypalServersdkClient(object):
+
     @LazyProperty
     def orders(self):
         return OrdersController(self.global_configuration)
@@ -41,21 +44,34 @@ class PaypalServersdkClient(object):
     def oauth_2(self):
         return self.auth_managers['Oauth2']
 
-    def __init__(self, http_client_instance=None,
-                 override_http_client_configuration=False, http_call_back=None,
-                 timeout=60, max_retries=0, backoff_factor=2,
-                 retry_statuses=None, retry_methods=None,
-                 logging_configuration=None, environment=Environment.SANDBOX,
-                 client_credentials_auth_credentials=None, config=None):
+    def __init__(
+        self,
+        http_client_instance=None,
+        override_http_client_configuration=False,
+        http_call_back=None,
+        timeout=60,
+        max_retries=0,
+        backoff_factor=2,
+        retry_statuses=None,
+        retry_methods=None,
+        logging_configuration=None,
+        environment=Environment.SANDBOX,
+        client_credentials_auth_credentials=None,
+        config=None
+    ):
         self.config = config or Configuration(
             http_client_instance=http_client_instance,
             override_http_client_configuration=override_http_client_configuration,
-            http_call_back=http_call_back, timeout=timeout,
-            max_retries=max_retries, backoff_factor=backoff_factor,
-            retry_statuses=retry_statuses, retry_methods=retry_methods,
+            http_call_back=http_call_back,
+            timeout=timeout,
+            max_retries=max_retries,
+            backoff_factor=backoff_factor,
+            retry_statuses=retry_statuses,
+            retry_methods=retry_methods,
             logging_configuration=logging_configuration,
             environment=environment,
-            client_credentials_auth_credentials=client_credentials_auth_credentials)
+            client_credentials_auth_credentials=client_credentials_auth_credentials
+        )
 
         self.global_configuration = GlobalConfiguration(self.config)\
             .global_errors(BaseController.global_errors())\
@@ -64,7 +80,18 @@ class PaypalServersdkClient(object):
 
         self.auth_managers = {key: None for key in ['Oauth2']}
         self.auth_managers['Oauth2'] = OAuth2(
-            self.config.client_credentials_auth_credentials,
-            self.global_configuration)
+            self.config.client_credentials_auth_credentials, self.global_configuration
+        )
         self.global_configuration = self.global_configuration.auth_managers(self.auth_managers)
 
+    @LazyProperty
+    def subscriptions(self):
+        return SubscriptionsController(self.global_configuration)
+
+    @LazyProperty
+    def plans(self):
+        return PlansController(self.global_configuration)
+
+    @LazyProperty
+    def products(self):
+        return ProductsController(self.global_configuration)

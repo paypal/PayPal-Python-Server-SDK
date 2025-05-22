@@ -23,12 +23,12 @@ class OrderStatus(object):
             or another form of guest or unbranded payment. For example, a
             card, bank account, or so on.
         VOIDED: All purchase units in the order are voided.
-        COMPLETED: The intent of the Order was completed and a `payments`
-            resource was created. A completed Order may have authorized a
-            payment, captured an authorized payment, or in some cases, the
-            payment may have been declined. Please verify the payment status
-            under purchase_unitsArray.payments before proceeding with Order
-            fulfillment.
+        COMPLETED: The intent of the order was completed and a `payments`
+            resource was created. Important: Check the payment status in
+            `purchase_units[].payments.captures[].status` before fulfilling
+            the order. A completed order can indicate a payment was
+            authorized, an authorized payment was captured, or a payment was
+            declined.
         PAYER_ACTION_REQUIRED: The order requires an action from the payer
             (e.g. 3DS authentication). Redirect the payer to the
             "rel":"payer-action" HATEOAS link returned as part of the response

@@ -19,9 +19,9 @@ class Patch(object):
         op (PatchOp): The operation.
         path (str): The JSON Pointer to the target document location at which
             to complete the operation.
-        value (object): The value to apply. The remove, copy, and move
-            operations do not require a value. Since JSON Patch allows any
-            type for value, the type property is not specified.
+        value (Any): The value to apply. The remove, copy, and move operations
+            do not require a value. Since JSON Patch allows any type for
+            value, the type property is not specified.
         mfrom (str): The JSON Pointer to the target document location from
             which to move the value. Required for the move operation.
 

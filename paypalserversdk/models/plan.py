@@ -22,7 +22,7 @@ class Plan(object):
         billing_cycles (List[BillingCycle]): An array of billing cycles for
             trial billing and regular billing. A plan can have at most two
             trial cycles and only one regular cycle.
-        product (object): Product details associated with any one-time product
+        product (Any): Product details associated with any one-time product
             purchase.
         one_time_charges (OneTimeCharge): The one-time charge info at the time
             of checkout.

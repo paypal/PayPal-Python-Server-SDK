@@ -25,7 +25,7 @@ class BillingCycle(object):
             identifies if the billing cycle is a trial(free or discounted) or
             regular billing cycle.
         pricing_scheme (PricingScheme): The pricing scheme details.
-        frequency (object): The frequency details for this billing cycle.
+        frequency (Any): The frequency details for this billing cycle.
         total_cycles (int): The number of times this billing cycle gets
             executed. Trial billing cycles can only be executed a finite
             number of times (value between 1 and 999 for total_cycles).

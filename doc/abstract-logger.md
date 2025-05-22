@@ -1,5 +1,5 @@
 
-# AbstractLogger Class
+# AbstractLogger
 
 An abstract class for custom logger implementation.
 

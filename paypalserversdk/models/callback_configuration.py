@@ -16,8 +16,7 @@ class CallbackConfiguration(object):
 
     Attributes:
         callback_events (List[CallbackEvents]): An array of callback events
-            merchant can subscribe to for the corresponding callback url. The
-            SHIPPING_ADDRESS callback event is required.
+            merchant can subscribe to for the corresponding callback url.
         callback_url (str): Merchant provided CallBack url.PayPal/Venmo will
             use this url to call the merchant back when the events occur
             .PayPal/Venmo expects a secured url usually in the https

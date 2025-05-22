@@ -59,3 +59,45 @@ class SubscriptionsController(BaseController):
             ).local_error('401', 'Unauthorized.',
                           ErrorException).local_error('default', 'Error subscription plan.', ErrorException)
         ).execute()
+
+    def cancel_subscription(self, options=dict()):
+        """
+        Cancels a subscription by making a POST request to /v1/billing/subscriptions/{id}/cancel.
+
+        This API cancels an existing billing subscription. Once cancelled, no further
+        billing cycles will be processed, and the subscription is considered inactive.
+
+        Args:
+            options (dict, required): Key-value pairs for parameters:
+                - id (str): The subscription ID to cancel (e.g., 'I-ABCDEFG12345') [Required].
+                - body (dict, optional): Optional JSON body with reason:
+                    {
+                        "reason": "Customer requested cancellation"
+                    }
+
+        Returns:
+            ApiResponse: An object with the response value, status code, and headers.
+
+        Raises:
+            ValueError: If 'subscription_id' is not provided.
+            ErrorException: If PayPal API returns an error response.
+        """
+
+        subscription_id = options.get("subscription_id")
+        if not subscription_id:
+            raise ValueError("Missing required parameter: 'subscription_id' ")
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(
+                Server.DEFAULT
+            ).path('/v1/billing/subscriptions/{subscription_id}/cancel').http_method(
+                HttpMethodEnum.POST
+            ).template_param(Parameter().key("subscription_id").value(subscription_id).should_encode(True)).body_param(
+                Parameter().value(options.get("body", None))
+            ).header_param(Parameter().key('Content-Type').value('application/json')).auth(Single('Oauth2'))
+        ).response(
+            ResponseHandler().deserializer(APIHelper.json_deserialize).is_api_response(True).local_error(
+                '401', 'Unauthorized.', ErrorException
+            ).local_error('404', 'Subscription not found.',
+                          ErrorException).local_error('default', 'Error cancelling subscription.', ErrorException)
+        ).execute()

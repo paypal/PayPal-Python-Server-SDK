@@ -20,9 +20,8 @@ class PaymentTokenResponse(object):
 
     Attributes:
         id (str): The PayPal-generated ID for the vault token.
-        customer (CustomerResponse): This object defines a customer in your
-            system. Use it to manage customer profiles, save payment methods
-            and contact details.
+        customer (CustomerResponse): Customer in merchant's or partner's
+            system of records.
         payment_source (PaymentTokenResponsePaymentSource): The vaulted
             payment method details.
         links (List[LinkDescription]): An array of related [HATEOAS

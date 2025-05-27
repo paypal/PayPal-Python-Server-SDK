@@ -20,8 +20,9 @@ class VaultResponse(object):
     Attributes:
         id (str): The PayPal-generated ID for the saved payment source.
         status (VaultStatus): The vault status.
-        customer (VaultCustomer): The details about a customer in PayPal's
-            system of record.
+        customer (VaultCustomer): This object represents a merchant’s
+            customer, allowing them to store contact details, and track all
+            payments associated with the same customer.
         links (List[LinkDescription]): An array of request-related HATEOAS
             links.
 

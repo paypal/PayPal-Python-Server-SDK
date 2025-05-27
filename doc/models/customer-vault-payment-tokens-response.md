@@ -11,18 +11,18 @@ Collection of payment tokens saved for a given customer.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `total_items` | `int` | Optional | Total number of items.<br>**Constraints**: `>= 1`, `<= 50` |
-| `total_pages` | `int` | Optional | Total number of pages.<br>**Constraints**: `>= 1`, `<= 10` |
+| `total_items` | `int` | Optional | Total number of items.<br><br>**Constraints**: `>= 1`, `<= 50` |
+| `total_pages` | `int` | Optional | Total number of pages.<br><br>**Constraints**: `>= 1`, `<= 10` |
 | `customer` | [`VaultResponseCustomer`](../../doc/models/vault-response-customer.md) | Optional | This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. |
 | `payment_tokens` | [`List[PaymentTokenResponse]`](../../doc/models/payment-token-response.md) | Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `64` |
-| `links` | [`List[LinkDescription]`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` |
+| `links` | [`List[LinkDescription]`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` |
 
 ## Example (as JSON)
 
 ```json
 {
-  "total_items": 132,
-  "total_pages": 168,
+  "total_items": 50,
+  "total_pages": 10,
   "customer": {
     "id": "id0",
     "merchant_customer_id": "merchant_customer_id2",

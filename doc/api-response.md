@@ -11,10 +11,10 @@ An object with the response value as well as other useful information such as st
 | reason_phrase | `str` | The reason phrase returned with the status code. |
 | headers | `dict[str, str]` | The HTTP response headers. |
 | text | `str` | The raw response body as a string. |
-| request | [`HttpRequest`](http-request.md) | The original HTTP request sent. |
+| request | [`HttpRequest`](../doc/http-request.md) | The original HTTP request sent. |
 | body | `Any` | The parsed response data, if applicable. |
 
-## Example Usage
+## Usage Example
 
 ```python
 try:

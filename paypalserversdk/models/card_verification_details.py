@@ -38,7 +38,7 @@ class CardVerificationDetails(object):
         processor_response (CardVerificationProcessorResponse): The processor
             response information for payment requests, such as direct credit
             card transactions.
-        three_d_secure (object): DEPRECATED. This field is DEPRECATED. Please
+        three_d_secure (Any): DEPRECATED. This field is DEPRECATED. Please
             find the 3D secure authentication data in the 'three_d_secure'
             object under the 'authentication_result' object instead of the
             'verification' object.

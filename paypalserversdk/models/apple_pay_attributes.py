@@ -18,8 +18,9 @@ class ApplePayAttributes(object):
     Additional attributes associated with apple pay.
 
     Attributes:
-        customer (CustomerInformation): The details about a customer in
-            PayPal's system of record.
+        customer (CustomerInformation): This object represents a merchant’s
+            customer, allowing them to store contact details, and track all
+            payments associated with the same customer.
         vault (VaultInstruction): Base vaulting specification. The object can
             be extended for specific use cases within each payment_source that
             supports vaulting.

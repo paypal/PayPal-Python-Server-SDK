@@ -81,8 +81,8 @@ class PurchaseUnit(object):
         payments (PaymentCollection): The collection of payments, or
             transactions, for a purchase unit in an order. For example,
             authorized payments, captured payments, and refunds.
-        most_recent_errors (List[object]): The error reason code and
-            description that are the reason for the most recent order decline.
+        most_recent_errors (List[Any]): The error reason code and description
+            that are the reason for the most recent order decline.
 
     """
 

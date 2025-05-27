@@ -13,7 +13,7 @@ The JSON patch object to apply partial updates to resources.
 |  --- | --- | --- | --- |
 | `op` | [`PatchOp`](../../doc/models/patch-op.md) | Required | The operation. |
 | `path` | `str` | Optional | The JSON Pointer to the target document location at which to complete the operation. |
-| `value` | `object` | Optional | The value to apply. The remove, copy, and move operations do not require a value. Since JSON Patch allows any type for value, the type property is not specified. |
+| `value` | `Any` | Optional | The value to apply. The remove, copy, and move operations do not require a value. Since JSON Patch allows any type for value, the type property is not specified. |
 | `mfrom` | `str` | Optional | The JSON Pointer to the target document location from which to move the value. Required for the move operation. |
 
 ## Example (as JSON)

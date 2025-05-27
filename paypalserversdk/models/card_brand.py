@@ -17,7 +17,7 @@ class CardBrand(object):
 
     Attributes:
         VISA: Visa card.
-        MASTERCARD: Mastecard card.
+        MASTERCARD: Mastercard card.
         DISCOVER: Discover card.
         AMEX: American Express card.
         SOLO: Solo debit card.

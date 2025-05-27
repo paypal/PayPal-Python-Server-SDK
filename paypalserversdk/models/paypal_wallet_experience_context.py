@@ -36,6 +36,9 @@ class PaypalWalletExperienceContext(object):
             code](https://unstats.un.org/unsd/methodology/m49/).
         shipping_preference (PaypalWalletContextShippingPreference): The
             location from which the shipping address is derived.
+        contact_preference (PaypalWalletContactPreference): The preference to
+            display the contact information (buyer’s shipping email & phone
+            number) on PayPal's checkout for easy merchant-buyer communication.
         return_url (str): Describes the URL.
         cancel_url (str): Describes the URL.
         landing_page (PaypalExperienceLandingPage): The type of landing page
@@ -54,6 +57,7 @@ class PaypalWalletExperienceContext(object):
         "brand_name": 'brand_name',
         "locale": 'locale',
         "shipping_preference": 'shipping_preference',
+        "contact_preference": 'contact_preference',
         "return_url": 'return_url',
         "cancel_url": 'cancel_url',
         "landing_page": 'landing_page',
@@ -66,6 +70,7 @@ class PaypalWalletExperienceContext(object):
         'brand_name',
         'locale',
         'shipping_preference',
+        'contact_preference',
         'return_url',
         'cancel_url',
         'landing_page',
@@ -78,6 +83,7 @@ class PaypalWalletExperienceContext(object):
                  brand_name=APIHelper.SKIP,
                  locale=APIHelper.SKIP,
                  shipping_preference='GET_FROM_FILE',
+                 contact_preference='NO_CONTACT_INFO',
                  return_url=APIHelper.SKIP,
                  cancel_url=APIHelper.SKIP,
                  landing_page='NO_PREFERENCE',
@@ -92,6 +98,7 @@ class PaypalWalletExperienceContext(object):
         if locale is not APIHelper.SKIP:
             self.locale = locale 
         self.shipping_preference = shipping_preference 
+        self.contact_preference = contact_preference 
         if return_url is not APIHelper.SKIP:
             self.return_url = return_url 
         if cancel_url is not APIHelper.SKIP:
@@ -124,6 +131,7 @@ class PaypalWalletExperienceContext(object):
         brand_name = dictionary.get("brand_name") if dictionary.get("brand_name") else APIHelper.SKIP
         locale = dictionary.get("locale") if dictionary.get("locale") else APIHelper.SKIP
         shipping_preference = dictionary.get("shipping_preference") if dictionary.get("shipping_preference") else 'GET_FROM_FILE'
+        contact_preference = dictionary.get("contact_preference") if dictionary.get("contact_preference") else 'NO_CONTACT_INFO'
         return_url = dictionary.get("return_url") if dictionary.get("return_url") else APIHelper.SKIP
         cancel_url = dictionary.get("cancel_url") if dictionary.get("cancel_url") else APIHelper.SKIP
         landing_page = dictionary.get("landing_page") if dictionary.get("landing_page") else 'NO_PREFERENCE'
@@ -134,6 +142,7 @@ class PaypalWalletExperienceContext(object):
         return cls(brand_name,
                    locale,
                    shipping_preference,
+                   contact_preference,
                    return_url,
                    cancel_url,
                    landing_page,
@@ -146,6 +155,7 @@ class PaypalWalletExperienceContext(object):
                 f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!r}, '
                 f'locale={(self.locale if hasattr(self, "locale") else None)!r}, '
                 f'shipping_preference={(self.shipping_preference if hasattr(self, "shipping_preference") else None)!r}, '
+                f'contact_preference={(self.contact_preference if hasattr(self, "contact_preference") else None)!r}, '
                 f'return_url={(self.return_url if hasattr(self, "return_url") else None)!r}, '
                 f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!r}, '
                 f'landing_page={(self.landing_page if hasattr(self, "landing_page") else None)!r}, '
@@ -158,6 +168,7 @@ class PaypalWalletExperienceContext(object):
                 f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!s}, '
                 f'locale={(self.locale if hasattr(self, "locale") else None)!s}, '
                 f'shipping_preference={(self.shipping_preference if hasattr(self, "shipping_preference") else None)!s}, '
+                f'contact_preference={(self.contact_preference if hasattr(self, "contact_preference") else None)!s}, '
                 f'return_url={(self.return_url if hasattr(self, "return_url") else None)!s}, '
                 f'cancel_url={(self.cancel_url if hasattr(self, "cancel_url") else None)!s}, '
                 f'landing_page={(self.landing_page if hasattr(self, "landing_page") else None)!s}, '

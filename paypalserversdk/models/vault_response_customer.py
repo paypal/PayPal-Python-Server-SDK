@@ -22,7 +22,7 @@ class VaultResponseCustomer(object):
             data-store where their customer information is persisted. Use
             merchant_customer_id to associate the PayPal-generated customer.id
             to your representation of a customer.
-        links (List[object]): An array of request-related HATEOAS links.
+        links (List[Any]): DEPRECATED. This field is DEPRECATED.
 
     """
 

@@ -16,8 +16,8 @@ from apimatic_core.response_handler import ResponseHandler
 from apimatic_core.types.parameter import Parameter
 from paypalserversdk.http.http_method_enum import HttpMethodEnum
 from apimatic_core.authentication.multiple.single_auth import Single
-from paypalserversdk.models.payment_authorization import PaymentAuthorization
 from paypalserversdk.models.captured_payment import CapturedPayment
+from paypalserversdk.models.payment_authorization import PaymentAuthorization
 from paypalserversdk.models.refund import Refund
 from paypalserversdk.exceptions.error_exception import ErrorException
 from paypalserversdk.exceptions.api_exception import ApiException
@@ -28,80 +28,6 @@ class PaymentsController(BaseController):
     """A Controller to access Endpoints in the paypalserversdk API."""
     def __init__(self, config):
         super(PaymentsController, self).__init__(config)
-
-    def get_authorized_payment(self,
-                               options=dict()):
-        """Does a GET request to /v2/payments/authorizations/{authorization_id}.
-
-        Shows details for an authorized payment, by ID.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    authorization_id -- str -- The ID of the authorized
-                        payment for which to show details.
-                    paypal_mock_response -- str -- PayPal's REST API uses a
-                        request header to invoke negative testing in the
-                        sandbox. This header configures the sandbox into a
-                        negative testing state for transactions that include
-                        the merchant.
-                    paypal_auth_assertion -- str -- An API-caller-provided
-                        JSON Web Token (JWT) assertion that identifies the
-                        merchant. For details, see
-                        [PayPal-Auth-Assertion](/docs/api/reference/api-request
-                        s/#paypal-auth-assertion). Note:For three party
-                        transactions in which a partner is managing the API
-                        calls on behalf of a merchant, the partner must
-                        identify the merchant using either a
-                        PayPal-Auth-Assertion header or an access token with
-                        target_subject.
-
-        Returns:
-            ApiResponse: An object with the response value as well as other
-                useful information such as status codes and headers. A
-                successful request returns the HTTP 200 OK status code and a
-                JSON response body that shows authorization details.
-
-        Raises:
-            ApiException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
-            .path('/v2/payments/authorizations/{authorization_id}')
-            .http_method(HttpMethodEnum.GET)
-            .template_param(Parameter()
-                            .key('authorization_id')
-                            .value(options.get('authorization_id', None))
-                            .should_encode(True))
-            .header_param(Parameter()
-                          .key('PayPal-Mock-Response')
-                          .value(options.get('paypal_mock_response', None)))
-            .header_param(Parameter()
-                          .key('PayPal-Auth-Assertion')
-                          .value(options.get('paypal_auth_assertion', None)))
-            .header_param(Parameter()
-                          .key('accept')
-                          .value('application/json'))
-            .auth(Single('Oauth2'))
-        ).response(
-            ResponseHandler()
-            .deserializer(APIHelper.json_deserialize)
-            .deserialize_into(PaymentAuthorization.from_dictionary)
-            .is_api_response(True)
-            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
-            .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
-            .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
-            .local_error('default', 'The error response.', ErrorException)
-        ).execute()
 
     def capture_authorized_payment(self,
                                    options=dict()):
@@ -200,6 +126,68 @@ class PaymentsController(BaseController):
             .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
             .local_error('409', 'The server has detected a conflict while processing this request.', ErrorException)
             .local_error('422', 'The request failed because it is semantically incorrect or failed business validation.', ErrorException)
+            .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
+            .local_error('default', 'The error response.', ErrorException)
+        ).execute()
+
+    def get_captured_payment(self,
+                             options=dict()):
+        """Does a GET request to /v2/payments/captures/{capture_id}.
+
+        Shows details for a captured payment, by ID.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    capture_id -- str -- The PayPal-generated ID for the
+                        captured payment for which to show details.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
+
+        Returns:
+            ApiResponse: An object with the response value as well as other
+                useful information such as status codes and headers. A
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows captured payment details.
+
+        Raises:
+            ApiException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.DEFAULT)
+            .path('/v2/payments/captures/{capture_id}')
+            .http_method(HttpMethodEnum.GET)
+            .template_param(Parameter()
+                            .key('capture_id')
+                            .value(options.get('capture_id', None))
+                            .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
+            .header_param(Parameter()
+                          .key('accept')
+                          .value('application/json'))
+            .auth(Single('Oauth2'))
+        ).response(
+            ResponseHandler()
+            .deserializer(APIHelper.json_deserialize)
+            .deserialize_into(CapturedPayment.from_dictionary)
+            .is_api_response(True)
+            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
+            .local_error('403', 'The request failed because the caller has insufficient permissions.', ErrorException)
+            .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
             .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
@@ -404,68 +392,6 @@ class PaymentsController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
-    def get_captured_payment(self,
-                             options=dict()):
-        """Does a GET request to /v2/payments/captures/{capture_id}.
-
-        Shows details for a captured payment, by ID.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    capture_id -- str -- The PayPal-generated ID for the
-                        captured payment for which to show details.
-                    paypal_mock_response -- str -- PayPal's REST API uses a
-                        request header to invoke negative testing in the
-                        sandbox. This header configures the sandbox into a
-                        negative testing state for transactions that include
-                        the merchant.
-
-        Returns:
-            ApiResponse: An object with the response value as well as other
-                useful information such as status codes and headers. A
-                successful request returns the HTTP 200 OK status code and a
-                JSON response body that shows captured payment details.
-
-        Raises:
-            ApiException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
-            .path('/v2/payments/captures/{capture_id}')
-            .http_method(HttpMethodEnum.GET)
-            .template_param(Parameter()
-                            .key('capture_id')
-                            .value(options.get('capture_id', None))
-                            .should_encode(True))
-            .header_param(Parameter()
-                          .key('PayPal-Mock-Response')
-                          .value(options.get('paypal_mock_response', None)))
-            .header_param(Parameter()
-                          .key('accept')
-                          .value('application/json'))
-            .auth(Single('Oauth2'))
-        ).response(
-            ResponseHandler()
-            .deserializer(APIHelper.json_deserialize)
-            .deserialize_into(CapturedPayment.from_dictionary)
-            .is_api_response(True)
-            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
-            .local_error('403', 'The request failed because the caller has insufficient permissions.', ErrorException)
-            .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
-            .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
-            .local_error('default', 'The error response.', ErrorException)
-        ).execute()
-
     def refund_captured_payment(self,
                                 options=dict()):
         """Does a POST request to /v2/payments/captures/{capture_id}/refund.
@@ -565,6 +491,80 @@ class PaymentsController(BaseController):
             .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
             .local_error('409', 'The request failed because a previous call for the given resource is in progress.', ErrorException)
             .local_error('422', 'The request failed because it either is semantically incorrect or failed business validation.', ErrorException)
+            .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
+            .local_error('default', 'The error response.', ErrorException)
+        ).execute()
+
+    def get_authorized_payment(self,
+                               options=dict()):
+        """Does a GET request to /v2/payments/authorizations/{authorization_id}.
+
+        Shows details for an authorized payment, by ID.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    authorization_id -- str -- The ID of the authorized
+                        payment for which to show details.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see
+                        [PayPal-Auth-Assertion](/docs/api/reference/api-request
+                        s/#paypal-auth-assertion). Note:For three party
+                        transactions in which a partner is managing the API
+                        calls on behalf of a merchant, the partner must
+                        identify the merchant using either a
+                        PayPal-Auth-Assertion header or an access token with
+                        target_subject.
+
+        Returns:
+            ApiResponse: An object with the response value as well as other
+                useful information such as status codes and headers. A
+                successful request returns the HTTP 200 OK status code and a
+                JSON response body that shows authorization details.
+
+        Raises:
+            ApiException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.DEFAULT)
+            .path('/v2/payments/authorizations/{authorization_id}')
+            .http_method(HttpMethodEnum.GET)
+            .template_param(Parameter()
+                            .key('authorization_id')
+                            .value(options.get('authorization_id', None))
+                            .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
+            .header_param(Parameter()
+                          .key('accept')
+                          .value('application/json'))
+            .auth(Single('Oauth2'))
+        ).response(
+            ResponseHandler()
+            .deserializer(APIHelper.json_deserialize)
+            .deserialize_into(PaymentAuthorization.from_dictionary)
+            .is_api_response(True)
+            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
+            .local_error('404', 'The request failed because the resource does not exist.', ErrorException)
             .local_error('500', 'The request failed because an internal server error occurred.', ApiException)
             .local_error('default', 'The error response.', ErrorException)
         ).execute()

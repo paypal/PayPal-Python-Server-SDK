@@ -42,8 +42,8 @@ class VaultPaypalWalletRequest(object):
             either a business or a consumer.
         billing_plan (Plan): The merchant level Recurring Billing plan
             metadata for the Billing Agreement.
-        experience_context (VaultExperienceContext): Customizes the Vault
-            creation flow experience for your customers.
+        experience_context (VaultExperienceContext): A resource representing
+            an experience context of vault PayPal Wallet.
 
     """
 

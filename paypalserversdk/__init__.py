@@ -7,4 +7,5 @@ __all__ = [
     'logging',
     'models',
     'paypal_serversdk_client',
+    'utilities',
 ]

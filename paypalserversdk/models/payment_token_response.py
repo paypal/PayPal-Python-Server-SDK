@@ -19,7 +19,9 @@ class PaymentTokenResponse(object):
     Full representation of a saved payment token.
 
     Attributes:
-        id (str): The PayPal-generated ID for the vault token.
+        id (str): The PayPal-generated ID for the vaulted payment source. This
+            ID should be stored on the merchant's server so the saved payment
+            source can be used for future transactions.
         customer (CustomerResponse): Customer in merchant's or partner's
             system of records.
         payment_source (PaymentTokenResponsePaymentSource): The vaulted

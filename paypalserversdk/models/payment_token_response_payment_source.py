@@ -22,10 +22,10 @@ class PaymentTokenResponsePaymentSource(object):
     Attributes:
         card (CardPaymentTokenEntity): Full representation of a Card Payment
             Token including network token.
-        paypal (PaypalPaymentToken): The model property of type
-            PaypalPaymentToken.
-        venmo (VenmoPaymentToken): The model property of type
-            VenmoPaymentToken.
+        paypal (PaypalPaymentToken): Full representation of a PayPal Payment
+            Token.
+        venmo (VenmoPaymentToken): Full representation of a Venmo Payment
+            Token.
         apple_pay (ApplePayPaymentToken): A resource representing a response
             for Apple Pay.
 

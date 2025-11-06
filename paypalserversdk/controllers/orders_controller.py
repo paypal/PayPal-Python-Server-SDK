@@ -16,8 +16,8 @@ from apimatic_core.response_handler import ResponseHandler
 from apimatic_core.types.parameter import Parameter
 from paypalserversdk.http.http_method_enum import HttpMethodEnum
 from apimatic_core.authentication.multiple.single_auth import Single
-from paypalserversdk.models.order_authorize_response import OrderAuthorizeResponse
 from paypalserversdk.models.order import Order
+from paypalserversdk.models.order_authorize_response import OrderAuthorizeResponse
 from paypalserversdk.exceptions.error_exception import ErrorException
 
 
@@ -26,6 +26,182 @@ class OrdersController(BaseController):
     """A Controller to access Endpoints in the paypalserversdk API."""
     def __init__(self, config):
         super(OrdersController, self).__init__(config)
+
+    def create_order(self,
+                     options=dict()):
+        """Does a POST request to /v2/checkout/orders.
+
+        Creates an order. Merchants and partners can add Level 2 and 3 data to
+        payments to reduce risk and payment processing costs. For more
+        information about processing payments, see checkout or multiparty
+        checkout. Note: For error handling and troubleshooting, see Orders v2
+        errors.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    body -- OrderRequest -- The request body parameter.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
+                    paypal_request_id -- str -- The server stores keys for 6
+                        hours. The API callers can request the times to up to
+                        72 hours by speaking to their Account Manager. It is
+                        mandatory for all single-step create order calls (E.g.
+                        Create Order Request with payment source information
+                        like Card, PayPal.vault_id,
+                        PayPal.billing_agreement_id, etc).
+                    paypal_partner_attribution_id -- str -- The request header
+                        parameter.
+                    paypal_client_metadata_id -- str -- The request header
+                        parameter.
+                    prefer -- str -- The preferred server response upon
+                        successful completion of the request. Value is:
+                        return=minimal. The server returns a minimal response
+                        to optimize communication between the API caller and
+                        the server. A minimal response includes the id, status
+                        and HATEOAS links. return=representation. The server
+                        returns a complete resource representation, including
+                        the current state of the resource.
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see PayPal-Auth-Assertion.
+
+        Returns:
+            ApiResponse: An object with the response value as well as other
+                useful information such as status codes and headers. A
+                successful response to an idempotent request returns the HTTP
+                `200 OK` status code with a JSON response body that shows
+                order details.
+
+        Raises:
+            ApiException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.DEFAULT)
+            .path('/v2/checkout/orders')
+            .http_method(HttpMethodEnum.POST)
+            .header_param(Parameter()
+                          .key('Content-Type')
+                          .value('application/json'))
+            .body_param(Parameter()
+                        .value(options.get('body', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Request-Id')
+                          .value(options.get('paypal_request_id', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Partner-Attribution-Id')
+                          .value(options.get('paypal_partner_attribution_id', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Client-Metadata-Id')
+                          .value(options.get('paypal_client_metadata_id', None)))
+            .header_param(Parameter()
+                          .key('Prefer')
+                          .value(options.get('prefer', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
+            .header_param(Parameter()
+                          .key('accept')
+                          .value('application/json'))
+            .body_serializer(APIHelper.json_serialize)
+            .auth(Single('Oauth2'))
+        ).response(
+            ResponseHandler()
+            .deserializer(APIHelper.json_deserialize)
+            .deserialize_into(Order.from_dictionary)
+            .is_api_response(True)
+            .local_error('400', 'Request is not well-formed, syntactically incorrect, or violates schema.', ErrorException)
+            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
+            .local_error('422', 'The requested action could not be performed, semantically incorrect, or failed business validation.', ErrorException)
+            .local_error('default', 'The error response.', ErrorException)
+        ).execute()
+
+    def get_order(self,
+                  options=dict()):
+        """Does a GET request to /v2/checkout/orders/{id}.
+
+        Shows details for an order, by ID. Note: For error handling and
+        troubleshooting, see Orders v2 errors.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    id -- str -- The ID of the order for which to show details.
+                    paypal_mock_response -- str -- PayPal's REST API uses a
+                        request header to invoke negative testing in the
+                        sandbox. This header configures the sandbox into a
+                        negative testing state for transactions that include
+                        the merchant.
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see PayPal-Auth-Assertion.
+                    fields -- str -- A comma-separated list of fields that
+                        should be returned for the order. Valid filter field
+                        is `payment_source`.
+
+        Returns:
+            ApiResponse: An object with the response value as well as other
+                useful information such as status codes and headers. A
+                successful request returns the HTTP `200 OK` status code and a
+                JSON response body that shows order details.
+
+        Raises:
+            ApiException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.DEFAULT)
+            .path('/v2/checkout/orders/{id}')
+            .http_method(HttpMethodEnum.GET)
+            .template_param(Parameter()
+                            .key('id')
+                            .value(options.get('id', None))
+                            .should_encode(True))
+            .header_param(Parameter()
+                          .key('PayPal-Mock-Response')
+                          .value(options.get('paypal_mock_response', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
+            .query_param(Parameter()
+                         .key('fields')
+                         .value(options.get('fields', None)))
+            .header_param(Parameter()
+                          .key('accept')
+                          .value('application/json'))
+            .auth(Single('Oauth2'))
+        ).response(
+            ResponseHandler()
+            .deserializer(APIHelper.json_deserialize)
+            .deserialize_into(Order.from_dictionary)
+            .is_api_response(True)
+            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
+            .local_error('404', 'The specified resource does not exist.', ErrorException)
+            .local_error('default', 'The error response.', ErrorException)
+        ).execute()
 
     def patch_order(self,
                     options=dict()):
@@ -156,6 +332,91 @@ class OrdersController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
+    def confirm_order(self,
+                      options=dict()):
+        """Does a POST request to /v2/checkout/orders/{id}/confirm-payment-source.
+
+        Payer confirms their intent to pay for the the Order with the given
+        payment source.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    id -- str -- The ID of the order for which the payer
+                        confirms their intent to pay.
+                    paypal_client_metadata_id -- str -- The request header
+                        parameter.
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see PayPal-Auth-Assertion.
+                    prefer -- str -- The preferred server response upon
+                        successful completion of the request. Value is:
+                        return=minimal. The server returns a minimal response
+                        to optimize communication between the API caller and
+                        the server. A minimal response includes the id, status
+                        and HATEOAS links. return=representation. The server
+                        returns a complete resource representation, including
+                        the current state of the resource.
+                    body -- ConfirmOrderRequest -- The request body parameter.
+
+        Returns:
+            ApiResponse: An object with the response value as well as other
+                useful information such as status codes and headers. A
+                successful request indicates that the payment source was added
+                to the Order. A successful request returns the HTTP `200 OK`
+                status code with a JSON response body that shows order details.
+
+        Raises:
+            ApiException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.DEFAULT)
+            .path('/v2/checkout/orders/{id}/confirm-payment-source')
+            .http_method(HttpMethodEnum.POST)
+            .template_param(Parameter()
+                            .key('id')
+                            .value(options.get('id', None))
+                            .should_encode(True))
+            .header_param(Parameter()
+                          .key('Content-Type')
+                          .value('application/json'))
+            .header_param(Parameter()
+                          .key('PayPal-Client-Metadata-Id')
+                          .value(options.get('paypal_client_metadata_id', None)))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
+            .header_param(Parameter()
+                          .key('Prefer')
+                          .value(options.get('prefer', None)))
+            .body_param(Parameter()
+                        .value(options.get('body', None)))
+            .header_param(Parameter()
+                          .key('accept')
+                          .value('application/json'))
+            .body_serializer(APIHelper.json_serialize)
+            .auth(Single('Oauth2'))
+        ).response(
+            ResponseHandler()
+            .deserializer(APIHelper.json_deserialize)
+            .deserialize_into(Order.from_dictionary)
+            .is_api_response(True)
+            .local_error('400', 'Request is not well-formed, syntactically incorrect, or violates schema.', ErrorException)
+            .local_error('403', 'Authorization failed due to insufficient permissions.', ErrorException)
+            .local_error('422', 'The requested action could not be performed, semantically incorrect, or failed business validation.', ErrorException)
+            .local_error('500', 'An internal server error has occurred.', ErrorException)
+            .local_error('default', 'The error response.', ErrorException)
+        ).execute()
+
     def authorize_order(self,
                         options=dict()):
         """Does a POST request to /v2/checkout/orders/{id}/authorize.
@@ -262,251 +523,6 @@ class OrdersController(BaseController):
             .local_error('404', 'The specified resource does not exist.', ErrorException)
             .local_error('422', 'The requested action could not be performed, semantically incorrect, or failed business validation.', ErrorException)
             .local_error('500', 'An internal server error has occurred.', ErrorException)
-            .local_error('default', 'The error response.', ErrorException)
-        ).execute()
-
-    def update_order_tracking(self,
-                              options=dict()):
-        """Does a PATCH request to /v2/checkout/orders/{id}/trackers/{tracker_id}.
-
-        Updates or cancels the tracking information for a PayPal order, by ID.
-        Updatable attributes or objects: Attribute Op Notes items replace
-        Using replace op for items will replace the entire items object with
-        the value sent in request. notify_payer replace, add status replace
-        Only patching status to CANCELLED is currently supported.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    id -- str -- The ID of the order that the tracking
-                        information is associated with.
-                    tracker_id -- str -- The order tracking ID.
-                    paypal_auth_assertion -- str -- An API-caller-provided
-                        JSON Web Token (JWT) assertion that identifies the
-                        merchant. For details, see PayPal-Auth-Assertion.
-                    body -- List[Patch] -- The request body parameter.
-
-        Returns:
-            ApiResponse: An object with the response value as well as other
-                useful information such as status codes and headers. A
-                successful request returns the HTTP `204 No Content` status
-                code with an empty object in the JSON response body.
-
-        Raises:
-            ApiException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
-            .path('/v2/checkout/orders/{id}/trackers/{tracker_id}')
-            .http_method(HttpMethodEnum.PATCH)
-            .template_param(Parameter()
-                            .key('id')
-                            .value(options.get('id', None))
-                            .should_encode(True))
-            .template_param(Parameter()
-                            .key('tracker_id')
-                            .value(options.get('tracker_id', None))
-                            .should_encode(True))
-            .header_param(Parameter()
-                          .key('Content-Type')
-                          .value('application/json'))
-            .header_param(Parameter()
-                          .key('PayPal-Auth-Assertion')
-                          .value(options.get('paypal_auth_assertion', None)))
-            .body_param(Parameter()
-                        .value(options.get('body', None)))
-            .body_serializer(APIHelper.json_serialize)
-            .auth(Single('Oauth2'))
-        ).response(
-            ResponseHandler()
-            .is_api_response(True)
-            .local_error('400', 'Request is not well-formed, syntactically incorrect, or violates schema.', ErrorException)
-            .local_error('403', 'Authorization failed due to insufficient permissions.', ErrorException)
-            .local_error('404', 'The specified resource does not exist.', ErrorException)
-            .local_error('422', 'The requested action could not be performed, semantically incorrect, or failed business validation.', ErrorException)
-            .local_error('500', 'An internal server error has occurred.', ErrorException)
-            .local_error('default', 'The error response.', ErrorException)
-        ).execute()
-
-    def create_order_tracking(self,
-                              options=dict()):
-        """Does a POST request to /v2/checkout/orders/{id}/track.
-
-        Adds tracking information for an Order.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    id -- str -- The ID of the order that the tracking
-                        information is associated with.
-                    body -- OrderTrackerRequest -- The request body parameter.
-                    paypal_auth_assertion -- str -- An API-caller-provided
-                        JSON Web Token (JWT) assertion that identifies the
-                        merchant. For details, see PayPal-Auth-Assertion.
-
-        Returns:
-            ApiResponse: An object with the response value as well as other
-                useful information such as status codes and headers. A
-                successful response to an idempotent request returns the HTTP
-                `200 OK` status code with a JSON response body that shows
-                tracker details.
-
-        Raises:
-            ApiException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
-            .path('/v2/checkout/orders/{id}/track')
-            .http_method(HttpMethodEnum.POST)
-            .template_param(Parameter()
-                            .key('id')
-                            .value(options.get('id', None))
-                            .should_encode(True))
-            .header_param(Parameter()
-                          .key('Content-Type')
-                          .value('application/json'))
-            .body_param(Parameter()
-                        .value(options.get('body', None)))
-            .header_param(Parameter()
-                          .key('PayPal-Auth-Assertion')
-                          .value(options.get('paypal_auth_assertion', None)))
-            .header_param(Parameter()
-                          .key('accept')
-                          .value('application/json'))
-            .body_serializer(APIHelper.json_serialize)
-            .auth(Single('Oauth2'))
-        ).response(
-            ResponseHandler()
-            .deserializer(APIHelper.json_deserialize)
-            .deserialize_into(Order.from_dictionary)
-            .is_api_response(True)
-            .local_error('400', 'Request is not well-formed, syntactically incorrect, or violates schema.', ErrorException)
-            .local_error('403', 'Authorization failed due to insufficient permissions.', ErrorException)
-            .local_error('404', 'The specified resource does not exist.', ErrorException)
-            .local_error('422', 'The requested action could not be performed, semantically incorrect, or failed business validation.', ErrorException)
-            .local_error('500', 'An internal server error has occurred.', ErrorException)
-            .local_error('default', 'The error response.', ErrorException)
-        ).execute()
-
-    def create_order(self,
-                     options=dict()):
-        """Does a POST request to /v2/checkout/orders.
-
-        Creates an order. Merchants and partners can add Level 2 and 3 data to
-        payments to reduce risk and payment processing costs. For more
-        information about processing payments, see checkout or multiparty
-        checkout. Note: For error handling and troubleshooting, see Orders v2
-        errors.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    body -- OrderRequest -- The request body parameter.
-                    paypal_mock_response -- str -- PayPal's REST API uses a
-                        request header to invoke negative testing in the
-                        sandbox. This header configures the sandbox into a
-                        negative testing state for transactions that include
-                        the merchant.
-                    paypal_request_id -- str -- The server stores keys for 6
-                        hours. The API callers can request the times to up to
-                        72 hours by speaking to their Account Manager. It is
-                        mandatory for all single-step create order calls (E.g.
-                        Create Order Request with payment source information
-                        like Card, PayPal.vault_id,
-                        PayPal.billing_agreement_id, etc).
-                    paypal_partner_attribution_id -- str -- The request header
-                        parameter.
-                    paypal_client_metadata_id -- str -- The request header
-                        parameter.
-                    prefer -- str -- The preferred server response upon
-                        successful completion of the request. Value is:
-                        return=minimal. The server returns a minimal response
-                        to optimize communication between the API caller and
-                        the server. A minimal response includes the id, status
-                        and HATEOAS links. return=representation. The server
-                        returns a complete resource representation, including
-                        the current state of the resource.
-                    paypal_auth_assertion -- str -- An API-caller-provided
-                        JSON Web Token (JWT) assertion that identifies the
-                        merchant. For details, see PayPal-Auth-Assertion.
-
-        Returns:
-            ApiResponse: An object with the response value as well as other
-                useful information such as status codes and headers. A
-                successful response to an idempotent request returns the HTTP
-                `200 OK` status code with a JSON response body that shows
-                order details.
-
-        Raises:
-            ApiException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
-            .path('/v2/checkout/orders')
-            .http_method(HttpMethodEnum.POST)
-            .header_param(Parameter()
-                          .key('Content-Type')
-                          .value('application/json'))
-            .body_param(Parameter()
-                        .value(options.get('body', None)))
-            .header_param(Parameter()
-                          .key('PayPal-Mock-Response')
-                          .value(options.get('paypal_mock_response', None)))
-            .header_param(Parameter()
-                          .key('PayPal-Request-Id')
-                          .value(options.get('paypal_request_id', None)))
-            .header_param(Parameter()
-                          .key('PayPal-Partner-Attribution-Id')
-                          .value(options.get('paypal_partner_attribution_id', None)))
-            .header_param(Parameter()
-                          .key('PayPal-Client-Metadata-Id')
-                          .value(options.get('paypal_client_metadata_id', None)))
-            .header_param(Parameter()
-                          .key('Prefer')
-                          .value(options.get('prefer', None)))
-            .header_param(Parameter()
-                          .key('PayPal-Auth-Assertion')
-                          .value(options.get('paypal_auth_assertion', None)))
-            .header_param(Parameter()
-                          .key('accept')
-                          .value('application/json'))
-            .body_serializer(APIHelper.json_serialize)
-            .auth(Single('Oauth2'))
-        ).response(
-            ResponseHandler()
-            .deserializer(APIHelper.json_deserialize)
-            .deserialize_into(Order.from_dictionary)
-            .is_api_response(True)
-            .local_error('400', 'Request is not well-formed, syntactically incorrect, or violates schema.', ErrorException)
-            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
-            .local_error('422', 'The requested action could not be performed, semantically incorrect, or failed business validation.', ErrorException)
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
@@ -619,12 +635,11 @@ class OrdersController(BaseController):
             .local_error('default', 'The error response.', ErrorException)
         ).execute()
 
-    def get_order(self,
-                  options=dict()):
-        """Does a GET request to /v2/checkout/orders/{id}.
+    def create_order_tracking(self,
+                              options=dict()):
+        """Does a POST request to /v2/checkout/orders/{id}/track.
 
-        Shows details for an order, by ID. Note: For error handling and
-        troubleshooting, see Orders v2 errors.
+        Adds tracking information for an Order.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -633,24 +648,19 @@ class OrdersController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    id -- str -- The ID of the order for which to show details.
-                    paypal_mock_response -- str -- PayPal's REST API uses a
-                        request header to invoke negative testing in the
-                        sandbox. This header configures the sandbox into a
-                        negative testing state for transactions that include
-                        the merchant.
+                    id -- str -- The ID of the order that the tracking
+                        information is associated with.
+                    body -- OrderTrackerRequest -- The request body parameter.
                     paypal_auth_assertion -- str -- An API-caller-provided
                         JSON Web Token (JWT) assertion that identifies the
                         merchant. For details, see PayPal-Auth-Assertion.
-                    fields -- str -- A comma-separated list of fields that
-                        should be returned for the order. Valid filter field
-                        is `payment_source`.
 
         Returns:
             ApiResponse: An object with the response value as well as other
                 useful information such as status codes and headers. A
-                successful request returns the HTTP `200 OK` status code and a
-                JSON response body that shows order details.
+                successful response to an idempotent request returns the HTTP
+                `200 OK` status code with a JSON response body that shows
+                tracker details.
 
         Raises:
             ApiException: When an error occurs while fetching the data from
@@ -662,84 +672,7 @@ class OrdersController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/v2/checkout/orders/{id}')
-            .http_method(HttpMethodEnum.GET)
-            .template_param(Parameter()
-                            .key('id')
-                            .value(options.get('id', None))
-                            .should_encode(True))
-            .header_param(Parameter()
-                          .key('PayPal-Mock-Response')
-                          .value(options.get('paypal_mock_response', None)))
-            .header_param(Parameter()
-                          .key('PayPal-Auth-Assertion')
-                          .value(options.get('paypal_auth_assertion', None)))
-            .query_param(Parameter()
-                         .key('fields')
-                         .value(options.get('fields', None)))
-            .header_param(Parameter()
-                          .key('accept')
-                          .value('application/json'))
-            .auth(Single('Oauth2'))
-        ).response(
-            ResponseHandler()
-            .deserializer(APIHelper.json_deserialize)
-            .deserialize_into(Order.from_dictionary)
-            .is_api_response(True)
-            .local_error('401', 'Authentication failed due to missing authorization header, or invalid authentication credentials.', ErrorException)
-            .local_error('404', 'The specified resource does not exist.', ErrorException)
-            .local_error('default', 'The error response.', ErrorException)
-        ).execute()
-
-    def confirm_order(self,
-                      options=dict()):
-        """Does a POST request to /v2/checkout/orders/{id}/confirm-payment-source.
-
-        Payer confirms their intent to pay for the the Order with the given
-        payment source.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    id -- str -- The ID of the order for which the payer
-                        confirms their intent to pay.
-                    paypal_client_metadata_id -- str -- The request header
-                        parameter.
-                    paypal_auth_assertion -- str -- An API-caller-provided
-                        JSON Web Token (JWT) assertion that identifies the
-                        merchant. For details, see PayPal-Auth-Assertion.
-                    prefer -- str -- The preferred server response upon
-                        successful completion of the request. Value is:
-                        return=minimal. The server returns a minimal response
-                        to optimize communication between the API caller and
-                        the server. A minimal response includes the id, status
-                        and HATEOAS links. return=representation. The server
-                        returns a complete resource representation, including
-                        the current state of the resource.
-                    body -- ConfirmOrderRequest -- The request body parameter.
-
-        Returns:
-            ApiResponse: An object with the response value as well as other
-                useful information such as status codes and headers. A
-                successful request indicates that the payment source was added
-                to the Order. A successful request returns the HTTP `200 OK`
-                status code with a JSON response body that shows order details.
-
-        Raises:
-            ApiException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
-            .path('/v2/checkout/orders/{id}/confirm-payment-source')
+            .path('/v2/checkout/orders/{id}/track')
             .http_method(HttpMethodEnum.POST)
             .template_param(Parameter()
                             .key('id')
@@ -748,17 +681,11 @@ class OrdersController(BaseController):
             .header_param(Parameter()
                           .key('Content-Type')
                           .value('application/json'))
-            .header_param(Parameter()
-                          .key('PayPal-Client-Metadata-Id')
-                          .value(options.get('paypal_client_metadata_id', None)))
+            .body_param(Parameter()
+                        .value(options.get('body', None)))
             .header_param(Parameter()
                           .key('PayPal-Auth-Assertion')
                           .value(options.get('paypal_auth_assertion', None)))
-            .header_param(Parameter()
-                          .key('Prefer')
-                          .value(options.get('prefer', None)))
-            .body_param(Parameter()
-                        .value(options.get('body', None)))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))
@@ -771,6 +698,79 @@ class OrdersController(BaseController):
             .is_api_response(True)
             .local_error('400', 'Request is not well-formed, syntactically incorrect, or violates schema.', ErrorException)
             .local_error('403', 'Authorization failed due to insufficient permissions.', ErrorException)
+            .local_error('404', 'The specified resource does not exist.', ErrorException)
+            .local_error('422', 'The requested action could not be performed, semantically incorrect, or failed business validation.', ErrorException)
+            .local_error('500', 'An internal server error has occurred.', ErrorException)
+            .local_error('default', 'The error response.', ErrorException)
+        ).execute()
+
+    def update_order_tracking(self,
+                              options=dict()):
+        """Does a PATCH request to /v2/checkout/orders/{id}/trackers/{tracker_id}.
+
+        Updates or cancels the tracking information for a PayPal order, by ID.
+        Updatable attributes or objects: Attribute Op Notes items replace
+        Using replace op for items will replace the entire items object with
+        the value sent in request. notify_payer replace, add status replace
+        Only patching status to CANCELLED is currently supported.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    id -- str -- The ID of the order that the tracking
+                        information is associated with.
+                    tracker_id -- str -- The order tracking ID.
+                    paypal_auth_assertion -- str -- An API-caller-provided
+                        JSON Web Token (JWT) assertion that identifies the
+                        merchant. For details, see PayPal-Auth-Assertion.
+                    body -- List[Patch] -- The request body parameter.
+
+        Returns:
+            ApiResponse: An object with the response value as well as other
+                useful information such as status codes and headers. A
+                successful request returns the HTTP `204 No Content` status
+                code with an empty object in the JSON response body.
+
+        Raises:
+            ApiException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.DEFAULT)
+            .path('/v2/checkout/orders/{id}/trackers/{tracker_id}')
+            .http_method(HttpMethodEnum.PATCH)
+            .template_param(Parameter()
+                            .key('id')
+                            .value(options.get('id', None))
+                            .should_encode(True))
+            .template_param(Parameter()
+                            .key('tracker_id')
+                            .value(options.get('tracker_id', None))
+                            .should_encode(True))
+            .header_param(Parameter()
+                          .key('Content-Type')
+                          .value('application/json'))
+            .header_param(Parameter()
+                          .key('PayPal-Auth-Assertion')
+                          .value(options.get('paypal_auth_assertion', None)))
+            .body_param(Parameter()
+                        .value(options.get('body', None)))
+            .body_serializer(APIHelper.json_serialize)
+            .auth(Single('Oauth2'))
+        ).response(
+            ResponseHandler()
+            .is_api_response(True)
+            .local_error('400', 'Request is not well-formed, syntactically incorrect, or violates schema.', ErrorException)
+            .local_error('403', 'Authorization failed due to insufficient permissions.', ErrorException)
+            .local_error('404', 'The specified resource does not exist.', ErrorException)
             .local_error('422', 'The requested action could not be performed, semantically incorrect, or failed business validation.', ErrorException)
             .local_error('500', 'An internal server error has occurred.', ErrorException)
             .local_error('default', 'The error response.', ErrorException)

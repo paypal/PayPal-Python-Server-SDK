@@ -10,7 +10,7 @@ from paypalserversdk.api_helper import APIHelper
 from paypalserversdk.models.authorization_status_details import AuthorizationStatusDetails
 from paypalserversdk.models.link_description import LinkDescription
 from paypalserversdk.models.money import Money
-from paypalserversdk.models.network_transaction_reference import NetworkTransactionReference
+from paypalserversdk.models.network_transaction import NetworkTransaction
 from paypalserversdk.models.payee_base import PayeeBase
 from paypalserversdk.models.payment_supplementary_data import PaymentSupplementaryData
 from paypalserversdk.models.seller_protection import SellerProtection
@@ -35,8 +35,8 @@ class PaymentAuthorization(object):
         custom_id (str): The API caller-provided external ID. Used to
             reconcile API caller-initiated transactions with PayPal
             transactions. Appears in transaction and settlement reports.
-        network_transaction_reference (NetworkTransactionReference): Reference
-            values used by the card network to identify a transaction.
+        network_transaction_reference (NetworkTransaction): Reference values
+            used by the card network to identify a transaction.
         seller_protection (SellerProtection): The level of protection offered
             as defined by [PayPal Seller Protection for
             Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-pr
@@ -171,7 +171,7 @@ class PaymentAuthorization(object):
         amount = Money.from_dictionary(dictionary.get('amount')) if 'amount' in dictionary.keys() else APIHelper.SKIP
         invoice_id = dictionary.get("invoice_id") if dictionary.get("invoice_id") else APIHelper.SKIP
         custom_id = dictionary.get("custom_id") if dictionary.get("custom_id") else APIHelper.SKIP
-        network_transaction_reference = NetworkTransactionReference.from_dictionary(dictionary.get('network_transaction_reference')) if 'network_transaction_reference' in dictionary.keys() else APIHelper.SKIP
+        network_transaction_reference = NetworkTransaction.from_dictionary(dictionary.get('network_transaction_reference')) if 'network_transaction_reference' in dictionary.keys() else APIHelper.SKIP
         seller_protection = SellerProtection.from_dictionary(dictionary.get('seller_protection')) if 'seller_protection' in dictionary.keys() else APIHelper.SKIP
         expiration_time = dictionary.get("expiration_time") if dictionary.get("expiration_time") else APIHelper.SKIP
         links = None

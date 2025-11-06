@@ -18,6 +18,8 @@ class PaypalPaymentToken(object):
 
     """Implementation of the 'PayPal Payment Token' model.
 
+    Full representation of a PayPal Payment Token.
+
     Attributes:
         description (str): The description displayed to the consumer on the
             approval flow for a digital wallet, as well as on the merchant
@@ -40,11 +42,12 @@ class PaypalPaymentToken(object):
             associated with a digital wallet payment token. This is to
             indicate whether the customer acting on the merchant / platform is
             either a business or a consumer.
-        email_address (str): The internationalized email address. Note: Up to
-            64 characters are allowed before and 255 characters are allowed
-            after the @ sign. However, the generally accepted maximum length
-            for an email address is 254 characters. The pattern verifies that
-            an unquoted @ sign exists.
+        email_address (str): The internationalized email
+            address.<blockquote><strong>Note:</strong> Up to 64 characters are
+            allowed before and 255 characters are allowed after the
+            <code>@</code> sign. However, the generally accepted maximum
+            length for an email address is 254 characters. The pattern
+            verifies that an unquoted <code>@</code> sign exists.</blockquote>
         payer_id (str): The account identifier for a PayPal account.
         name (Name): The name of the party.
         phone (PhoneWithType): The phone information.

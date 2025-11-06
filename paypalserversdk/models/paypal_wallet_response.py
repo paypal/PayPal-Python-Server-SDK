@@ -62,6 +62,9 @@ class PaypalWalletResponse(object):
             details to process a payment using the PayPal wallet billing
             agreement or a vaulted payment method that has been stored or is
             intended to be stored.
+        experience_status (ExperienceStatus): This field indicates the status
+            of PayPal's Checkout experience throughout the order lifecycle.
+            The values reflect the current stage of the checkout process.
 
     """
 
@@ -78,7 +81,8 @@ class PaypalWalletResponse(object):
         "tax_info": 'tax_info',
         "address": 'address',
         "attributes": 'attributes',
-        "stored_credential": 'stored_credential'
+        "stored_credential": 'stored_credential',
+        "experience_status": 'experience_status'
     }
 
     _optionals = [
@@ -94,6 +98,7 @@ class PaypalWalletResponse(object):
         'address',
         'attributes',
         'stored_credential',
+        'experience_status',
     ]
 
     def __init__(self,
@@ -108,7 +113,8 @@ class PaypalWalletResponse(object):
                  tax_info=APIHelper.SKIP,
                  address=APIHelper.SKIP,
                  attributes=APIHelper.SKIP,
-                 stored_credential=APIHelper.SKIP):
+                 stored_credential=APIHelper.SKIP,
+                 experience_status=APIHelper.SKIP):
         """Constructor for the PaypalWalletResponse class"""
 
         # Initialize members of the class
@@ -136,6 +142,8 @@ class PaypalWalletResponse(object):
             self.attributes = attributes 
         if stored_credential is not APIHelper.SKIP:
             self.stored_credential = stored_credential 
+        if experience_status is not APIHelper.SKIP:
+            self.experience_status = experience_status 
 
     @classmethod
     def from_dictionary(cls,
@@ -168,6 +176,7 @@ class PaypalWalletResponse(object):
         address = Address.from_dictionary(dictionary.get('address')) if 'address' in dictionary.keys() else APIHelper.SKIP
         attributes = PaypalWalletAttributesResponse.from_dictionary(dictionary.get('attributes')) if 'attributes' in dictionary.keys() else APIHelper.SKIP
         stored_credential = PaypalWalletStoredCredential.from_dictionary(dictionary.get('stored_credential')) if 'stored_credential' in dictionary.keys() else APIHelper.SKIP
+        experience_status = dictionary.get("experience_status") if dictionary.get("experience_status") else APIHelper.SKIP
         # Return an object of this model
         return cls(email_address,
                    account_id,
@@ -180,7 +189,8 @@ class PaypalWalletResponse(object):
                    tax_info,
                    address,
                    attributes,
-                   stored_credential)
+                   stored_credential,
+                   experience_status)
 
     def __repr__(self):
         return (f'{self.__class__.__name__}('
@@ -195,7 +205,8 @@ class PaypalWalletResponse(object):
                 f'tax_info={(self.tax_info if hasattr(self, "tax_info") else None)!r}, '
                 f'address={(self.address if hasattr(self, "address") else None)!r}, '
                 f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r}, '
-                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!r})')
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!r}, '
+                f'experience_status={(self.experience_status if hasattr(self, "experience_status") else None)!r})')
 
     def __str__(self):
         return (f'{self.__class__.__name__}('
@@ -210,4 +221,5 @@ class PaypalWalletResponse(object):
                 f'tax_info={(self.tax_info if hasattr(self, "tax_info") else None)!s}, '
                 f'address={(self.address if hasattr(self, "address") else None)!s}, '
                 f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s}, '
-                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!s})')
+                f'stored_credential={(self.stored_credential if hasattr(self, "stored_credential") else None)!s}, '
+                f'experience_status={(self.experience_status if hasattr(self, "experience_status") else None)!s})')

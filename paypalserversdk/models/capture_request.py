@@ -15,15 +15,15 @@ class CaptureRequest(object):
 
     """Implementation of the 'Capture Request' model.
 
+    Captures either a portion or the full authorized amount of an authorized
+    payment.
+
     Attributes:
+        amount (Money): The currency and amount for a financial transaction,
+            such as a balance or payment due.
         invoice_id (str): The API caller-provided external invoice number for
             this order. Appears in both the payer's transaction history and
             the emails that the payer receives.
-        note_to_payer (str): An informational note about this settlement.
-            Appears in both the payer's transaction history and the emails
-            that the payer receives.
-        amount (Money): The currency and amount for a financial transaction,
-            such as a balance or payment due.
         final_capture (bool): Indicates whether you can make additional
             captures against the authorized payment. Set to `true` if you do
             not intend to capture additional payments against the
@@ -33,6 +33,9 @@ class CaptureRequest(object):
             payment instructions to be consider during payment processing.
             This processing instruction is applicable for Capturing an order
             or Authorizing an Order.
+        note_to_payer (str): An informational note about this settlement.
+            Appears in both the payer's transaction history and the emails
+            that the payer receives.
         soft_descriptor (str): The payment descriptor on the payer's account
             statement.
 
@@ -40,42 +43,42 @@ class CaptureRequest(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "invoice_id": 'invoice_id',
-        "note_to_payer": 'note_to_payer',
         "amount": 'amount',
+        "invoice_id": 'invoice_id',
         "final_capture": 'final_capture',
         "payment_instruction": 'payment_instruction',
+        "note_to_payer": 'note_to_payer',
         "soft_descriptor": 'soft_descriptor'
     }
 
     _optionals = [
-        'invoice_id',
-        'note_to_payer',
         'amount',
+        'invoice_id',
         'final_capture',
         'payment_instruction',
+        'note_to_payer',
         'soft_descriptor',
     ]
 
     def __init__(self,
-                 invoice_id=APIHelper.SKIP,
-                 note_to_payer=APIHelper.SKIP,
                  amount=APIHelper.SKIP,
+                 invoice_id=APIHelper.SKIP,
                  final_capture=False,
                  payment_instruction=APIHelper.SKIP,
+                 note_to_payer=APIHelper.SKIP,
                  soft_descriptor=APIHelper.SKIP):
         """Constructor for the CaptureRequest class"""
 
         # Initialize members of the class
-        if invoice_id is not APIHelper.SKIP:
-            self.invoice_id = invoice_id 
-        if note_to_payer is not APIHelper.SKIP:
-            self.note_to_payer = note_to_payer 
         if amount is not APIHelper.SKIP:
             self.amount = amount 
+        if invoice_id is not APIHelper.SKIP:
+            self.invoice_id = invoice_id 
         self.final_capture = final_capture 
         if payment_instruction is not APIHelper.SKIP:
             self.payment_instruction = payment_instruction 
+        if note_to_payer is not APIHelper.SKIP:
+            self.note_to_payer = note_to_payer 
         if soft_descriptor is not APIHelper.SKIP:
             self.soft_descriptor = soft_descriptor 
 
@@ -98,34 +101,34 @@ class CaptureRequest(object):
             return None
 
         # Extract variables from the dictionary
-        invoice_id = dictionary.get("invoice_id") if dictionary.get("invoice_id") else APIHelper.SKIP
-        note_to_payer = dictionary.get("note_to_payer") if dictionary.get("note_to_payer") else APIHelper.SKIP
         amount = Money.from_dictionary(dictionary.get('amount')) if 'amount' in dictionary.keys() else APIHelper.SKIP
+        invoice_id = dictionary.get("invoice_id") if dictionary.get("invoice_id") else APIHelper.SKIP
         final_capture = dictionary.get("final_capture") if dictionary.get("final_capture") else False
         payment_instruction = CapturePaymentInstruction.from_dictionary(dictionary.get('payment_instruction')) if 'payment_instruction' in dictionary.keys() else APIHelper.SKIP
+        note_to_payer = dictionary.get("note_to_payer") if dictionary.get("note_to_payer") else APIHelper.SKIP
         soft_descriptor = dictionary.get("soft_descriptor") if dictionary.get("soft_descriptor") else APIHelper.SKIP
         # Return an object of this model
-        return cls(invoice_id,
-                   note_to_payer,
-                   amount,
+        return cls(amount,
+                   invoice_id,
                    final_capture,
                    payment_instruction,
+                   note_to_payer,
                    soft_descriptor)
 
     def __repr__(self):
         return (f'{self.__class__.__name__}('
-                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
-                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!r}, '
                 f'amount={(self.amount if hasattr(self, "amount") else None)!r}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!r}, '
                 f'final_capture={(self.final_capture if hasattr(self, "final_capture") else None)!r}, '
                 f'payment_instruction={(self.payment_instruction if hasattr(self, "payment_instruction") else None)!r}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!r}, '
                 f'soft_descriptor={(self.soft_descriptor if hasattr(self, "soft_descriptor") else None)!r})')
 
     def __str__(self):
         return (f'{self.__class__.__name__}('
-                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
-                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!s}, '
                 f'amount={(self.amount if hasattr(self, "amount") else None)!s}, '
+                f'invoice_id={(self.invoice_id if hasattr(self, "invoice_id") else None)!s}, '
                 f'final_capture={(self.final_capture if hasattr(self, "final_capture") else None)!s}, '
                 f'payment_instruction={(self.payment_instruction if hasattr(self, "payment_instruction") else None)!s}, '
+                f'note_to_payer={(self.note_to_payer if hasattr(self, "note_to_payer") else None)!s}, '
                 f'soft_descriptor={(self.soft_descriptor if hasattr(self, "soft_descriptor") else None)!s})')

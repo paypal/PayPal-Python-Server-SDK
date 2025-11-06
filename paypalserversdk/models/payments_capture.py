@@ -10,8 +10,8 @@ from paypalserversdk.api_helper import APIHelper
 from paypalserversdk.models.capture_status_details import CaptureStatusDetails
 from paypalserversdk.models.link_description import LinkDescription
 from paypalserversdk.models.money import Money
-from paypalserversdk.models.network_transaction_reference import NetworkTransactionReference
-from paypalserversdk.models.payments_processor_response import PaymentsProcessorResponse
+from paypalserversdk.models.network_transaction import NetworkTransaction
+from paypalserversdk.models.processor_response import ProcessorResponse
 from paypalserversdk.models.seller_protection import SellerProtection
 from paypalserversdk.models.seller_receivable_breakdown import SellerReceivableBreakdown
 
@@ -35,8 +35,8 @@ class PaymentsCapture(object):
         custom_id (str): The API caller-provided external ID. Used to
             reconcile API caller-initiated transactions with PayPal
             transactions. Appears in transaction and settlement reports.
-        network_transaction_reference (NetworkTransactionReference): Reference
-            values used by the card network to identify a transaction.
+        network_transaction_reference (NetworkTransaction): Reference values
+            used by the card network to identify a transaction.
         seller_protection (SellerProtection): The level of protection offered
             as defined by [PayPal Seller Protection for
             Merchants](https://www.paypal.com/us/webapps/mpp/security/seller-pr
@@ -53,7 +53,7 @@ class PaymentsCapture(object):
             behalf of the merchant.
         links (List[LinkDescription]): An array of related [HATEOAS
             links](/docs/api/reference/api-responses/#hateoas-links).
-        processor_response (PaymentsProcessorResponse): The processor response
+        processor_response (ProcessorResponse): The processor response
             information for payment requests, such as direct credit card
             transactions.
         create_time (str): The date and time, in [Internet date and time
@@ -179,7 +179,7 @@ class PaymentsCapture(object):
         amount = Money.from_dictionary(dictionary.get('amount')) if 'amount' in dictionary.keys() else APIHelper.SKIP
         invoice_id = dictionary.get("invoice_id") if dictionary.get("invoice_id") else APIHelper.SKIP
         custom_id = dictionary.get("custom_id") if dictionary.get("custom_id") else APIHelper.SKIP
-        network_transaction_reference = NetworkTransactionReference.from_dictionary(dictionary.get('network_transaction_reference')) if 'network_transaction_reference' in dictionary.keys() else APIHelper.SKIP
+        network_transaction_reference = NetworkTransaction.from_dictionary(dictionary.get('network_transaction_reference')) if 'network_transaction_reference' in dictionary.keys() else APIHelper.SKIP
         seller_protection = SellerProtection.from_dictionary(dictionary.get('seller_protection')) if 'seller_protection' in dictionary.keys() else APIHelper.SKIP
         final_capture = dictionary.get("final_capture") if dictionary.get("final_capture") else False
         seller_receivable_breakdown = SellerReceivableBreakdown.from_dictionary(dictionary.get('seller_receivable_breakdown')) if 'seller_receivable_breakdown' in dictionary.keys() else APIHelper.SKIP
@@ -189,7 +189,7 @@ class PaymentsCapture(object):
             links = [LinkDescription.from_dictionary(x) for x in dictionary.get('links')]
         else:
             links = APIHelper.SKIP
-        processor_response = PaymentsProcessorResponse.from_dictionary(dictionary.get('processor_response')) if 'processor_response' in dictionary.keys() else APIHelper.SKIP
+        processor_response = ProcessorResponse.from_dictionary(dictionary.get('processor_response')) if 'processor_response' in dictionary.keys() else APIHelper.SKIP
         create_time = dictionary.get("create_time") if dictionary.get("create_time") else APIHelper.SKIP
         update_time = dictionary.get("update_time") if dictionary.get("update_time") else APIHelper.SKIP
         # Return an object of this model

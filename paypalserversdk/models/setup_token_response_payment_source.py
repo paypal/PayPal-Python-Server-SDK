@@ -21,10 +21,10 @@ class SetupTokenResponsePaymentSource(object):
     Attributes:
         card (SetupTokenResponseCard): The model property of type
             SetupTokenResponseCard.
-        paypal (PaypalPaymentToken): The model property of type
-            PaypalPaymentToken.
-        venmo (VenmoPaymentToken): The model property of type
-            VenmoPaymentToken.
+        paypal (PaypalPaymentToken): Full representation of a PayPal Payment
+            Token.
+        venmo (VenmoPaymentToken): Full representation of a Venmo Payment
+            Token.
 
     """
 

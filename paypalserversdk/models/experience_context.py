@@ -31,8 +31,8 @@ class ExperienceContext(object):
             [ISO-3166 alpha-2 country
             code](/api/rest/reference/country-codes/) or [M49 region
             code](https://unstats.un.org/unsd/methodology/m49/).
-        shipping_preference (ShippingPreference): The location from which the
-            shipping address is derived.
+        shipping_preference (ExperienceContextShippingPreference): The
+            location from which the shipping address is derived.
         return_url (str): Describes the URL.
         cancel_url (str): Describes the URL.
 

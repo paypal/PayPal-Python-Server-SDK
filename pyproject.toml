@@ -12,6 +12,7 @@ dependencies = ["apimatic-core~=0.2.0, >= 0.2.23", "apimatic-core-interfaces~=0.
 classifiers = []
 requires-python = ">=3.7"
 [project.urls]
+Homepage = "https://github.com/paypal/PayPal-Python-Server-SDK"
 [project.optional-dependencies]
 testutils = ["pytest>=7.2.2"]
 [tool]

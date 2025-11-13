@@ -13,9 +13,10 @@ class PaypalWalletVaultInstruction(object):
 
     """Implementation of the 'PayPal Wallet Vault Instruction' model.
 
+    Resource consolidating common request and response attributes for vaulting
+    PayPal Wallet.
+
     Attributes:
-        store_in_vault (StoreInVaultInstruction): Defines how and when the
-            payment source gets vaulted.
         description (str): The description displayed to PayPal consumer on the
             approval flow for PayPal, as well as on the PayPal payment token
             management experience on PayPal.com.
@@ -42,7 +43,6 @@ class PaypalWalletVaultInstruction(object):
     # Create a mapping from Model property names to API property names
     _names = {
         "usage_type": 'usage_type',
-        "store_in_vault": 'store_in_vault',
         "description": 'description',
         "usage_pattern": 'usage_pattern',
         "customer_type": 'customer_type',
@@ -50,7 +50,6 @@ class PaypalWalletVaultInstruction(object):
     }
 
     _optionals = [
-        'store_in_vault',
         'description',
         'usage_pattern',
         'customer_type',
@@ -59,7 +58,6 @@ class PaypalWalletVaultInstruction(object):
 
     def __init__(self,
                  usage_type=None,
-                 store_in_vault=APIHelper.SKIP,
                  description=APIHelper.SKIP,
                  usage_pattern=APIHelper.SKIP,
                  customer_type='CONSUMER',
@@ -67,8 +65,6 @@ class PaypalWalletVaultInstruction(object):
         """Constructor for the PaypalWalletVaultInstruction class"""
 
         # Initialize members of the class
-        if store_in_vault is not APIHelper.SKIP:
-            self.store_in_vault = store_in_vault 
         if description is not APIHelper.SKIP:
             self.description = description 
         if usage_pattern is not APIHelper.SKIP:
@@ -97,14 +93,12 @@ class PaypalWalletVaultInstruction(object):
 
         # Extract variables from the dictionary
         usage_type = dictionary.get("usage_type") if dictionary.get("usage_type") else None
-        store_in_vault = dictionary.get("store_in_vault") if dictionary.get("store_in_vault") else APIHelper.SKIP
         description = dictionary.get("description") if dictionary.get("description") else APIHelper.SKIP
         usage_pattern = dictionary.get("usage_pattern") if dictionary.get("usage_pattern") else APIHelper.SKIP
         customer_type = dictionary.get("customer_type") if dictionary.get("customer_type") else 'CONSUMER'
         permit_multiple_payment_tokens = dictionary.get("permit_multiple_payment_tokens") if dictionary.get("permit_multiple_payment_tokens") else False
         # Return an object of this model
         return cls(usage_type,
-                   store_in_vault,
                    description,
                    usage_pattern,
                    customer_type,
@@ -112,7 +106,6 @@ class PaypalWalletVaultInstruction(object):
 
     def __repr__(self):
         return (f'{self.__class__.__name__}('
-                f'store_in_vault={(self.store_in_vault if hasattr(self, "store_in_vault") else None)!r}, '
                 f'description={(self.description if hasattr(self, "description") else None)!r}, '
                 f'usage_pattern={(self.usage_pattern if hasattr(self, "usage_pattern") else None)!r}, '
                 f'usage_type={self.usage_type!r}, '
@@ -121,7 +114,6 @@ class PaypalWalletVaultInstruction(object):
 
     def __str__(self):
         return (f'{self.__class__.__name__}('
-                f'store_in_vault={(self.store_in_vault if hasattr(self, "store_in_vault") else None)!s}, '
                 f'description={(self.description if hasattr(self, "description") else None)!s}, '
                 f'usage_pattern={(self.usage_pattern if hasattr(self, "usage_pattern") else None)!s}, '
                 f'usage_type={self.usage_type!s}, '

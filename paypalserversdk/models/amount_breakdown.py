@@ -31,8 +31,9 @@ class AmountBreakdown(object):
             transaction, such as a balance or payment due.
         shipping_discount (Money): The currency and amount for a financial
             transaction, such as a balance or payment due.
-        discount (Money): The currency and amount for a financial transaction,
-            such as a balance or payment due.
+        discount (Money): The discount amount and currency code. For list of
+            supported currencies and decimal precision, see the PayPal REST
+            APIs Currency Codes.
 
     """
 

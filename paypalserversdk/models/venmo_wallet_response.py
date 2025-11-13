@@ -41,6 +41,9 @@ class VenmoWalletResponse(object):
             form controls: the autocomplete
             attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-
             form-controls-the-autocomplete-attribute).
+        return_flow (ReturnFlow): Merchant preference on how the buyer can
+            navigate back to merchant website post approving the transaction
+            on the Venmo App.
         attributes (VenmoWalletAttributesResponse): Additional attributes
             associated with the use of a Venmo Wallet.
 
@@ -54,6 +57,7 @@ class VenmoWalletResponse(object):
         "name": 'name',
         "phone_number": 'phone_number',
         "address": 'address',
+        "return_flow": 'return_flow',
         "attributes": 'attributes'
     }
 
@@ -64,6 +68,7 @@ class VenmoWalletResponse(object):
         'name',
         'phone_number',
         'address',
+        'return_flow',
         'attributes',
     ]
 
@@ -74,6 +79,7 @@ class VenmoWalletResponse(object):
                  name=APIHelper.SKIP,
                  phone_number=APIHelper.SKIP,
                  address=APIHelper.SKIP,
+                 return_flow='AUTO',
                  attributes=APIHelper.SKIP):
         """Constructor for the VenmoWalletResponse class"""
 
@@ -90,6 +96,7 @@ class VenmoWalletResponse(object):
             self.phone_number = phone_number 
         if address is not APIHelper.SKIP:
             self.address = address 
+        self.return_flow = return_flow 
         if attributes is not APIHelper.SKIP:
             self.attributes = attributes 
 
@@ -118,6 +125,7 @@ class VenmoWalletResponse(object):
         name = Name.from_dictionary(dictionary.get('name')) if 'name' in dictionary.keys() else APIHelper.SKIP
         phone_number = PhoneNumber.from_dictionary(dictionary.get('phone_number')) if 'phone_number' in dictionary.keys() else APIHelper.SKIP
         address = Address.from_dictionary(dictionary.get('address')) if 'address' in dictionary.keys() else APIHelper.SKIP
+        return_flow = dictionary.get("return_flow") if dictionary.get("return_flow") else 'AUTO'
         attributes = VenmoWalletAttributesResponse.from_dictionary(dictionary.get('attributes')) if 'attributes' in dictionary.keys() else APIHelper.SKIP
         # Return an object of this model
         return cls(email_address,
@@ -126,6 +134,7 @@ class VenmoWalletResponse(object):
                    name,
                    phone_number,
                    address,
+                   return_flow,
                    attributes)
 
     def __repr__(self):
@@ -136,6 +145,7 @@ class VenmoWalletResponse(object):
                 f'name={(self.name if hasattr(self, "name") else None)!r}, '
                 f'phone_number={(self.phone_number if hasattr(self, "phone_number") else None)!r}, '
                 f'address={(self.address if hasattr(self, "address") else None)!r}, '
+                f'return_flow={(self.return_flow if hasattr(self, "return_flow") else None)!r}, '
                 f'attributes={(self.attributes if hasattr(self, "attributes") else None)!r})')
 
     def __str__(self):
@@ -146,4 +156,5 @@ class VenmoWalletResponse(object):
                 f'name={(self.name if hasattr(self, "name") else None)!s}, '
                 f'phone_number={(self.phone_number if hasattr(self, "phone_number") else None)!s}, '
                 f'address={(self.address if hasattr(self, "address") else None)!s}, '
+                f'return_flow={(self.return_flow if hasattr(self, "return_flow") else None)!s}, '
                 f'attributes={(self.attributes if hasattr(self, "attributes") else None)!s})')

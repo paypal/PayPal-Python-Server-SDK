@@ -1398,6 +1398,42 @@ class ShipmentCarrier(object):
         UPS_CHECKER: ups-checker.
         WINESHIPPING: Wineshipping.
         SPEDISCI: Spedisci online.
+        FOURKITES: Fourkites.
+        ETONAS: Etonas.
+        FINMILE: Fin Mile.
+        UNIUNI: Uniuni.
+        RODONAVES: Rodonaves.
+        INPOST_IT: Inpost Italy.
+        TFORCE_FREIGHT: Tforce Freight.
+        RICHMOM: Rich Mom.
+        FRANCO: Corriere Franco.
+        ECPARCEL: Ecparcel.
+        FEDEX_CHINA: Fedex China.
+        GOFO_EXPRESS: Gofo Express.
+        SHIPBOB: Shipbob.
+        JERSEYPOST_ATLAS: Jersey Post Group.
+        CORETRAILS: Coretrails.
+        RHENUS_ITALY: Rhenus Logistics Italy.
+        JADLOG: Jadlog.
+        JITSU: Jitsu.
+        YANWEN_EXPRESS: Yanwen Express.
+        DASHLINK: Dashlink.
+        SEINO_SUPER_EXPRESS: Seino Super Express.
+        FLOSHIP: Floship.
+        METROSCG: Metro Supply Chain.
+        SENDPARCEL: Sendparcel.
+        P2P: P2p.
+        CN_EXPRESS: Cn Express.
+        CIRROTRACK: Cirro Track.
+        LAND_LOGISTICS: Land Logistics.
+        VEHO: Veho.
+        MEDLINE: Medline.
+        VDTRACK: Vdtrack.
+        SINO_SCM: Sino Scm.
+        ENUM_3PE_EXPRESS: 3pe Express.
+        SWIFTX: Swiftx.
+        SFYDEXPRESS: Sfyd Express.
+        TOPTRANS: Toptrans.
 
     """
     DPD_RU = 'DPD_RU'
@@ -4151,4 +4187,76 @@ class ShipmentCarrier(object):
     WINESHIPPING = 'WINESHIPPING'
 
     SPEDISCI = 'SPEDISCI'
+
+    FOURKITES = 'FOURKITES'
+
+    ETONAS = 'ETONAS'
+
+    FINMILE = 'FINMILE'
+
+    UNIUNI = 'UNIUNI'
+
+    RODONAVES = 'RODONAVES'
+
+    INPOST_IT = 'INPOST_IT'
+
+    TFORCE_FREIGHT = 'TFORCE_FREIGHT'
+
+    RICHMOM = 'RICHMOM'
+
+    FRANCO = 'FRANCO'
+
+    ECPARCEL = 'ECPARCEL'
+
+    FEDEX_CHINA = 'FEDEX_CHINA'
+
+    GOFO_EXPRESS = 'GOFO_EXPRESS'
+
+    SHIPBOB = 'SHIPBOB'
+
+    JERSEYPOST_ATLAS = 'JERSEYPOST_ATLAS'
+
+    CORETRAILS = 'CORETRAILS'
+
+    RHENUS_ITALY = 'RHENUS_ITALY'
+
+    JADLOG = 'JADLOG'
+
+    JITSU = 'JITSU'
+
+    YANWEN_EXPRESS = 'YANWEN_EXPRESS'
+
+    DASHLINK = 'DASHLINK'
+
+    SEINO_SUPER_EXPRESS = 'SEINO_SUPER_EXPRESS'
+
+    FLOSHIP = 'FLOSHIP'
+
+    METROSCG = 'METROSCG'
+
+    SENDPARCEL = 'SENDPARCEL'
+
+    P2P = 'P2P'
+
+    CN_EXPRESS = 'CN_EXPRESS'
+
+    CIRROTRACK = 'CIRROTRACK'
+
+    LAND_LOGISTICS = 'LAND_LOGISTICS'
+
+    VEHO = 'VEHO'
+
+    MEDLINE = 'MEDLINE'
+
+    VDTRACK = 'VDTRACK'
+
+    SINO_SCM = 'SINO_SCM'
+
+    ENUM_3PE_EXPRESS = '3PE_EXPRESS'
+
+    SWIFTX = 'SWIFTX'
+
+    SFYDEXPRESS = 'SFYDEXPRESS'
+
+    TOPTRANS = 'TOPTRANS'
 

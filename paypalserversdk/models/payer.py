@@ -17,6 +17,9 @@ class Payer(object):
 
     """Implementation of the 'Payer' model.
 
+    The customer who approves and pays for the order. The customer is also
+    known as the payer.
+
     Attributes:
         email_address (str): The internationalized email address. Note: Up to
             64 characters are allowed before and 255 characters are allowed

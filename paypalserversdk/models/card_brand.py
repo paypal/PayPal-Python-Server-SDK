@@ -44,6 +44,11 @@ class CardBrand(object):
         SYNCHRONY: The Synchrony Financial (SYF) payment network.
         EFTPOS: The Electronic Fund Transfer At Point of Sale(EFTPOS) Debit
             card payment network.
+        CARTE_BANCAIRE: The Carte Bancaire payment network.
+        STAR_ACCESS: The Star Access payment network.
+        PULSE: The Pulse payment network.
+        NYCE: The NYCE payment network.
+        ACCEL: The Accel payment network.
         UNKNOWN: UNKNOWN payment network.
 
     """
@@ -94,6 +99,16 @@ class CardBrand(object):
     SYNCHRONY = 'SYNCHRONY'
 
     EFTPOS = 'EFTPOS'
+
+    CARTE_BANCAIRE = 'CARTE_BANCAIRE'
+
+    STAR_ACCESS = 'STAR_ACCESS'
+
+    PULSE = 'PULSE'
+
+    NYCE = 'NYCE'
+
+    ACCEL = 'ACCEL'
 
     UNKNOWN = 'UNKNOWN'
 

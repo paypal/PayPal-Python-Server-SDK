@@ -20,9 +20,7 @@ class OrderApplicationContextShippingPreference(object):
     which supports them (eg.
     `payment_source.paypal.experience_context.shipping_preference`). Please
     specify this field in the `experience_context` object instead of the
-    `application_context` object., The shipping preference. This only applies
-    to PayPal payment source., The shipping preference. This only applies to
-    PayPal payment source.
+    `application_context` object.
 
     Attributes:
         GET_FROM_FILE: Use the customer-provided shipping address on the

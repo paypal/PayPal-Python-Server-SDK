@@ -19,7 +19,9 @@ class SetupTokenResponse(object):
     Minimal representation of a cached setup token.
 
     Attributes:
-        id (str): The PayPal-generated ID for the vault token.
+        id (str): The PayPal-generated ID for the vaulted payment source. This
+            ID should be stored on the merchant's server so the saved payment
+            source can be used for future transactions.
         customer (Customer): This object defines a customer in your system.
             Use it to manage customer profiles, save payment methods and
             contact details.

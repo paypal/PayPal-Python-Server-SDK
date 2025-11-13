@@ -22,8 +22,8 @@ class ApplePayTokenizedCard(object):
         expiry (str): The year and month, in ISO-8601 `YYYY-MM` date format.
             See [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6).
-        card_type (CardBrand): The card network or brand. Applies to credit,
-            debit, gift, and payment cards.
+        card_type (CardBrand): The card brand or network. Typically used in
+            the response.
         mtype (CardType): Type of card. i.e Credit, Debit and so on.
         brand (CardBrand): The card network or brand. Applies to credit,
             debit, gift, and payment cards.

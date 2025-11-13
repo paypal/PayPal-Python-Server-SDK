@@ -22,10 +22,12 @@ class VenmoWalletExperienceContext(object):
     Attributes:
         brand_name (str): The business name of the merchant. The pattern is
             defined by an external party and supports Unicode.
-        shipping_preference (ShippingPreference): The location from which the
-            shipping address is derived.
+        shipping_preference (VenmoWalletExperienceContextShippingPreference):
+            The location from which the shipping address is derived.
         order_update_callback_config (CallbackConfiguration): CallBack
             Configuration that the merchant can provide to PayPal/Venmo.
+        user_action (VenmoWalletExperienceContextUserAction): Configures a
+            Continue or Pay Now checkout flow.
 
     """
 
@@ -33,19 +35,22 @@ class VenmoWalletExperienceContext(object):
     _names = {
         "brand_name": 'brand_name',
         "shipping_preference": 'shipping_preference',
-        "order_update_callback_config": 'order_update_callback_config'
+        "order_update_callback_config": 'order_update_callback_config',
+        "user_action": 'user_action'
     }
 
     _optionals = [
         'brand_name',
         'shipping_preference',
         'order_update_callback_config',
+        'user_action',
     ]
 
     def __init__(self,
                  brand_name=APIHelper.SKIP,
                  shipping_preference='GET_FROM_FILE',
-                 order_update_callback_config=APIHelper.SKIP):
+                 order_update_callback_config=APIHelper.SKIP,
+                 user_action='CONTINUE'):
         """Constructor for the VenmoWalletExperienceContext class"""
 
         # Initialize members of the class
@@ -54,6 +59,7 @@ class VenmoWalletExperienceContext(object):
         self.shipping_preference = shipping_preference 
         if order_update_callback_config is not APIHelper.SKIP:
             self.order_update_callback_config = order_update_callback_config 
+        self.user_action = user_action 
 
     @classmethod
     def from_dictionary(cls,
@@ -77,19 +83,23 @@ class VenmoWalletExperienceContext(object):
         brand_name = dictionary.get("brand_name") if dictionary.get("brand_name") else APIHelper.SKIP
         shipping_preference = dictionary.get("shipping_preference") if dictionary.get("shipping_preference") else 'GET_FROM_FILE'
         order_update_callback_config = CallbackConfiguration.from_dictionary(dictionary.get('order_update_callback_config')) if 'order_update_callback_config' in dictionary.keys() else APIHelper.SKIP
+        user_action = dictionary.get("user_action") if dictionary.get("user_action") else 'CONTINUE'
         # Return an object of this model
         return cls(brand_name,
                    shipping_preference,
-                   order_update_callback_config)
+                   order_update_callback_config,
+                   user_action)
 
     def __repr__(self):
         return (f'{self.__class__.__name__}('
                 f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!r}, '
                 f'shipping_preference={(self.shipping_preference if hasattr(self, "shipping_preference") else None)!r}, '
-                f'order_update_callback_config={(self.order_update_callback_config if hasattr(self, "order_update_callback_config") else None)!r})')
+                f'order_update_callback_config={(self.order_update_callback_config if hasattr(self, "order_update_callback_config") else None)!r}, '
+                f'user_action={(self.user_action if hasattr(self, "user_action") else None)!r})')
 
     def __str__(self):
         return (f'{self.__class__.__name__}('
                 f'brand_name={(self.brand_name if hasattr(self, "brand_name") else None)!s}, '
                 f'shipping_preference={(self.shipping_preference if hasattr(self, "shipping_preference") else None)!s}, '
-                f'order_update_callback_config={(self.order_update_callback_config if hasattr(self, "order_update_callback_config") else None)!s})')
+                f'order_update_callback_config={(self.order_update_callback_config if hasattr(self, "order_update_callback_config") else None)!s}, '
+                f'user_action={(self.user_action if hasattr(self, "user_action") else None)!s})')

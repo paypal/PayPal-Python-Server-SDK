@@ -15,14 +15,14 @@ class LinkHttpMethod(object):
     The HTTP method required to make the related call.
 
     Attributes:
-        GET: The enum member of type str.
-        POST: The enum member of type str.
-        PUT: The enum member of type str.
-        DELETE: The enum member of type str.
-        HEAD: The enum member of type str.
-        CONNECT: The enum member of type str.
-        OPTIONS: The enum member of type str.
-        PATCH: The enum member of type str.
+        GET: The HTTP GET method.
+        POST: The HTTP POST method.
+        PUT: The HTTP PUT method.
+        DELETE: The HTTP DELETE method.
+        HEAD: The HTTP HEAD method.
+        CONNECT: The HTTP CONNECT method.
+        OPTIONS: The HTTP OPTIONS method.
+        PATCH: The HTTP PATCH method.
 
     """
     GET = 'GET'

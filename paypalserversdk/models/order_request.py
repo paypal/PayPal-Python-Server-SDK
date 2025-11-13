@@ -23,7 +23,11 @@ class OrderRequest(object):
         intent (CheckoutPaymentIntent): The intent to either capture payment
             immediately or authorize a payment for an order after order
             creation.
-        payer (Payer): The model property of type Payer.
+        payer (Payer): DEPRECATED. The customer is also known as the payer.
+            The Payer object was intended to only be used with the
+            `payment_source.paypal` object. In order to make this design more
+            clear, the details in the `payer` object are now available under
+            `payment_source.paypal`. Please use `payment_source.paypal`.
         purchase_units (List[PurchaseUnitRequest]): An array of purchase
             units. Each purchase unit establishes a contract between a payer
             and the payee. Each purchase unit represents either a full or

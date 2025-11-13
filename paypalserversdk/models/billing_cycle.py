@@ -25,7 +25,6 @@ class BillingCycle(object):
             identifies if the billing cycle is a trial(free or discounted) or
             regular billing cycle.
         pricing_scheme (PricingScheme): The pricing scheme details.
-        frequency (Any): The frequency details for this billing cycle.
         total_cycles (int): The number of times this billing cycle gets
             executed. Trial billing cycles can only be executed a finite
             number of times (value between 1 and 999 for total_cycles).
@@ -50,7 +49,6 @@ class BillingCycle(object):
     _names = {
         "tenure_type": 'tenure_type',
         "pricing_scheme": 'pricing_scheme',
-        "frequency": 'frequency',
         "total_cycles": 'total_cycles',
         "sequence": 'sequence',
         "start_date": 'start_date'
@@ -58,7 +56,6 @@ class BillingCycle(object):
 
     _optionals = [
         'pricing_scheme',
-        'frequency',
         'total_cycles',
         'sequence',
         'start_date',
@@ -67,7 +64,6 @@ class BillingCycle(object):
     def __init__(self,
                  tenure_type=None,
                  pricing_scheme=APIHelper.SKIP,
-                 frequency=APIHelper.SKIP,
                  total_cycles=1,
                  sequence=1,
                  start_date=APIHelper.SKIP):
@@ -77,8 +73,6 @@ class BillingCycle(object):
         self.tenure_type = tenure_type 
         if pricing_scheme is not APIHelper.SKIP:
             self.pricing_scheme = pricing_scheme 
-        if frequency is not APIHelper.SKIP:
-            self.frequency = frequency 
         self.total_cycles = total_cycles 
         self.sequence = sequence 
         if start_date is not APIHelper.SKIP:
@@ -105,14 +99,12 @@ class BillingCycle(object):
         # Extract variables from the dictionary
         tenure_type = dictionary.get("tenure_type") if dictionary.get("tenure_type") else None
         pricing_scheme = PricingScheme.from_dictionary(dictionary.get('pricing_scheme')) if 'pricing_scheme' in dictionary.keys() else APIHelper.SKIP
-        frequency = dictionary.get("frequency") if dictionary.get("frequency") else APIHelper.SKIP
         total_cycles = dictionary.get("total_cycles") if dictionary.get("total_cycles") else 1
         sequence = dictionary.get("sequence") if dictionary.get("sequence") else 1
         start_date = dictionary.get("start_date") if dictionary.get("start_date") else APIHelper.SKIP
         # Return an object of this model
         return cls(tenure_type,
                    pricing_scheme,
-                   frequency,
                    total_cycles,
                    sequence,
                    start_date)
@@ -121,7 +113,6 @@ class BillingCycle(object):
         return (f'{self.__class__.__name__}('
                 f'tenure_type={self.tenure_type!r}, '
                 f'pricing_scheme={(self.pricing_scheme if hasattr(self, "pricing_scheme") else None)!r}, '
-                f'frequency={(self.frequency if hasattr(self, "frequency") else None)!r}, '
                 f'total_cycles={(self.total_cycles if hasattr(self, "total_cycles") else None)!r}, '
                 f'sequence={(self.sequence if hasattr(self, "sequence") else None)!r}, '
                 f'start_date={(self.start_date if hasattr(self, "start_date") else None)!r})')
@@ -130,7 +121,6 @@ class BillingCycle(object):
         return (f'{self.__class__.__name__}('
                 f'tenure_type={self.tenure_type!s}, '
                 f'pricing_scheme={(self.pricing_scheme if hasattr(self, "pricing_scheme") else None)!s}, '
-                f'frequency={(self.frequency if hasattr(self, "frequency") else None)!s}, '
                 f'total_cycles={(self.total_cycles if hasattr(self, "total_cycles") else None)!s}, '
                 f'sequence={(self.sequence if hasattr(self, "sequence") else None)!s}, '
                 f'start_date={(self.start_date if hasattr(self, "start_date") else None)!s})')

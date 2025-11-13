@@ -16,6 +16,10 @@ from paypalserversdk.http.auth.o_auth_2 import OAuth2
 from paypalserversdk.controllers.orders_controller import OrdersController
 from paypalserversdk.controllers.payments_controller import PaymentsController
 from paypalserversdk.controllers.vault_controller import VaultController
+from paypalserversdk.controllers.transaction_search_controller\
+    import TransactionSearchController
+from paypalserversdk.controllers.subscriptions_controller\
+    import SubscriptionsController
 from paypalserversdk.controllers.o_auth_authorization_controller\
     import OAuthAuthorizationController
 
@@ -34,6 +38,14 @@ class PaypalServersdkClient(object):
         return VaultController(self.global_configuration)
 
     @LazyProperty
+    def transaction_search(self):
+        return TransactionSearchController(self.global_configuration)
+
+    @LazyProperty
+    def subscriptions(self):
+        return SubscriptionsController(self.global_configuration)
+
+    @LazyProperty
     def o_auth_authorization(self):
         return OAuthAuthorizationController(self.global_configuration)
 
@@ -44,7 +56,7 @@ class PaypalServersdkClient(object):
     def __init__(self, http_client_instance=None,
                  override_http_client_configuration=False, http_call_back=None,
                  timeout=60, max_retries=0, backoff_factor=2,
-                 retry_statuses=None, retry_methods=None,
+                 retry_statuses=None, retry_methods=None, proxy_settings=None,
                  logging_configuration=None, environment=Environment.SANDBOX,
                  client_credentials_auth_credentials=None, config=None):
         self.config = config or Configuration(
@@ -53,6 +65,7 @@ class PaypalServersdkClient(object):
             http_call_back=http_call_back, timeout=timeout,
             max_retries=max_retries, backoff_factor=backoff_factor,
             retry_statuses=retry_statuses, retry_methods=retry_methods,
+            proxy_settings=proxy_settings,
             logging_configuration=logging_configuration,
             environment=environment,
             client_credentials_auth_credentials=client_credentials_auth_credentials)

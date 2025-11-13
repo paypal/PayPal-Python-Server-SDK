@@ -20,8 +20,8 @@ class PaypalWalletStoredCredential(object):
     Attributes:
         payment_initiator (PaymentInitiator): The person or party who
             initiated or triggered the payment.
-        charge_pattern (UsagePattern): Expected business/pricing model for the
-            billing agreement.
+        charge_pattern (UsagePattern): DEPRECATED. Expected business/pricing
+            model for the billing agreement, Please use usage_pattern instead.
         usage_pattern (UsagePattern): Expected business/pricing model for the
             billing agreement.
         usage (StoredPaymentSourceUsageType): Indicates if this is a `first`

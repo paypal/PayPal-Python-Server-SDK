@@ -1,17 +1,19 @@
-# Transactionsearch
+# Transaction Search
+
+Use the `/transactions` resource to list transactions and the `/balances` resource to list balances.
 
 ```python
-transactionsearch_controller = client.transactionsearch
+transaction_search_controller = client.transaction_search
 ```
 
 ## Class Name
 
-`TransactionsearchController`
+`TransactionSearchController`
 
 ## Methods
 
-* [Search Transactions](../../doc/controllers/transactionsearch.md#search-transactions)
-* [Search Balances](../../doc/controllers/transactionsearch.md#search-balances)
+* [Search Transactions](../../doc/controllers/transaction-search.md#search-transactions)
+* [Search Balances](../../doc/controllers/transaction-search.md#search-balances)
 
 
 # Search Transactions

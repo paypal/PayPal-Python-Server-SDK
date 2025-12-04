@@ -20,6 +20,8 @@ The following parameters are configurable for the API Client:
 
 The API client can be initialized as follows:
 
+## Code-Based Client Initialization
+
 ```python
 import logging
 
@@ -47,6 +49,17 @@ client = PaypalServersdkClient(
     )
 )
 ```
+
+## Environment-Based Client Initialization
+
+```python
+from paypalserversdk.paypal_serversdk_client import PaypalServersdkClient
+
+# Specify the path to your .env file if it’s located outside the project’s root directory.
+client = PaypalServersdkClient.from_environment(dotenv_path='/path/to/.env')
+```
+
+See the [Environment-Based Client Initialization](../doc/environment-based-client-initialization.md) section for details.
 
 ## PayPal Server SDK Client
 

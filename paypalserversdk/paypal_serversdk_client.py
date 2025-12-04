@@ -75,9 +75,12 @@ class PaypalServersdkClient(object):
             .base_uri_executor(self.config.get_base_uri)\
             .user_agent(BaseController.user_agent(), BaseController.user_agent_parameters())
 
-        self.auth_managers = {key: None for key in ['Oauth2']}
-        self.auth_managers['Oauth2'] = OAuth2(
-            self.config.client_credentials_auth_credentials,
-            self.global_configuration)
+        self.auth_managers = {
+            'Oauth2': OAuth2(self.config.client_credentials_auth_credentials,
+                             self.global_configuration)
+        }
         self.global_configuration = self.global_configuration.auth_managers(self.auth_managers)
 
+    @classmethod
+    def from_environment(cls, dotenv_path=None, **overrides):
+        return cls(config=Configuration.from_environment(dotenv_path=dotenv_path, **overrides))

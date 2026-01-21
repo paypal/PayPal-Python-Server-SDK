@@ -1,0 +1,109 @@
+# Enable all Ruff rules (including flake8-bugbear `B`)
+
+select = ["ALL"]
+ignore = [
+    # Conflicting or Redundant Rules
+    "D203",     # or "D211", not both
+    "D213",     # or "D212", not both
+
+    # Complexity / Performance Issues
+    "C901",     # `__init__` is too complex (21 > 10)
+    "PLR0912",  # Too many branches (14 > 12)
+    "PLR0913",  # Too many arguments in function definition (11 > 5)
+    "PLR0915",  # Too many statements (128 > 50)
+    "PERF401",  # Use a list comprehension to create a transformed list
+    "TC002",    # Move third-party import `<import_path>` into a type-checking block
+
+    # Typing Issues
+    "ANN001",   # Missing type annotation for function argument `<argument_name>`
+    "ANN003",   # Missing type annotation for `**overrides`
+    "ANN201",   # Missing return type annotation for public function `<function_name>`
+    "ANN202",   # Missing return type annotation for private function `_apply_on_token_update_callback`
+    "ANN204",   # Missing return type annotation for special method `<special_method_name>`
+    "ANN205",   # Missing return type annotation for staticmethod
+    "ANN206",   # Missing return type annotation for classmethod `<class_method_name>`
+    "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `obj`
+    "FBT002",   # Boolean default positional argument in function definition
+    "FBT003",   # Boolean positional value in function call
+    "RUF012",   # Mutable class attributes should be annotated with `typing.ClassVar`
+    "UP004",    # Class `<class_name>` inherits from `object`
+    "UP006",    # Use `list` instead of `List` for type annotation
+    "UP007",    # Use `X | Y` for type annotations
+    "UP035",    # Import from `collections.abc` instead: `Callable`
+    "UP045",    # Use `X | None` for type annotations
+
+    # Docstrings / Style
+    "D101",     # Missing docstring in public class
+    "D104",     # Missing docstring in public package
+    "D200",     # One-line docstring should fit on one line
+    "D205",     # 1 blank line required between summary line and description
+    "D207",     # Docstring is under-indented
+    "D208",     # Docstring is over-indented
+    "D212",     # Multi-line docstring summary should start at the first line
+    "D301",     # Use `r"""` if any backslashes in a docstring
+    "D400",     # First line should end with a period
+    "D404",     # First word of the docstring should not be "This"
+    "D405",     # Section name should be properly capitalized ("TODO")
+    "D411",     # [*] Missing blank line before section ("Note")
+    "D414",     # Section has no content ("TODO")
+    "D415",     # First line should end with a period, question mark, or exclamation point
+    "D416",     # Section name should end with a colon ("TODO")
+    "D417",     # Missing argument description in the docstring for `start_site_packet_capture`: `body`
+    "RUF001",   # String contains ambiguous `’`
+    "RUF002",   # Docstring contains ambiguous ` ` (NO-BREAK SPACE). Did you mean ` ` (SPACE)?
+    "RUF100",   # Unused `noqa` directive
+    "PLC0415",  # `import` should be at the top-level of a file
+    "W605",     # [*] Invalid escape sequence: `\_`
+
+    # Exceptions / Error Handling
+    "BLE001",   # Do not catch blind exception: `Exception`
+    "E741",     # Ambiguous variable name: `O`
+    "E722",     # Do not use bare `except`
+    "EM101",    # Exception must not use a string literal, assign to variable first
+    "N818",     # Exception name `APIException` should be named with an Error suffix
+    "S110",     # `try`-`except`-`pass` detected, consider logging the exception
+    "SIM103",   # Return the condition `isinstance(dictionary, dict)` directly
+    "SIM101",   # Multiple `isinstance` calls for `event`, merge into a single call
+    "SIM118",   # Use `key in dict` instead of `key in dict.keys()`
+    "TRY003",   # Avoid specifying long messages outside the exception class
+    "TRY300",   # Consider moving this statement to an `else` block
+
+    # Security / Hardcoded values
+    "B006",     # Do not use mutable data structures for argument defaults
+    "S101",     # Use of `assert` detected
+    "S105",     # Possible hardcoded password assigned to: "SECRET_KEY"
+    "S106",     # Possible hardcoded password assigned to argument: "o_auth_client_secret"
+    "S107",     # Possible hardcoded password assigned to function default: "token"
+
+    # Imports / Modules
+    "TC001",    # Move application import into a type-checking block
+    "TC002",    # Move third-party import into a type-checking block
+
+    # Shadowing / Builtins
+    "A001",     # Variable `id` is shadowing a Python builtin
+    "A002",     # Function argument `input` is shadowing a Python builtin
+    "A004",     # Import `AttributeError` is shadowing a Python builtin
+
+    # Miscellaneous
+    "ARG002",   # Unused method argument: `content_type`
+    "C408",     # Unnecessary `dict()` call (rewrite as a literal)
+    "F601",     # Dictionary key literal `"Empl"` repeated
+    "F821",     # Undefined name `number1`
+    "PERF401",  # Use a list comprehension to create a transformed list
+    "PLE2515",  # Invalid unescaped character zero-width-space, use "\u200B" instead
+    "PLW1508",  # Invalid type for environment variable default; expected `str` or `None`
+    "PT009",    # Use a regular `assert` instead of unittest-style `assertEqual`
+    "PT018",    # Assertion should be broken down into multiple parts
+    "PT027",    # Use `pytest.raises` instead of unittest-style `assertRaises`
+    "Q003",     # Change outer quotes to avoid escaping inner quotes
+    "T201",     # `print` found
+    "TD002",    # Missing author in TODO; try: `# TODO(<author_name>): ...`
+    "TD003",    # Missing issue link for this TODO
+    "FIX002",   # Line contains TODO, consider resolving the issue
+    "ERA001",   # Found commented-out code
+    "BLE001",   # Do not catch blind exception
+    "UP008",    # Use `super()` instead of `super(__class__, self)`
+    "SLF001",   # Private member accessed: `_optionals`
+    "PLR200",   # 4 Magic value used in comparison, consider replacing `200` with a constant variable
+    "PIE794",   # Class field `ENUM_TYPE` is defined multiple times
+]

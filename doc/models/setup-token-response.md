@@ -13,7 +13,7 @@ Minimal representation of a cached setup token.
 |  --- | --- | --- | --- |
 | `id` | `str` | Optional | The PayPal-generated ID for the vaulted payment source. This ID should be stored on the merchant's server so the saved payment source can be used for future transactions.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 | `customer` | [`Customer`](../../doc/models/customer.md) | Optional | This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. |
-| `status` | [`PaymentTokenStatus`](../../doc/models/payment-token-status.md) | Optional | The status of the payment token.<br><br>**Default**: `'CREATED'`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` |
+| `status` | [`PaymentTokenStatus`](../../doc/models/payment-token-status.md) | Optional | The status of the payment token.<br><br>**Default**: `"CREATED"`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` |
 | `payment_source` | [`SetupTokenResponsePaymentSource`](../../doc/models/setup-token-response-payment-source.md) | Optional | The setup payment method details. |
 | `links` | [`List[LinkDescription]`](../../doc/models/link-description.md) | Optional | An array of related [HATEOAS links](/api/rest/responses/#hateoas).<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32` |
 

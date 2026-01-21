@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 paypalserversdk
 
@@ -13,15 +11,35 @@ from apimatic_core.types.file_wrapper import FileWrapper as CoreFileWrapper
 class FileWrapper(CoreFileWrapper):
     """A wrapper to allow passing in content type for file uploads."""
 
-    def __init__(self, file, content_type='application/octet-stream'):
+    def __init__(self, file, content_type: str="application/octet-stream") -> None:
+        """Initialize a new `FileWrapper` instance.
+
+        Args:
+            file: A readable file-like object or byte stream to wrap.
+            content_type (str, optional): The MIME type to associate with the
+                file. Defaults to `"application/octet-stream"`.
+
+        """
         super().__init__(file, content_type)
 
-    def __repr__(self):
-        return (f'{self.__class__.__name__}('
-                f'file={self._file_stream!r}, '
-                f'content_type={self.content_type!r})')
+    def __repr__(self) -> str:
+        """Return a detailed string representation of the instance.
 
-    def __str__(self):
-        return (f'{self.__class__.__name__}('
-                f'file={self._file_stream!s}, '
-                f'content_type={self.content_type!s})')
+        Returns:
+            str: A detailed, unambiguous representation of the wrapper.
+
+        """
+        return (f"{self.__class__.__name__}("
+                f"file={self._file_stream!r}, "
+                f"content_type={self.content_type!r})")
+
+    def __str__(self) -> str:
+        """Return a user-friendly string representation of the instance.
+
+        Returns:
+            str: A concise, readable representation of the wrapper.
+
+        """
+        return (f"{self.__class__.__name__}("
+                f"file={self._file_stream!s}, "
+                f"content_type={self.content_type!s})")

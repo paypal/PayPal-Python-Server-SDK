@@ -21,8 +21,8 @@ class PaypalWalletAttributes(object):
     Attributes:
         customer (PaypalWalletCustomerRequest): The model property of type
             PaypalWalletCustomerRequest.
-        vault (PaypalWalletVaultInstruction): Resource consolidating common request
-            and response attributes for vaulting PayPal Wallet.
+        vault (PaypalWalletVaultInstruction): The model property of type
+            PaypalWalletVaultInstruction.
 
     """
 

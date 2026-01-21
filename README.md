@@ -23,15 +23,15 @@ The package is compatible with Python versions `3.7+`.
 Install the package from PyPi using the following pip command:
 
 ```bash
-pip install paypal-server-sdk==2.1.0
+pip install paypal-server-sdk==2.2.0
 ```
 
 You can also view the package at:
-https://pypi.python.org/pypi/paypal-server-sdk/2.1.0
+https://pypi.python.org/pypi/paypal-server-sdk/2.2.0
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -46,9 +46,9 @@ The following parameters are configurable for the API Client:
 | backoff_factor | `float` | A backoff factor to apply between attempts after the second try. <br> **Default: 2** |
 | retry_statuses | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array of string` | The http methods on which retry is to be done. <br> **Default: ["GET", "PUT"]** |
-| proxy_settings | [`ProxySettings`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
-| logging_configuration | [`LoggingConfiguration`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/logging-configuration.md) | The SDK logging configuration for API calls |
-| client_credentials_auth_credentials | [`ClientCredentialsAuthCredentials`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
+| proxy_settings | [`ProxySettings`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| logging_configuration | [`LoggingConfiguration`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/logging-configuration.md) | The SDK logging configuration for API calls |
+| client_credentials_auth_credentials | [`ClientCredentialsAuthCredentials`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
 
 The API client can be initialized as follows:
 
@@ -91,7 +91,7 @@ from paypalserversdk.paypal_serversdk_client import PaypalServersdkClient
 client = PaypalServersdkClient.from_environment(dotenv_path='/path/to/.env')
 ```
 
-See the [Environment-Based Client Initialization](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/environment-based-client-initialization.md) section for details.
+See the [Environment-Based Client Initialization](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/environment-based-client-initialization.md) section for details.
 
 ## Environments
 
@@ -108,37 +108,37 @@ The SDK can be configured to use a different environment for making API calls. A
 
 This API uses the following authentication schemes.
 
-* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/auth/oauth-2-client-credentials-grant.md)
+* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/auth/oauth-2-client-credentials-grant.md)
 
 ## List of APIs
 
-* [Orders](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/controllers/orders.md)
-* [Payments](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/controllers/payments.md)
-* [Vault](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/controllers/vault.md)
-* [Transaction Search](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/controllers/transaction-search.md)
-* [Subscriptions](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/controllers/subscriptions.md)
+* [Orders](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/controllers/orders.md)
+* [Payments](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/controllers/payments.md)
+* [Vault](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/controllers/vault.md)
+* [Transaction Search](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/controllers/transaction-search.md)
+* [Subscriptions](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/controllers/subscriptions.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/proxy-settings.md)
-* [Environment-Based Client Initialization](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/environment-based-client-initialization.md)
-* [AbstractLogger](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/abstract-logger.md)
-* [LoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/logging-configuration.md)
-* [RequestLoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/request-logging-configuration.md)
-* [ResponseLoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/response-logging-configuration.md)
+* [ProxySettings](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/environment-based-client-initialization.md)
+* [AbstractLogger](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/abstract-logger.md)
+* [LoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/logging-configuration.md)
+* [RequestLoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/request-logging-configuration.md)
+* [ResponseLoggingConfiguration](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/response-logging-configuration.md)
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/http-response.md)
-* [HttpRequest](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/http-request.md)
+* [HttpResponse](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/http-response.md)
+* [HttpRequest](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/http-request.md)
 
 ### Utilities
 
-* [ApiResponse](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/api-response.md)
-* [ApiHelper](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/api-helper.md)
-* [HttpDateTime](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/http-date-time.md)
-* [RFC3339DateTime](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/rfc3339-date-time.md)
-* [UnixDateTime](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.1.0/doc/unix-date-time.md)
+* [ApiResponse](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/api-response.md)
+* [ApiHelper](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/api-helper.md)
+* [HttpDateTime](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/http-date-time.md)
+* [RFC3339DateTime](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/rfc3339-date-time.md)
+* [UnixDateTime](https://www.github.com/paypal/PayPal-Python-Server-SDK/tree/2.2.0/doc/unix-date-time.md)
 

@@ -20,6 +20,11 @@ class Subscriber(object):
     The subscriber response information.
 
     Attributes:
+        email_address (str): The internationalized email address. Note: Up to 64
+            characters are allowed before and 255 characters are allowed after the @
+            sign. However, the generally accepted maximum length for an email address
+            is 254 characters. The pattern verifies that an unquoted @ sign exists.
+        payer_id (str): The account identifier for a PayPal account.
         name (Name): The name of the party.
         shipping_address (ShippingDetails): The shipping details.
         payment_source (SubscriptionPaymentSourceResponse): The payment source used
@@ -29,12 +34,16 @@ class Subscriber(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
+        "email_address": "email_address",
+        "payer_id": "payer_id",
         "name": "name",
         "shipping_address": "shipping_address",
         "payment_source": "payment_source",
     }
 
     _optionals = [
+        "email_address",
+        "payer_id",
         "name",
         "shipping_address",
         "payment_source",
@@ -42,11 +51,17 @@ class Subscriber(object):
 
     def __init__(
         self,
+        email_address=APIHelper.SKIP,
+        payer_id=APIHelper.SKIP,
         name=APIHelper.SKIP,
         shipping_address=APIHelper.SKIP,
         payment_source=APIHelper.SKIP):
         """Initialize a Subscriber instance."""
         # Initialize members of the class
+        if email_address is not APIHelper.SKIP:
+            self.email_address = email_address
+        if payer_id is not APIHelper.SKIP:
+            self.payer_id = payer_id
         if name is not APIHelper.SKIP:
             self.name = name
         if shipping_address is not APIHelper.SKIP:
@@ -72,6 +87,14 @@ class Subscriber(object):
             return None
 
         # Extract variables from the dictionary
+        email_address =\
+            dictionary.get("email_address")\
+            if dictionary.get("email_address")\
+                else APIHelper.SKIP
+        payer_id =\
+            dictionary.get("payer_id")\
+            if dictionary.get("payer_id")\
+                else APIHelper.SKIP
         name =\
             Name.from_dictionary(
                 dictionary.get("name"))\
@@ -89,12 +112,24 @@ class Subscriber(object):
                 else APIHelper.SKIP
 
         # Return an object of this model
-        return cls(name,
+        return cls(email_address,
+                   payer_id,
+                   name,
                    shipping_address,
                    payment_source)
 
     def __repr__(self):
         """Return a unambiguous string representation."""
+        _email_address=(
+            self.email_address
+            if hasattr(self, "email_address")
+            else None
+        )
+        _payer_id=(
+            self.payer_id
+            if hasattr(self, "payer_id")
+            else None
+        )
         _name=(
             self.name
             if hasattr(self, "name")
@@ -112,6 +147,8 @@ class Subscriber(object):
         )
         return (
             f"{self.__class__.__name__}("
+            f"email_address={_email_address!r}, "
+            f"payer_id={_payer_id!r}, "
             f"name={_name!r}, "
             f"shipping_address={_shipping_address!r}, "
             f"payment_source={_payment_source!r}, "
@@ -120,6 +157,16 @@ class Subscriber(object):
 
     def __str__(self):
         """Return a human-readable string representation."""
+        _email_address=(
+            self.email_address
+            if hasattr(self, "email_address")
+            else None
+        )
+        _payer_id=(
+            self.payer_id
+            if hasattr(self, "payer_id")
+            else None
+        )
         _name=(
             self.name
             if hasattr(self, "name")
@@ -137,6 +184,8 @@ class Subscriber(object):
         )
         return (
             f"{self.__class__.__name__}("
+            f"email_address={_email_address!s}, "
+            f"payer_id={_payer_id!s}, "
             f"name={_name!s}, "
             f"shipping_address={_shipping_address!s}, "
             f"payment_source={_payment_source!s}, "

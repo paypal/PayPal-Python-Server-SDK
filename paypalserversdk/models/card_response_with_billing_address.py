@@ -25,7 +25,8 @@ class CardResponseWithBillingAddress(object):
             [Internet date and time
             format](https://tools.ietf.org/html/rfc3339#section-5.6).
         currency_code (str): The [three-character ISO-4217 currency
-            code](/api/rest/reference/currency-codes/) that identifies the currency.
+            code](https://developer.paypal.com/api/rest/reference/currency-codes/)
+            that identifies the currency.
 
     """
 

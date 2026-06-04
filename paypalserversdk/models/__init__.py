@@ -239,6 +239,7 @@ __all__ = [
     "pricing_model",
     "pricing_scheme",
     "pricing_tier",
+    "processing_instruction",
     "processor_response",
     "processor_response_code",
     "purchase_unit",

@@ -24,9 +24,9 @@ class ErrorDetails(object):
             `body`, `path`, or `query`.
         issue (str): The unique, fine-grained application-level error code.
         links (List[LinkDescription]): An array of request-related [HATEOAS
-            links](/api/rest/responses/#hateoas-links) that are either relevant to
-            the issue by providing additional information or offering potential
-            resolutions.
+            links](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+            that are either relevant to the issue by providing additional information
+            or offering potential resolutions.
         description (str): The human-readable description for an issue. The
             description can change over the lifetime of an API, so clients must not
             depend on this value.

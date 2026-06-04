@@ -23,8 +23,9 @@ class VaultCardExperienceContext(object):
             code](https://www.loc.gov/standards/iso639-2/php/code_list.php), the
             optional [ISO-15924 script
             tag](https://www.unicode.org/iso15924/codelists.html), and the [ISO-3166
-            alpha-2 country code](/api/rest/reference/country-codes/) or [M49 region
-            code](https://unstats.un.org/unsd/methodology/m49/).
+            alpha-2 country
+            code](https://developer.paypal.com/api/rest/reference/country-codes/) or
+            [M49 region code](https://unstats.un.org/unsd/methodology/m49/).
         return_url (str): The URL where the customer is redirected after customer
             approves leaves the flow. It is a required field for contingency flows
             like PayPal wallet, 3DS.

@@ -25,6 +25,8 @@ class OrderRequest(object):
     Attributes:
         intent (CheckoutPaymentIntent): The intent to either capture payment
             immediately or authorize a payment for an order after order creation.
+        processing_instruction (ProcessingInstruction): The instruction to process an
+            order.
         payer (Payer): DEPRECATED. The customer is also known as the payer. The Payer
             object was intended to only be used with the `payment_source.paypal`
             object. In order to make this design more clear, the details in the
@@ -47,12 +49,14 @@ class OrderRequest(object):
     _names = {
         "intent": "intent",
         "purchase_units": "purchase_units",
+        "processing_instruction": "processing_instruction",
         "payer": "payer",
         "payment_source": "payment_source",
         "application_context": "application_context",
     }
 
     _optionals = [
+        "processing_instruction",
         "payer",
         "payment_source",
         "application_context",
@@ -62,12 +66,15 @@ class OrderRequest(object):
         self,
         intent=None,
         purchase_units=None,
+        processing_instruction=APIHelper.SKIP,
         payer=APIHelper.SKIP,
         payment_source=APIHelper.SKIP,
         application_context=APIHelper.SKIP):
         """Initialize a OrderRequest instance."""
         # Initialize members of the class
         self.intent = intent
+        if processing_instruction is not APIHelper.SKIP:
+            self.processing_instruction = processing_instruction
         if payer is not APIHelper.SKIP:
             self.payer = payer
         self.purchase_units = purchase_units
@@ -104,6 +111,10 @@ class OrderRequest(object):
                 PurchaseUnitRequest.from_dictionary(x)
                     for x in dictionary.get("purchase_units")
             ]
+        processing_instruction =\
+            dictionary.get("processing_instruction")\
+            if dictionary.get("processing_instruction")\
+                else APIHelper.SKIP
         payer =\
             Payer.from_dictionary(
                 dictionary.get("payer"))\
@@ -123,6 +134,7 @@ class OrderRequest(object):
         # Return an object of this model
         return cls(intent,
                    purchase_units,
+                   processing_instruction,
                    payer,
                    payment_source,
                    application_context)
@@ -130,6 +142,11 @@ class OrderRequest(object):
     def __repr__(self):
         """Return a unambiguous string representation."""
         _intent=self.intent
+        _processing_instruction=(
+            self.processing_instruction
+            if hasattr(self, "processing_instruction")
+            else None
+        )
         _payer=(
             self.payer
             if hasattr(self, "payer")
@@ -149,6 +166,7 @@ class OrderRequest(object):
         return (
             f"{self.__class__.__name__}("
             f"intent={_intent!r}, "
+            f"processing_instruction={_processing_instruction!r}, "
             f"payer={_payer!r}, "
             f"purchase_units={_purchase_units!r}, "
             f"payment_source={_payment_source!r}, "
@@ -159,6 +177,11 @@ class OrderRequest(object):
     def __str__(self):
         """Return a human-readable string representation."""
         _intent=self.intent
+        _processing_instruction=(
+            self.processing_instruction
+            if hasattr(self, "processing_instruction")
+            else None
+        )
         _payer=(
             self.payer
             if hasattr(self, "payer")
@@ -178,6 +201,7 @@ class OrderRequest(object):
         return (
             f"{self.__class__.__name__}("
             f"intent={_intent!s}, "
+            f"processing_instruction={_processing_instruction!s}, "
             f"payer={_payer!s}, "
             f"purchase_units={_purchase_units!s}, "
             f"payment_source={_payment_source!s}, "

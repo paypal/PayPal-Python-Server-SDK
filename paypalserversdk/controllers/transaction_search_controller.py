@@ -98,8 +98,8 @@ class TransactionSearchController(BaseController):
                         must be URL encoded.
                     transaction_currency -- str -- Filters the transactions in the
                         response by a [three-character ISO-4217 currency
-                        code](/api/rest/reference/currency-codes/) for the PayPal
-                        transaction currency.
+                        code](https://developer.paypal.com/api/rest/reference/currency
+                        -codes/) for the PayPal transaction currency.
                     payment_instrument_type -- str -- Filters the transactions in the
                         response by a payment instrument type. Value is either:
                         CREDITCARD. Returns a direct credit card transaction with a
@@ -247,8 +247,8 @@ class TransactionSearchController(BaseController):
                         system when not provided.
                     currency_code -- str -- Filters the transactions in the response
                         by a [three-character ISO-4217 currency
-                        code](/api/rest/reference/currency-codes/) for the PayPal
-                        transaction currency.
+                        code](https://developer.paypal.com/api/rest/reference/currency
+                        -codes/) for the PayPal transaction currency.
 
         Returns:
             ApiResponse: An object with the response value as well as other useful

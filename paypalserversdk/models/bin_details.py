@@ -18,11 +18,11 @@ class BinDetails(object):
             information) of the card.
         issuing_bank (str): The issuer of the card instrument.
         bin_country_code (str): The [two-character ISO 3166-1
-            code](/api/rest/reference/country-codes/) that identifies the country or
-            region. Note: The country code for Great Britain is GB and not UK as used
-            in the top-level domain names for that country. Use the `C2` country code
-            for China worldwide for comparable uncontrolled price (CUP) method, bank
-            card, and cross-border transactions.
+            code](https://developer.paypal.com/api/rest/reference/country-codes/)
+            that identifies the country or region. Note: The country code for Great
+            Britain is GB and not UK as used in the top-level domain names for that
+            country. Use the `C2` country code for China worldwide for comparable
+            uncontrolled price (CUP) method, bank card, and cross-border transactions.
         products (List[str]): The type of card product assigned to the BIN by the
             issuer. These values are defined by the issuer and may change over time.
             Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE.

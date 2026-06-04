@@ -24,11 +24,11 @@ class BlikPaymentRequest(object):
     Attributes:
         name (str): The full name representation like Mr J Smith.
         country_code (str): The [two-character ISO 3166-1
-            code](/api/rest/reference/country-codes/) that identifies the country or
-            region. Note: The country code for Great Britain is GB and not UK as used
-            in the top-level domain names for that country. Use the `C2` country code
-            for China worldwide for comparable uncontrolled price (CUP) method, bank
-            card, and cross-border transactions.
+            code](https://developer.paypal.com/api/rest/reference/country-codes/)
+            that identifies the country or region. Note: The country code for Great
+            Britain is GB and not UK as used in the top-level domain names for that
+            country. Use the `C2` country code for China worldwide for comparable
+            uncontrolled price (CUP) method, bank card, and cross-border transactions.
         email (str): The internationalized email address. Note: Up to 64 characters
             are allowed before and 255 characters are allowed after the @ sign.
             However, the generally accepted maximum length for an email address is

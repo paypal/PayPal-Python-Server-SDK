@@ -1,5 +1,5 @@
 
-# Refund Status With Details
+# Refund Status with Details
 
 The refund status with details.
 
@@ -11,7 +11,7 @@ The refund status with details.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `status` | [`RefundStatus`](../../doc/models/refund-status.md) | Optional | The status of the refund. |
+| `status` | [`RefundStatus`](../../doc/models/refund-status.md) | Optional, Read-only | The status of the refund. |
 | `status_details` | [`RefundStatusDetails`](../../doc/models/refund-status-details.md) | Optional | The details of the refund status. |
 
 ## Example (as JSON)

@@ -40,6 +40,10 @@ def create_billing_plan(self,
                        options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -49,6 +53,8 @@ def create_billing_plan(self,
 | `body` | [`PlanRequest`](../../doc/models/plan-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows billing plan details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`BillingPlan`](../../doc/models/billing-plan.md).
 
@@ -109,6 +115,10 @@ def list_billing_plans(self,
                       options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -120,6 +130,8 @@ def list_billing_plans(self,
 | `total_required` | `bool` | Query, Optional | Indicates whether to show the total count in the response.<br><br>**Default**: `False` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that lists billing plans.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`PlanCollection`](../../doc/models/plan-collection.md).
 
@@ -161,6 +173,10 @@ def get_billing_plan(self,
                     id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -168,6 +184,8 @@ def get_billing_plan(self,
 | `id` | `str` | Template, Required | The ID of the plan. |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows plan details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`BillingPlan`](../../doc/models/billing-plan.md).
 
@@ -204,6 +222,10 @@ def patch_billing_plan(self,
                       options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -212,6 +234,8 @@ def patch_billing_plan(self,
 | `body` | [`List[Patch]`](../../doc/models/patch.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -256,6 +280,10 @@ def activate_billing_plan(self,
                          id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -263,6 +291,8 @@ def activate_billing_plan(self,
 | `id` | `str` | Template, Required | The ID of the plan. |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -300,6 +330,10 @@ def deactivate_billing_plan(self,
                            id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -307,6 +341,8 @@ def deactivate_billing_plan(self,
 | `id` | `str` | Template, Required | The ID of the plan. |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -344,6 +380,10 @@ def update_billing_plan_pricing_schemes(self,
                                        options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -352,6 +392,8 @@ def update_billing_plan_pricing_schemes(self,
 | `body` | [`UpdatePricingSchemesRequest`](../../doc/models/update-pricing-schemes-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -399,6 +441,10 @@ def create_subscription(self,
                        options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -409,6 +455,8 @@ def create_subscription(self,
 | `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`Subscription`](../../doc/models/subscription.md).
 
@@ -451,6 +499,10 @@ def list_subscriptions(self,
                       options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -467,6 +519,8 @@ def list_subscriptions(self,
 | `customer_ids` | `List[str]` | Query, Optional | Filters the response by comma separated vault customer IDs (FSS subscriptions only).<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10`, *Minimum Length*: `1`, *Maximum Length*: `22`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that lists the subscriptions.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`SubscriptionCollection`](../../doc/models/subscription-collection.md).
 
@@ -505,6 +559,10 @@ def get_subscription(self,
                     options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -513,6 +571,8 @@ def get_subscription(self,
 | `fields` | `str` | Query, Optional | List of fields that are to be returned in the response. Possible value for fields are last_failed_payment and plan.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `100` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`Subscription`](../../doc/models/subscription.md).
 
@@ -550,6 +610,10 @@ def patch_subscription(self,
                       options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -558,6 +622,8 @@ def patch_subscription(self,
 | `body` | [`List[Patch]`](../../doc/models/patch.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -602,6 +668,10 @@ def revise_subscription(self,
                        options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -610,6 +680,8 @@ def revise_subscription(self,
 | `body` | [`ModifySubscriptionRequest`](../../doc/models/modify-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`ModifySubscriptionResponse`](../../doc/models/modify-subscription-response.md).
 
@@ -649,6 +721,10 @@ def suspend_subscription(self,
                         options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -657,6 +733,8 @@ def suspend_subscription(self,
 | `body` | [`SuspendSubscription`](../../doc/models/suspend-subscription.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -696,6 +774,10 @@ def cancel_subscription(self,
                        options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -704,6 +786,8 @@ def cancel_subscription(self,
 | `body` | [`CancelSubscriptionRequest`](../../doc/models/cancel-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -743,6 +827,10 @@ def activate_subscription(self,
                          options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -751,6 +839,8 @@ def activate_subscription(self,
 | `body` | [`ActivateSubscriptionRequest`](../../doc/models/activate-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with no JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -790,6 +880,10 @@ def capture_subscription(self,
                         options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -799,6 +893,8 @@ def capture_subscription(self,
 | `body` | [`CaptureSubscriptionRequest`](../../doc/models/capture-subscription-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`SubscriptionTransactionDetails`](../../doc/models/subscription-transaction-details.md).
 
@@ -838,6 +934,10 @@ def list_subscription_transactions(self,
                                   options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -847,6 +947,8 @@ def list_subscription_transactions(self,
 | `end_time` | `str` | Query, Required | The end time of the range of transactions to list.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows subscription details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`TransactionsList`](../../doc/models/transactions-list.md).
 

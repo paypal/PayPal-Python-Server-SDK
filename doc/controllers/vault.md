@@ -29,6 +29,10 @@ def create_payment_token(self,
                         options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -37,6 +41,8 @@ def create_payment_token(self,
 | `paypal_request_id` | `str` | Header, Optional | The server stores keys for 3 hours.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108`, *Pattern*: `^.*$` |
 
 ## Response Type
+
+**200**: Idempotent response for a successful creation of payment token.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
@@ -76,6 +82,10 @@ def list_customer_payment_tokens(self,
                                 options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -86,6 +96,8 @@ def list_customer_payment_tokens(self,
 | `total_required` | `bool` | Query, Optional | A boolean indicating total number of items (total_items) and pages (total_pages) are expected to be returned in the response.<br><br>**Default**: `False` |
 
 ## Response Type
+
+**200**: Successful execution.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`CustomerVaultPaymentTokensResponse`](../../doc/models/customer-vault-payment-tokens-response.md).
 
@@ -124,6 +136,10 @@ def get_payment_token(self,
                      id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -131,6 +147,8 @@ def get_payment_token(self,
 | `id` | `str` | Template, Required | ID of the payment token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
+
+**200**: Successful execution.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
@@ -166,6 +184,10 @@ def delete_payment_token(self,
                         id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -173,6 +195,8 @@ def delete_payment_token(self,
 | `id` | `str` | Template, Required | ID of the payment token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
+
+**204**: The server has successfully executed the method, but there is no entity body to return.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -207,6 +231,10 @@ def create_setup_token(self,
                       options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -215,6 +243,8 @@ def create_setup_token(self,
 | `paypal_request_id` | `str` | Header, Optional | The server stores keys for 3 hours.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108`, *Pattern*: `^.*$` |
 
 ## Response Type
+
+**200**: Idempotent response for a successful creation of setup token.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 
@@ -253,6 +283,10 @@ def get_setup_token(self,
                    id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -260,6 +294,8 @@ def get_setup_token(self,
 | `id` | `str` | Template, Required | ID of the setup token.<br><br>**Constraints**: *Minimum Length*: `7`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
+
+**200**: Found requested setup-token, returned a payment method associated with the token.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 

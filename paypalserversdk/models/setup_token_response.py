@@ -31,7 +31,7 @@ class SetupTokenResponse(object):
         payment_source (SetupTokenResponsePaymentSource): The setup payment method
             details.
         links (List[LinkDescription]): An array of related [HATEOAS
-            links](/api/rest/responses/#hateoas).
+            links](https://developer.paypal.com/api/rest/responses/#hateoas).
 
     """
 

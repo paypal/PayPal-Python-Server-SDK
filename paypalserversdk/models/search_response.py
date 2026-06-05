@@ -41,7 +41,7 @@ class SearchResponse(object):
         total_pages (int): The total number of pages, as an `integer`, when the
             `total_items` is divided into pages of the specified `page_size`.
         links (List[LinkDescription]): An array of request-related [HATEOAS
-            links](/api/rest/responses/#hateoas-links).
+            links](https://developer.paypal.com/api/rest/responses/#hateoas-links).
 
     """
 

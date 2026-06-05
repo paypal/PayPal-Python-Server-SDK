@@ -30,6 +30,10 @@ def get_authorized_payment(self,
                           options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -39,6 +43,8 @@ def get_authorized_payment(self,
 | `paypal_auth_assertion` | `str` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion). Note:For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject. |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows authorization details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
@@ -76,6 +82,10 @@ def capture_authorized_payment(self,
                               options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -88,6 +98,8 @@ def capture_authorized_payment(self,
 | `body` | [`CaptureRequest`](../../doc/models/capture-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows captured payment details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
 
@@ -132,6 +144,10 @@ def reauthorize_payment(self,
                        options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -143,6 +159,8 @@ def reauthorize_payment(self,
 | `body` | [`ReauthorizeRequest`](../../doc/models/reauthorize-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows the reauthorized payment details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
@@ -183,6 +201,10 @@ def void_payment(self,
                 options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -194,6 +216,8 @@ def void_payment(self,
 | `prefer` | `str` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br><br>**Default**: `"return=minimal"` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows authorization details. This response is returned when the Prefer header is set to return=representation.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`PaymentAuthorization`](../../doc/models/payment-authorization.md).
 
@@ -234,6 +258,10 @@ def get_captured_payment(self,
                         options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -242,6 +270,8 @@ def get_captured_payment(self,
 | `paypal_mock_response` | `str` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows captured payment details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`CapturedPayment`](../../doc/models/captured-payment.md).
 
@@ -279,6 +309,10 @@ def refund_captured_payment(self,
                            options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -291,6 +325,8 @@ def refund_captured_payment(self,
 | `body` | [`RefundRequest`](../../doc/models/refund-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows refund details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
 
@@ -332,6 +368,10 @@ def get_refund(self,
               options=dict())
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -341,6 +381,8 @@ def get_refund(self,
 | `paypal_auth_assertion` | `str` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-assertion). Note:For three party transactions in which a partner is managing the API calls on behalf of a merchant, the partner must identify the merchant using either a PayPal-Auth-Assertion header or an access token with target_subject. |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP 200 OK status code and a JSON response body that shows refund details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `body` property of this instance returns the response data which is of type [`Refund`](../../doc/models/refund.md).
 

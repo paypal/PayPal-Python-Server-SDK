@@ -30,7 +30,7 @@ class CustomerVaultPaymentTokensResponse(object):
         payment_tokens (List[PaymentTokenResponse]): The model property of type
             List[PaymentTokenResponse].
         links (List[LinkDescription]): An array of related [HATEOAS
-            links](/api/rest/responses/#hateoas).
+            links](https://developer.paypal.com/api/rest/responses/#hateoas).
 
     """
 

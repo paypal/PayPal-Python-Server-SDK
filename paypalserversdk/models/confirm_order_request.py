@@ -20,6 +20,8 @@ class ConfirmOrderRequest(object):
 
     Attributes:
         payment_source (PaymentSource): The payment source definition.
+        processing_instruction (ProcessingInstruction): The instruction to process an
+            order.
         application_context (OrderConfirmApplicationContext): Customizes the payer
             confirmation experience.
 
@@ -28,20 +30,25 @@ class ConfirmOrderRequest(object):
     # Create a mapping from Model property names to API property names
     _names = {
         "payment_source": "payment_source",
+        "processing_instruction": "processing_instruction",
         "application_context": "application_context",
     }
 
     _optionals = [
+        "processing_instruction",
         "application_context",
     ]
 
     def __init__(
         self,
         payment_source=None,
+        processing_instruction=APIHelper.SKIP,
         application_context=APIHelper.SKIP):
         """Initialize a ConfirmOrderRequest instance."""
         # Initialize members of the class
         self.payment_source = payment_source
+        if processing_instruction is not APIHelper.SKIP:
+            self.processing_instruction = processing_instruction
         if application_context is not APIHelper.SKIP:
             self.application_context = application_context
 
@@ -67,6 +74,10 @@ class ConfirmOrderRequest(object):
             PaymentSource.from_dictionary(
                 dictionary.get("payment_source"))\
                 if dictionary.get("payment_source") else None
+        processing_instruction =\
+            dictionary.get("processing_instruction")\
+            if dictionary.get("processing_instruction")\
+                else APIHelper.SKIP
         application_context =\
             OrderConfirmApplicationContext.from_dictionary(
                 dictionary.get("application_context"))\
@@ -75,11 +86,17 @@ class ConfirmOrderRequest(object):
 
         # Return an object of this model
         return cls(payment_source,
+                   processing_instruction,
                    application_context)
 
     def __repr__(self):
         """Return a unambiguous string representation."""
         _payment_source=self.payment_source
+        _processing_instruction=(
+            self.processing_instruction
+            if hasattr(self, "processing_instruction")
+            else None
+        )
         _application_context=(
             self.application_context
             if hasattr(self, "application_context")
@@ -88,6 +105,7 @@ class ConfirmOrderRequest(object):
         return (
             f"{self.__class__.__name__}("
             f"payment_source={_payment_source!r}, "
+            f"processing_instruction={_processing_instruction!r}, "
             f"application_context={_application_context!r}, "
             f")"
         )
@@ -95,6 +113,11 @@ class ConfirmOrderRequest(object):
     def __str__(self):
         """Return a human-readable string representation."""
         _payment_source=self.payment_source
+        _processing_instruction=(
+            self.processing_instruction
+            if hasattr(self, "processing_instruction")
+            else None
+        )
         _application_context=(
             self.application_context
             if hasattr(self, "application_context")
@@ -103,6 +126,7 @@ class ConfirmOrderRequest(object):
         return (
             f"{self.__class__.__name__}("
             f"payment_source={_payment_source!s}, "
+            f"processing_instruction={_processing_instruction!s}, "
             f"application_context={_application_context!s}, "
             f")"
         )

@@ -15,7 +15,7 @@ The error details.
 | `message` | `str` | Required | The message that describes the error. |
 | `debug_id` | `str` | Required | The PayPal internal ID. Used for correlation purposes. |
 | `details` | [`List[ErrorDetails]`](../../doc/models/error-details.md) | Optional | An array of additional details about the error. |
-| `links` | [`List[LinkDescription]`](../../doc/models/link-description.md) | Optional | An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). |
+| `links` | [`List[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas-links). |
 
 ## Example (as JSON)
 

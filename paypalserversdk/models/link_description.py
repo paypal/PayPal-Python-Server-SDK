@@ -10,7 +10,11 @@ from paypalserversdk.api_helper import APIHelper
 class LinkDescription(object):
     """Implementation of the 'Link Description' model.
 
-    The request-related [HATEOAS link](/api/rest/responses/#hateoas-links)
+    The request-related [HATEOAS
+    link](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+    information., The request-related [HATEOAS
+    link](/api/rest/responses/#hateoas-links) information., The request-related
+    [HATEOAS link](https://developer.paypal.com/api/rest/responses/#hateoas-links)
     information.
 
     Attributes:

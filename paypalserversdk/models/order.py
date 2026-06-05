@@ -36,6 +36,8 @@ class Order(object):
             payment.
         intent (CheckoutPaymentIntent): The intent to either capture payment
             immediately or authorize a payment for an order after order creation.
+        processing_instruction (ProcessingInstruction): The instruction to process an
+            order.
         payer (Payer): DEPRECATED. The customer is also known as the payer. The Payer
             object was intended to only be used with the `payment_source.paypal`
             object. In order to make this design more clear, the details in the
@@ -67,6 +69,7 @@ class Order(object):
         "id": "id",
         "payment_source": "payment_source",
         "intent": "intent",
+        "processing_instruction": "processing_instruction",
         "payer": "payer",
         "purchase_units": "purchase_units",
         "status": "status",
@@ -79,6 +82,7 @@ class Order(object):
         "id",
         "payment_source",
         "intent",
+        "processing_instruction",
         "payer",
         "purchase_units",
         "status",
@@ -92,6 +96,7 @@ class Order(object):
         id=APIHelper.SKIP,
         payment_source=APIHelper.SKIP,
         intent=APIHelper.SKIP,
+        processing_instruction=APIHelper.SKIP,
         payer=APIHelper.SKIP,
         purchase_units=APIHelper.SKIP,
         status=APIHelper.SKIP,
@@ -108,6 +113,8 @@ class Order(object):
             self.payment_source = payment_source
         if intent is not APIHelper.SKIP:
             self.intent = intent
+        if processing_instruction is not APIHelper.SKIP:
+            self.processing_instruction = processing_instruction
         if payer is not APIHelper.SKIP:
             self.payer = payer
         if purchase_units is not APIHelper.SKIP:
@@ -156,6 +163,10 @@ class Order(object):
             dictionary.get("intent")\
             if dictionary.get("intent")\
                 else APIHelper.SKIP
+        processing_instruction =\
+            dictionary.get("processing_instruction")\
+            if dictionary.get("processing_instruction")\
+                else APIHelper.SKIP
         payer =\
             Payer.from_dictionary(
                 dictionary.get("payer"))\
@@ -188,6 +199,7 @@ class Order(object):
                    id,
                    payment_source,
                    intent,
+                   processing_instruction,
                    payer,
                    purchase_units,
                    status,
@@ -220,6 +232,11 @@ class Order(object):
             if hasattr(self, "intent")
             else None
         )
+        _processing_instruction=(
+            self.processing_instruction
+            if hasattr(self, "processing_instruction")
+            else None
+        )
         _payer=(
             self.payer
             if hasattr(self, "payer")
@@ -247,6 +264,7 @@ class Order(object):
             f"id={_id!r}, "
             f"payment_source={_payment_source!r}, "
             f"intent={_intent!r}, "
+            f"processing_instruction={_processing_instruction!r}, "
             f"payer={_payer!r}, "
             f"purchase_units={_purchase_units!r}, "
             f"status={_status!r}, "
@@ -281,6 +299,11 @@ class Order(object):
             if hasattr(self, "intent")
             else None
         )
+        _processing_instruction=(
+            self.processing_instruction
+            if hasattr(self, "processing_instruction")
+            else None
+        )
         _payer=(
             self.payer
             if hasattr(self, "payer")
@@ -308,6 +331,7 @@ class Order(object):
             f"id={_id!s}, "
             f"payment_source={_payment_source!s}, "
             f"intent={_intent!s}, "
+            f"processing_instruction={_processing_instruction!s}, "
             f"payer={_payer!s}, "
             f"purchase_units={_purchase_units!s}, "
             f"status={_status!s}, "

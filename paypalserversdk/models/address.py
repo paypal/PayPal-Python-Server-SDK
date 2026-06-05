@@ -33,11 +33,11 @@ class Address(object):
             Typically required for countries with a postal code or an equivalent. See
             [postal code](https://en.wikipedia.org/wiki/Postal_code).
         country_code (str): The [2-character ISO 3166-1
-            code](/api/rest/reference/country-codes/) that identifies the country or
-            region. Note: The country code for Great Britain is GB and not UK as used
-            in the top-level domain names for that country. Use the `C2` country code
-            for China worldwide for comparable uncontrolled price (CUP) method, bank
-            card, and cross-border transactions.
+            code](https://developer.paypal.com/api/rest/reference/country-codes/)
+            that identifies the country or region. Note: The country code for Great
+            Britain is GB and not UK as used in the top-level domain names for that
+            country. Use the `C2` country code for China worldwide for comparable
+            uncontrolled price (CUP) method, bank card, and cross-border transactions.
 
     """
 

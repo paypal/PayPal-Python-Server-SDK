@@ -15,9 +15,11 @@ class ExchangeRate(object):
 
     Attributes:
         source_currency (str): The [three-character ISO-4217 currency
-            code](/api/rest/reference/currency-codes/) that identifies the currency.
+            code](https://developer.paypal.com/api/rest/reference/currency-codes/)
+            that identifies the currency.
         target_currency (str): The [three-character ISO-4217 currency
-            code](/api/rest/reference/currency-codes/) that identifies the currency.
+            code](https://developer.paypal.com/api/rest/reference/currency-codes/)
+            that identifies the currency.
         value (str): The target currency amount. Equivalent to one unit of the source
             currency. Formatted as integer or decimal value with one to 15 digits to
             the right of the decimal point.

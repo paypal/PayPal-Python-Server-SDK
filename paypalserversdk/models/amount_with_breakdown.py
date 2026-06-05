@@ -23,12 +23,13 @@ class AmountWithBreakdown(object):
 
     Attributes:
         currency_code (str): The [three-character ISO-4217 currency
-            code](/api/rest/reference/currency-codes/) that identifies the currency.
+            code](https://developer.paypal.com/api/rest/reference/currency-codes/)
+            that identifies the currency.
         value (str): The value, which might be: An integer for currencies like `JPY`
             that are not typically fractional. A decimal fraction for currencies like
             `TND` that are subdivided into thousandths. For the required number of
             decimal places for a currency code, see [Currency
-            Codes](/api/rest/reference/currency-codes/).
+            Codes](https://developer.paypal.com/api/rest/reference/currency-codes/).
         breakdown (AmountBreakdown): The breakdown of the amount. Breakdown provides
             details such as total item amount, total tax amount, shipping, handling,
             insurance, and discounts, if any.

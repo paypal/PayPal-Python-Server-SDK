@@ -18,30 +18,14 @@ The error details.
 | `details` | [`List[TransactionSearchErrorDetails]`](../../doc/models/transaction-search-error-details.md) | Optional | An array of additional details about the error. |
 | `links` | [`List[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name2",
-  "message": "message2",
-  "debug_id": "debug_id8",
-  "information_link": "information_link4",
-  "details": [
-    {
-      "field": "field4",
-      "value": "value2",
-      "location": "location4",
-      "issue": "issue6",
-      "description": "description0"
-    }
-  ],
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ]
-}
+```python
+try:
+    # make the API call
+except DefaultErrorException as e:
+    print(e)
+except ApiException as e:
+    print(e)
 ```
 

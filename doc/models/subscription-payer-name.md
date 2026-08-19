@@ -18,15 +18,17 @@ The name of the party.
 | `suffix` | `str` | Optional | The suffix for the party's name.<br><br>**Constraints**: *Maximum Length*: `140` |
 | `full_name` | `str` | Optional | When the party is a person, the party's full name.<br><br>**Constraints**: *Maximum Length*: `300` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "prefix": "prefix4",
-  "given_name": "given_name8",
-  "surname": "surname2",
-  "middle_name": "middle_name4",
-  "suffix": "suffix4"
-}
+```python
+from paypalserversdk.models.subscription_payer_name import SubscriptionPayerName
+
+subscription_payer_name = SubscriptionPayerName(
+    prefix='prefix4',
+    given_name='given_name8',
+    surname='surname2',
+    middle_name='middle_name6',
+    suffix='suffix6'
+)
 ```
 

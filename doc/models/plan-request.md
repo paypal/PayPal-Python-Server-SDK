@@ -21,78 +21,92 @@ The create plan request details.
 | `taxes` | [`Taxes`](../../doc/models/taxes.md) | Optional | The tax details. |
 | `quantity_supported` | `bool` | Optional | Indicates whether you can subscribe to this plan by providing a quantity for the goods or service.<br><br>**Default**: `False` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "product_id": "product_id2",
-  "name": "name2",
-  "status": "ACTIVE",
-  "billing_cycles": [
-    {
-      "frequency": {
-        "interval_unit": "DAY",
-        "interval_count": 1
-      },
-      "tenure_type": "REGULAR",
-      "sequence": 8,
-      "total_cycles": 1,
-      "pricing_scheme": {
-        "version": 10,
-        "fixed_price": {
-          "currency_code": "currency_code4",
-          "value": "value0"
-        },
-        "pricing_model": "VOLUME",
-        "tiers": [
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          }
-        ],
-        "create_time": "create_time4"
-      }
-    }
-  ],
-  "payment_preferences": {
-    "auto_bill_outstanding": true,
-    "setup_fee_failure_action": "CANCEL",
-    "payment_failure_threshold": 0,
-    "setup_fee": {
-      "currency_code": "currency_code8",
-      "value": "value4"
-    }
-  },
-  "quantity_supported": false,
-  "description": "description8",
-  "merchant_preferences": {
-    "return_url": "return_url4",
-    "cancel_url": "cancel_url6"
-  },
-  "taxes": {
-    "percentage": "percentage8",
-    "inclusive": false
-  }
-}
+```python
+from paypalserversdk.models.frequency import Frequency
+from paypalserversdk.models.interval_unit import IntervalUnit
+from paypalserversdk.models.merchant_preferences import MerchantPreferences
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.payment_preferences import PaymentPreferences
+from paypalserversdk.models.plan_request import PlanRequest
+from paypalserversdk.models.plan_request_status import PlanRequestStatus
+from paypalserversdk.models.pricing_tier import PricingTier
+from paypalserversdk.models.setup_fee_failure_action import SetupFeeFailureAction
+from paypalserversdk.models.subscription_billing_cycle import SubscriptionBillingCycle
+from paypalserversdk.models.subscription_pricing_model import SubscriptionPricingModel
+from paypalserversdk.models.subscription_pricing_scheme import SubscriptionPricingScheme
+from paypalserversdk.models.taxes import Taxes
+from paypalserversdk.models.tenure_type import TenureType
+
+plan_request = PlanRequest(
+    product_id='product_id8',
+    name='name2',
+    billing_cycles=[
+        SubscriptionBillingCycle(
+            frequency=Frequency(
+                interval_unit=IntervalUnit.DAY,
+                interval_count=1
+            ),
+            tenure_type=TenureType.REGULAR,
+            sequence=8,
+            pricing_scheme=SubscriptionPricingScheme(
+                fixed_price=Money(
+                    currency_code='currency_code4',
+                    value='value0'
+                ),
+                pricing_model=SubscriptionPricingModel.VOLUME,
+                tiers=[
+                    PricingTier(
+                        starting_quantity='starting_quantity8',
+                        amount=Money(
+                            currency_code='currency_code6',
+                            value='value0'
+                        ),
+                        ending_quantity='ending_quantity6'
+                    ),
+                    PricingTier(
+                        starting_quantity='starting_quantity8',
+                        amount=Money(
+                            currency_code='currency_code6',
+                            value='value0'
+                        ),
+                        ending_quantity='ending_quantity6'
+                    ),
+                    PricingTier(
+                        starting_quantity='starting_quantity8',
+                        amount=Money(
+                            currency_code='currency_code6',
+                            value='value0'
+                        ),
+                        ending_quantity='ending_quantity6'
+                    )
+                ],
+                create_time='create_time4'
+            ),
+            total_cycles=1
+        )
+    ],
+    payment_preferences=PaymentPreferences(
+        auto_bill_outstanding=True,
+        setup_fee=Money(
+            currency_code='currency_code8',
+            value='value4'
+        ),
+        setup_fee_failure_action=SetupFeeFailureAction.CANCEL,
+        payment_failure_threshold=0
+    ),
+    status=PlanRequestStatus.ACTIVE,
+    description='description2',
+    merchant_preferences=MerchantPreferences(
+        return_url='return_url4',
+        cancel_url='cancel_url6'
+    ),
+    taxes=Taxes(
+        percentage='percentage8',
+        inclusive=False
+    ),
+    quantity_supported=False
+)
 ```
 

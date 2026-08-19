@@ -27,22 +27,25 @@ A captured payment.
 | `create_time` | `str` | Optional | The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional. Note: The regular expression provides guidance but does not reject all invalid dates.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` |
 | `update_time` | `str` | Optional | The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional. Note: The regular expression provides guidance but does not reject all invalid dates.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "final_capture": false,
-  "disbursement_mode": "INSTANT",
-  "status": "REFUNDED",
-  "status_details": {
-    "reason": "VERIFICATION_REQUIRED"
-  },
-  "id": "id2",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id2"
-}
+```python
+from paypalserversdk.models.capture_incomplete_reason import CaptureIncompleteReason
+from paypalserversdk.models.capture_status_details import CaptureStatusDetails
+from paypalserversdk.models.disbursement_mode import DisbursementMode
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.orders_capture import OrdersCapture
+
+orders_capture = OrdersCapture(
+    status_details=CaptureStatusDetails(
+        reason=CaptureIncompleteReason.VERIFICATION_REQUIRED
+    ),
+    amount=Money(
+        currency_code='currency_code6',
+        value='value0'
+    ),
+    final_capture=False,
+    disbursement_mode=DisbursementMode.INSTANT
+)
 ```
 

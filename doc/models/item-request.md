@@ -23,24 +23,28 @@ The details for the items to be purchased.
 | `upc` | [`UniversalProductCode`](../../doc/models/universal-product-code.md) | Optional | The Universal Product Code of the item. |
 | `billing_plan` | [`OrderBillingPlan`](../../doc/models/order-billing-plan.md) | Optional | Metadata for merchant-managed recurring billing plans. Valid only during the saved payment method token or billing agreement creation. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "unit_amount": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  },
-  "tax": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "quantity": "quantity6",
-  "description": "description0",
-  "sku": "sku6",
-  "url": "url4",
-  "category": "DIGITAL_GOODS"
-}
+```python
+from paypalserversdk.models.item_category import ItemCategory
+from paypalserversdk.models.item_request import ItemRequest
+from paypalserversdk.models.money import Money
+
+item_request = ItemRequest(
+    name='name6',
+    unit_amount=Money(
+        currency_code='currency_code2',
+        value='value8'
+    ),
+    quantity='quantity2',
+    tax=Money(
+        currency_code='currency_code0',
+        value='value6'
+    ),
+    description='description6',
+    sku='sku2',
+    url='url0',
+    category=ItemCategory.PHYSICAL_GOODS
+)
 ```
 

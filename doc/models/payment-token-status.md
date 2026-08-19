@@ -17,3 +17,11 @@ The status of the payment token.
 | `VAULTED` | The payment token has been vaulted. |
 | `TOKENIZED` | A vaulted payment method token has been tokenized for short term (one time) use. |
 
+## Example
+
+```python
+from paypalserversdk.models.payment_token_status import PaymentTokenStatus
+
+payment_token_status = PaymentTokenStatus.PAYER_ACTION_REQUIRED
+```
+

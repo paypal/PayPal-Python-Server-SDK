@@ -16,26 +16,24 @@ The details about a saved payment source.
 | `customer` | [`VaultCustomer`](../../doc/models/vault-customer.md) | Optional | This object represents a merchant’s customer, allowing them to store contact details, and track all payments associated with the same customer. |
 | `links` | [`List[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related HATEOAS links.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id2",
-  "status": "CREATED",
-  "customer": {
-    "id": "id0",
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    }
-  },
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ]
-}
+```python
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.vault_customer import VaultCustomer
+from paypalserversdk.models.vault_response import VaultResponse
+from paypalserversdk.models.vault_status import VaultStatus
+
+vault_response = VaultResponse(
+    id='id8',
+    status=VaultStatus.VAULTED,
+    customer=VaultCustomer(
+        id='id0',
+        name=Name(
+            given_name='given_name2',
+            surname='surname8'
+        )
+    )
+)
 ```
 

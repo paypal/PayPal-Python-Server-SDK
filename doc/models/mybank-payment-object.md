@@ -16,14 +16,16 @@ Information used to pay using MyBank.
 | `bic` | `str` | Optional | The business identification code (BIC). In payments systems, a BIC is used to identify a specific business, most commonly a bank.<br><br>**Constraints**: *Minimum Length*: `8`, *Maximum Length*: `11`, *Pattern*: `^[A-Z-a-z0-9]{4}[A-Z-a-z]{2}[A-Z-a-z0-9]{2}([A-Z-a-z0-9]{3})?$` |
 | `iban_last_chars` | `str` | Optional | The last characters of the IBAN used to pay.<br><br>**Constraints**: *Minimum Length*: `4`, *Maximum Length*: `34`, *Pattern*: `[a-zA-Z0-9]{4}` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "country_code": "country_code4",
-  "bic": "bic6",
-  "iban_last_chars": "iban_last_chars2"
-}
+```python
+from paypalserversdk.models.mybank_payment_object import MybankPaymentObject
+
+mybank_payment_object = MybankPaymentObject(
+    name='name2',
+    country_code='country_code2',
+    bic='bic4',
+    iban_last_chars='iban_last_chars0'
+)
 ```
 

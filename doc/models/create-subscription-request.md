@@ -21,58 +21,72 @@ The create subscription request details.
 | `custom_id` | `str` | Optional | The custom id for the subscription. Can be invoice id.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `127`, *Pattern*: `^[\x20-\x7E]+` |
 | `plan` | [`PlanOverride`](../../doc/models/plan-override.md) | Optional | An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "plan_id": "plan_id8",
-  "auto_renewal": false,
-  "start_time": "start_time0",
-  "quantity": "quantity2",
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "subscriber": {
-    "email_address": "email_address8",
-    "payer_id": "payer_id8",
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "shipping_address": {
-      "name": {
-        "full_name": "full_name6"
-      },
-      "email_address": "email_address8",
-      "phone_number": {
-        "country_code": "country_code2",
-        "national_number": "national_number6"
-      },
-      "type": "PICKUP_IN_STORE",
-      "options": [
-        {
-          "id": "id2",
-          "label": "label2",
-          "type": "SHIPPING",
-          "amount": {
-            "currency_code": "currency_code6",
-            "value": "value0"
-          },
-          "selected": false
-        }
-      ]
-    },
-    "payment_source": {
-      "card": {
-        "name": "name6",
-        "number": "number6",
-        "expiry": "expiry4",
-        "security_code": "security_code8",
-        "type": "UNKNOWN"
-      }
-    }
-  }
-}
+```python
+from paypalserversdk.models.card_type import CardType
+from paypalserversdk.models.create_subscription_request import CreateSubscriptionRequest
+from paypalserversdk.models.fulfillment_type import FulfillmentType
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.phone_number_with_country_code import PhoneNumberWithCountryCode
+from paypalserversdk.models.shipping_details import ShippingDetails
+from paypalserversdk.models.shipping_name import ShippingName
+from paypalserversdk.models.shipping_option import ShippingOption
+from paypalserversdk.models.shipping_type import ShippingType
+from paypalserversdk.models.subscriber_request import SubscriberRequest
+from paypalserversdk.models.subscription_card_request import SubscriptionCardRequest
+from paypalserversdk.models.subscription_payment_source import SubscriptionPaymentSource
+
+create_subscription_request = CreateSubscriptionRequest(
+    plan_id='plan_id6',
+    start_time='start_time8',
+    quantity='quantity0',
+    shipping_amount=Money(
+        currency_code='currency_code0',
+        value='value6'
+    ),
+    subscriber=SubscriberRequest(
+        email_address='email_address8',
+        payer_id='payer_id8',
+        name=Name(
+            given_name='given_name2',
+            surname='surname8'
+        ),
+        shipping_address=ShippingDetails(
+            name=ShippingName(
+                full_name='full_name6'
+            ),
+            email_address='email_address8',
+            phone_number=PhoneNumberWithCountryCode(
+                country_code='country_code2',
+                national_number='national_number6'
+            ),
+            mtype=FulfillmentType.PICKUP_IN_STORE,
+            options=[
+                ShippingOption(
+                    id='id2',
+                    label='label2',
+                    selected=False,
+                    mtype=ShippingType.SHIPPING,
+                    amount=Money(
+                        currency_code='currency_code6',
+                        value='value0'
+                    )
+                )
+            ]
+        ),
+        payment_source=SubscriptionPaymentSource(
+            card=SubscriptionCardRequest(
+                name='name6',
+                number='number6',
+                expiry='expiry4',
+                security_code='security_code8',
+                mtype=CardType.UNKNOWN
+            )
+        )
+    ),
+    auto_renewal=False
+)
 ```
 

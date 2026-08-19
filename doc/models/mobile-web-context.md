@@ -14,12 +14,15 @@ Buyer's mobile web browser context to app switch to the PayPal consumer app.
 | `return_flow` | [`MobileReturnFlow`](../../doc/models/mobile-return-flow.md) | Optional, Read-only | Merchant preference on how the buyer can navigate back to merchant website post approving the transaction on the PayPal App.<br><br>**Default**: `"AUTO"`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `6`, *Pattern*: `^[A-Z_]+$` |
 | `buyer_user_agent` | `str` | Optional | User agent from the request originating from the buyer's device. This will be used to identify the buyer's operating system and browser versions. NOTE: Merchants must not alter or modify the buyer's device user agent.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `512`, *Pattern*: `^.*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "return_flow": "AUTO",
-  "buyer_user_agent": "buyer_user_agent8"
-}
+```python
+from paypalserversdk.models.mobile_return_flow import MobileReturnFlow
+from paypalserversdk.models.mobile_web_context import MobileWebContext
+
+mobile_web_context = MobileWebContext(
+    return_flow=MobileReturnFlow.AUTO,
+    buyer_user_agent='buyer_user_agent4'
+)
 ```
 

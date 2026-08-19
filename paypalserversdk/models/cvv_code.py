@@ -27,7 +27,7 @@ class CvvCode(object):
             issuer is not certified.
         CVV_X: For Visa, Mastercard, Discover, or American Express, no response. For
             Maestro, the service is not available.
-        ENUM_ALL OTHERS: For Visa, Mastercard, Discover, or American Express, error.
+        ENUM_ALL_OTHERS: For Visa, Mastercard, Discover, or American Express, error.
         CVV_0: For Maestro, the CVV2 matched.
         CVV_1: For Maestro, the CVV2 did not match.
         CVV_2: For Maestro, the merchant has not implemented CVV2 code handling.

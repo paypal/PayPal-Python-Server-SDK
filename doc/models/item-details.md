@@ -31,15 +31,17 @@ The item details.
 | `invoice_number` | `str` | Optional | The invoice number. An alphanumeric string that identifies a billing for a merchant.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `200`, *Pattern*: `^[a-zA-Z0-9_'\-., ":;\!?]*$` |
 | `checkout_options` | [`List[CheckoutOption]`](../../doc/models/checkout-option.md) | Optional | An array of checkout options. Each option has a name and value.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32767` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "item_code": "item_code4",
-  "item_name": "item_name2",
-  "item_description": "item_description0",
-  "item_options": "item_options4",
-  "item_quantity": "item_quantity4"
-}
+```python
+from paypalserversdk.models.item_details import ItemDetails
+
+item_details = ItemDetails(
+    item_code='item_code0',
+    item_name='item_name8',
+    item_description='item_description4',
+    item_options='item_options2',
+    item_quantity='item_quantity2'
+)
 ```
 

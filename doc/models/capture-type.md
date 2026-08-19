@@ -13,3 +13,11 @@ The type of capture.
 |  --- | --- |
 | `OUTSTANDING_BALANCE` | The outstanding balance that the subscriber must clear. |
 
+## Example
+
+```python
+from paypalserversdk.models.capture_type import CaptureType
+
+capture_type = CaptureType.OUTSTANDING_BALANCE
+```
+

@@ -19,23 +19,28 @@ Details shared by Google for the merchant to be shared with PayPal. This is requ
 | `cryptogram` | `str` | Optional | Base-64 cryptographic identifier used by card schemes to validate the token verification result. This is a conditionally required field if authentication_method is CRYPTOGRAM_3DS.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2000` |
 | `eci_indicator` | `str` | Optional | Electronic Commerce Indicator may not always be present. It is only returned for tokens on the Visa card network. This value is passed through in the payment authorization request.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `256`, *Pattern*: `^.*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "message_id": "message_id4",
-  "message_expiration": "message_expiration8",
-  "payment_method": "CARD",
-  "card": {
-    "name": "name6",
-    "number": "number6",
-    "expiry": "expiry4",
-    "last_digits": "last_digits0",
-    "type": "UNKNOWN"
-  },
-  "authentication_method": "PAN_ONLY",
-  "cryptogram": "cryptogram0",
-  "eci_indicator": "eci_indicator4"
-}
+```python
+from paypalserversdk.models.card_type import CardType
+from paypalserversdk.models.google_pay_authentication_method import GooglePayAuthenticationMethod
+from paypalserversdk.models.google_pay_card import GooglePayCard
+from paypalserversdk.models.google_pay_decrypted_token_data import GooglePayDecryptedTokenData
+from paypalserversdk.models.google_pay_payment_method import GooglePayPaymentMethod
+
+google_pay_decrypted_token_data = GooglePayDecryptedTokenData(
+    payment_method=GooglePayPaymentMethod.CARD,
+    card=GooglePayCard(
+        name='name6',
+        number='number6',
+        expiry='expiry4',
+        mtype=CardType.UNKNOWN
+    ),
+    authentication_method=GooglePayAuthenticationMethod.PAN_ONLY,
+    message_id='message_id2',
+    message_expiration='message_expiration0',
+    cryptogram='cryptogram8',
+    eci_indicator='eci_indicator2'
+)
 ```
 

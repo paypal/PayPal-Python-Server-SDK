@@ -26,20 +26,22 @@ The authorized payment transaction.
 | `supplementary_data` | [`PaymentSupplementaryData`](../../doc/models/payment-supplementary-data.md) | Optional | The supplementary data. |
 | `payee` | [`PayeeBase`](../../doc/models/payee-base.md) | Optional | The details for the merchant who receives the funds and fulfills the order. The merchant is also known as the payee. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "VOIDED",
-  "status_details": {
-    "reason": "PENDING_REVIEW"
-  },
-  "id": "id0",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id0"
-}
+```python
+from paypalserversdk.models.authorization_incomplete_reason import AuthorizationIncompleteReason
+from paypalserversdk.models.authorization_status_details import AuthorizationStatusDetails
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.payment_authorization import PaymentAuthorization
+
+payment_authorization = PaymentAuthorization(
+    status_details=AuthorizationStatusDetails(
+        reason=AuthorizationIncompleteReason.PENDING_REVIEW
+    ),
+    amount=Money(
+        currency_code='currency_code6',
+        value='value0'
+    )
+)
 ```
 

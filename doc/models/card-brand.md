@@ -42,3 +42,11 @@ The card network or brand. Applies to credit, debit, gift, and payment cards.
 | `ACCEL` | The Accel payment network. |
 | `UNKNOWN` | UNKNOWN payment network. |
 
+## Example
+
+```python
+from paypalserversdk.models.card_brand import CardBrand
+
+card_brand = CardBrand.STAR
+```
+

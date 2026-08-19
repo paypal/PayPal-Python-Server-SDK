@@ -16,20 +16,24 @@ Information needed to pay using iDEAL.
 | `bic` | `str` | Optional | The business identification code (BIC). In payments systems, a BIC is used to identify a specific business, most commonly a bank.<br><br>**Constraints**: *Minimum Length*: `8`, *Maximum Length*: `11`, *Pattern*: `^[A-Z-a-z0-9]{4}[A-Z-a-z]{2}[A-Z-a-z0-9]{2}([A-Z-a-z0-9]{3})?$` |
 | `experience_context` | [`ExperienceContext`](../../doc/models/experience-context.md) | Optional | Customizes the payer experience during the approval process for the payment. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "country_code": "country_code4",
-  "bic": "bic8",
-  "experience_context": {
-    "brand_name": "brand_name2",
-    "locale": "locale6",
-    "shipping_preference": "NO_SHIPPING",
-    "return_url": "return_url4",
-    "cancel_url": "cancel_url6"
-  }
-}
+```python
+from paypalserversdk.models.experience_context import ExperienceContext
+from paypalserversdk.models.experience_context_shipping_preference import ExperienceContextShippingPreference
+from paypalserversdk.models.ideal_payment_request import IdealPaymentRequest
+
+ideal_payment_request = IdealPaymentRequest(
+    name='name0',
+    country_code='country_code0',
+    bic='bic2',
+    experience_context=ExperienceContext(
+        brand_name='brand_name2',
+        locale='locale6',
+        shipping_preference=ExperienceContextShippingPreference.NO_SHIPPING,
+        return_url='return_url4',
+        cancel_url='cancel_url6'
+    )
+)
 ```
 

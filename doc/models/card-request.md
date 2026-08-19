@@ -23,22 +23,25 @@ The payment card to use to fund a payment. Can be a credit or debit card. Note: 
 | `network_token` | [`NetworkToken`](../../doc/models/network-token.md) | Optional | The Third Party Network token used to fund a payment. |
 | `experience_context` | [`CardExperienceContext`](../../doc/models/card-experience-context.md) | Optional | Customizes the payer experience during the 3DS Approval for payment. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name8",
-  "number": "number4",
-  "expiry": "expiry6",
-  "security_code": "security_code0",
-  "billing_address": {
-    "address_line_1": "address_line_12",
-    "address_line_2": "address_line_28",
-    "admin_area_2": "admin_area_28",
-    "admin_area_1": "admin_area_14",
-    "postal_code": "postal_code0",
-    "country_code": "country_code8"
-  }
-}
+```python
+from paypalserversdk.models.address import Address
+from paypalserversdk.models.card_request import CardRequest
+
+card_request = CardRequest(
+    name='name4',
+    number='number2',
+    expiry='expiry2',
+    security_code='security_code6',
+    billing_address=Address(
+        country_code='country_code8',
+        address_line_1='address_line_12',
+        address_line_2='address_line_28',
+        admin_area_2='admin_area_28',
+        admin_area_1='admin_area_14',
+        postal_code='postal_code0'
+    )
+)
 ```
 

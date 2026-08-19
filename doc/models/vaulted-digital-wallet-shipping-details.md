@@ -17,27 +17,33 @@ The shipping details.
 | `mtype` | [`FulfillmentType`](../../doc/models/fulfillment-type.md) | Optional | A classification for the method of purchase fulfillment (e.g shipping, in-store pickup, etc). Either `type` or `options` may be present, but not both.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` |
 | `address` | [`Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": {
-    "full_name": "full_name6"
-  },
-  "email_address": "email_address6",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6"
-  },
-  "type": "PICKUP_IN_STORE",
-  "address": {
-    "address_line_1": "address_line_16",
-    "address_line_2": "address_line_26",
-    "admin_area_2": "admin_area_20",
-    "admin_area_1": "admin_area_12",
-    "postal_code": "postal_code8",
-    "country_code": "country_code6"
-  }
-}
+```python
+from paypalserversdk.models.address import Address
+from paypalserversdk.models.fulfillment_type import FulfillmentType
+from paypalserversdk.models.phone_number_with_country_code import PhoneNumberWithCountryCode
+from paypalserversdk.models.shipping_name import ShippingName
+from paypalserversdk.models.vaulted_digital_wallet_shipping_details import VaultedDigitalWalletShippingDetails
+
+vaulted_digital_wallet_shipping_details = VaultedDigitalWalletShippingDetails(
+    name=ShippingName(
+        full_name='full_name6'
+    ),
+    email_address='email_address0',
+    phone_number=PhoneNumberWithCountryCode(
+        country_code='country_code2',
+        national_number='national_number6'
+    ),
+    mtype=FulfillmentType.PICKUP_IN_STORE,
+    address=Address(
+        country_code='country_code6',
+        address_line_1='address_line_16',
+        address_line_2='address_line_26',
+        admin_area_2='admin_area_20',
+        admin_area_1='admin_area_12',
+        postal_code='postal_code8'
+    )
+)
 ```
 

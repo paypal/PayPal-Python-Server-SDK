@@ -37,3 +37,11 @@ The card network or brand. Applies to credit, debit, gift, and payment cards.
 | `EFTPOS` | The Electronic Fund Transfer At Point of Sale(EFTPOS) Debit card payment network. |
 | `UNKNOWN` | UNKNOWN payment network. |
 
+## Example
+
+```python
+from paypalserversdk.models.subscriptions_card_brand import SubscriptionsCardBrand
+
+subscriptions_card_brand = SubscriptionsCardBrand.STAR
+```
+

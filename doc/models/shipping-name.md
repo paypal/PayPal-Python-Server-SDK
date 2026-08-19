@@ -13,11 +13,13 @@ The name of the party.
 |  --- | --- | --- | --- |
 | `full_name` | `str` | Optional | When the party is a person, the party's full name.<br><br>**Constraints**: *Maximum Length*: `300` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "full_name": "full_name6"
-}
+```python
+from paypalserversdk.models.shipping_name import ShippingName
+
+shipping_name = ShippingName(
+    full_name='full_name6'
+)
 ```
 

@@ -19,15 +19,17 @@ The name of the party.
 | `alternate_full_name` | `str` | Optional | DEPRECATED. The party's alternate name. Can be a business name, nickname, or any other name that cannot be split into first, last name. Required when the party is a business.<br><br>**Constraints**: *Maximum Length*: `300` |
 | `full_name` | `str` | Optional | When the party is a person, the party's full name.<br><br>**Constraints**: *Maximum Length*: `300` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "prefix": "prefix4",
-  "given_name": "given_name8",
-  "surname": "surname8",
-  "middle_name": "middle_name6",
-  "suffix": "suffix6"
-}
+```python
+from paypalserversdk.models.payer_name import PayerName
+
+payer_name = PayerName(
+    prefix='prefix8',
+    given_name='given_name2',
+    surname='surname8',
+    middle_name='middle_name0',
+    suffix='suffix0'
+)
 ```
 

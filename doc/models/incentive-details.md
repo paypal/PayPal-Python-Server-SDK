@@ -16,17 +16,20 @@ The incentive details.
 | `incentive_amount` | [`Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. |
 | `incentive_program_code` | `str` | Optional | The incentive program code that identifies a merchant loyalty or incentive program.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `100`, *Pattern*: `^[a-zA-Z0-9_'\-., ":;\!?]*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "incentive_type": "incentive_type4",
-  "incentive_code": "incentive_code0",
-  "incentive_amount": {
-    "currency_code": "currency_code4",
-    "value": "value0"
-  },
-  "incentive_program_code": "incentive_program_code4"
-}
+```python
+from paypalserversdk.models.incentive_details import IncentiveDetails
+from paypalserversdk.models.money import Money
+
+incentive_details = IncentiveDetails(
+    incentive_type='incentive_type4',
+    incentive_code='incentive_code0',
+    incentive_amount=Money(
+        currency_code='currency_code4',
+        value='value0'
+    ),
+    incentive_program_code='incentive_program_code4'
+)
 ```
 

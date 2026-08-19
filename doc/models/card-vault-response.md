@@ -16,39 +16,35 @@ The details about a saved Card payment source.
 | `links` | [`List[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related HATEOAS links.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` |
 | `customer` | [`CardCustomerInformation`](../../doc/models/card-customer-information.md) | Optional | The details about a customer in PayPal's system of record. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "status": "VAULTED",
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    },
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ],
-  "customer": {
-    "id": "id0",
-    "email_address": "email_address2",
-    "phone": {
-      "phone_type": "OTHER",
-      "phone_number": {
-        "national_number": "national_number6"
-      }
-    },
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "merchant_customer_id": "merchant_customer_id2"
-  }
-}
+```python
+from paypalserversdk.models.card_customer_information import CardCustomerInformation
+from paypalserversdk.models.card_vault_response import CardVaultResponse
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.phone_number import PhoneNumber
+from paypalserversdk.models.phone_type import PhoneType
+from paypalserversdk.models.phone_with_type import PhoneWithType
+from paypalserversdk.models.vault_status import VaultStatus
+
+card_vault_response = CardVaultResponse(
+    id='id0',
+    status=VaultStatus.APPROVED,
+    customer=CardCustomerInformation(
+        id='id0',
+        email_address='email_address2',
+        phone=PhoneWithType(
+            phone_number=PhoneNumber(
+                national_number='national_number6'
+            ),
+            phone_type=PhoneType.OTHER
+        ),
+        name=Name(
+            given_name='given_name2',
+            surname='surname8'
+        ),
+        merchant_customer_id='merchant_customer_id2'
+    )
+)
 ```
 

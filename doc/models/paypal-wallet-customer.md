@@ -17,23 +17,29 @@ The details about a customer in PayPal's system of record.
 | `name` | [`Name`](../../doc/models/name.md) | Optional | The name of the party. |
 | `merchant_customer_id` | `str` | Optional | Merchants and partners may already have a data-store where their customer information is persisted. Use merchant_customer_id to associate the PayPal-generated customer.id to your representation of a customer.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64`, *Pattern*: `^[0-9a-zA-Z-_.^*$@#]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id8",
-  "email_address": "email_address4",
-  "phone": {
-    "phone_type": "OTHER",
-    "phone_number": {
-      "national_number": "national_number6"
-    }
-  },
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "merchant_customer_id": "merchant_customer_id0"
-}
+```python
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.paypal_wallet_customer import PaypalWalletCustomer
+from paypalserversdk.models.phone_number import PhoneNumber
+from paypalserversdk.models.phone_type import PhoneType
+from paypalserversdk.models.phone_with_type import PhoneWithType
+
+paypal_wallet_customer = PaypalWalletCustomer(
+    id='id6',
+    email_address='email_address4',
+    phone=PhoneWithType(
+        phone_number=PhoneNumber(
+            national_number='national_number6'
+        ),
+        phone_type=PhoneType.OTHER
+    ),
+    name=Name(
+        given_name='given_name2',
+        surname='surname8'
+    ),
+    merchant_customer_id='merchant_customer_id8'
+)
 ```
 

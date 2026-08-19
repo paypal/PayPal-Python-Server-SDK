@@ -16,17 +16,21 @@ The payment preferences for a subscription.
 | `setup_fee_failure_action` | [`SetupFeeFailureAction`](../../doc/models/setup-fee-failure-action.md) | Optional | The action to take on the subscription if the initial payment for the setup fails.<br><br>**Default**: `"CANCEL"`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `24`, *Pattern*: `^[A-Z_]+$` |
 | `payment_failure_threshold` | `int` | Optional | The maximum number of payment failures before a subscription is suspended. For example, if `payment_failure_threshold` is `2`, the subscription automatically updates to the `SUSPEND` state if two consecutive payments fail.<br><br>**Default**: `0`<br><br>**Constraints**: `>= 0`, `<= 999` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "auto_bill_outstanding": true,
-  "setup_fee_failure_action": "CANCEL",
-  "payment_failure_threshold": 0,
-  "setup_fee": {
-    "currency_code": "currency_code8",
-    "value": "value4"
-  }
-}
+```python
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.payment_preferences import PaymentPreferences
+from paypalserversdk.models.setup_fee_failure_action import SetupFeeFailureAction
+
+payment_preferences = PaymentPreferences(
+    auto_bill_outstanding=True,
+    setup_fee=Money(
+        currency_code='currency_code8',
+        value='value4'
+    ),
+    setup_fee_failure_action=SetupFeeFailureAction.CANCEL,
+    payment_failure_threshold=0
+)
 ```
 

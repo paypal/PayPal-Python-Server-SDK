@@ -53,6 +53,13 @@ class Subscription(object):
         plan (PlanDetails): The plan details.
         links (List[LinkDescription]): An array of request-related [HATEOAS
             links](/docs/api/reference/api-responses/#hateoas-links).
+        status (SubscriptionStatus): The status of the subscription.
+        status_change_note (str): The reason or notes for the status of the
+            subscription.
+        status_update_time (str): The date and time, in [Internet date and time
+            format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
+            required while fractional seconds are optional. Note: The regular
+            expression provides guidance but does not reject all invalid dates.
 
     """
 
@@ -71,6 +78,9 @@ class Subscription(object):
         "plan_overridden": "plan_overridden",
         "plan": "plan",
         "links": "links",
+        "status": "status",
+        "status_change_note": "status_change_note",
+        "status_update_time": "status_update_time",
     }
 
     _optionals = [
@@ -87,6 +97,9 @@ class Subscription(object):
         "plan_overridden",
         "plan",
         "links",
+        "status",
+        "status_change_note",
+        "status_update_time",
     ]
 
     def __init__(
@@ -103,7 +116,10 @@ class Subscription(object):
         custom_id=APIHelper.SKIP,
         plan_overridden=APIHelper.SKIP,
         plan=APIHelper.SKIP,
-        links=APIHelper.SKIP):
+        links=APIHelper.SKIP,
+        status=APIHelper.SKIP,
+        status_change_note=APIHelper.SKIP,
+        status_update_time=APIHelper.SKIP):
         """Initialize a Subscription instance."""
         # Initialize members of the class
         if id is not APIHelper.SKIP:
@@ -132,6 +148,12 @@ class Subscription(object):
             self.plan = plan
         if links is not APIHelper.SKIP:
             self.links = links
+        if status is not APIHelper.SKIP:
+            self.status = status
+        if status_change_note is not APIHelper.SKIP:
+            self.status_change_note = status_change_note
+        if status_update_time is not APIHelper.SKIP:
+            self.status_update_time = status_update_time
 
     @classmethod
     def from_dictionary(cls,
@@ -211,6 +233,18 @@ class Subscription(object):
             ]
         else:
             links = APIHelper.SKIP
+        status =\
+            dictionary.get("status")\
+            if dictionary.get("status")\
+                else APIHelper.SKIP
+        status_change_note =\
+            dictionary.get("status_change_note")\
+            if dictionary.get("status_change_note")\
+                else APIHelper.SKIP
+        status_update_time =\
+            dictionary.get("status_update_time")\
+            if dictionary.get("status_update_time")\
+                else APIHelper.SKIP
 
         # Return an object of this model
         return cls(id,
@@ -225,7 +259,10 @@ class Subscription(object):
                    custom_id,
                    plan_overridden,
                    plan,
-                   links)
+                   links,
+                   status,
+                   status_change_note,
+                   status_update_time)
 
     def __repr__(self):
         """Return a unambiguous string representation."""
@@ -294,6 +331,21 @@ class Subscription(object):
             if hasattr(self, "links")
             else None
         )
+        _status=(
+            self.status
+            if hasattr(self, "status")
+            else None
+        )
+        _status_change_note=(
+            self.status_change_note
+            if hasattr(self, "status_change_note")
+            else None
+        )
+        _status_update_time=(
+            self.status_update_time
+            if hasattr(self, "status_update_time")
+            else None
+        )
         return (
             f"{self.__class__.__name__}("
             f"id={_id!r}, "
@@ -309,6 +361,9 @@ class Subscription(object):
             f"plan_overridden={_plan_overridden!r}, "
             f"plan={_plan!r}, "
             f"links={_links!r}, "
+            f"status={_status!r}, "
+            f"status_change_note={_status_change_note!r}, "
+            f"status_update_time={_status_update_time!r}, "
             f")"
         )
 
@@ -379,6 +434,21 @@ class Subscription(object):
             if hasattr(self, "links")
             else None
         )
+        _status=(
+            self.status
+            if hasattr(self, "status")
+            else None
+        )
+        _status_change_note=(
+            self.status_change_note
+            if hasattr(self, "status_change_note")
+            else None
+        )
+        _status_update_time=(
+            self.status_update_time
+            if hasattr(self, "status_update_time")
+            else None
+        )
         return (
             f"{self.__class__.__name__}("
             f"id={_id!s}, "
@@ -394,5 +464,8 @@ class Subscription(object):
             f"plan_overridden={_plan_overridden!s}, "
             f"plan={_plan!s}, "
             f"links={_links!s}, "
+            f"status={_status!s}, "
+            f"status_change_note={_status_change_note!s}, "
+            f"status_update_time={_status_update_time!s}, "
             f")"
         )

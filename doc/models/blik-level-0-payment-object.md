@@ -13,11 +13,13 @@ Information used to pay using BLIK level_0 flow.
 |  --- | --- | --- | --- |
 | `auth_code` | `str` | Required | The 6-digit code used to authenticate a consumer within BLIK.<br><br>**Constraints**: *Minimum Length*: `6`, *Maximum Length*: `6`, *Pattern*: `^[0-9]{6}$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "auth_code": "auth_code6"
-}
+```python
+from paypalserversdk.models.blik_level_0_payment_object import BlikLevel0PaymentObject
+
+blik_level_0_payment_object = BlikLevel0PaymentObject(
+    auth_code='auth_code8'
+)
 ```
 

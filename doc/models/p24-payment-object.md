@@ -18,15 +18,17 @@ Information used to pay using P24(Przelewy24).
 | `method_id` | `str` | Optional | Numeric identifier of the payment scheme or bank used for the payment.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `300` |
 | `method_description` | `str` | Optional | Friendly name of the payment scheme or bank used for the payment.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2000` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "email": "email2",
-  "country_code": "country_code4",
-  "payment_descriptor": "payment_descriptor8",
-  "method_id": "method_id8"
-}
+```python
+from paypalserversdk.models.p_24_payment_object import P24PaymentObject
+
+p_24_payment_object = P24PaymentObject(
+    name='name0',
+    email='email6',
+    country_code='country_code0',
+    payment_descriptor='payment_descriptor4',
+    method_id='method_id4'
+)
 ```
 

@@ -13,15 +13,18 @@ An API resource denoting a request to securely store a SEPA Debit.
 |  --- | --- | --- | --- |
 | `experience_context` | [`SepaDebitExperienceContext`](../../doc/models/sepa-debit-experience-context.md) | Optional | Customizes the payer experience during the approval process for the SEPA Debit payment. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "experience_context": {
-    "locale": "locale6",
-    "return_url": "return_url4",
-    "cancel_url": "cancel_url6"
-  }
-}
+```python
+from paypalserversdk.models.sepa_debit_experience_context import SepaDebitExperienceContext
+from paypalserversdk.models.sepa_debit_request import SepaDebitRequest
+
+sepa_debit_request = SepaDebitRequest(
+    experience_context=SepaDebitExperienceContext(
+        return_url='return_url4',
+        cancel_url='cancel_url6',
+        locale='locale6'
+    )
+)
 ```
 

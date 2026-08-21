@@ -17,15 +17,17 @@ The error details. Required for client-side `4XX` errors.
 | `issue` | `str` | Required | The unique, fine-grained application-level error code. |
 | `description` | `str` | Optional | The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "location": "body",
-  "issue": "issue2",
-  "field": "field0",
-  "value": "value8",
-  "description": "description6"
-}
+```python
+from paypalserversdk.models.transaction_search_error_details import TransactionSearchErrorDetails
+
+transaction_search_error_details = TransactionSearchErrorDetails(
+    issue='issue2',
+    field='field6',
+    value='value4',
+    location='body',
+    description='description8'
+)
 ```
 

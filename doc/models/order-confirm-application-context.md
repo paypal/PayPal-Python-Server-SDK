@@ -17,25 +17,33 @@ Customizes the payer confirmation experience.
 | `cancel_url` | `str` | Optional | The URL where the customer is redirected after the customer cancels the payment.<br><br>**Constraints**: *Minimum Length*: `10`, *Maximum Length*: `4000` |
 | `stored_payment_source` | [`StoredPaymentSource`](../../doc/models/stored-payment-source.md) | Optional | Provides additional details to process a payment using a `payment_source` that has been stored or is intended to be stored (also referred to as stored_credential or card-on-file). Parameter compatibility: `payment_type=ONE_TIME` is compatible only with `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with `payment_initiator=CUSTOMER`. `previous_transaction_reference` or `previous_network_transaction_reference` is compatible only with `payment_initiator=MERCHANT`. Only one of the parameters - `previous_transaction_reference` and `previous_network_transaction_reference` - can be present in the request. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "brand_name": "brand_name6",
-  "locale": "locale0",
-  "return_url": "return_url8",
-  "cancel_url": "cancel_url0",
-  "stored_payment_source": {
-    "payment_initiator": "CUSTOMER",
-    "payment_type": "RECURRING",
-    "usage": "FIRST",
-    "previous_network_transaction_reference": {
-      "id": "id6",
-      "date": "date2",
-      "network": "CONFIDIS",
-      "acquirer_reference_number": "acquirer_reference_number8"
-    }
-  }
-}
+```python
+from paypalserversdk.models.card_brand import CardBrand
+from paypalserversdk.models.network_transaction import NetworkTransaction
+from paypalserversdk.models.order_confirm_application_context import OrderConfirmApplicationContext
+from paypalserversdk.models.payment_initiator import PaymentInitiator
+from paypalserversdk.models.stored_payment_source import StoredPaymentSource
+from paypalserversdk.models.stored_payment_source_payment_type import StoredPaymentSourcePaymentType
+from paypalserversdk.models.stored_payment_source_usage_type import StoredPaymentSourceUsageType
+
+order_confirm_application_context = OrderConfirmApplicationContext(
+    brand_name='brand_name2',
+    locale='locale2',
+    return_url='return_url0',
+    cancel_url='cancel_url2',
+    stored_payment_source=StoredPaymentSource(
+        payment_initiator=PaymentInitiator.CUSTOMER,
+        payment_type=StoredPaymentSourcePaymentType.RECURRING,
+        usage=StoredPaymentSourceUsageType.FIRST,
+        previous_network_transaction_reference=NetworkTransaction(
+            id='id6',
+            date='date2',
+            network=CardBrand.CONFIDIS,
+            acquirer_reference_number='acquirer_reference_number8'
+        )
+    )
+)
 ```
 

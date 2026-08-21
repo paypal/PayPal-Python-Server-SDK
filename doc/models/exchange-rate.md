@@ -15,13 +15,15 @@ The exchange rate that determines the amount to convert from one currency to ano
 | `target_currency` | `str` | Optional | The [three-character ISO-4217 currency code](https://developer.paypal.com/api/rest/reference/currency-codes/) that identifies the currency.<br><br>**Constraints**: *Minimum Length*: `3`, *Maximum Length*: `3` |
 | `value` | `str` | Optional | The target currency amount. Equivalent to one unit of the source currency. Formatted as integer or decimal value with one to 15 digits to the right of the decimal point. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "source_currency": "source_currency0",
-  "target_currency": "target_currency2",
-  "value": "value2"
-}
+```python
+from paypalserversdk.models.exchange_rate import ExchangeRate
+
+exchange_rate = ExchangeRate(
+    source_currency='source_currency4',
+    target_currency='target_currency6',
+    value='value6'
+)
 ```
 

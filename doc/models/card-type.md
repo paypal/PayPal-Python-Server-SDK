@@ -17,3 +17,11 @@ Type of card. i.e Credit, Debit and so on.
 | `STORE` | A store card. |
 | `UNKNOWN` | Card type cannot be determined. |
 
+## Example
+
+```python
+from paypalserversdk.models.card_type import CardType
+
+card_type = CardType.UNKNOWN
+```
+

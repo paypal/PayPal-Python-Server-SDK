@@ -20,3 +20,11 @@ Transactions status result identifier. The outcome of the issuer's authenticatio
 | `DECOUPLEDAUTHENTICATION` | Challenge required; decoupled authentication confirmed. |
 | `INFORMATIONALONLY` | Informational only; 3DS requestor challenge preference acknowledged. |
 
+## Example
+
+```python
+from paypalserversdk.models.pa_res_status import PaResStatus
+
+pa_res_status = PaResStatus.DECOUPLEDAUTHENTICATION
+```
+

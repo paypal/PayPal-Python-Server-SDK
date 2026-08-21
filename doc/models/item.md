@@ -23,24 +23,28 @@ The details for the items to be purchased.
 | `upc` | [`UniversalProductCode`](../../doc/models/universal-product-code.md) | Optional | The Universal Product Code of the item. |
 | `billing_plan` | [`OrderBillingPlan`](../../doc/models/order-billing-plan.md) | Optional | Metadata for merchant-managed recurring billing plans. Valid only during the saved payment method token or billing agreement creation. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name2",
-  "unit_amount": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  },
-  "tax": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "quantity": "quantity8",
-  "description": "description2",
-  "sku": "sku8",
-  "url": "url6",
-  "category": "DIGITAL_GOODS"
-}
+```python
+from paypalserversdk.models.item import Item
+from paypalserversdk.models.item_category import ItemCategory
+from paypalserversdk.models.money import Money
+
+item = Item(
+    name='name2',
+    unit_amount=Money(
+        currency_code='currency_code2',
+        value='value8'
+    ),
+    quantity='quantity8',
+    tax=Money(
+        currency_code='currency_code0',
+        value='value6'
+    ),
+    description='description2',
+    sku='sku8',
+    url='url6',
+    category=ItemCategory.DONATION
+)
 ```
 

@@ -18,49 +18,62 @@ The request to update the quantity of the product or service in a subscription. 
 | `application_context` | [`SubscriptionPatchApplicationContext`](../../doc/models/subscription-patch-application-context.md) | Optional | The application context, which customizes the payer experience during the subscription approval process with PayPal. |
 | `plan` | [`PlanOverride`](../../doc/models/plan-override.md) | Optional | An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "plan_id": "plan_id6",
-  "quantity": "quantity0",
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
-    ]
-  },
-  "application_context": {
-    "brand_name": "brand_name8",
-    "locale": "locale2",
-    "shipping_preference": "SET_PROVIDED_ADDRESS",
-    "payment_method": {
-      "payee_preferred": "UNRESTRICTED"
-    },
-    "return_url": "return_url0",
-    "cancel_url": "cancel_url2"
-  }
-}
+```python
+from paypalserversdk.models.experience_context_shipping_preference import ExperienceContextShippingPreference
+from paypalserversdk.models.fulfillment_type import FulfillmentType
+from paypalserversdk.models.modify_subscription_request import ModifySubscriptionRequest
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.payee_payment_method_preference import PayeePaymentMethodPreference
+from paypalserversdk.models.payment_method import PaymentMethod
+from paypalserversdk.models.phone_number_with_country_code import PhoneNumberWithCountryCode
+from paypalserversdk.models.shipping_details import ShippingDetails
+from paypalserversdk.models.shipping_name import ShippingName
+from paypalserversdk.models.shipping_option import ShippingOption
+from paypalserversdk.models.shipping_type import ShippingType
+from paypalserversdk.models.subscription_patch_application_context import SubscriptionPatchApplicationContext
+
+modify_subscription_request = ModifySubscriptionRequest(
+    plan_id='plan_id8',
+    quantity='quantity2',
+    shipping_amount=Money(
+        currency_code='currency_code0',
+        value='value6'
+    ),
+    shipping_address=ShippingDetails(
+        name=ShippingName(
+            full_name='full_name6'
+        ),
+        email_address='email_address8',
+        phone_number=PhoneNumberWithCountryCode(
+            country_code='country_code2',
+            national_number='national_number6'
+        ),
+        mtype=FulfillmentType.PICKUP_IN_STORE,
+        options=[
+            ShippingOption(
+                id='id2',
+                label='label2',
+                selected=False,
+                mtype=ShippingType.SHIPPING,
+                amount=Money(
+                    currency_code='currency_code6',
+                    value='value0'
+                )
+            )
+        ]
+    ),
+    application_context=SubscriptionPatchApplicationContext(
+        return_url='return_url0',
+        cancel_url='cancel_url2',
+        brand_name='brand_name8',
+        locale='locale2',
+        shipping_preference=ExperienceContextShippingPreference.SET_PROVIDED_ADDRESS,
+        payment_method=PaymentMethod(
+            payee_preferred=PayeePaymentMethodPreference.UNRESTRICTED
+        )
+    )
+)
 ```
 

@@ -16,22 +16,28 @@ This object represents a merchant’s customer, allowing them to store contact d
 | `phone` | [`PhoneWithType`](../../doc/models/phone-with-type.md) | Optional | The phone information. |
 | `name` | [`Name`](../../doc/models/name.md) | Optional | The name of the party. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "email_address": "email_address4",
-  "phone": {
-    "phone_type": "OTHER",
-    "phone_number": {
-      "national_number": "national_number6"
-    }
-  },
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  }
-}
+```python
+from paypalserversdk.models.customer_information import CustomerInformation
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.phone_number import PhoneNumber
+from paypalserversdk.models.phone_type import PhoneType
+from paypalserversdk.models.phone_with_type import PhoneWithType
+
+customer_information = CustomerInformation(
+    id='id8',
+    email_address='email_address6',
+    phone=PhoneWithType(
+        phone_number=PhoneNumber(
+            national_number='national_number6'
+        ),
+        phone_type=PhoneType.OTHER
+    ),
+    name=Name(
+        given_name='given_name2',
+        surname='surname8'
+    )
+)
 ```
 

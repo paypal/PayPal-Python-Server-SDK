@@ -18,22 +18,26 @@ The payment card to use to fund a Google Pay payment response. Can be a credit o
 | `billing_address` | [`Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). |
 | `authentication_result` | [`AuthenticationResponse`](../../doc/models/authentication-response.md) | Optional | Results of Authentication such as 3D Secure. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "last_digits": "last_digits8",
-  "type": "DEBIT",
-  "brand": "ACCEL",
-  "billing_address": {
-    "address_line_1": "address_line_12",
-    "address_line_2": "address_line_28",
-    "admin_area_2": "admin_area_28",
-    "admin_area_1": "admin_area_14",
-    "postal_code": "postal_code0",
-    "country_code": "country_code8"
-  }
-}
+```python
+from paypalserversdk.models.address import Address
+from paypalserversdk.models.card_brand import CardBrand
+from paypalserversdk.models.card_type import CardType
+from paypalserversdk.models.google_pay_card_response import GooglePayCardResponse
+
+google_pay_card_response = GooglePayCardResponse(
+    name='name0',
+    mtype=CardType.CREDIT,
+    brand=CardBrand.CETELEM,
+    billing_address=Address(
+        country_code='country_code8',
+        address_line_1='address_line_12',
+        address_line_2='address_line_28',
+        admin_area_2='admin_area_28',
+        admin_area_1='admin_area_14',
+        postal_code='postal_code0'
+    )
+)
 ```
 

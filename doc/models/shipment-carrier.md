@@ -1425,3 +1425,11 @@ The carrier for the shipment. Some carriers have a global version as well as loc
 | `TOPTRANS` | Toptrans. |
 | `OTHER` | Other. |
 
+## Example
+
+```python
+from paypalserversdk.models.shipment_carrier import ShipmentCarrier
+
+shipment_carrier = ShipmentCarrier.GBA
+```
+

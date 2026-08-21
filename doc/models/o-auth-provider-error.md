@@ -18,3 +18,11 @@ OAuth 2 Authorization error codes
 | `UNSUPPORTED_GRANT_TYPE` | The authorization grant type is not supported by the authorization server. |
 | `INVALID_SCOPE` | The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the resource owner. |
 
+## Example
+
+```python
+from paypalserversdk.models.o_auth_provider_error import OAuthProviderError
+
+o_auth_provider_error = OAuthProviderError.INVALID_REQUEST
+```
+

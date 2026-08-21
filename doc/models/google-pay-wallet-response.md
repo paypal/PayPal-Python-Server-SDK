@@ -16,30 +16,36 @@ Google Pay Wallet payment data.
 | `phone_number` | [`PhoneNumberWithCountryCode`](../../doc/models/phone-number-with-country-code.md) | Optional | The phone number in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). |
 | `card` | [`GooglePayCardResponse`](../../doc/models/google-pay-card-response.md) | Optional | The payment card to use to fund a Google Pay payment response. Can be a credit or debit card. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name0",
-  "email_address": "email_address2",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6"
-  },
-  "card": {
-    "name": "name6",
-    "last_digits": "last_digits0",
-    "type": "UNKNOWN",
-    "brand": "CB_NATIONALE",
-    "billing_address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_28",
-      "admin_area_2": "admin_area_28",
-      "admin_area_1": "admin_area_14",
-      "postal_code": "postal_code0",
-      "country_code": "country_code8"
-    }
-  }
-}
+```python
+from paypalserversdk.models.address import Address
+from paypalserversdk.models.card_brand import CardBrand
+from paypalserversdk.models.card_type import CardType
+from paypalserversdk.models.google_pay_card_response import GooglePayCardResponse
+from paypalserversdk.models.google_pay_wallet_response import GooglePayWalletResponse
+from paypalserversdk.models.phone_number_with_country_code import PhoneNumberWithCountryCode
+
+google_pay_wallet_response = GooglePayWalletResponse(
+    name='name6',
+    email_address='email_address4',
+    phone_number=PhoneNumberWithCountryCode(
+        country_code='country_code2',
+        national_number='national_number6'
+    ),
+    card=GooglePayCardResponse(
+        name='name6',
+        mtype=CardType.UNKNOWN,
+        brand=CardBrand.CB_NATIONALE,
+        billing_address=Address(
+            country_code='country_code8',
+            address_line_1='address_line_12',
+            address_line_2='address_line_28',
+            admin_area_2='admin_area_28',
+            admin_area_1='admin_area_14',
+            postal_code='postal_code0'
+        )
+    )
+)
 ```
 

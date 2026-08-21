@@ -24,20 +24,22 @@ The authorized payment transaction.
 | `create_time` | `str` | Optional | The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional. Note: The regular expression provides guidance but does not reject all invalid dates.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` |
 | `update_time` | `str` | Optional | The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional. Note: The regular expression provides guidance but does not reject all invalid dates.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "CREATED",
-  "status_details": {
-    "reason": "PENDING_REVIEW"
-  },
-  "id": "id8",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id8"
-}
+```python
+from paypalserversdk.models.authorization import Authorization
+from paypalserversdk.models.authorization_incomplete_reason import AuthorizationIncompleteReason
+from paypalserversdk.models.authorization_status_details import AuthorizationStatusDetails
+from paypalserversdk.models.money import Money
+
+authorization = Authorization(
+    status_details=AuthorizationStatusDetails(
+        reason=AuthorizationIncompleteReason.PENDING_REVIEW
+    ),
+    amount=Money(
+        currency_code='currency_code6',
+        value='value0'
+    )
+)
 ```
 

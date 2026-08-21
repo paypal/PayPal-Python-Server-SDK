@@ -18,53 +18,60 @@ Captures either a portion or the full authorized amount of an authorized payment
 | `note_to_payer` | `str` | Optional | An informational note about this settlement. Appears in both the payer's transaction history and the emails that the payer receives.<br><br>**Constraints**: *Maximum Length*: `255` |
 | `soft_descriptor` | `str` | Optional | The payment descriptor on the payer's account statement.<br><br>**Constraints**: *Maximum Length*: `22` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "final_capture": false,
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id4",
-  "payment_instruction": {
-    "platform_fees": [
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      }
-    ],
-    "disbursement_mode": "INSTANT",
-    "payee_receivable_fx_rate_id": "payee_receivable_fx_rate_id0"
-  },
-  "note_to_payer": "note_to_payer6"
-}
+```python
+from paypalserversdk.models.capture_payment_instruction import CapturePaymentInstruction
+from paypalserversdk.models.capture_request import CaptureRequest
+from paypalserversdk.models.disbursement_mode import DisbursementMode
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.payee_base import PayeeBase
+from paypalserversdk.models.platform_fee import PlatformFee
+
+capture_request = CaptureRequest(
+    amount=Money(
+        currency_code='currency_code6',
+        value='value0'
+    ),
+    invoice_id='invoice_id6',
+    final_capture=False,
+    payment_instruction=CapturePaymentInstruction(
+        platform_fees=[
+            PlatformFee(
+                amount=Money(
+                    currency_code='currency_code6',
+                    value='value0'
+                ),
+                payee=PayeeBase(
+                    email_address='email_address4',
+                    merchant_id='merchant_id6'
+                )
+            ),
+            PlatformFee(
+                amount=Money(
+                    currency_code='currency_code6',
+                    value='value0'
+                ),
+                payee=PayeeBase(
+                    email_address='email_address4',
+                    merchant_id='merchant_id6'
+                )
+            ),
+            PlatformFee(
+                amount=Money(
+                    currency_code='currency_code6',
+                    value='value0'
+                ),
+                payee=PayeeBase(
+                    email_address='email_address4',
+                    merchant_id='merchant_id6'
+                )
+            )
+        ],
+        disbursement_mode=DisbursementMode.INSTANT,
+        payee_receivable_fx_rate_id='payee_receivable_fx_rate_id0'
+    ),
+    note_to_payer='note_to_payer8'
+)
 ```
 

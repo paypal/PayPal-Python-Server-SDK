@@ -19,23 +19,29 @@ The customer who approves and pays for the order. The customer is also known as 
 | `tax_info` | [`TaxInfo`](../../doc/models/tax-info.md) | Optional | The tax ID of the customer. The customer is also known as the payer. Both `tax_id` and `tax_id_type` are required. |
 | `address` | [`Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email_address": "email_address8",
-  "payer_id": "payer_id8",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "phone": {
-    "phone_type": "OTHER",
-    "phone_number": {
-      "national_number": "national_number6"
-    }
-  },
-  "birth_date": "birth_date6"
-}
+```python
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.payer import Payer
+from paypalserversdk.models.phone_number import PhoneNumber
+from paypalserversdk.models.phone_type import PhoneType
+from paypalserversdk.models.phone_with_type import PhoneWithType
+
+payer = Payer(
+    email_address='email_address6',
+    payer_id='payer_id6',
+    name=Name(
+        given_name='given_name2',
+        surname='surname8'
+    ),
+    phone=PhoneWithType(
+        phone_number=PhoneNumber(
+            national_number='national_number6'
+        ),
+        phone_type=PhoneType.OTHER
+    ),
+    birth_date='birth_date4'
+)
 ```
 

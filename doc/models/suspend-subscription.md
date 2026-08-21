@@ -13,11 +13,13 @@ The suspend subscription request details.
 |  --- | --- | --- | --- |
 | `reason` | `str` | Required | The reason for suspension of the Subscription.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128`, *Pattern*: `^.*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "reason4"
-}
+```python
+from paypalserversdk.models.suspend_subscription import SuspendSubscription
+
+suspend_subscription = SuspendSubscription(
+    reason='reason2'
+)
 ```
 

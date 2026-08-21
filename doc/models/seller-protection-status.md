@@ -15,3 +15,11 @@ Indicates whether the transaction is eligible for seller protection. For informa
 | `PARTIALLY_ELIGIBLE` | Your PayPal balance remains intact if the customer claims that they did not receive an item. |
 | `NOT_ELIGIBLE` | This transaction is not eligible for seller protection. |
 
+## Example
+
+```python
+from paypalserversdk.models.seller_protection_status import SellerProtectionStatus
+
+seller_protection_status = SellerProtectionStatus.PARTIALLY_ELIGIBLE
+```
+

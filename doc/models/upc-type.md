@@ -19,3 +19,11 @@ The Universal Product Code type.
 | `UPC_2` |
 | `UPC_5` |
 
+## Example
+
+```python
+from paypalserversdk.models.upc_type import UpcType
+
+upc_type = UpcType.UPC_E
+```
+

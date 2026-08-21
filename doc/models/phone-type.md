@@ -17,3 +17,11 @@ The phone type.
 | `OTHER` | Other phone number. |
 | `PAGER` | Pager number. |
 
+## Example
+
+```python
+from paypalserversdk.models.phone_type import PhoneType
+
+phone_type = PhoneType.OTHER
+```
+

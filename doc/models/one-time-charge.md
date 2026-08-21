@@ -18,34 +18,37 @@ The one-time charge info at the time of checkout.
 | `subtotal` | [`Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. |
 | `total_amount` | [`Money`](../../doc/models/money.md) | Required | The currency and amount for a financial transaction, such as a balance or payment due. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "setup_fee": {
-    "currency_code": "currency_code8",
-    "value": "value4"
-  },
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "taxes": {
-    "currency_code": "currency_code6",
-    "value": "value2"
-  },
-  "product_price": {
-    "currency_code": "currency_code6",
-    "value": "value2"
-  },
-  "subtotal": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  },
-  "total_amount": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  }
-}
+```python
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.one_time_charge import OneTimeCharge
+
+one_time_charge = OneTimeCharge(
+    total_amount=Money(
+        currency_code='currency_code2',
+        value='value8'
+    ),
+    setup_fee=Money(
+        currency_code='currency_code8',
+        value='value4'
+    ),
+    shipping_amount=Money(
+        currency_code='currency_code0',
+        value='value6'
+    ),
+    taxes=Money(
+        currency_code='currency_code6',
+        value='value2'
+    ),
+    product_price=Money(
+        currency_code='currency_code6',
+        value='value2'
+    ),
+    subtotal=Money(
+        currency_code='currency_code2',
+        value='value8'
+    )
+)
 ```
 

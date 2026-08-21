@@ -18,16 +18,18 @@ A simple postal address with coarse-grained fields. Do not use for an internatio
 | `country_code` | `str` | Required | The [two-character ISO 3166-1 code](/docs/integration/direct/rest/country-codes/) that identifies the country or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `2`, *Pattern*: `^([A-Z]{2}\|C2)$` |
 | `postal_code` | `str` | Optional | The postal code, which is the zip code or equivalent. Typically required for countries with a postal code or an equivalent. See [postal code](https://en.wikipedia.org/wiki/Postal_code). |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "line1": "line14",
-  "line2": "line26",
-  "city": "city2",
-  "state": "state8",
-  "country_code": "country_code2",
-  "postal_code": "postal_code4"
-}
+```python
+from paypalserversdk.models.simple_postal_address_coarse_grained import SimplePostalAddressCoarseGrained
+
+simple_postal_address_coarse_grained = SimplePostalAddressCoarseGrained(
+    line_1='line12',
+    city='city0',
+    country_code='country_code0',
+    line_2='line24',
+    state='state6',
+    postal_code='postal_code2'
+)
 ```
 

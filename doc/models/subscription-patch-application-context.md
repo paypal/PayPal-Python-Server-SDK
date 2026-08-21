@@ -18,18 +18,23 @@ The application context, which customizes the payer experience during the subscr
 | `return_url` | `str` | Required | The URL where the customer is redirected after the customer approves the payment.<br><br>**Constraints**: *Minimum Length*: `10`, *Maximum Length*: `4000` |
 | `cancel_url` | `str` | Required | The URL where the customer is redirected after the customer cancels the payment.<br><br>**Constraints**: *Minimum Length*: `10`, *Maximum Length*: `4000` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "return_url": "return_url4",
-  "cancel_url": "cancel_url8",
-  "brand_name": "brand_name4",
-  "locale": "locale8",
-  "payment_method": {
-    "payee_preferred": "UNRESTRICTED"
-  }
-}
+```python
+from paypalserversdk.models.experience_context_shipping_preference import ExperienceContextShippingPreference
+from paypalserversdk.models.payee_payment_method_preference import PayeePaymentMethodPreference
+from paypalserversdk.models.payment_method import PaymentMethod
+from paypalserversdk.models.subscription_patch_application_context import SubscriptionPatchApplicationContext
+
+subscription_patch_application_context = SubscriptionPatchApplicationContext(
+    return_url='return_url6',
+    cancel_url='cancel_url6',
+    brand_name='brand_name8',
+    locale='locale6',
+    shipping_preference=ExperienceContextShippingPreference.GET_FROM_FILE,
+    payment_method=PaymentMethod(
+        payee_preferred=PayeePaymentMethodPreference.UNRESTRICTED
+    )
+)
 ```
 

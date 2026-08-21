@@ -19,44 +19,54 @@ Information needed to pay using Google Pay.
 | `assurance_details` | [`AssuranceDetails`](../../doc/models/assurance-details.md) | Optional | Information about cardholder possession validation and cardholder identification and verifications (ID&V). |
 | `experience_context` | [`GooglePayExperienceContext`](../../doc/models/google-pay-experience-context.md) | Optional | Customizes the payer experience during the approval process for the payment. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "email_address": "email_address2",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6"
-  },
-  "card": {
-    "name": "name6",
-    "type": "UNKNOWN",
-    "brand": "CB_NATIONALE",
-    "billing_address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_28",
-      "admin_area_2": "admin_area_28",
-      "admin_area_1": "admin_area_14",
-      "postal_code": "postal_code0",
-      "country_code": "country_code8"
-    }
-  },
-  "decrypted_token": {
-    "message_id": "message_id0",
-    "message_expiration": "message_expiration2",
-    "payment_method": "CARD",
-    "card": {
-      "name": "name6",
-      "number": "number6",
-      "expiry": "expiry4",
-      "last_digits": "last_digits0",
-      "type": "UNKNOWN"
-    },
-    "authentication_method": "PAN_ONLY",
-    "cryptogram": "cryptogram6",
-    "eci_indicator": "eci_indicator0"
-  }
-}
+```python
+from paypalserversdk.models.address import Address
+from paypalserversdk.models.card_brand import CardBrand
+from paypalserversdk.models.card_type import CardType
+from paypalserversdk.models.google_pay_authentication_method import GooglePayAuthenticationMethod
+from paypalserversdk.models.google_pay_card import GooglePayCard
+from paypalserversdk.models.google_pay_decrypted_token_data import GooglePayDecryptedTokenData
+from paypalserversdk.models.google_pay_payment_method import GooglePayPaymentMethod
+from paypalserversdk.models.google_pay_request import GooglePayRequest
+from paypalserversdk.models.google_pay_request_card import GooglePayRequestCard
+from paypalserversdk.models.phone_number_with_country_code import PhoneNumberWithCountryCode
+
+google_pay_request = GooglePayRequest(
+    name='name6',
+    email_address='email_address4',
+    phone_number=PhoneNumberWithCountryCode(
+        country_code='country_code2',
+        national_number='national_number6'
+    ),
+    card=GooglePayRequestCard(
+        name='name6',
+        mtype=CardType.UNKNOWN,
+        brand=CardBrand.CB_NATIONALE,
+        billing_address=Address(
+            country_code='country_code8',
+            address_line_1='address_line_12',
+            address_line_2='address_line_28',
+            admin_area_2='admin_area_28',
+            admin_area_1='admin_area_14',
+            postal_code='postal_code0'
+        )
+    ),
+    decrypted_token=GooglePayDecryptedTokenData(
+        payment_method=GooglePayPaymentMethod.CARD,
+        card=GooglePayCard(
+            name='name6',
+            number='number6',
+            expiry='expiry4',
+            mtype=CardType.UNKNOWN
+        ),
+        authentication_method=GooglePayAuthenticationMethod.PAN_ONLY,
+        message_id='message_id0',
+        message_expiration='message_expiration2',
+        cryptogram='cryptogram6',
+        eci_indicator='eci_indicator0'
+    )
+)
 ```
 

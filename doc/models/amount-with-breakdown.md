@@ -15,34 +15,38 @@ The total order amount with an optional breakdown that provides details, such as
 | `value` | `str` | Required | The value, which might be: An integer for currencies like `JPY` that are not typically fractional. A decimal fraction for currencies like `TND` that are subdivided into thousandths. For the required number of decimal places for a currency code, see [Currency Codes](https://developer.paypal.com/api/rest/reference/currency-codes/).<br><br>**Constraints**: *Maximum Length*: `32`, *Pattern*: `^((-?[0-9]+)\|(-?([0-9]+)?[.][0-9]+))$` |
 | `breakdown` | [`AmountBreakdown`](../../doc/models/amount-breakdown.md) | Optional | The breakdown of the amount. Breakdown provides details such as total item amount, total tax amount, shipping, handling, insurance, and discounts, if any. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "currency_code": "currency_code4",
-  "value": "value0",
-  "breakdown": {
-    "item_total": {
-      "currency_code": "currency_code0",
-      "value": "value6"
-    },
-    "shipping": {
-      "currency_code": "currency_code0",
-      "value": "value6"
-    },
-    "handling": {
-      "currency_code": "currency_code2",
-      "value": "value8"
-    },
-    "tax_total": {
-      "currency_code": "currency_code4",
-      "value": "value0"
-    },
-    "insurance": {
-      "currency_code": "currency_code2",
-      "value": "value8"
-    }
-  }
-}
+```python
+from paypalserversdk.models.amount_breakdown import AmountBreakdown
+from paypalserversdk.models.amount_with_breakdown import AmountWithBreakdown
+from paypalserversdk.models.money import Money
+
+amount_with_breakdown = AmountWithBreakdown(
+    currency_code='currency_code0',
+    value='value6',
+    breakdown=AmountBreakdown(
+        item_total=Money(
+            currency_code='currency_code0',
+            value='value6'
+        ),
+        shipping=Money(
+            currency_code='currency_code0',
+            value='value6'
+        ),
+        handling=Money(
+            currency_code='currency_code2',
+            value='value8'
+        ),
+        tax_total=Money(
+            currency_code='currency_code4',
+            value='value0'
+        ),
+        insurance=Money(
+            currency_code='currency_code2',
+            value='value8'
+        )
+    )
+)
 ```
 

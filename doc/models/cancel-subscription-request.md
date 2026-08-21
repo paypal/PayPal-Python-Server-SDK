@@ -13,11 +13,13 @@ The cancel subscription request details.
 |  --- | --- | --- | --- |
 | `reason` | `str` | Required | The reason for the cancellation of a subscription.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128`, *Pattern*: `^.*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "reason8"
-}
+```python
+from paypalserversdk.models.cancel_subscription_request import CancelSubscriptionRequest
+
+cancel_subscription_request = CancelSubscriptionRequest(
+    reason='reason8'
+)
 ```
 

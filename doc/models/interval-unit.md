@@ -16,3 +16,11 @@ The interval at which the subscription is charged or billed.
 | `MONTH` | A monthly billing cycle. |
 | `YEAR` | A yearly billing cycle. |
 
+## Example
+
+```python
+from paypalserversdk.models.interval_unit import IntervalUnit
+
+interval_unit = IntervalUnit.DAY
+```
+

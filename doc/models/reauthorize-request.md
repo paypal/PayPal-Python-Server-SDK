@@ -13,14 +13,17 @@ Reauthorizes an authorized PayPal account payment, by ID. To ensure that funds a
 |  --- | --- | --- | --- |
 | `amount` | [`Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  }
-}
+```python
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.reauthorize_request import ReauthorizeRequest
+
+reauthorize_request = ReauthorizeRequest(
+    amount=Money(
+        currency_code='currency_code6',
+        value='value0'
+    )
+)
 ```
 

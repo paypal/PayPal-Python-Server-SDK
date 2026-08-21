@@ -20,21 +20,26 @@ Venmo wallet response.
 | `return_flow` | [`ReturnFlow`](../../doc/models/return-flow.md) | Optional, Read-only | Merchant preference on how the buyer can navigate back to merchant website post approving the transaction on the Venmo App.<br><br>**Default**: `"AUTO"`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `6`, *Pattern*: `^[A-Z_]+$` |
 | `attributes` | [`VenmoWalletAttributesResponse`](../../doc/models/venmo-wallet-attributes-response.md) | Optional | Additional attributes associated with the use of a Venmo Wallet. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "return_flow": "AUTO",
-  "email_address": "email_address6",
-  "account_id": "account_id8",
-  "user_name": "user_name2",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "phone_number": {
-    "national_number": "national_number6"
-  }
-}
+```python
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.phone_number import PhoneNumber
+from paypalserversdk.models.return_flow import ReturnFlow
+from paypalserversdk.models.venmo_wallet_response import VenmoWalletResponse
+
+venmo_wallet_response = VenmoWalletResponse(
+    email_address='email_address4',
+    account_id='account_id8',
+    user_name='user_name2',
+    name=Name(
+        given_name='given_name2',
+        surname='surname8'
+    ),
+    phone_number=PhoneNumber(
+        national_number='national_number6'
+    ),
+    return_flow=ReturnFlow.AUTO
+)
 ```
 

@@ -13,11 +13,14 @@ Basic vault instruction specification that can be extended by specific payment s
 |  --- | --- | --- | --- |
 | `store_in_vault` | [`StoreInVaultInstruction`](../../doc/models/store-in-vault-instruction.md) | Optional | Defines how and when the payment source gets vaulted.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "store_in_vault": "ON_SUCCESS"
-}
+```python
+from paypalserversdk.models.store_in_vault_instruction import StoreInVaultInstruction
+from paypalserversdk.models.vault_instruction_base import VaultInstructionBase
+
+vault_instruction_base = VaultInstructionBase(
+    store_in_vault=StoreInVaultInstruction.ON_SUCCESS
+)
 ```
 

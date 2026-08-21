@@ -15,3 +15,11 @@ The initial state of the plan. Allowed input values are CREATED and ACTIVE.
 | `INACTIVE` | The plan is inactive. |
 | `ACTIVE` | The plan is active. You can only create subscriptions for a plan in this state. |
 
+## Example
+
+```python
+from paypalserversdk.models.plan_request_status import PlanRequestStatus
+
+plan_request_status = PlanRequestStatus.ACTIVE
+```
+

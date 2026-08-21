@@ -20,16 +20,20 @@ Customizes the Vault creation flow experience for your customers.
 | `app_switch_context` | [`AppSwitchContext`](../../doc/models/app-switch-context.md) | Optional | Merchant provided details of the native app or mobile web browser to facilitate buyer's app switch to the PayPal consumer app. |
 | `user_action` | [`VaultUserAction`](../../doc/models/vault-user-action.md) | Optional | User Action on action to be performed after a successful payer approval.<br><br>**Default**: `"CONTINUE"`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "user_action": "CONTINUE",
-  "brand_name": "brand_name0",
-  "locale": "locale4",
-  "return_url": "return_url2",
-  "cancel_url": "cancel_url4"
-}
+```python
+from paypalserversdk.models.experience_context_shipping_preference import ExperienceContextShippingPreference
+from paypalserversdk.models.vault_experience_context import VaultExperienceContext
+from paypalserversdk.models.vault_user_action import VaultUserAction
+
+vault_experience_context = VaultExperienceContext(
+    brand_name='brand_name0',
+    locale='locale4',
+    return_url='return_url2',
+    cancel_url='cancel_url4',
+    shipping_preference=ExperienceContextShippingPreference.GET_FROM_FILE,
+    user_action=VaultUserAction.CONTINUE
+)
 ```
 

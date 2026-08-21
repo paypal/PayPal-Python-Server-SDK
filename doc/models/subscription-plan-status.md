@@ -15,3 +15,11 @@ The plan status.
 | `INACTIVE` | The plan is inactive. |
 | `ACTIVE` | The plan is active. You can only create subscriptions for a plan in this state. |
 
+## Example
+
+```python
+from paypalserversdk.models.subscription_plan_status import SubscriptionPlanStatus
+
+subscription_plan_status = SubscriptionPlanStatus.INACTIVE
+```
+

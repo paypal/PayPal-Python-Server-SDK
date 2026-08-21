@@ -24,3 +24,11 @@ The reason why the captured payment status is `PENDING` or `DENIED`.
 | `VERIFICATION_REQUIRED` | The payee's PayPal account is not verified. |
 | `DECLINED_BY_RISK_FRAUD_FILTERS` | Risk Filter set by the payee failed for the transaction. |
 
+## Example
+
+```python
+from paypalserversdk.models.capture_incomplete_reason import CaptureIncompleteReason
+
+capture_incomplete_reason = CaptureIncompleteReason.VERIFICATION_REQUIRED
+```
+

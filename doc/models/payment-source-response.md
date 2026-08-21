@@ -26,49 +26,56 @@ The payment source used to fund the payment.
 | `google_pay` | [`GooglePayWalletResponse`](../../doc/models/google-pay-wallet-response.md) | Optional | Google Pay Wallet payment data. |
 | `venmo` | [`VenmoWalletResponse`](../../doc/models/venmo-wallet-response.md) | Optional | Venmo wallet response. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "name": "name6",
-    "last_digits": "last_digits0",
-    "brand": "CB_NATIONALE",
-    "available_networks": [
-      "DELTA"
-    ],
-    "type": "UNKNOWN"
-  },
-  "paypal": {
-    "email_address": "email_address0",
-    "account_id": "account_id4",
-    "account_status": "VERIFIED",
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "phone_type": "FAX"
-  },
-  "bancontact": {
-    "name": "name0",
-    "country_code": "country_code0",
-    "bic": "bic2",
-    "iban_last_chars": "iban_last_chars8",
-    "card_last_digits": "card_last_digits4"
-  },
-  "blik": {
-    "name": "name2",
-    "country_code": "country_code2",
-    "email": "email4",
-    "one_click": {
-      "consumer_reference": "consumer_reference2"
-    }
-  },
-  "eps": {
-    "name": "name6",
-    "country_code": "country_code6",
-    "bic": "bic8"
-  }
-}
+```python
+from paypalserversdk.models.bancontact_payment_object import BancontactPaymentObject
+from paypalserversdk.models.blik_one_click_payment_object import BlikOneClickPaymentObject
+from paypalserversdk.models.blik_payment_object import BlikPaymentObject
+from paypalserversdk.models.card_brand import CardBrand
+from paypalserversdk.models.card_response import CardResponse
+from paypalserversdk.models.card_type import CardType
+from paypalserversdk.models.eps_payment_object import EpsPaymentObject
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.payment_source_response import PaymentSourceResponse
+from paypalserversdk.models.paypal_wallet_response import PaypalWalletResponse
+from paypalserversdk.models.phone_type import PhoneType
+
+payment_source_response = PaymentSourceResponse(
+    card=CardResponse(
+        name='name6',
+        brand=CardBrand.CB_NATIONALE,
+        mtype=CardType.UNKNOWN
+    ),
+    paypal=PaypalWalletResponse(
+        email_address='email_address0',
+        account_id='account_id4',
+        name=Name(
+            given_name='given_name2',
+            surname='surname8'
+        ),
+        phone_type=PhoneType.FAX
+    ),
+    bancontact=BancontactPaymentObject(
+        name='name0',
+        country_code='country_code0',
+        bic='bic2',
+        iban_last_chars='iban_last_chars8',
+        card_last_digits='card_last_digits4'
+    ),
+    blik=BlikPaymentObject(
+        name='name2',
+        country_code='country_code2',
+        email='email4',
+        one_click=BlikOneClickPaymentObject(
+            consumer_reference='consumer_reference2'
+        )
+    ),
+    eps=EpsPaymentObject(
+        name='name6',
+        country_code='country_code6',
+        bic='bic8'
+    )
+)
 ```
 

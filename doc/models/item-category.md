@@ -15,3 +15,11 @@ The item category type.
 | `PHYSICAL_GOODS` | A tangible item that can be shipped with proof of delivery. |
 | `DONATION` | A contribution or gift for which no good or service is exchanged, usually to a not for profit organization. |
 
+## Example
+
+```python
+from paypalserversdk.models.item_category import ItemCategory
+
+item_category = ItemCategory.PHYSICAL_GOODS
+```
+

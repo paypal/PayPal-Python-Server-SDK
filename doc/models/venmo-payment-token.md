@@ -24,33 +24,42 @@ Full representation of a Venmo Payment Token.
 | `address` | [`Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). |
 | `user_name` | `str` | Optional | The Venmo username, as chosen by the user.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `50`, *Pattern*: `^[-a-zA-Z0-9_]*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "permit_multiple_payment_tokens": false,
-  "description": "description4",
-  "usage_pattern": "INSTALLMENT_PREPAID",
-  "shipping": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address2",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "SHIPPING",
-    "address": {
-      "address_line_1": "address_line_16",
-      "address_line_2": "address_line_26",
-      "admin_area_2": "admin_area_20",
-      "admin_area_1": "admin_area_12",
-      "postal_code": "postal_code8",
-      "country_code": "country_code6"
-    }
-  },
-  "usage_type": "MERCHANT"
-}
+```python
+from paypalserversdk.models.address import Address
+from paypalserversdk.models.fulfillment_type import FulfillmentType
+from paypalserversdk.models.paypal_payment_token_usage_type import PaypalPaymentTokenUsageType
+from paypalserversdk.models.phone_number_with_country_code import PhoneNumberWithCountryCode
+from paypalserversdk.models.shipping_name import ShippingName
+from paypalserversdk.models.usage_pattern import UsagePattern
+from paypalserversdk.models.vaulted_digital_wallet_shipping_details import VaultedDigitalWalletShippingDetails
+from paypalserversdk.models.venmo_payment_token import VenmoPaymentToken
+
+venmo_payment_token = VenmoPaymentToken(
+    description='description2',
+    usage_pattern=UsagePattern.UNSCHEDULED_PREPAID,
+    shipping=VaultedDigitalWalletShippingDetails(
+        name=ShippingName(
+            full_name='full_name6'
+        ),
+        email_address='email_address2',
+        phone_number=PhoneNumberWithCountryCode(
+            country_code='country_code2',
+            national_number='national_number6'
+        ),
+        mtype=FulfillmentType.SHIPPING,
+        address=Address(
+            country_code='country_code6',
+            address_line_1='address_line_16',
+            address_line_2='address_line_26',
+            admin_area_2='admin_area_20',
+            admin_area_1='admin_area_12',
+            postal_code='postal_code8'
+        )
+    ),
+    permit_multiple_payment_tokens=False,
+    usage_type=PaypalPaymentTokenUsageType.MERCHANT
+)
 ```
 

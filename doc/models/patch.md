@@ -16,17 +16,19 @@ The JSON patch object to apply partial updates to resources.
 | `value` | `Any` | Optional | The value to apply. The remove, copy, and move operations do not require a value. Since JSON Patch allows any type for value, the type property is not specified. |
 | `mfrom` | `str` | Optional | The JSON Pointer to the target document location from which to move the value. Required for the move operation. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "op": "add",
-  "path": "path6",
-  "value": {
-    "key1": "val1",
-    "key2": "val2"
-  },
-  "from": "from0"
-}
+```python
+import jsonpickle
+
+from paypalserversdk.models.patch import Patch
+from paypalserversdk.models.patch_op import PatchOp
+
+patch = Patch(
+    op=PatchOp.COPY,
+    path='path4',
+    value=jsonpickle.decode('{"key1":"val1","key2":"val2"}'),
+    mfrom='from2'
+)
 ```
 

@@ -16,3 +16,11 @@ The PayPal reference ID type.
 | `SUB` | A subscription ID. |
 | `PAP` | A pre-approved payment ID. |
 
+## Example
+
+```python
+from paypalserversdk.models.paypal_reference_id_type import PaypalReferenceIdType
+
+paypal_reference_id_type = PaypalReferenceIdType.ODR
+```
+

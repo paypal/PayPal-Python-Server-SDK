@@ -15,16 +15,20 @@ The charge amount from the subscriber.
 | `capture_type` | [`CaptureType`](../../doc/models/capture-type.md) | Required | The type of capture.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `24`, *Pattern*: `^[A-Z_]+$` |
 | `amount` | [`Money`](../../doc/models/money.md) | Required | The currency and amount for a financial transaction, such as a balance or payment due. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "note": "note4",
-  "capture_type": "OUTSTANDING_BALANCE",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  }
-}
+```python
+from paypalserversdk.models.capture_subscription_request import CaptureSubscriptionRequest
+from paypalserversdk.models.capture_type import CaptureType
+from paypalserversdk.models.money import Money
+
+capture_subscription_request = CaptureSubscriptionRequest(
+    note='note8',
+    capture_type=CaptureType.OUTSTANDING_BALANCE,
+    amount=Money(
+        currency_code='currency_code6',
+        value='value0'
+    )
+)
 ```
 

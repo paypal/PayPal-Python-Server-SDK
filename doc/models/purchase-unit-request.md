@@ -23,80 +23,89 @@ The purchase unit request. Includes required information for the payment contrac
 | `shipping` | [`ShippingDetails`](../../doc/models/shipping-details.md) | Optional | The shipping details. |
 | `supplementary_data` | [`SupplementaryData`](../../doc/models/supplementary-data.md) | Optional | Supplementary data about a payment. This object passes information that can be used to improve risk assessments and processing costs, for example, by providing Level 2 and Level 3 payment data. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reference_id": "reference_id6",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0",
-    "breakdown": {
-      "item_total": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      },
-      "shipping": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      },
-      "handling": {
-        "currency_code": "currency_code2",
-        "value": "value8"
-      },
-      "tax_total": {
-        "currency_code": "currency_code4",
-        "value": "value0"
-      },
-      "insurance": {
-        "currency_code": "currency_code2",
-        "value": "value8"
-      }
-    }
-  },
-  "payee": {
-    "email_address": "email_address4",
-    "merchant_id": "merchant_id6"
-  },
-  "payment_instruction": {
-    "platform_fees": [
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      }
-    ],
-    "disbursement_mode": "INSTANT",
-    "payee_pricing_tier_id": "payee_pricing_tier_id2",
-    "payee_receivable_fx_rate_id": "payee_receivable_fx_rate_id0"
-  },
-  "description": "description6",
-  "custom_id": "custom_id4"
-}
+```python
+from paypalserversdk.models.amount_breakdown import AmountBreakdown
+from paypalserversdk.models.amount_with_breakdown import AmountWithBreakdown
+from paypalserversdk.models.disbursement_mode import DisbursementMode
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.payee_base import PayeeBase
+from paypalserversdk.models.payment_instruction import PaymentInstruction
+from paypalserversdk.models.platform_fee import PlatformFee
+from paypalserversdk.models.purchase_unit_request import PurchaseUnitRequest
+
+purchase_unit_request = PurchaseUnitRequest(
+    amount=AmountWithBreakdown(
+        currency_code='currency_code6',
+        value='value0',
+        breakdown=AmountBreakdown(
+            item_total=Money(
+                currency_code='currency_code0',
+                value='value6'
+            ),
+            shipping=Money(
+                currency_code='currency_code0',
+                value='value6'
+            ),
+            handling=Money(
+                currency_code='currency_code2',
+                value='value8'
+            ),
+            tax_total=Money(
+                currency_code='currency_code4',
+                value='value0'
+            ),
+            insurance=Money(
+                currency_code='currency_code2',
+                value='value8'
+            )
+        )
+    ),
+    reference_id='reference_id4',
+    payee=PayeeBase(
+        email_address='email_address4',
+        merchant_id='merchant_id6'
+    ),
+    payment_instruction=PaymentInstruction(
+        platform_fees=[
+            PlatformFee(
+                amount=Money(
+                    currency_code='currency_code6',
+                    value='value0'
+                ),
+                payee=PayeeBase(
+                    email_address='email_address4',
+                    merchant_id='merchant_id6'
+                )
+            ),
+            PlatformFee(
+                amount=Money(
+                    currency_code='currency_code6',
+                    value='value0'
+                ),
+                payee=PayeeBase(
+                    email_address='email_address4',
+                    merchant_id='merchant_id6'
+                )
+            ),
+            PlatformFee(
+                amount=Money(
+                    currency_code='currency_code6',
+                    value='value0'
+                ),
+                payee=PayeeBase(
+                    email_address='email_address4',
+                    merchant_id='merchant_id6'
+                )
+            )
+        ],
+        disbursement_mode=DisbursementMode.INSTANT,
+        payee_pricing_tier_id='payee_pricing_tier_id2',
+        payee_receivable_fx_rate_id='payee_receivable_fx_rate_id0'
+    ),
+    description='description2',
+    custom_id='custom_id6'
+)
 ```
 

@@ -16,14 +16,17 @@ Reference values used by the card network to identify a transaction.
 | `network` | [`CardBrand`](../../doc/models/card-brand.md) | Optional | The card network or brand. Applies to credit, debit, gift, and payment cards.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 | `acquirer_reference_number` | `str` | Optional | Reference ID issued for the card transaction. This ID can be used to track the transaction across processors, card brands and issuing banks.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[a-zA-Z0-9]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "date": "date4",
-  "network": "CETELEM",
-  "acquirer_reference_number": "acquirer_reference_number8"
-}
+```python
+from paypalserversdk.models.card_brand import CardBrand
+from paypalserversdk.models.network_transaction import NetworkTransaction
+
+network_transaction = NetworkTransaction(
+    id='id6',
+    date='date2',
+    network=CardBrand.CONFIDIS,
+    acquirer_reference_number='acquirer_reference_number2'
+)
 ```
 

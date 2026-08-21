@@ -18,43 +18,47 @@ The pricing scheme details.
 | `create_time` | `str` | Optional | The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional. Note: The regular expression provides guidance but does not reject all invalid dates.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` |
 | `update_time` | `str` | Optional | The date and time, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are required while fractional seconds are optional. Note: The regular expression provides guidance but does not reject all invalid dates.<br><br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `64`, *Pattern*: `^[0-9]{4}-(0[1-9]\|1[0-2])-(0[1-9]\|[1-2][0-9]\|3[0-1])[T,t]([0-1][0-9]\|2[0-3]):[0-5][0-9]:([0-5][0-9]\|60)([.][0-9]+)?([Zz]\|[+-][0-9]{2}:[0-9]{2})$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "version": 172,
-  "fixed_price": {
-    "currency_code": "currency_code4",
-    "value": "value0"
-  },
-  "pricing_model": "VOLUME",
-  "tiers": [
-    {
-      "starting_quantity": "starting_quantity8",
-      "ending_quantity": "ending_quantity6",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      }
-    },
-    {
-      "starting_quantity": "starting_quantity8",
-      "ending_quantity": "ending_quantity6",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      }
-    },
-    {
-      "starting_quantity": "starting_quantity8",
-      "ending_quantity": "ending_quantity6",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      }
-    }
-  ],
-  "create_time": "create_time2"
-}
+```python
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.pricing_tier import PricingTier
+from paypalserversdk.models.subscription_pricing_model import SubscriptionPricingModel
+from paypalserversdk.models.subscription_pricing_scheme import SubscriptionPricingScheme
+
+subscription_pricing_scheme = SubscriptionPricingScheme(
+    fixed_price=Money(
+        currency_code='currency_code4',
+        value='value0'
+    ),
+    pricing_model=SubscriptionPricingModel.VOLUME,
+    tiers=[
+        PricingTier(
+            starting_quantity='starting_quantity8',
+            amount=Money(
+                currency_code='currency_code6',
+                value='value0'
+            ),
+            ending_quantity='ending_quantity6'
+        ),
+        PricingTier(
+            starting_quantity='starting_quantity8',
+            amount=Money(
+                currency_code='currency_code6',
+                value='value0'
+            ),
+            ending_quantity='ending_quantity6'
+        ),
+        PricingTier(
+            starting_quantity='starting_quantity8',
+            amount=Money(
+                currency_code='currency_code6',
+                value='value0'
+            ),
+            ending_quantity='ending_quantity6'
+        )
+    ],
+    create_time='create_time4'
+)
 ```
 

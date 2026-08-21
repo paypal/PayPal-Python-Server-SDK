@@ -18,48 +18,61 @@ The subscriber request information .
 | `payment_source` | [`SubscriptionPaymentSource`](../../doc/models/subscription-payment-source.md) | Optional | The payment source definition. To be eligible to create subscription using debit or credit card, you will need to sign up here (https://www.paypal.com/bizsignup/entry/product/ppcp). Please note, its available only for non-3DS cards and for merchants in US and AU regions. |
 | `phone` | [`PhoneWithType`](../../doc/models/phone-with-type.md) | Optional | The phone information. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email_address": "email_address0",
-  "payer_id": "payer_id0",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
-    ]
-  },
-  "payment_source": {
-    "card": {
-      "name": "name6",
-      "number": "number6",
-      "expiry": "expiry4",
-      "security_code": "security_code8",
-      "type": "UNKNOWN"
-    }
-  }
-}
+```python
+from paypalserversdk.models.card_type import CardType
+from paypalserversdk.models.fulfillment_type import FulfillmentType
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.name import Name
+from paypalserversdk.models.phone_number_with_country_code import PhoneNumberWithCountryCode
+from paypalserversdk.models.shipping_details import ShippingDetails
+from paypalserversdk.models.shipping_name import ShippingName
+from paypalserversdk.models.shipping_option import ShippingOption
+from paypalserversdk.models.shipping_type import ShippingType
+from paypalserversdk.models.subscriber_request import SubscriberRequest
+from paypalserversdk.models.subscription_card_request import SubscriptionCardRequest
+from paypalserversdk.models.subscription_payment_source import SubscriptionPaymentSource
+
+subscriber_request = SubscriberRequest(
+    email_address='email_address6',
+    payer_id='payer_id6',
+    name=Name(
+        given_name='given_name2',
+        surname='surname8'
+    ),
+    shipping_address=ShippingDetails(
+        name=ShippingName(
+            full_name='full_name6'
+        ),
+        email_address='email_address8',
+        phone_number=PhoneNumberWithCountryCode(
+            country_code='country_code2',
+            national_number='national_number6'
+        ),
+        mtype=FulfillmentType.PICKUP_IN_STORE,
+        options=[
+            ShippingOption(
+                id='id2',
+                label='label2',
+                selected=False,
+                mtype=ShippingType.SHIPPING,
+                amount=Money(
+                    currency_code='currency_code6',
+                    value='value0'
+                )
+            )
+        ]
+    ),
+    payment_source=SubscriptionPaymentSource(
+        card=SubscriptionCardRequest(
+            name='name6',
+            number='number6',
+            expiry='expiry4',
+            security_code='security_code8',
+            mtype=CardType.UNKNOWN
+        )
+    )
+)
 ```
 

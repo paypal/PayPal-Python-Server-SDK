@@ -16,14 +16,19 @@ A resource representing an experience context of vault a venmo account.
 | `vault_instruction` | [`VaultInstructionAction`](../../doc/models/vault-instruction-action.md) | Optional | DEPRECATED. Vault Instruction on action to be performed after a successful payer approval.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 | `user_action` | [`VaultUserAction`](../../doc/models/vault-user-action.md) | Optional | User Action on action to be performed after a successful payer approval.<br><br>**Default**: `"CONTINUE"`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "user_action": "CONTINUE",
-  "brand_name": "brand_name0",
-  "vault_instruction": "ON_CREATE_PAYMENT_TOKENS"
-}
+```python
+from paypalserversdk.models.experience_context_shipping_preference import ExperienceContextShippingPreference
+from paypalserversdk.models.vault_instruction_action import VaultInstructionAction
+from paypalserversdk.models.vault_user_action import VaultUserAction
+from paypalserversdk.models.venmo_experience_context import VenmoExperienceContext
+
+venmo_experience_context = VenmoExperienceContext(
+    brand_name='brand_name0',
+    shipping_preference=ExperienceContextShippingPreference.GET_FROM_FILE,
+    vault_instruction=VaultInstructionAction.ON_CREATE_PAYMENT_TOKENS,
+    user_action=VaultUserAction.CONTINUE
+)
 ```
 

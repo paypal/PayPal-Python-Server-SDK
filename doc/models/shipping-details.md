@@ -18,51 +18,39 @@ The shipping details.
 | `options` | [`List[ShippingOption]`](../../doc/models/shipping-option.md) | Optional | An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items.<br><br>**Constraints**: *Minimum Items*: `0`, *Maximum Items*: `10` |
 | `address` | [`Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": {
-    "full_name": "full_name6"
-  },
-  "email_address": "email_address2",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6"
-  },
-  "type": "PICKUP_IN_STORE",
-  "options": [
-    {
-      "id": "id2",
-      "label": "label2",
-      "type": "SHIPPING",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "selected": false
-    },
-    {
-      "id": "id2",
-      "label": "label2",
-      "type": "SHIPPING",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "selected": false
-    },
-    {
-      "id": "id2",
-      "label": "label2",
-      "type": "SHIPPING",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "selected": false
-    }
-  ]
-}
+```python
+from paypalserversdk.models.fulfillment_type import FulfillmentType
+from paypalserversdk.models.money import Money
+from paypalserversdk.models.phone_number_with_country_code import PhoneNumberWithCountryCode
+from paypalserversdk.models.shipping_details import ShippingDetails
+from paypalserversdk.models.shipping_name import ShippingName
+from paypalserversdk.models.shipping_option import ShippingOption
+from paypalserversdk.models.shipping_type import ShippingType
+
+shipping_details = ShippingDetails(
+    name=ShippingName(
+        full_name='full_name6'
+    ),
+    email_address='email_address2',
+    phone_number=PhoneNumberWithCountryCode(
+        country_code='country_code2',
+        national_number='national_number6'
+    ),
+    mtype=FulfillmentType.SHIPPING,
+    options=[
+        ShippingOption(
+            id='id2',
+            label='label2',
+            selected=False,
+            mtype=ShippingType.SHIPPING,
+            amount=Money(
+                currency_code='currency_code6',
+                value='value0'
+            )
+        )
+    ]
+)
 ```
 

@@ -19,18 +19,21 @@ Card Verification details including the authorization details and 3D SECURE deta
 | `processor_response` | [`CardVerificationProcessorResponse`](../../doc/models/card-verification-processor-response.md) | Optional | The processor response information for payment requests, such as direct credit card transactions. |
 | `three_d_secure` | `Any` | Optional | DEPRECATED. This field is DEPRECATED. Please find the 3D secure authentication data in the 'three_d_secure' object under the 'authentication_result' object instead of the 'verification' object. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "network_transaction_id": "network_transaction_id4",
-  "date": "date8",
-  "network": "ACCEL",
-  "time": "time2",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  }
-}
+```python
+from paypalserversdk.models.card_brand import CardBrand
+from paypalserversdk.models.card_verification_details import CardVerificationDetails
+from paypalserversdk.models.money import Money
+
+card_verification_details = CardVerificationDetails(
+    network_transaction_id='network_transaction_id4',
+    date='date8',
+    network=CardBrand.ACCEL,
+    amount=Money(
+        currency_code='currency_code6',
+        value='value0'
+    )
+)
 ```
 

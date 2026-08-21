@@ -166,3 +166,11 @@ Processor response code for the non-PayPal payment processor errors.
 | `RESPONSE_PPVE` | VALIDATION_ERROR. |
 | `RESPONSE_PPVT` | VIRTUAL_TERMINAL_UNSUPPORTED. |
 
+## Example
+
+```python
+from paypalserversdk.models.processor_response_code import ProcessorResponseCode
+
+processor_response_code = ProcessorResponseCode.RESPONSE_PPCO
+```
+

@@ -25,17 +25,17 @@ The Card from Apple Pay Wallet used to fund the payment.
 | `billing_address` | [`Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). |
 | `country_code` | `str` | Optional | The [two-character ISO 3166-1 code](https://developer.paypal.com/api/rest/reference/country-codes/) that identifies the country or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `2`, *Pattern*: `^([A-Z]{2}\|C2)$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "last_digits": "last_digits8",
-  "brand": "ACCEL",
-  "available_networks": [
-    "STAR_ACCESS"
-  ],
-  "type": "DEBIT"
-}
+```python
+from paypalserversdk.models.apple_pay_card_response import ApplePayCardResponse
+from paypalserversdk.models.card_brand import CardBrand
+from paypalserversdk.models.card_type import CardType
+
+apple_pay_card_response = ApplePayCardResponse(
+    name='name0',
+    brand=CardBrand.CARTE_BANCAIRE,
+    mtype=CardType.CREDIT
+)
 ```
 
